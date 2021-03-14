@@ -4,8 +4,8 @@ import Logo from '../../components/logo/logo.component'
 
 const Header: React.FC = () => {
   return (
-    <header className="header white navbar-fixed ">
-      <nav className="white">
+    <header className="header navbar-fixed white container">
+      <nav className="white container">
         <span className="header__logo--wrapper ml-sm">
           <Logo />
         </span>

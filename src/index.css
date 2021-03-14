@@ -15,7 +15,12 @@ code {
 :root {
   --color-brand: #0DA5F3;
   --color-grey: #f3f3f3;
+  --color-grey-2: #F6F6F6;
+  --color-white: #ffffff;
   --clamped-size: clamp(1rem, -5.7500rem + 18.7500vw, 5rem);
+  --fullHeight: 100vh - 64px;
+
+  --borderRadius: 1rem;
 
   --fs-h1: 4vw;
   --fs-brand-title: 3vw;
