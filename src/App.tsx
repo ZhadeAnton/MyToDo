@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './components/header/header.component'
+import Header from './sections/header/header.component'
 import LoginPage from './pages/login/login.page'
 import GreetingPage from './pages/greetingPage/greeting.page'
 import MainPage from './pages/main/main.page'
