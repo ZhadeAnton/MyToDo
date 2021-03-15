@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+h1, h2 {
+  margin: 0 !important;
+}
+
+input {
+  margin: 0 !important;
+}
+
 :root {
   --color-brand: #0DA5F3;
   --color-grey: #f3f3f3;

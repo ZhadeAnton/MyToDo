@@ -1,5 +1,44 @@
-.sign-in-form {
+.sign-in {
   width: 100%;
   height: 100%;
-  border-left: thin solid var(--color-grey-2);
+  display: flex;
+  flex-direction: column;
+
+  &--title {
+    font-weight: 700;
+  }
+
+  &__form {
+
+    &--inputs {
+      padding: 2rem 0;
+
+     > div {
+       margin-bottom: 1rem !important;
+     } 
+    }
+  
+    &--btn-submit {
+      margin-top: 1.5srem !important;
+    }
+
+    &__separator {
+      margin-top: 2rem !important;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        margin: 0 .5rem !important;
+      }
+  
+      &--line {
+        background-color: var(--color-grey);
+        height: 1px;
+        width: 30%;
+        display: block;
+      }
+    }
+  }
 }

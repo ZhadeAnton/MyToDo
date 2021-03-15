@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function SimpleTabs({props}: any) {
+export default function TabsLogin({props}: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import SimpleTabs from './login-tabs/login-tabs.component';
-import Slider from './login-slider/slider.component'
+import TabsLogin from './login-tabs/login-tabs.component';
+import SliderLogin from './login-slider/slider.component'
 import './login.styles.scss'
 
 const LoginPage: React.FC = () => {
@@ -8,11 +8,11 @@ const LoginPage: React.FC = () => {
     <section className="appLogin">
       <div className="appLogin__content row z-depth-3">
         <div className="appLogin__content--slider col s7">
-          <Slider />
+          <SliderLogin />
         </div>
 
         <div className="appLogin__content--auth col s5">
-          <SimpleTabs />
+          <TabsLogin />
         </div>
       </div>
     </section>
