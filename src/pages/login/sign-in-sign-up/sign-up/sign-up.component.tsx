@@ -3,20 +3,44 @@ import './sign-up.styles.scss'
 import {TextField, Button} from '@material-ui/core'
 
 export const SignUp: React.FC = () => {
+  // const [userData, setUserData] = useState({
+  //   displayName: '',
+  //   email: '',
+  //   password: '',
+  //   confirmPassword: '',
+  // })
+
+  // const {displayName, email, password, confirmPassword} = userData
+
+  // const handleChange = (event) => {
+  //   const {name, value} = event.target
+
+  //   setUserData({...userData, [name]: value})
+  // }
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+
+  //   if(password !== confirmPassword) {
+  //     alert('Password do not match')
+  //   }
+
+
+  // }
+
   return (
     <div className="sign-up">
       <h2 className="sign-up--title">Sign Up</h2>
-      <form action="submit" className="sign-up__form">
+      <form className="sign-up__form">
         <div className="sign-up__form--inputs">
           <TextField
-            id="standard-basic"
+            type='text'
             label="Email"
             fullWidth
             required
           />
 
           <TextField
-            id="standard-basic"
             label="Password"
             type="Password"
             fullWidth
@@ -24,7 +48,6 @@ export const SignUp: React.FC = () => {
           />
 
           <TextField
-            id="standard-basic"
             label="Confirm Password"
             type="text"
             fullWidth

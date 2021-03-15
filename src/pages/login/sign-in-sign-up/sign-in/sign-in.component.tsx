@@ -1,6 +1,7 @@
 import React from 'react'
 import './sign-in.styles.scss'
 import {TextField, Button} from '@material-ui/core'
+import {signInWithGoogle} from '../../../../firebase/firebase.config'
 
 export const SingIn: React.FC = () => {
   return (
@@ -9,14 +10,12 @@ export const SingIn: React.FC = () => {
       <form action="submit" className="sign-in__form">
         <div className="sign-in__form--inputs">
           <TextField
-            id="standard-basic"
             label="Email"
             fullWidth
             required
           />
 
           <TextField
-            id="standard-basic"
             label="Password"
             type="Password"
             fullWidth
@@ -36,6 +35,16 @@ export const SingIn: React.FC = () => {
           <span className="sign-in__form__separator--line"></span>
           <p>or</p>
           <span className="sign-in__form__separator--line"></span>
+        </div>
+
+        <div className="sign-in__form--btn-wrapper">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => signInWithGoogle()}
+          >
+            Sign in with google
+          </Button>
         </div>
       </form>
     </div>
