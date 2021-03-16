@@ -13,6 +13,7 @@ export const SingIn: React.FC = () => {
             label="Email"
             fullWidth
             required
+            autoFocus
           />
 
           <TextField

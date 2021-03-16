@@ -16,7 +16,6 @@ const App: React.FC = () => {
     auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await creacteUserProfileDocument(userAuth)
-        console.log('UserRef', userRef)
 
         userRef?.onSnapshot((snapShot) => {
           setCurrentUser({
