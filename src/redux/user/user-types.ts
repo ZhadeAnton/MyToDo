@@ -1,4 +1,4 @@
-import {IUser} from './user-Itypes'
+import {IUser} from './user-@types'
 export const SET_CURRENT_USER = 'SET CURRENT USER'
 
 interface SetCurrentUser {

@@ -1,13 +1,11 @@
-import {combineReducers, createStore, applyMiddleware} from 'redux';
-import userReducer from './user/user.reducer'
+import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger'
+import rootReducer from './root-reducer'
 
 const middlewares = [logger]
 
-const store = createStore(
-    combineReducers({
-      user: userReducer
-    }), applyMiddleware(...middlewares)
+const store = createStore(rootReducer, applyMiddleware(...middlewares)
 )
 
 export default store
+export type RootState = ReturnType<typeof rootReducer>
