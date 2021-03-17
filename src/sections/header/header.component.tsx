@@ -1,8 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import Logo from '../../components/logo/logo.component'
+import {IUser} from '../../redux/user/user-Itypes'
 
-const Header: React.FC = () => {
+interface Props {
+  user?: IUser
+}
+
+const Header: React.FC<Props> = ({user}) => {
   return (
     <header className="header navbar-fixed white container">
       <nav className="white container">
@@ -20,4 +26,8 @@ const Header: React.FC = () => {
   )
 }
 
-export default Header
+const mapStateToProps = (state: { user: { currentUser: string } }) => ({
+  user: state.user.currentUser
+})
+
+export default connect(mapStateToProps, null)(Header)

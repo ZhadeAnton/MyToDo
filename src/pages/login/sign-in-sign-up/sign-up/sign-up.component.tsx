@@ -51,39 +51,47 @@ export const SignUp: React.FC = () => {
       <form className="sign-up__form" onSubmit={handleSubmit}>
         <div className="sign-up__form--inputs">
           <TextField
-            type='text'
             label="Name"
             name="displayName"
+            type='text'
             fullWidth
             required
             autoFocus
+            autoComplete="true"
+            value={displayName}
             onChange={handleChange}
           />
 
           <TextField
-            type='email'
             label="Email"
             name="email"
+            type='email'
             fullWidth
             required
+            autoComplete="true"
+            value={email}
             onChange={handleChange}
           />
 
           <TextField
             label="Password"
-            type="Password"
             name="password"
+            type="Password"
             fullWidth
             required
+            autoComplete="true"
+            value={password}
             onChange={handleChange}
           />
 
           <TextField
             label="Confirm Password"
-            type="password"
             name="confirmPassword"
+            type="password"
             fullWidth
             required
+            autoComplete="true"
+            value={confirmPassword}
             onChange={handleChange}
           />
         </div>
