@@ -1,10 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+
 import Logo from '../../components/logo/logo.component'
 import {RootState} from '../../redux/store'
 import {IUser} from '../../redux/user/user-@types'
 import {auth} from '../../firebase/firebase.config'
+import {createStructuredSelector} from 'reselect'
+import {selectCurrentUser} from '../../redux/user/user-selectors'
 
 const Header: React.FC<IUser> = ({user}) => {
   return (
@@ -32,8 +35,8 @@ const Header: React.FC<IUser> = ({user}) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
-  user: state.user
+const mapStateToProps = createStructuredSelector<RootState, IUser>({
+  user: selectCurrentUser
 })
 
 export default connect(mapStateToProps, null)(Header)
