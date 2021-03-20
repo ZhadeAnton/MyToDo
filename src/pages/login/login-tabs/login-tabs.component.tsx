@@ -7,9 +7,7 @@ import Box from '@material-ui/core/Box';
 import {
   SignUp,
 } from '../sign-in-sign-up/sign-up/sign-up.component';
-import {
-  SingIn,
-} from '../sign-in-sign-up/sign-in/sign-in.component';
+import SingIn from '../sign-in-sign-up/sign-in/sign-in.component';
 
 interface TabPanelProps {
   children?: React.ReactNode;

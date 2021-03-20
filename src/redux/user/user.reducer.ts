@@ -1,15 +1,27 @@
-import {UserTypes, SET_CURRENT_USER} from './user-types'
+import {IUser, IError} from './user-@types'
+import * as actions from './userActionTypes'
 
-const INITIAL_STATE = {
-  currentUser: null,
+export interface UserState {
+  currentUser: null | IUser,
+  error: null | IError
 }
 
-const userReducer = (state = INITIAL_STATE, action: UserTypes) => {
+const INITIAL_STATE: UserState = {
+  currentUser: null,
+  error: null
+}
+
+const userReducer = (state = INITIAL_STATE, action: actions.UserTypes) => {
   switch (action.type) {
-    case SET_CURRENT_USER:
+    case actions.SIGN_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
+      }
+    case actions.SIGN_IN_FAILURE:
+      return {
+        ...state,
+        error: action.payload
       }
 
     default:

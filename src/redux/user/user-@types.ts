@@ -1,10 +1,20 @@
+// TODO: I'm not sure that's actualy work...
 export interface IUser {
   user?: {
-    currentUser: {
-      createAt: {[key: string]: number}
-    },
+    createAt: {[key: string]: string},
     displayName: string,
     email: string,
-    id: string
+    id: string,
+    uid?: string,
+    data?: any
   }
+}
+
+export interface IEmailAndPassword {
+  email: string,
+  password: string
+}
+
+export interface IError {
+  error: Error | null
 }

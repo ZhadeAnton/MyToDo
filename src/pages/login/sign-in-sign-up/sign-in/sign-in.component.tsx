@@ -1,36 +1,44 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {Dispatch} from 'redux'
+
 import './sign-in.styles.scss'
 import {TextField, Button} from '@material-ui/core'
-import {auth, signInWithGoogle} from '../../../../firebase/firebase.config'
+import {UserTypes} from '../../../../redux/user/userActionTypes'
 
-export const SingIn: React.FC = () => {
+import {
+  emailSignInStart,
+  googleSignInStart
+} from '../../../../redux/user/userActionCreators'
+
+interface Props {
+  emailSignInStart(email: string, password: string): void,
+  googleSignInStart(): void
+}
+
+const SingIn: React.FC<Props> = ({emailSignInStart, googleSignInStart}) => {
   const [userData, setUserData] = useState({
     email: '',
-    password: '',
+    password: ''
   })
 
   const {email, password} = userData
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
-
     setUserData({...userData, [name]: value})
+    console.log(userData)
   }
 
-  const handleSubmit =
-  async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password)
+    emailSignInStart(email, password)
 
-      setUserData({
-        email: '',
-        password: '',
-      })
-    } catch (error) {
-      console.error(error.message)
-    }
+    setUserData({
+      email: '',
+      password: ''
+    })
   }
 
   return (
@@ -80,7 +88,7 @@ export const SingIn: React.FC = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => signInWithGoogle()}
+            onClick={() => googleSignInStart()}
           >
             Sign in with google
           </Button>
@@ -89,3 +97,12 @@ export const SingIn: React.FC = () => {
     </div>
   )
 }
+
+const mapDispatchToProps =
+(dispatch: Dispatch<UserTypes>) => ({
+  emailSignInStart: (email: string, password: string) =>
+    dispatch<any>(emailSignInStart({email, password})),
+  googleSignInStart: () => dispatch(googleSignInStart())
+})
+
+export default connect(null, mapDispatchToProps)(SingIn)
