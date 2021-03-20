@@ -10,9 +10,13 @@ export interface IUser {
   }
 }
 
-export interface IEmailAndPassword {
+export interface ISignInCredentionals {
   email: string,
   password: string
+}
+
+export interface ISignUpCredentionals extends ISignInCredentionals {
+  displayName: string
 }
 
 export interface IError {

@@ -4,9 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import {
-  SignUp,
-} from '../sign-in-sign-up/sign-up/sign-up.component';
+import SignUp from '../sign-in-sign-up/sign-up/sign-up.component';
 import SingIn from '../sign-in-sign-up/sign-in/sign-in.component';
 
 interface TabPanelProps {

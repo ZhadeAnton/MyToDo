@@ -1,12 +1,21 @@
 import React, {useState} from 'react'
-import './sign-up.styles.scss'
+import {connect} from 'react-redux'
+import {Dispatch} from 'redux'
 import {TextField, Button} from '@material-ui/core'
-import {
-  auth,
-  creacteUserProfileDocument,
-} from '../../../../firebase/firebase.config'
 
-export const SignUp: React.FC = () => {
+import './sign-up.styles.scss'
+import {UserTypes} from '../../../../redux/user/userActionTypes'
+import {signUpStart} from '../../../../redux/user/userActionCreators'
+
+interface Props {
+  signUpStart(
+    displayName: string,
+    email: string,
+    password: string
+  ): void
+}
+
+const SignUp: React.FC<Props> = ({signUpStart}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
@@ -30,19 +39,7 @@ export const SignUp: React.FC = () => {
       alert('Password do not match')
     }
 
-    try {
-      const {user} = await auth.createUserWithEmailAndPassword(email, password)
-      await creacteUserProfileDocument(user, {displayName})
-
-      setUserData({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      })
-    } catch (error) {
-      console.error(error.message)
-    }
+    signUpStart(displayName, email, password)
   }
 
   return (
@@ -109,3 +106,15 @@ export const SignUp: React.FC = () => {
     </div>
   )
 }
+
+const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
+  signUpStart: (
+      displayName: string,
+      email: string,
+      password: string
+  ) => dispatch<any>(signUpStart({
+    displayName, email, password
+  }))
+})
+
+export default connect(null, mapDispatchToProps)(SignUp)

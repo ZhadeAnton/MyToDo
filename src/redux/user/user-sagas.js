@@ -40,6 +40,15 @@ export function* signInWithEmail({payload: {email, password}}) {
   }
 }
 
+export function* signUpStart({payload: {email, password, displayName}}) {
+  try {
+    const {user} = yield auth.createUserWithEmailAndPassword(email, password)
+    yield getSnapshotFromUserAuth(user, {displayName})
+  } catch (error) {
+    yield put(actionCreators.signUpFailure(error))
+  }
+}
+
 export function* checkUserSession() {
   try {
     const userAuth = yield getCurrentUser()
@@ -54,18 +63,23 @@ function* onGoogleSignInStart() {
   yield takeLatest(actionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
 
-function* onCheckUserSession() {
-  yield takeLatest(actionTypes.CHECK_USER_SESSION, checkUserSession)
-}
-
 function* onSignInWithEmail() {
   yield takeLatest(actionTypes.EMAIL_SIGN_IN_START, signInWithEmail)
+}
+
+function* onSignUpStart() {
+  yield takeLatest(actionTypes.SIGN_UP_START, signUpStart)
+}
+
+function* onCheckUserSession() {
+  yield takeLatest(actionTypes.CHECK_USER_SESSION, checkUserSession)
 }
 
 export default function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
-    call(onCheckUserSession),
-    call(onSignInWithEmail)
+    call(onSignInWithEmail),
+    call(onSignUpStart),
+    call(onCheckUserSession)
   ])
 }
