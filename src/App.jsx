@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {checkUserSession} from './redux/user/userActionCreators'
 
-import Header from './sections/header/header.component'
+import Header from './components/header/Header.container'
 import LoginPage from './pages/login/login.page'
 import GreetingPage from './pages/greetingPage/greeting.page'
 import MainPage from './pages/main/main.page'

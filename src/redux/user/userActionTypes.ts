@@ -2,7 +2,7 @@ import {
   IUser,
   ISignInCredentionals,
   ISignUpCredentionals
-} from './user-@types'
+} from './userInterfaces'
 
 export const GOOGLE_SIGN_IN_START = 'GOOGLE_SIGN_IN_START'
 export interface GoogleSignInStart {
@@ -63,6 +63,7 @@ export interface CheckUserSession {
 export type UserTypes =
 | GoogleSignInStart
 | EmailSignInStart
+| SignUpStart
 | SignInSuccess
 | CheckUserSession
 | SignInFailure

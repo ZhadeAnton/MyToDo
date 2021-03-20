@@ -1,7 +1,7 @@
 import {
   ISignInCredentionals,
   ISignUpCredentionals
-} from './user-@types'
+} from './userInterfaces'
 import * as actions from './userActionTypes'
 
 export const googleSignInStart = (): actions.GoogleSignInStart => ({

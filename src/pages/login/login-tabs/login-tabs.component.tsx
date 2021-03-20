@@ -1,12 +1,12 @@
 import React from 'react';
-import {makeStyles, Theme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import SignUp from '../sign-in-sign-up/sign-up/sign-up.component';
-import SingIn from '../sign-in-sign-up/sign-in/sign-in.component';
+import {makeStyles, Theme} from '@material-ui/core/styles';
 
+import SignIn from '../../../components/signIn/SignIn.container'
+import SignUp from '../../../components/signUp/SignUp.container'
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -69,7 +69,7 @@ export default function TabsLogin({props}: any) {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <SingIn />
+        <SignIn />
       </TabPanel>
 
       <TabPanel value={value} index={1}>

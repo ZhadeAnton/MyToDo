@@ -1,21 +1,13 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import {Dispatch} from 'redux'
 import {TextField, Button} from '@material-ui/core'
 
-import './sign-up.styles.scss'
-import {UserTypes} from '../../../../redux/user/userActionTypes'
-import {signUpStart} from '../../../../redux/user/userActionCreators'
+import './SignUp.styles.scss'
 
 interface Props {
-  signUpStart(
-    displayName: string,
-    email: string,
-    password: string
-  ): void
+  signUp(displayName: string, email: string, password: string): void
 }
 
-const SignUp: React.FC<Props> = ({signUpStart}) => {
+const SignUp: React.FC<Props> = ({signUp}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
@@ -39,7 +31,14 @@ const SignUp: React.FC<Props> = ({signUpStart}) => {
       alert('Password do not match')
     }
 
-    signUpStart(displayName, email, password)
+    signUp(displayName, email, password)
+
+    setUserData({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
   }
 
   return (
@@ -107,14 +106,4 @@ const SignUp: React.FC<Props> = ({signUpStart}) => {
   )
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
-  signUpStart: (
-      displayName: string,
-      email: string,
-      password: string
-  ) => dispatch<any>(signUpStart({
-    displayName, email, password
-  }))
-})
-
-export default connect(null, mapDispatchToProps)(SignUp)
+export default SignUp

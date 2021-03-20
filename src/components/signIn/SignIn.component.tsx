@@ -1,22 +1,14 @@
 import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import {Dispatch} from 'redux'
+import './SignIn.styles.scss'
 
-import './sign-in.styles.scss'
 import {TextField, Button} from '@material-ui/core'
-import {UserTypes} from '../../../../redux/user/userActionTypes'
-
-import {
-  emailSignInStart,
-  googleSignInStart
-} from '../../../../redux/user/userActionCreators'
 
 interface Props {
-  emailSignInStart(email: string, password: string): void,
-  googleSignInStart(): void
+  signInWithEmail(email: string, password: string): void,
+  signInWithGoogle(): void
 }
 
-const SingIn: React.FC<Props> = ({emailSignInStart, googleSignInStart}) => {
+const SingIn: React.FC<Props> = ({signInWithEmail, signInWithGoogle}) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''
@@ -27,13 +19,12 @@ const SingIn: React.FC<Props> = ({emailSignInStart, googleSignInStart}) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target
     setUserData({...userData, [name]: value})
-    console.log(userData)
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
-    emailSignInStart(email, password)
+    signInWithEmail(email, password)
 
     setUserData({
       email: '',
@@ -88,7 +79,7 @@ const SingIn: React.FC<Props> = ({emailSignInStart, googleSignInStart}) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => googleSignInStart()}
+            onClick={() => signInWithGoogle()}
           >
             Sign in with google
           </Button>
@@ -98,11 +89,4 @@ const SingIn: React.FC<Props> = ({emailSignInStart, googleSignInStart}) => {
   )
 }
 
-const mapDispatchToProps =
-(dispatch: Dispatch<UserTypes>) => ({
-  emailSignInStart: (email: string, password: string) =>
-    dispatch<any>(emailSignInStart({email, password})),
-  googleSignInStart: () => dispatch(googleSignInStart())
-})
-
-export default connect(null, mapDispatchToProps)(SingIn)
+export default SingIn

@@ -1,13 +1,10 @@
-// TODO: I'm not sure that's actualy work...
 export interface IUser {
-  user?: {
-    createAt: {[key: string]: string},
-    displayName: string,
-    email: string,
-    id: string,
-    uid?: string,
-    data?: any
-  }
+  displayName: string,
+  email: string,
+  id: string,
+  createAt: {[key: string]: string},
+  uid?: string,
+  data?: any
 }
 
 export interface ISignInCredentionals {
@@ -20,5 +17,5 @@ export interface ISignUpCredentionals extends ISignInCredentionals {
 }
 
 export interface IError {
-  error: Error | null
+  error: string
 }

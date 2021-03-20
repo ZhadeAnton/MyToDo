@@ -1,17 +1,18 @@
-import {IUser, IError} from './user-@types'
+import {IUser} from './userInterfaces'
 import * as actions from './userActionTypes'
 
 export interface UserState {
-  currentUser: null | IUser,
-  error: null | IError
+  currentUser?: IUser | undefined,
+  error: string | null
 }
 
 const INITIAL_STATE: UserState = {
-  currentUser: null,
+  currentUser: undefined,
   error: null
 }
 
-const userReducer = (state = INITIAL_STATE, action: actions.UserTypes) => {
+const userReducer =
+(state: UserState = INITIAL_STATE, action: actions.UserTypes): UserState => {
   switch (action.type) {
     case actions.SIGN_IN_SUCCESS:
       return {
@@ -23,7 +24,7 @@ const userReducer = (state = INITIAL_STATE, action: actions.UserTypes) => {
     case actions.SIGN_OUT_SUCCESS:
       return {
         ...state,
-        currentUser: null,
+        currentUser: undefined,
         error: null
       }
 
