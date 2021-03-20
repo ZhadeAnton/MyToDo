@@ -27,6 +27,22 @@ export interface SignInSuccess {
   payload: IUser
 }
 
+export const SIGN_OUT_START = 'SIGN_OUT_START'
+export interface SignOutStart {
+  type: typeof SIGN_OUT_START,
+}
+
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS'
+export interface SignOutSucess {
+  type: typeof SIGN_OUT_SUCCESS
+}
+
+export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE'
+export interface SignOutFailure {
+  type: typeof SIGN_OUT_FAILURE,
+  payload: string
+}
+
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'
 export interface SignUpFailure {
   type: typeof SIGN_UP_FAILURE,
@@ -46,7 +62,11 @@ export interface CheckUserSession {
 
 export type UserTypes =
 | GoogleSignInStart
-| SignInSuccess
-| SignInFailure
-| CheckUserSession
 | EmailSignInStart
+| SignInSuccess
+| CheckUserSession
+| SignInFailure
+| SignUpFailure
+| SignOutStart
+| SignOutSucess
+| SignOutFailure

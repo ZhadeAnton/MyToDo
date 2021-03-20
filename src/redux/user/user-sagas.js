@@ -59,6 +59,15 @@ export function* checkUserSession() {
   }
 }
 
+export function* signOut() {
+  try {
+    yield auth.signOut()
+    yield put(actionCreators.signOutSuccess())
+  } catch (error) {
+    yield put(actionCreators.signOutFailure())
+  }
+}
+
 function* onGoogleSignInStart() {
   yield takeLatest(actionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
@@ -71,6 +80,10 @@ function* onSignUpStart() {
   yield takeLatest(actionTypes.SIGN_UP_START, signUpStart)
 }
 
+function* onSignOut() {
+  yield takeLatest(actionTypes.SIGN_OUT_START, signOut)
+}
+
 function* onCheckUserSession() {
   yield takeLatest(actionTypes.CHECK_USER_SESSION, checkUserSession)
 }
@@ -80,6 +93,7 @@ export default function* userSagas() {
     call(onGoogleSignInStart),
     call(onSignInWithEmail),
     call(onSignUpStart),
+    call(onSignOut),
     call(onCheckUserSession)
   ])
 }

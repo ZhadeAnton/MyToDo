@@ -1,13 +1,18 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {Dispatch} from 'redux'
 
 import Logo from '../../components/logo/logo.component'
-import {auth} from '../../firebase/firebase.config'
-import {createStructuredSelector} from 'reselect'
-import {selectCurrentUser} from '../../redux/user/user-selectors'
+import {UserTypes} from '../../redux/user/userActionTypes'
+import {signOutStart} from '../../redux/user/userActionCreators'
 
-const Header = ({user}) => {
+interface Props {
+  user: any,
+  signOut(): void
+}
+
+const Header: React.FC<Props> = ({user, signOut}) => {
   return (
     <header className="header navbar-fixed white container">
       <nav className="white container">
@@ -16,25 +21,18 @@ const Header = ({user}) => {
         </span>
         <ul className="right teal accent-3 hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>
-          {
-            user ?
-              <li><Link
-                to="/login"
-                onClick={() => auth.signOut()}>
-                Sign out
-              </Link></li> :
-              <li><Link to="/login">Sign in</Link></li>
-          }
+          <li><Link to="/login">Sign in</Link></li>
           <li><Link to="/main">Information</Link></li>
           <li><Link to="/main">About us</Link></li>
+          <li><Link to="/login" onClick={() => signOut()}>LogOut</Link></li>
         </ul>
       </nav>
     </header>
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  user: selectCurrentUser
+const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
+  signOut: () => dispatch<any>(signOutStart())
 })
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(null, mapDispatchToProps)(Header)

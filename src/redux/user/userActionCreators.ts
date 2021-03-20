@@ -20,10 +20,23 @@ export const signUpStart = // Sign Up
   payload: signUpCredentionals
 })
 
+export const signOutStart = (): actions.SignOutStart => ({
+  type: actions.SIGN_OUT_START,
+})
+
 // FIXME: Need to fix user: any
 export const signInSuccess = (user: any): actions.SignInSuccess => ({
   type: actions.SIGN_IN_SUCCESS,
   payload: user
+})
+
+export const signOutSuccess = (): actions.SignOutSucess => ({
+  type: actions.SIGN_OUT_SUCCESS
+})
+
+export const signOutFailure = (error: string): actions.SignOutFailure => ({
+  type: actions.SIGN_OUT_FAILURE,
+  payload: error
 })
 
 export const checkUserSession = (): actions.CheckUserSession => ({
