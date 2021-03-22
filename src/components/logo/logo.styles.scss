@@ -1,0 +1,11 @@
+.brand-logo--wrapper {
+  display: inline-flex;
+  color: var(--color-brand) !important;
+  font-size: 1.5rem;
+  height: 100%;
+  cursor: pointer;
+
+  p {
+    margin-left: .5rem;
+  }
+}
