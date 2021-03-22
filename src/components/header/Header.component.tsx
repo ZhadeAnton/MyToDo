@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {IUser} from '../../redux/user/userInterfaces'
+import classnames from 'classnames'
 
+import styles from './header.module.scss'
 import Logo from '../logo/logo.component'
+import {IUser} from '../../redux/user/userInterfaces'
 
 interface Props {
   user: IUser | undefined,
@@ -11,22 +13,20 @@ interface Props {
 
 const Header: React.FC<Props> = ({signOut, user}) => {
   return (
-    <header className="header navbar-fixed white container">
-      <nav className="white container">
-        <span className="header__logo--wrapper ml-sm">
+    <header className={classnames(styles.header)}>
+      <div className={classnames(styles.wrapper, 'container')}>
+        <div className={styles.logo}>
           <Logo />
-        </span>
-        {
-          user ? <span style={{color: 'red'}}>Log Out</span> :
-          <span style={{color: 'red'}} onClick={() => signOut()}>log in</span>
-        }
-        <ul className="right teal accent-3 hide-on-med-and-down">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">Sign in</Link></li>
-          <li><Link to="/main">Information</Link></li>
-          <li></li>
-        </ul>
-      </nav>
+        </div>
+        <nav className={classnames(styles.navbar)}>
+          <ul className={classnames(styles.list)}>
+            <li><Link className={styles.link} to="/login">Sign in</Link></li>
+            <li><Link className={styles.link} to="/todo">To do list</Link></li>
+            <li><Link className={styles.link} to="/team">Teams</Link></li>
+            <li><Link className={styles.link} to="/info">Information</Link></li>
+          </ul>
+        </nav>
+      </div>
     </header>
   )
 }

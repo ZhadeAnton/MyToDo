@@ -2396,6 +2396,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/classnames@^2.2.11":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
+  integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
+
 "@types/eslint@^7.2.6":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.7.tgz#f7ef1cf0dceab0ae6f9a976a0a9af14ab1baca26"
@@ -13836,13 +13841,6 @@ react-material-ui-carousel@^2.2.1:
   dependencies:
     auto-bind "^2.1.1"
     react-swipeable "^5.5.1"
-
-react-materialize@^3.9.7:
-  version "3.9.7"
-  resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-3.9.7.tgz#f70ad13c4306a55fc7692e1973b2c00f37c78ab2"
-  integrity sha512-oGnOvHhN1IHRJ8rOh9qeyfudXrXHP2sdBH4G1LMvH+KCxKgRQ965stcDbeKZlcoHgbfKlLjfspPA1uVQQKQB4A==
-  dependencies:
-    classnames "^2.2.6"
 
 react-redux@^7.2.2:
   version "7.2.2"

@@ -1,13 +1,14 @@
 import React from 'react'
-import './logo.styles.scss'
+
+import styles from './logo.module.scss'
 import {ReactComponent as BrandLogo} from '../../assets/brand-logo.svg'
 import {Link} from 'react-router-dom'
 
 const Logo: React.FC = () => {
   return (
-    <Link className=" brand-logo--wrapper valign-wrapper" to="/">
+    <Link className={styles.logo} to="/">
       <BrandLogo/>
-      <p>Any Do</p>
+      <h3>Any Do</h3>
     </Link>
   )
 }
