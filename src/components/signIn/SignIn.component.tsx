@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
-import './SignIn.styles.scss'
 
-import {TextField, Button} from '@material-ui/core'
+import styles from './signIn.module.scss'
+import CustomButton from '../UI/CustomButton/CustomButton.component'
+import CustomInput from '../UI/CustomInput/CustomInput.component'
+import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
 
 interface Props {
-  signInWithEmail(email: string, password: string): void,
-  signInWithGoogle(): void
+  signInWithEmail(email: string, password: string): void
 }
 
-const SingIn: React.FC<Props> = ({signInWithEmail, signInWithGoogle}) => {
+const SingIn: React.FC<Props> = ({signInWithEmail}) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''
@@ -33,58 +34,36 @@ const SingIn: React.FC<Props> = ({signInWithEmail, signInWithGoogle}) => {
   }
 
   return (
-    <div className="sign-in">
-      <h2 className="sign-in--title">Sign in</h2>
-      <form className="sign-in__form" onSubmit={handleSubmit}>
-        <div className="sign-in__form--inputs">
-          <TextField
+    <div className={styles.signIn}>
+      <h2 className={styles.title}>Sign in</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.inputsSection}>
+          <CustomInput
             name="email"
             label="Email"
+            value={email}
+            onChange={handleChange}
+            type="text"
             fullWidth
             required
-            autoFocus
-            autoComplete="true"
-            onChange={handleChange}
-            value={email}
-          />
+            autoFocus />
 
-          <TextField
+          <CustomInput
             name="password"
             label="Password"
-            type="Password"
-            fullWidth
-            required
-            autoComplete="true"
-            onChange={handleChange}
             value={password}
-          />
+            onChange={handleChange}
+            type="password"
+            fullWidth
+            required />
         </div>
 
-        <Button
-          className="sign-in__form--btn-submit"
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
+        <CustomButton>
           Log in
-        </Button>
-
-        <div className="sign-in__form__separator">
-          <span className="sign-in__form__separator--line"></span>
-          <p>or</p>
-          <span className="sign-in__form__separator--line"></span>
-        </div>
-
-        <div className="sign-in__form--btn-wrapper">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => signInWithGoogle()}
-          >
-            Sign in with google
-          </Button>
-        </div>
+        </CustomButton>
       </form>
+
+      <AlternativeSignIn />
     </div>
   )
 }

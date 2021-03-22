@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import {TextField, Button} from '@material-ui/core'
 
-import './SignUp.styles.scss'
+import styles from './signUp.module.scss'
+import CustomButton from '../UI/CustomButton/CustomButton.component'
+import CustomInput from '../UI/CustomInput/CustomInput.component'
 
 interface Props {
   signUp(displayName: string, email: string, password: string): void
@@ -42,65 +43,55 @@ const SignUp: React.FC<Props> = ({signUp}) => {
   }
 
   return (
-    <div className="sign-up">
-      <h2 className="sign-up--title">Sign Up</h2>
-      <form className="sign-up__form" onSubmit={handleSubmit}>
-        <div className="sign-up__form--inputs">
-          <TextField
+    <div className={styles.signUp}>
+      <h2 className={styles.title}>Sign Up</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.inputsBlock}>
+          <CustomInput
             label="Name"
             name="displayName"
             type='text'
+            value={displayName}
+            onChange={handleChange}
             fullWidth
             required
             autoFocus
-            autoComplete="true"
-            value={displayName}
-            onChange={handleChange}
           />
 
-          <TextField
+          <CustomInput
             label="Email"
             name="email"
             type='email'
-            fullWidth
-            required
-            autoComplete="true"
             value={email}
             onChange={handleChange}
-          />
-
-          <TextField
-            label="Password"
-            name="password"
-            type="Password"
             fullWidth
             required
-            autoComplete="true"
-            value={password}
-            onChange={handleChange}
           />
 
-          <TextField
+          <CustomInput
+            label="Password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+
+          <CustomInput
             label="Confirm Password"
             name="confirmPassword"
             type="password"
-            fullWidth
-            required
-            autoComplete="true"
             value={confirmPassword}
             onChange={handleChange}
+            fullWidth
+            required
           />
         </div>
 
-        <Button
-          className="sign-up__form--btn-submit"
-          variant="contained"
-          color="primary"
-          size="large"
-          type="submit"
-        >
+        <CustomButton>
           Create Account
-        </Button>
+        </CustomButton>
       </form>
     </div>
   )
