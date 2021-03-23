@@ -12,6 +12,19 @@ code {
     monospace;
 }
 
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+a, a:visited, a:active {
+    text-decoration: none;
+    display: inline-block;
+}
+
 h1, h2 {
   margin: 0 !important;
 }
@@ -32,7 +45,8 @@ input {
 
 :root {
   --color-brand: #0DA5F3;
-  --color-grey: #f3f3f3;
+  --color-brand-background: #f6f6f6;
+  --color-grey: #dddcdc;
   --color-grey-2: #F6F6F6;
   --color-white: #ffffff;
   --color-black: #000000;
