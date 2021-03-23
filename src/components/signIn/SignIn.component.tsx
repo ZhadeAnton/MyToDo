@@ -1,14 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import styles from './signIn.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
 import CustomInput from '../UI/CustomInput/CustomInput.component'
 import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
-import SimpleSnackbar from '../../components/UI/CustomSnackbars/CustomSnackbar'
-import {IError} from '../../redux/user/userInterfaces'
+import CustomSnackbar from '../UI/CustomSnackbars/CustomSnackbar.component'
 
 interface Props {
-  error?: IError | undefined,
+  error?: string | null,
   signInWithEmail(email: string, password: string): void
 }
 
@@ -17,7 +16,6 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
     email: '',
     password: ''
   })
-
   const [open, setOpen] = React.useState(false);
 
   const {email, password} = userData
@@ -46,6 +44,12 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (error) {
+      handleClick()
+    }
+  }, [error])
+
   return (
     <div className={styles.signIn}>
       <h2 className={styles.title}>Sign in</h2>
@@ -71,11 +75,11 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
             required />
         </div>
 
-        <CustomButton onClick={handleClick}>
+        <CustomButton>
           Log in
         </CustomButton>
 
-        <SimpleSnackbar
+        <CustomSnackbar
           handleClick={handleClick}
           handleClose={handleClose}
           open={open}

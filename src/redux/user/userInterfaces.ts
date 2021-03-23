@@ -15,7 +15,3 @@ export interface ISignInCredentionals {
 export interface ISignUpCredentionals extends ISignInCredentionals {
   displayName: string
 }
-
-export interface IError {
-  error: string
-}

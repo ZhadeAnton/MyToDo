@@ -1,5 +1,4 @@
 import {
-  IError,
   ISignInCredentionals,
   ISignUpCredentionals
 } from './userInterfaces'
@@ -43,17 +42,21 @@ export const checkUserSession = (): actions.CheckUserSession => ({
   type: actions.CHECK_USER_SESSION
 })
 
-export const signOutFailure = (error: IError): actions.SignOutFailure => ({
+export const signOutFailure = (error: string): actions.SignOutFailure => ({
   type: actions.SIGN_OUT_FAILURE,
   payload: error
 })
 
-export const signInFailure = (error: IError): actions.SignInFailure => ({
+export const signInFailure = (error: string): actions.SignInFailure => ({
   type: actions.SIGN_IN_FAILURE,
   payload: error
 })
 
-export const signUpFailure = (error: IError): actions.SignUpFailure => ({
+export const signUpFailure = (error: string): actions.SignUpFailure => ({
   type: actions.SIGN_UP_FAILURE,
   payload: error
+})
+
+export const clearError = (): actions.ClearError => ({
+  type: actions.CLEAR_ERROR,
 })

@@ -2,7 +2,6 @@ import {
   IUser,
   ISignInCredentionals,
   ISignUpCredentionals,
-  IError
 } from './userInterfaces'
 
 export const GOOGLE_SIGN_IN_START = 'GOOGLE_SIGN_IN_START'
@@ -46,19 +45,24 @@ export interface SignOutSucess {
 export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE'
 export interface SignOutFailure {
   type: typeof SIGN_OUT_FAILURE,
-  payload: IError
+  payload: string
 }
 
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'
 export interface SignUpFailure {
   type: typeof SIGN_UP_FAILURE,
-  payload: IError
+  payload: string
 }
 
 export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
 export interface SignInFailure {
   type: typeof SIGN_IN_FAILURE,
-  payload: IError
+  payload: string
+}
+
+export const CLEAR_ERROR = 'CLEAR_ERROR'
+export interface ClearError {
+  type: typeof CLEAR_ERROR
 }
 
 export const CHECK_USER_SESSION = 'CHECK_USER_SESSION'
@@ -78,3 +82,4 @@ export type UserTypes =
 | SignOutStart
 | SignOutSucess
 | SignOutFailure
+| ClearError

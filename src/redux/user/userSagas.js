@@ -55,7 +55,7 @@ export function* signUpStart({payload: {email, password, displayName}}) {
     const {user} = yield auth.createUserWithEmailAndPassword(email, password)
     yield getSnapshotFromUserAuth(user, {displayName})
   } catch (error) {
-    yield put(actionCreators.signUpFailure(error))
+    yield put(actionCreators.signUpFailure(error.message))
   }
 }
 

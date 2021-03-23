@@ -1,22 +1,45 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import styles from './signUp.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
 import CustomInput from '../UI/CustomInput/CustomInput.component'
+import CustomSnackbar from '../UI/CustomSnackbars/CustomSnackbar.component'
 
 interface Props {
+  error?: string | null,
   signUp(displayName: string, email: string, password: string): void
+  signUpFailure(error: string): void,
+  clearError(): void
 }
 
-const SignUp: React.FC<Props> = ({signUp}) => {
+const SignUp: React.FC<Props> =
+({signUp, signUpFailure, clearError, error}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   })
+  const [open, setOpen] = React.useState(false);
+
+  const clear = () => {
+    setUserData({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
+  }
 
   const {displayName, email, password, confirmPassword} = userData
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {name, value} = event.target
@@ -29,18 +52,20 @@ const SignUp: React.FC<Props> = ({signUp}) => {
     event.preventDefault()
 
     if (password !== confirmPassword) {
-      alert('Password do not match')
+      signUpFailure('Password does not matches!')
+      clear()
     }
 
     signUp(displayName, email, password)
 
-    setUserData({
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    })
+    clear()
   }
+
+  useEffect(() => {
+    if (error) {
+      handleClick()
+    }
+  }, [error])
 
   return (
     <div className={styles.signUp}>
@@ -92,6 +117,13 @@ const SignUp: React.FC<Props> = ({signUp}) => {
         <CustomButton>
           Create Account
         </CustomButton>
+
+        <CustomSnackbar
+          handleClick={handleClick}
+          handleClose={handleClose}
+          open={open}
+          message={error}
+        />
       </form>
     </div>
   )
