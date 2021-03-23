@@ -1,17 +1,19 @@
 import React from 'react';
+
+import styles from './login.module.scss'
 import TabsLogin from './login-tabs/login-tabs.component';
-import SliderLogin from './login-slider/slider.component'
-import './login.styles.scss'
 
 const LoginPage: React.FC = () => {
   return (
-    <section className="appLogin">
-      <div className="appLogin__content row z-depth-3">
-        <div className="appLogin__content--slider col s7">
-          <SliderLogin />
+    <section className={styles.login}>
+      <div className={styles.wrapper}>
+        <div className={styles.leftSide}>
+          <h1>Never forget a thing</h1>
         </div>
 
-        <div className="appLogin__content--auth col s5">
+        <div className={styles.separator}></div>
+
+        <div className={styles.rightSide}>
           <TabsLogin />
         </div>
       </div>

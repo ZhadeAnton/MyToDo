@@ -12,8 +12,31 @@ code {
     monospace;
 }
 
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+a, a:visited, a:active {
+    text-decoration: none;
+    display: inline-block;
+}
+
 h1, h2 {
   margin: 0 !important;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 input {
@@ -22,9 +45,11 @@ input {
 
 :root {
   --color-brand: #0DA5F3;
-  --color-grey: #f3f3f3;
+  --color-brand-background: #f6f6f6;
+  --color-grey: #dddcdc;
   --color-grey-2: #F6F6F6;
   --color-white: #ffffff;
+  --color-black: #000000;
   --clamped-size: clamp(1rem, -5.7500rem + 18.7500vw, 5rem);
   --fullHeight: 100vh - 64px;
 
@@ -37,4 +62,9 @@ input {
 
 .ml-sm {
   margin-left: 1rem;
+}
+
+.container {
+  max-width: 1340px;
+  margin: 0 auto;
 }
