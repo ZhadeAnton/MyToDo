@@ -1,12 +1,18 @@
 import {
   IUser,
   ISignInCredentionals,
-  ISignUpCredentionals
+  ISignUpCredentionals,
+  IError
 } from './userInterfaces'
 
 export const GOOGLE_SIGN_IN_START = 'GOOGLE_SIGN_IN_START'
 export interface GoogleSignInStart {
   type: typeof GOOGLE_SIGN_IN_START
+}
+
+export const FACEBOOK_SIGN_IN_START = 'FACEBOOK_SIGN_IN_START'
+export interface FacebookSignInStart {
+  type: typeof FACEBOOK_SIGN_IN_START
 }
 
 export const EMAIL_SIGN_IN_START = 'EMAIL_SIGN_IN_START'
@@ -40,19 +46,19 @@ export interface SignOutSucess {
 export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE'
 export interface SignOutFailure {
   type: typeof SIGN_OUT_FAILURE,
-  payload: string
+  payload: IError
 }
 
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'
 export interface SignUpFailure {
   type: typeof SIGN_UP_FAILURE,
-  payload: string
+  payload: IError
 }
 
 export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
 export interface SignInFailure {
   type: typeof SIGN_IN_FAILURE,
-  payload: string
+  payload: IError
 }
 
 export const CHECK_USER_SESSION = 'CHECK_USER_SESSION'
@@ -63,6 +69,7 @@ export interface CheckUserSession {
 export type UserTypes =
 | GoogleSignInStart
 | EmailSignInStart
+| FacebookSignInStart
 | SignUpStart
 | SignInSuccess
 | CheckUserSession

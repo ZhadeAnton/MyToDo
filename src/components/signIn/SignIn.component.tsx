@@ -4,16 +4,21 @@ import styles from './signIn.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
 import CustomInput from '../UI/CustomInput/CustomInput.component'
 import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
+import SimpleSnackbar from '../../components/UI/CustomSnackbars/CustomSnackbar'
+import {IError} from '../../redux/user/userInterfaces'
 
 interface Props {
+  error?: IError | undefined,
   signInWithEmail(email: string, password: string): void
 }
 
-const SingIn: React.FC<Props> = ({signInWithEmail}) => {
+const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''
   })
+
+  const [open, setOpen] = React.useState(false);
 
   const {email, password} = userData
 
@@ -32,6 +37,14 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
       password: ''
     })
   }
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={styles.signIn}>
@@ -58,9 +71,16 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
             required />
         </div>
 
-        <CustomButton>
+        <CustomButton onClick={handleClick}>
           Log in
         </CustomButton>
+
+        <SimpleSnackbar
+          handleClick={handleClick}
+          handleClose={handleClose}
+          open={open}
+          message={error}
+        />
       </form>
 
       <AlternativeSignIn />

@@ -1,14 +1,14 @@
-import {IUser} from './userInterfaces'
+import {IUser, IError} from './userInterfaces'
 import * as actions from './userActionTypes'
 
 export interface UserState {
   currentUser?: IUser | undefined,
-  error: string | null
+  error?: IError | undefined
 }
 
 const INITIAL_STATE: UserState = {
   currentUser: undefined,
-  error: null
+  error: undefined
 }
 
 const userReducer =
@@ -18,14 +18,14 @@ const userReducer =
       return {
         ...state,
         currentUser: action.payload,
-        error: null
+        error: undefined
       }
 
     case actions.SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: undefined,
-        error: null
+        error: undefined
       }
 
     case actions.SIGN_IN_FAILURE:
