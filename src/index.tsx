@@ -3,13 +3,17 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
-import store from './redux/store'
+import {SnackbarProvider} from 'notistack';
+
 import App from './App';
+import store from './redux/store'
 
 ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <SnackbarProvider>
+          <App />
+        </SnackbarProvider>
       </BrowserRouter>
     </Provider>,
     document.getElementById('root'),

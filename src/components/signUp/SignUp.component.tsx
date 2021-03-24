@@ -3,23 +3,20 @@ import React, {useState} from 'react'
 import styles from './signUp.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
 import CustomInput from '../UI/CustomInput/CustomInput.component'
-import CustomSnackbar from '../UI/CustomSnackbars/CustomSnackbar.component'
 
 interface Props {
-  error?: string | null | undefined,
   signUp(displayName: string, email: string, password: string): void
   signUpFailure(error: string): void,
 }
 
 const SignUp: React.FC<Props> =
-({signUp, signUpFailure, error}) => {
+({signUp, signUpFailure}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   })
-  const [open, setOpen] = React.useState(false);
 
   const clear = () => {
     setUserData({
@@ -31,14 +28,6 @@ const SignUp: React.FC<Props> =
   }
 
   const {displayName, email, password, confirmPassword} = userData
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {name, value} = event.target
@@ -56,7 +45,6 @@ const SignUp: React.FC<Props> =
     }
 
     signUp(displayName, email, password)
-
     clear()
   }
 
@@ -107,16 +95,9 @@ const SignUp: React.FC<Props> =
           />
         </div>
 
-        <CustomButton onClick={handleClick}>
+        <CustomButton>
           Create Account
         </CustomButton>
-
-        <CustomSnackbar
-          handleClick={handleClick}
-          handleClose={handleClose}
-          open={open}
-          message={error}
-        />
       </form>
     </div>
   )

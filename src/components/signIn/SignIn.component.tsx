@@ -4,10 +4,9 @@ import styles from './signIn.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
 import CustomInput from '../UI/CustomInput/CustomInput.component'
 import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
-import CustomSnackbar from '../UI/CustomSnackbars/CustomSnackbar.component'
 
 interface Props {
-  error?: string | null | undefined,
+  error: string | null | undefined,
   signInWithEmail(email: string, password: string): void,
 }
 
@@ -16,7 +15,6 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
     email: '',
     password: ''
   })
-  const [open, setOpen] = React.useState(false);
 
   const {email, password} = userData
 
@@ -35,14 +33,6 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
       password: ''
     })
   }
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div className={styles.signIn}>
@@ -69,16 +59,9 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
             required />
         </div>
 
-        <CustomButton onClick={handleClick}>
+        <CustomButton>
           Log in
         </CustomButton>
-
-        <CustomSnackbar
-          handleClick={handleClick}
-          handleClose={handleClose}
-          open={open}
-          message={error}
-        />
       </form>
 
       <AlternativeSignIn />
