@@ -18,7 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const CustomAlert = () => {
+interface Props {
+  error: string
+}
+
+const CustomAlert: React.FC<Props> = ({error}) => {
   const classes = useStyles();
 
   return (
@@ -31,7 +35,7 @@ const CustomAlert = () => {
           </Button>
         }
       >
-        This is a success alert — check it out!
+        {error}
       </Alert>
     </div>
   );

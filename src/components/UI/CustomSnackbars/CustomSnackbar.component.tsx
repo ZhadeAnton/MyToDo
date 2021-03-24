@@ -26,6 +26,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CustomSnackbar: React.FC<Props> = (props) => {
   const classes = useStyles();
+
+  if (!props.message) {
+    return null
+  }
+
   return (
     <div className={classes.root}>
       <Snackbar
@@ -35,7 +40,7 @@ const CustomSnackbar: React.FC<Props> = (props) => {
           horizontal: 'left',
         }}
         open={props.open}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={props.handleClose}
       >
         <Alert onClose={props.handleClose} severity="error">

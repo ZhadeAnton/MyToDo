@@ -56,7 +56,3 @@ export const signUpFailure = (error: string): actions.SignUpFailure => ({
   type: actions.SIGN_UP_FAILURE,
   payload: error
 })
-
-export const clearError = (): actions.ClearError => ({
-  type: actions.CLEAR_ERROR,
-})

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 import styles from './signUp.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
@@ -6,14 +6,13 @@ import CustomInput from '../UI/CustomInput/CustomInput.component'
 import CustomSnackbar from '../UI/CustomSnackbars/CustomSnackbar.component'
 
 interface Props {
-  error?: string | null,
+  error?: string | null | undefined,
   signUp(displayName: string, email: string, password: string): void
   signUpFailure(error: string): void,
-  clearError(): void
 }
 
 const SignUp: React.FC<Props> =
-({signUp, signUpFailure, clearError, error}) => {
+({signUp, signUpFailure, error}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
@@ -60,12 +59,6 @@ const SignUp: React.FC<Props> =
 
     clear()
   }
-
-  useEffect(() => {
-    if (error) {
-      handleClick()
-    }
-  }, [error])
 
   return (
     <div className={styles.signUp}>
@@ -114,7 +107,7 @@ const SignUp: React.FC<Props> =
           />
         </div>
 
-        <CustomButton>
+        <CustomButton onClick={handleClick}>
           Create Account
         </CustomButton>
 

@@ -3,11 +3,13 @@ import * as actions from './userActionTypes'
 
 export interface UserState {
   currentUser?: IUser | undefined,
-  error?: string | null
+  error?: string | null,
+  isLoading: boolean
 }
 
 const INITIAL_STATE: UserState = {
   currentUser: undefined,
+  isLoading: false,
   error: null
 }
 
@@ -15,8 +17,12 @@ const userReducer =
 (state: UserState = INITIAL_STATE, action: actions.UserTypes): UserState => {
   switch (action.type) {
     case actions.EMAIL_SIGN_IN_START:
+    case actions.GOOGLE_SIGN_IN_START:
+    case actions.FACEBOOK_SIGN_IN_START:
+    case actions.SIGN_UP_START:
       return {
         ...state,
+        isLoading: true,
         error: null
       }
 
@@ -24,6 +30,7 @@ const userReducer =
       return {
         ...state,
         currentUser: action.payload,
+        isLoading: false,
         error: null
       }
 
@@ -39,13 +46,8 @@ const userReducer =
     case actions.SIGN_OUT_FAILURE:
       return {
         ...state,
+        isLoading: false,
         error: action.payload
-      }
-
-    case actions.CLEAR_ERROR:
-      return {
-        ...state,
-        error: null
       }
 
     default:

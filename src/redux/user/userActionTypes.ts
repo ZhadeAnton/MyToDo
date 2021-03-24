@@ -60,11 +60,6 @@ export interface SignInFailure {
   payload: string
 }
 
-export const CLEAR_ERROR = 'CLEAR_ERROR'
-export interface ClearError {
-  type: typeof CLEAR_ERROR
-}
-
 export const CHECK_USER_SESSION = 'CHECK_USER_SESSION'
 export interface CheckUserSession {
   type: typeof CHECK_USER_SESSION
@@ -82,4 +77,3 @@ export type UserTypes =
 | SignOutStart
 | SignOutSucess
 | SignOutFailure
-| ClearError

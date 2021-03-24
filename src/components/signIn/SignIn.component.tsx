@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 import styles from './signIn.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
@@ -7,8 +7,8 @@ import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
 import CustomSnackbar from '../UI/CustomSnackbars/CustomSnackbar.component'
 
 interface Props {
-  error?: string | null,
-  signInWithEmail(email: string, password: string): void
+  error?: string | null | undefined,
+  signInWithEmail(email: string, password: string): void,
 }
 
 const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
@@ -44,12 +44,6 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (error) {
-      handleClick()
-    }
-  }, [error])
-
   return (
     <div className={styles.signIn}>
       <h2 className={styles.title}>Sign in</h2>
@@ -75,7 +69,7 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
             required />
         </div>
 
-        <CustomButton>
+        <CustomButton onClick={handleClick}>
           Log in
         </CustomButton>
 
