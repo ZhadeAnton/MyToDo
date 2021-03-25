@@ -11,7 +11,6 @@ import SingIn from './SignIn.component'
 import WithSpinner from '../UI/customSpinner/CustomSpinner.component'
 
 const mapStateToProps = (state: RootState) => ({
-  error: state.error.userError,
   isLoading: state.user.isLoading
 })
 

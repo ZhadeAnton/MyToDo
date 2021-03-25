@@ -1,6 +1,7 @@
 import {
   ISignInCredentionals,
-  ISignUpCredentionals
+  ISignUpCredentionals,
+  IUser
 } from './userInterfaces'
 import * as actions from './userActionTypes'
 
@@ -28,8 +29,7 @@ export const signOutStart = (): actions.SignOutStart => ({
   type: actions.SIGN_OUT_START,
 })
 
-// FIXME: Need to fix user: any
-export const signInSuccess = (user: any): actions.SignInSuccess => ({
+export const signInSuccess = (user: IUser): actions.SignInSuccess => ({
   type: actions.SIGN_IN_SUCCESS,
   payload: user
 })
@@ -40,4 +40,19 @@ export const signOutSuccess = (): actions.SignOutSucess => ({
 
 export const checkUserSession = (): actions.CheckUserSession => ({
   type: actions.CHECK_USER_SESSION
+})
+
+export const signInFailure = (error: string): actions.SignInFailure => ({
+  type: actions.SIGN_IN_FAILURE,
+  payload: error
+})
+
+export const signUpFailure = (error: string): actions.SignUpFailure => ({
+  type: actions.SIGN_UP_FAILURE,
+  payload: error
+})
+
+export const signOutFailure = (error: string): actions.SignOutFailure => ({
+  type: actions.SIGN_OUT_FAILURE,
+  payload: error
 })

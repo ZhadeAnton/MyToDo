@@ -41,7 +41,7 @@ const SignUp: React.FC<Props> =
 
     if (password !== confirmPassword) {
       signUpFailure('Password does not matches!')
-      clear()
+      return
     }
 
     signUp(displayName, email, password)

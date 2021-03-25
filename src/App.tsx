@@ -17,21 +17,21 @@ import {UserTypes} from './redux/user/userActionTypes'
 import {RootState} from './redux/store';
 
 interface Props {
-  error?: string | null,
+  userError: string | null,
   checkUserSession: () => void
 }
 
-const App: React.FC<Props> = ({checkUserSession, error}) => {
+const App: React.FC<Props> = ({checkUserSession, userError}) => {
   const {enqueueSnackbar} = useSnackbar();
 
   useEffect(() => {
     checkUserSession()
     console.log('APP RENDER')
-    if (!error) return
-    enqueueSnackbar(error, {
+    if (!userError) return
+    enqueueSnackbar([userError], {
       variant: 'error'
     })
-  }, [error])
+  }, [userError])
 
   return (
     <>
@@ -46,7 +46,7 @@ const App: React.FC<Props> = ({checkUserSession, error}) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  error: state.error.userError,
+  userError: state.user.userError,
   isLoading: state.user.isLoading
 })
 
