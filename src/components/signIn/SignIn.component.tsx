@@ -6,10 +6,11 @@ import CustomInput from '../UI/CustomInput/CustomInput.component'
 import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
 
 interface Props {
-  signInWithEmail(email: string, password: string): void
+  error: string | null | undefined,
+  signInWithEmail(email: string, password: string): void,
 }
 
-const SingIn: React.FC<Props> = ({signInWithEmail}) => {
+const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''

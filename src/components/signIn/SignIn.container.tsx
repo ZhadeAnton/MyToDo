@@ -1,13 +1,18 @@
 import {connect} from 'react-redux'
-import {Dispatch} from 'redux'
+import {Dispatch, compose} from 'redux'
 
 import {
   emailSignInStart,
-  googleSignInStart
+  googleSignInStart,
 } from '../../redux/user/userActionCreators'
-
+import {RootState} from '../../redux/store'
 import {UserTypes} from '../../redux/user/userActionTypes'
 import SingIn from './SignIn.component'
+import WithSpinner from '../UI/customSpinner/CustomSpinner.component'
+
+const mapStateToProps = (state: RootState) => ({
+  isLoading: state.user.isLoading
+})
 
 const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
   signInWithEmail: (email: string, password: string) => {
@@ -16,4 +21,9 @@ const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
   signInWithGoogle: () => dispatch(googleSignInStart())
 })
 
-export default connect(null, mapDispatchToProps)(SingIn)
+const SignInContainer = compose<React.FunctionComponent>(
+    connect(mapStateToProps, mapDispatchToProps),
+    WithSpinner
+)(SingIn)
+
+export default SignInContainer

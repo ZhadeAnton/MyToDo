@@ -2,6 +2,7 @@ export interface IUser {
   displayName: string,
   email: string,
   id: string,
+  photoURL: string | null,
   createAt: {[key: string]: string},
   uid?: string,
   data?: any
@@ -14,8 +15,4 @@ export interface ISignInCredentionals {
 
 export interface ISignUpCredentionals extends ISignInCredentionals {
   displayName: string
-}
-
-export interface IError {
-  error: string
 }

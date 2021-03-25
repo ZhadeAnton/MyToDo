@@ -4,10 +4,12 @@ import styles from './alternative.module.scss'
 import CustomButton from '../UI/CustomButton/CustomButton.component'
 
 type Props = {
-  signInWithGoogle: () => void
+  signInWithGoogle: () => void,
+  facebookSignInStart: () => void
 }
 
-const AlternativeSignIn: React.FC<Props> = ({signInWithGoogle}) => {
+const AlternativeSignIn: React.FC<Props> =
+({signInWithGoogle, facebookSignInStart}) => {
   return (
     <div className={styles.alternativeSignIn}>
       <div className={styles.orSeparator}>
@@ -23,7 +25,7 @@ const AlternativeSignIn: React.FC<Props> = ({signInWithGoogle}) => {
         </CustomButton>
 
         <CustomButton
-          onClick={() => signInWithGoogle()}>
+          onClick={() => facebookSignInStart()}>
             +Facebook
         </CustomButton>
       </div>

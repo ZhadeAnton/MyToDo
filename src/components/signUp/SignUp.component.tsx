@@ -6,15 +6,26 @@ import CustomInput from '../UI/CustomInput/CustomInput.component'
 
 interface Props {
   signUp(displayName: string, email: string, password: string): void
+  signUpFailure(error: string): void,
 }
 
-const SignUp: React.FC<Props> = ({signUp}) => {
+const SignUp: React.FC<Props> =
+({signUp, signUpFailure}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   })
+
+  const clear = () => {
+    setUserData({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
+  }
 
   const {displayName, email, password, confirmPassword} = userData
 
@@ -29,17 +40,12 @@ const SignUp: React.FC<Props> = ({signUp}) => {
     event.preventDefault()
 
     if (password !== confirmPassword) {
-      alert('Password do not match')
+      signUpFailure('Password does not matches!')
+      return
     }
 
     signUp(displayName, email, password)
-
-    setUserData({
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    })
+    clear()
   }
 
   return (

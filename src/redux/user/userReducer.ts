@@ -1,39 +1,53 @@
 import {IUser} from './userInterfaces'
-import * as actions from './userActionTypes'
+import * as UserActions from './userActionTypes'
 
 export interface UserState {
   currentUser?: IUser | undefined,
-  error: string | null
+  isLoading: boolean,
+  userError: string | null
 }
 
 const INITIAL_STATE: UserState = {
   currentUser: undefined,
-  error: null
+  isLoading: false,
+  userError: null
 }
 
-const userReducer =
-(state: UserState = INITIAL_STATE, action: actions.UserTypes): UserState => {
+const userReducer = (
+    state: UserState = INITIAL_STATE,
+    action: UserActions.UserTypes): UserState => {
   switch (action.type) {
-    case actions.SIGN_IN_SUCCESS:
+    case UserActions.EMAIL_SIGN_IN_START:
+    case UserActions.GOOGLE_SIGN_IN_START:
+    case UserActions.FACEBOOK_SIGN_IN_START:
+    case UserActions.SIGN_UP_START:
+      return {
+        ...state,
+        isLoading: true,
+        userError: null
+      }
+
+    case UserActions.SIGN_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
-        error: null
+        isLoading: false,
       }
 
-    case actions.SIGN_OUT_SUCCESS:
+    case UserActions.SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: undefined,
-        error: null
+        userError: null
       }
 
-    case actions.SIGN_IN_FAILURE:
-    case actions.SIGN_UP_FAILURE:
-    case actions.SIGN_OUT_FAILURE:
+    case UserActions.SIGN_IN_FAILURE:
+    case UserActions.SIGN_UP_FAILURE:
+    case UserActions.SIGN_OUT_FAILURE:
       return {
         ...state,
-        error: action.payload
+        isLoading: false,
+        userError: action.payload
       }
 
     default:

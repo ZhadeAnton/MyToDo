@@ -5,8 +5,8 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import {makeStyles, Theme} from '@material-ui/core/styles';
 
-import SignIn from '../../../components/signIn/SignIn.container'
-import SignUp from '../../../components/signUp/SignUp.container'
+import SignUpContainer from '../../../components/signUp/SignUp.container'
+import SignInContainer from '../../../components/signIn/SignIn.container';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -69,11 +69,11 @@ export default function TabsLogin({props}: any) {
       </AppBar>
 
       <TabPanel value={value} index={0}>
-        <SignIn />
+        <SignInContainer />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <SignUp />
+        <SignUpContainer />
       </TabPanel>
     </div>
   );
