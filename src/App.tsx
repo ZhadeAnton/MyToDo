@@ -46,7 +46,7 @@ const App: React.FC<Props> = ({checkUserSession, error}) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  error: state.user.error,
+  error: state.error.userError,
   isLoading: state.user.isLoading
 })
 

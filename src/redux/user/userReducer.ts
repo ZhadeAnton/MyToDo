@@ -3,14 +3,12 @@ import * as actions from './userActionTypes'
 
 export interface UserState {
   currentUser?: IUser | undefined,
-  error?: string | null,
   isLoading: boolean
 }
 
 const INITIAL_STATE: UserState = {
   currentUser: undefined,
   isLoading: false,
-  error: null
 }
 
 const userReducer =
@@ -23,7 +21,6 @@ const userReducer =
       return {
         ...state,
         isLoading: true,
-        error: null
       }
 
     case actions.SIGN_IN_SUCCESS:
@@ -31,23 +28,12 @@ const userReducer =
         ...state,
         currentUser: action.payload,
         isLoading: false,
-        error: null
       }
 
     case actions.SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: undefined,
-        error: null
-      }
-
-    case actions.SIGN_IN_FAILURE:
-    case actions.SIGN_UP_FAILURE:
-    case actions.SIGN_OUT_FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
       }
 
     default:

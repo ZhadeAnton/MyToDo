@@ -1,5 +1,6 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects'
-import * as actionCreators from './userActionCreators'
+import * as UserActionCreators from './userActionCreators'
+import * as ErrorActionCreators from '../error/errorActionCreator'
 import * as actionTypes from './userActionTypes'
 
 import {
@@ -15,11 +16,11 @@ function* getSnapshotFromUserAuth(userAuth, additionalData) {
     const userRef =
     yield call(creacteUserProfileDocument, userAuth, additionalData)
     const userSnapshot = yield userRef.get()
-    yield put(actionCreators.signInSuccess({
+    yield put(UserActionCreators.signInSuccess({
       id: userSnapshot.id, ...userSnapshot.data()
     }))
   } catch (error) {
-    yield put(actionCreators.signInFailure(error.message))
+    yield put(ErrorActionCreators.signInFailure(error.message))
   }
 }
 
@@ -28,7 +29,7 @@ export function* signInWithGoogle() {
     const {user} = yield auth.signInWithPopup(googleProvider)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error))
+    yield put(ErrorActionCreators.signInFailure(error))
   }
 }
 
@@ -37,7 +38,7 @@ export function* signInWithFacebook() {
     const {user} = yield auth.signInWithPopup(facebookProvider)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error))
+    yield put(ErrorActionCreators.signInFailure(error))
   }
 }
 
@@ -46,7 +47,7 @@ export function* signInWithEmail({payload: {email, password}}) {
     const {user} = yield auth.signInWithEmailAndPassword(email, password)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error.message))
+    yield put(ErrorActionCreators.signInFailure(error.message))
   }
 }
 
@@ -55,7 +56,7 @@ export function* signUpStart({payload: {email, password, displayName}}) {
     const {user} = yield auth.createUserWithEmailAndPassword(email, password)
     yield getSnapshotFromUserAuth(user, {displayName})
   } catch (error) {
-    yield put(actionCreators.signUpFailure(error.message))
+    yield put(ErrorActionCreators.signUpFailure(error.message))
   }
 }
 
@@ -65,16 +66,16 @@ export function* checkUserSession() {
     if (!userAuth) return
     yield getSnapshotFromUserAuth(userAuth)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error))
+    yield put(ErrorActionCreators.signInFailure(error))
   }
 }
 
 export function* signOut() {
   try {
     yield auth.signOut()
-    yield put(actionCreators.signOutSuccess())
+    yield put(UserActionCreators.signOutSuccess())
   } catch (error) {
-    yield put(actionCreators.signOutFailure())
+    yield put(ErrorActionCreators.signOutFailure())
   }
 }
 

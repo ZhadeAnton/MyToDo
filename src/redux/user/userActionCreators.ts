@@ -41,18 +41,3 @@ export const signOutSuccess = (): actions.SignOutSucess => ({
 export const checkUserSession = (): actions.CheckUserSession => ({
   type: actions.CHECK_USER_SESSION
 })
-
-export const signOutFailure = (error: string): actions.SignOutFailure => ({
-  type: actions.SIGN_OUT_FAILURE,
-  payload: error
-})
-
-export const signInFailure = (error: string): actions.SignInFailure => ({
-  type: actions.SIGN_IN_FAILURE,
-  payload: error
-})
-
-export const signUpFailure = (error: string): actions.SignUpFailure => ({
-  type: actions.SIGN_UP_FAILURE,
-  payload: error
-})
