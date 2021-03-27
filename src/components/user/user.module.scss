@@ -1,13 +1,21 @@
-.avatar {
+.topProfile {
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: .2rem;
+  border-radius: 10px;
+  border: thin solid var(--color-grey);
+  transition: .1s linear;
+
+  &:hover {
+    background-color: var(--color-grey);
+  }
 }
 
-.userInfo {
-
+.profileName {
+  color: var(--color-brand);
 }
 
-.image {
+.profileImage {
   margin-left: .5rem;
 }

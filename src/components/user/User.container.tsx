@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
 
 import {signOutStart} from '../../redux/user/userActionCreators'
-import UserAvatar from './User.component'
+import TopProfile from './User.component'
 import {UserTypes} from '../../redux/user/userActionTypes'
 import {RootState} from '../../redux/store'
 
@@ -15,6 +15,6 @@ const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
 })
 
 const UserContainer =
-connect(mapStateToProps, mapDispatchToProps)(UserAvatar)
+connect(mapStateToProps, mapDispatchToProps)(TopProfile)
 
 export default UserContainer

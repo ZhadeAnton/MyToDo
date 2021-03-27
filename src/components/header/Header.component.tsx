@@ -1,10 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import classnames from 'classnames'
 
 import styles from './header.module.scss'
 import Logo from '../logo/logo.component'
 import UserContainer from '../user//User.container'
+import NavigationLink from '../navigationLink/NavigationLink'
 
 const Header = () => {
   return (
@@ -15,10 +15,9 @@ const Header = () => {
         </div>
         <nav className={classnames(styles.navigation)}>
           <ul className={classnames(styles.list)}>
-            <li><Link className={styles.link} to="/login">Sign in</Link></li>
-            <li><Link className={styles.link} to="/todo">To do list</Link></li>
-            <li><Link className={styles.link} to="/team">Teams</Link></li>
-            <li><Link className={styles.link} to="/info">Information</Link></li>
+            <li><NavigationLink to={'/todo'}>Any.do</NavigationLink></li>
+            <li><NavigationLink to={'/team'}>Teams</NavigationLink></li>
+            <li><NavigationLink to={'/info'}>Info</NavigationLink></li>
           </ul>
         </nav>
         <div className={styles.user}>

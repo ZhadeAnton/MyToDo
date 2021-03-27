@@ -1,7 +1,12 @@
 import React from 'react';
 import {Menu, Dropdown} from 'antd';
 import {Avatar} from 'antd';
-import {LogoutOutlined, UserOutlined} from '@ant-design/icons'
+import {
+  LogoutOutlined,
+  UserOutlined,
+  DownOutlined,
+  LoginOutlined
+} from '@ant-design/icons'
 
 import styles from './user.module.scss'
 import {IUser} from '../../redux/user/userInterfaces';
@@ -12,7 +17,7 @@ interface Props {
   signOut: () => void
 }
 
-const UserAvatar: React.FC<Props> = ({signOut, user}) => {
+const TopProfile: React.FC<Props> = ({signOut, user}) => {
   const menu = (
     <Menu>
       <Menu.Item icon={<UserOutlined />}>
@@ -20,6 +25,10 @@ const UserAvatar: React.FC<Props> = ({signOut, user}) => {
       </Menu.Item>
       <Menu.Item icon={<UserOutlined />}>
         Help
+      </Menu.Item>
+      <Menu.Item
+        icon={<LoginOutlined />}>
+        <CustomLink to={'/login'}>Login page</CustomLink>
       </Menu.Item>
       <Menu.Item onClick={signOut}
         icon={<LogoutOutlined />}>Log out
@@ -31,18 +40,26 @@ const UserAvatar: React.FC<Props> = ({signOut, user}) => {
     <>
       {
       user
-      ? <Dropdown overlay={menu} placement="bottomLeft">
-        <div className={styles.avatar}>
-          <div className={styles.userInfo}>
-            <div>{user.displayName}</div>
-          </div>
-          <div className={styles.image}>
+      ? <Dropdown
+        overlay={menu}
+        placement="bottomLeft"
+        trigger={['click']}
+      >
+        <div className={styles.topProfile}>
+          <div className={styles.profileName}>{user.displayName}</div>
+          <div className={styles.profileImage}>
             <Avatar
               alt="user"
               size={40}
               src={user?.photoURL}
               aria-label="info"
               icon={<UserOutlined />}
+            />
+            <DownOutlined
+              style={{
+                color: 'blue',
+                fontSize: 12
+              }}
             />
           </div>
         </div>
@@ -53,4 +70,4 @@ const UserAvatar: React.FC<Props> = ({signOut, user}) => {
   );
 }
 
-export default UserAvatar
+export default TopProfile

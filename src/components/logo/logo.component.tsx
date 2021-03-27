@@ -6,9 +6,11 @@ import {Link} from 'react-router-dom'
 
 const Logo: React.FC = () => {
   return (
-    <Link className={styles.logo} to="/">
-      <BrandLogo/>
-    </Link>
+    <div className={styles.logo} >
+      <Link to="/">
+        <BrandLogo/>
+      </Link>
+    </div>
   )
 }
 
