@@ -6,7 +6,6 @@ import {RootState} from '../../redux/store'
 import {signUpStart} from '../../redux/user/userActionCreators'
 import {signUpFailure} from '../../redux/user/userActionCreators'
 import WithSpinner from '../UI/customSpinner/CustomSpinner.component'
-
 import SignUp from './SignUp.component'
 
 const mapStateToProps = (state: RootState) => ({

@@ -15,6 +15,7 @@ import {
 } from 'react-router-dom'
 import {UserTypes} from './redux/user/userActionTypes'
 import {RootState} from './redux/store';
+import Information from './pages/information/Information';
 
 interface Props {
   userError: string | null,
@@ -40,6 +41,7 @@ const App: React.FC<Props> = ({checkUserSession, userError}) => {
         <Route exact path='/' component={MainPage}/>
         <Route exact path='/login' component={LoginPage}/>
         <Route exact path='/greeting' component={GreetingPage}/>
+        <Route exact path='/info' component={Information}/>
       </Switch>
     </>
   )

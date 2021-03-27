@@ -3,26 +3,17 @@ import {Link} from 'react-router-dom'
 import classnames from 'classnames'
 
 import styles from './header.module.scss'
-import {IUser} from '../../redux/user/userInterfaces'
 import Logo from '../logo/logo.component'
-import UserAvatar from '../avatar/Avatar.component'
+import UserContainer from '../user//User.container'
 
-interface Props {
-  user?: IUser | undefined,
-  signOut(): void
-}
-
-const Header: React.FC<Props> = ({signOut, user}) => {
+const Header = () => {
   return (
     <header className={classnames(styles.header)}>
       <div className={classnames(styles.wrapper, 'container')}>
         <div className={styles.logo}>
           <Logo />
         </div>
-        <UserAvatar
-          user={user}
-        />
-        <nav className={classnames(styles.navbar)}>
+        <nav className={classnames(styles.navigation)}>
           <ul className={classnames(styles.list)}>
             <li><Link className={styles.link} to="/login">Sign in</Link></li>
             <li><Link className={styles.link} to="/todo">To do list</Link></li>
@@ -30,6 +21,9 @@ const Header: React.FC<Props> = ({signOut, user}) => {
             <li><Link className={styles.link} to="/info">Information</Link></li>
           </ul>
         </nav>
+        <div className={styles.user}>
+          <UserContainer />
+        </div>
       </div>
     </header>
   )

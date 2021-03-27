@@ -7,36 +7,31 @@
 }
 
 .wrapper {
-  display: grid;
-  align-content: center;
-  grid-template-columns: 8;
-}
-
-.logo {
-  grid-column: 1 / 1;
+  width: 100%;
+  height: 5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.navbar {
-  grid-column: 4 / 8;
+.logo {
+}
+
+.navigation {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .list {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 100%;
 }
 
 .link {
   color: var(--color-black);
   font-size: 1.1rem;
-  padding: 2rem;
-  transition: .3s;
+  margin-left: 2rem;
+}
 
-  &:hover {
-   background-color: var(--color-brand);
-  }
+.user {
+  margin-left: auto;
 }

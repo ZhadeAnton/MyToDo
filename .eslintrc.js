@@ -25,5 +25,6 @@ module.exports = {
     'require-jsdoc': 0,
     'comma-dangle': 0,
     'react/prop-types': 0,
+    'operator-linebreak': 0,
   },
 };

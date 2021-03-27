@@ -8,7 +8,6 @@ const Logo: React.FC = () => {
   return (
     <Link className={styles.logo} to="/">
       <BrandLogo/>
-      <h3>Any Do</h3>
     </Link>
   )
 }
