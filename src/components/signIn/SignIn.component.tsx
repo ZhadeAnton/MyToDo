@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
+import {Form, Input, Button, Checkbox} from 'antd';
+import {LockOutlined} from '@ant-design/icons';
 
 import styles from './signIn.module.scss'
-import CustomButton from '../UI/CustomButton/CustomButton.component'
-import CustomInput from '../UI/CustomInput/CustomInput.component'
 import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
 
 interface Props {
@@ -27,7 +27,9 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
     event.preventDefault()
 
     signInWithEmail(email, password)
+  }
 
+  const clear = () => {
     setUserData({
       email: '',
       password: ''
@@ -36,33 +38,59 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
 
   return (
     <div className={styles.signIn}>
-      <h2 className={styles.title}>Sign in</h2>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.inputsSection}>
-          <CustomInput
+      <Form
+        initialValues={{remember: true}}
+        onFinish={clear}
+      >
+        <Form.Item
+          name="email"
+          rules={[{
+            required: true,
+            message: 'Please input your email!',
+            type: 'email'
+          }]}
+        >
+          <Input
             name="email"
-            label="Email"
+            placeholder="Email"
+            prefix={'@'}
+            allowClear
+            onChange={handleChange}
             value={email}
-            onChange={handleChange}
-            type="text"
-            fullWidth
-            required
-            autoFocus />
+          />
+        </Form.Item>
 
-          <CustomInput
+        <Form.Item
+          name="password"
+          rules={[{
+            required: true,
+            message: 'Please input your password!'
+          }]}
+        >
+          <Input.Password
             name="password"
-            label="Password"
-            value={password}
+            placeholder="Password"
+            prefix={<LockOutlined />}
             onChange={handleChange}
-            type="password"
-            fullWidth
-            required />
-        </div>
+            value={password}
+          />
+        </Form.Item>
 
-        <CustomButton>
-          Log in
-        </CustomButton>
-      </form>
+        <Form.Item name="remember" valuePropName="checked">
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            onClick={handleSubmit}
+            className={styles.submitBtn}
+          >
+            Log in
+          </Button>
+        </Form.Item>
+      </Form>
 
       <AlternativeSignIn />
     </div>

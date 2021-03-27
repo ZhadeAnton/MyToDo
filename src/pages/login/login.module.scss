@@ -12,18 +12,11 @@
   height: 70vh;
   margin: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1px 1fr;
+  grid-template-columns: 1fr 1fr;
   border: thin solid var(--color-grey);
   background-color: var(--color-white);
   border-radius: 15px;
   padding: 1rem;
-}
-
-.separator {
-  width: 1px;
-  height: 90%;
-  background-color: var(--color-grey);
-  margin: auto 0;
 }
 
 .leftSide {
@@ -33,8 +26,4 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-.rightSide {
-  padding: 2rem;
 }
