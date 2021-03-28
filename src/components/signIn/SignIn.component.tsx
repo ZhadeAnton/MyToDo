@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
-import {Form, Input, Button, Checkbox} from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Checkbox
+} from 'antd';
 import {LockOutlined} from '@ant-design/icons';
 
 import styles from './signIn.module.scss'
-import AlternativeSignIn from '../alternativeSignIn/AlternativeSignIn.container'
+import
+AlternativeSignInContainer
+  from '../alternativeSignIn/AlternativeSignIn.container';
 
 interface Props {
-  error: string | null | undefined,
   signInWithEmail(email: string, password: string): void,
 }
 
-const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
+const SingIn: React.FC<Props> = ({signInWithEmail}) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''
@@ -41,6 +47,7 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
       <Form
         initialValues={{remember: true}}
         onFinish={clear}
+        size='large'
       >
         <Form.Item
           name="email"
@@ -92,7 +99,7 @@ const SingIn: React.FC<Props> = ({error, signInWithEmail}) => {
         </Form.Item>
       </Form>
 
-      <AlternativeSignIn />
+      <AlternativeSignInContainer />
     </div>
   )
 }

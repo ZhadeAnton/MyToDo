@@ -50,6 +50,7 @@ const SignUp: React.FC<Props> =
     <div className={styles.signUp}>
       <Form
         name="register"
+        size='large'
         onFinish={clear}
       >
         <Form.Item

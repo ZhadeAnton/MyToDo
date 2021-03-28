@@ -1,7 +1,7 @@
 import React from 'react';
 import
-SignInSignUpForm
-  from '../../components/signInSignUpForm/signInSignUpForm.component';
+SignInSignUpFormContainer
+  from '../../components/signInSignUpForm/SignInSignUpForm.contaier';
 
 import styles from './login.module.scss'
 
@@ -14,7 +14,7 @@ const LoginPage: React.FC = () => {
         </div>
 
         <div className={styles.form}>
-          <SignInSignUpForm />
+          <SignInSignUpFormContainer />
         </div>
       </div>
     </section>
