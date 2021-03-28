@@ -26,8 +26,8 @@ a, a:visited, a:active {
     display: inline-block;
 }
 
-h1, h2 {
-  margin: 0 !important;
+h1, h2, h3, h4 {
+  margin: 0;
 }
 
 ul, li {
@@ -46,7 +46,7 @@ input {
 
 :root {
   --color-brand: #0DA5F3;
-  --color-brand-background: #f6f6f6;
+  --color-brand-background: #F3F3F3;
   --color-grey: #dddcdc;
   --color-grey-2: #F6F6F6;
   --color-white: #ffffff;
@@ -68,4 +68,5 @@ input {
 .container {
   max-width: 1340px;
   margin: 0 auto;
+  padding: 0 30px;
 }
