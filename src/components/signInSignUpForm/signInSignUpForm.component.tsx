@@ -9,14 +9,12 @@ interface Props {
   isLoading: boolean,
   signInWithEmail: (email: string, password: string) => void,
   signUp: () => void,
-  signUpFailure: () => void,
 }
 
 const SignInSignUpForm: React.FC<Props> = ({
   isLoading,
   signInWithEmail,
   signUp,
-  signUpFailure
 }) => {
   const {TabPane} = Tabs;
 
@@ -34,7 +32,6 @@ const SignInSignUpForm: React.FC<Props> = ({
           <Spin spinning={isLoading}>
             <SingUp
               signUp={signUp}
-              signUpFailure={signUpFailure}
             />
           </Spin>
         </TabPane>

@@ -45,9 +45,11 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
   return (
     <div className={styles.signIn}>
       <Form
+        name='sign-in'
         initialValues={{remember: true}}
         onFinish={clear}
         size='large'
+        preserve={false}
       >
         <Form.Item
           name="email"
@@ -64,6 +66,7 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
             allowClear
             onChange={handleChange}
             value={email}
+            autoFocus
           />
         </Form.Item>
 

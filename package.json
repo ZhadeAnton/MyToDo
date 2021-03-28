@@ -23,7 +23,6 @@
     "firebase": "^8.3.0",
     "materialize-css": "^1.0.0-rc.2",
     "node-sass": "^5.0.0",
-    "notistack": "^1.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-material-ui-carousel": "^2.2.1",

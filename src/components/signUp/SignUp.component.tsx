@@ -6,26 +6,16 @@ import styles from './signUp.module.scss'
 
 interface Props {
   signUp(displayName: string, email: string, password: string): void
-  signUpFailure(error: string): void,
 }
 
 const SignUp: React.FC<Props> =
-({signUp, signUpFailure}) => {
+({signUp}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   })
-
-  const clear = () => {
-    setUserData({
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    })
-  }
 
   const {displayName, email, password, confirmPassword} = userData
 
@@ -46,12 +36,22 @@ const SignUp: React.FC<Props> =
     signUp(displayName, email, password)
   }
 
+  const clear = () => {
+    setUserData({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
+  }
+
   return (
     <div className={styles.signUp}>
       <Form
         name="register"
         size='large'
         onFinish={clear}
+        preserve={false}
       >
         <Form.Item
           name="displayName"
@@ -67,6 +67,7 @@ const SignUp: React.FC<Props> =
             allowClear
             onChange={handleChange}
             value={displayName}
+            autoFocus
           />
         </Form.Item>
 

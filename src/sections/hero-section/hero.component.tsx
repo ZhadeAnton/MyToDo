@@ -2,8 +2,7 @@ import React from 'react'
 
 import classNames from 'classnames'
 import styles from './hero.module.scss'
-import
-CustomButton from '../../components/UI/CustomButton/CustomButton.component'
+import CustomButton from '../../components/customButton/CustonButton.component'
 
 const HeroSection: React.FC = () => {
   return (

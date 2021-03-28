@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
-import {useSnackbar} from 'notistack';
+import {message} from 'antd'
+import {createStructuredSelector} from 'reselect'
 
 import {checkUserSession} from './redux/user/userActionCreators'
 import Header from './components/header/Header.container'
@@ -16,23 +17,34 @@ import {
 import {UserTypes} from './redux/user/userActionTypes'
 import {RootState} from './redux/store';
 import Information from './pages/information/Information';
+import {IUser} from './redux/user/userInterfaces'
+import {
+  selectCurrentUser,
+  selectUserError,
+  selectUserLoading
+} from './redux/user/userSelectors'
 
 interface Props {
-  userError: string | null,
+  user: IUser | undefined,
+  isLoading: boolean,
+  error: string | null,
+}
+
+interface Functions {
   checkUserSession: () => void
 }
 
-const App: React.FC<Props> = ({checkUserSession, userError}) => {
-  const {enqueueSnackbar} = useSnackbar();
-
+const App: React.FC<Props & Functions> = ({
+  user,
+  isLoading,
+  error,
+  checkUserSession,
+}) => {
   useEffect(() => {
+    error ? message.error(error) : null
+
     checkUserSession()
-    console.log('APP RENDER')
-    if (!userError) return
-    enqueueSnackbar([userError], {
-      variant: 'error'
-    })
-  }, [userError])
+  }, [error, isLoading])
 
   return (
     <>
@@ -47,13 +59,14 @@ const App: React.FC<Props> = ({checkUserSession, userError}) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
-  userError: state.user.userError,
-  isLoading: state.user.isLoading
+const mapStateToProps = createStructuredSelector<RootState, Props>({
+  user: selectCurrentUser,
+  error: selectUserError,
+  isLoading: selectUserLoading
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
-  checkUserSession: () => dispatch(checkUserSession())
+  checkUserSession: () => dispatch(checkUserSession()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

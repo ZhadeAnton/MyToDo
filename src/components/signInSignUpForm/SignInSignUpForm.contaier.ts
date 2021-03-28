@@ -4,14 +4,13 @@ import {Dispatch, compose} from 'redux'
 import {
   emailSignInStart,
   signUpStart,
-  signUpFailure
 } from '../../redux/user/userActionCreators'
 import {RootState} from '../../redux/store'
 import {UserTypes} from '../../redux/user/userActionTypes'
 import signInSignUpForm from './SignInSignUpForm.component'
 
 const mapStateToProps = (state: RootState) => ({
-  isLoading: state.user.isLoading
+  isLoading: state.user.isLoading,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
@@ -20,9 +19,6 @@ const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
   },
   signUp: (displayName: string, email: string, password: string) => {
     dispatch(signUpStart({displayName, email, password}))
-  },
-  signUpFailure: (error: string) => {
-    dispatch(signUpFailure(error))
   }
 })
 
