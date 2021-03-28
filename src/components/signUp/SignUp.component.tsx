@@ -1,31 +1,21 @@
 import React, {useState} from 'react'
+import {Form, Input, Button} from 'antd';
+import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
 import styles from './signUp.module.scss'
-import CustomButton from '../UI/CustomButton/CustomButton.component'
-import CustomInput from '../UI/CustomInput/CustomInput.component'
 
 interface Props {
   signUp(displayName: string, email: string, password: string): void
-  signUpFailure(error: string): void,
 }
 
 const SignUp: React.FC<Props> =
-({signUp, signUpFailure}) => {
+({signUp}) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   })
-
-  const clear = () => {
-    setUserData({
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    })
-  }
 
   const {displayName, email, password, confirmPassword} = userData
 
@@ -40,65 +30,121 @@ const SignUp: React.FC<Props> =
     event.preventDefault()
 
     if (password !== confirmPassword) {
-      signUpFailure('Password does not matches!')
       return
     }
 
     signUp(displayName, email, password)
-    clear()
+  }
+
+  const clear = () => {
+    setUserData({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
   }
 
   return (
     <div className={styles.signUp}>
-      <h2 className={styles.title}>Sign Up</h2>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.inputsBlock}>
-          <CustomInput
-            label="Name"
+      <Form
+        name="register"
+        size='large'
+        onFinish={clear}
+        preserve={false}
+      >
+        <Form.Item
+          name="displayName"
+          rules={[{
+            required: true,
+            message: 'Please input your name!'
+          }]}
+        >
+          <Input
             name="displayName"
-            type='text'
-            value={displayName}
+            placeholder="Name"
+            prefix={<UserOutlined />}
+            allowClear
             onChange={handleChange}
-            fullWidth
-            required
+            value={displayName}
             autoFocus
           />
+        </Form.Item>
 
-          <CustomInput
-            label="Email"
+        <Form.Item
+          name="email"
+          rules={[{
+            required: true,
+            message: 'Please input your email!',
+            type: 'email'
+          }]}
+        >
+          <Input
             name="email"
-            type='email'
+            placeholder="Email"
+            prefix={'@'}
+            allowClear
+            onChange={handleChange}
             value={email}
-            onChange={handleChange}
-            fullWidth
-            required
           />
+        </Form.Item>
 
-          <CustomInput
-            label="Password"
+        <Form.Item
+          name="password"
+          rules={[{
+            required: true,
+            message: 'Please input your password!'
+          }]}
+        >
+          <Input.Password
             name="password"
-            type="password"
+            placeholder="Password"
+            prefix={<LockOutlined />}
+            onChange={handleChange}
             value={password}
-            onChange={handleChange}
-            fullWidth
-            required
           />
+        </Form.Item>
 
-          <CustomInput
-            label="Confirm Password"
+        <Form.Item
+          name="confirmPassword"
+          dependencies={['password']}
+          rules={[
+            {
+              required: true,
+              message: 'Please confirm your password!',
+            },
+            ({getFieldValue}) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                    new Error('The two passwords that you entered do not match!'
+                    ));
+              },
+            }),
+          ]}
+        >
+          <Input.Password
             name="confirmPassword"
-            type="password"
-            value={confirmPassword}
+            placeholder="Password"
+            prefix={<LockOutlined />}
             onChange={handleChange}
-            fullWidth
-            required
+            value={confirmPassword}
           />
-        </div>
+        </Form.Item>
 
-        <CustomButton>
-          Create Account
-        </CustomButton>
-      </form>
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            onClick={handleSubmit}
+            className={styles.submitBtn}
+          >
+            Register
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   )
 }

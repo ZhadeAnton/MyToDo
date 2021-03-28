@@ -1,20 +1,16 @@
 import React from 'react'
-import {Button} from '@material-ui/core'
+import {Button} from 'antd';
 
 interface Props {
-  children?: React.ReactNode,
-  type?: boolean,
-  variant?: string,
-  color?: string,
+  children: string,
   onClick?: () => void
 }
 
 const CustomButton: React.FC<Props> = (props) => {
   return (
     <Button
-      variant="contained"
-      color="primary"
-      type="submit"
+      type="primary"
+      size="large"
       onClick={props.onClick}
     >
       {props.children}

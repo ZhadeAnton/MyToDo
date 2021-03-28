@@ -24,7 +24,7 @@ const userReducer = (
       return {
         ...state,
         isLoading: true,
-        userError: null
+        userError: null,
       }
 
     case UserActions.SIGN_IN_SUCCESS:
@@ -38,7 +38,7 @@ const userReducer = (
       return {
         ...state,
         currentUser: undefined,
-        userError: null
+        userError: null,
       }
 
     case UserActions.SIGN_IN_FAILURE:

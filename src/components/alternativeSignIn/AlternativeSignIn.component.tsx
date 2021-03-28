@@ -1,15 +1,17 @@
 import React from 'react'
+import {Button} from 'antd';
 
 import styles from './alternative.module.scss'
-import CustomButton from '../UI/CustomButton/CustomButton.component'
+import {GooglePlusOutlined, FacebookOutlined} from '@ant-design/icons';
 
 type Props = {
+  isLoading: boolean,
   signInWithGoogle: () => void,
-  facebookSignInStart: () => void
+  signInWithFacebook: () => void
 }
 
 const AlternativeSignIn: React.FC<Props> =
-({signInWithGoogle, facebookSignInStart}) => {
+({signInWithGoogle, signInWithFacebook, isLoading}) => {
   return (
     <div className={styles.alternativeSignIn}>
       <div className={styles.orSeparator}>
@@ -19,15 +21,24 @@ const AlternativeSignIn: React.FC<Props> =
       </div>
 
       <div className={styles.buttonsGroup}>
-        <CustomButton
+        <Button
+          style={{background: 'red'}}
+          loading={isLoading}
+          type="primary"
+          size="large"
+          icon={<GooglePlusOutlined />}
           onClick={() => signInWithGoogle()}>
-            +Google
-        </CustomButton>
+          Google
+        </Button>
 
-        <CustomButton
-          onClick={() => facebookSignInStart()}>
-            +Facebook
-        </CustomButton>
+        <Button
+          loading={isLoading}
+          type="primary"
+          size="large"
+          icon={<FacebookOutlined />}
+          onClick={() => signInWithFacebook()}>
+          Facebook
+        </Button>
       </div>
     </div>
   )

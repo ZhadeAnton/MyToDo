@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
+import {RootState} from '../../redux/store'
 
 import {
   googleSignInStart,
@@ -9,9 +10,13 @@ import {
 import {UserTypes} from '../../redux/user/userActionTypes'
 import AlternativeSignIn from './AlternativeSignIn.component'
 
-const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
-  signInWithGoogle: () => dispatch(googleSignInStart()),
-  facebookSignInStart: () => dispatch(facebookSignInStart())
+const mapStateToProps = (state: RootState) => ({
+  isLoading: state.user.isLoading
 })
 
-export default connect(null, mapDispatchToProps)(AlternativeSignIn)
+const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
+  signInWithGoogle: () => dispatch(googleSignInStart()),
+  signInWithFacebook: () => dispatch(facebookSignInStart())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlternativeSignIn)

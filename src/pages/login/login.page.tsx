@@ -1,7 +1,9 @@
 import React from 'react';
+import
+SignInSignUpFormContainer
+  from '../../components/signInSignUpForm/SignInSignUpForm.contaier';
 
 import styles from './login.module.scss'
-import TabsLogin from './login-tabs/login-tabs.component';
 
 const LoginPage: React.FC = () => {
   return (
@@ -11,10 +13,8 @@ const LoginPage: React.FC = () => {
           <h1>Never forget a thing</h1>
         </div>
 
-        <div className={styles.separator}></div>
-
-        <div className={styles.rightSide}>
-          <TabsLogin />
+        <div className={styles.form}>
+          <SignInSignUpFormContainer />
         </div>
       </div>
     </section>
