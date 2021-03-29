@@ -1,0 +1,32 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  & > * {
+    max-width: 840px;
+  }
+}
+
+.title {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.text {
+  margin-bottom: 30px;
+  font-size: 1.5em;
+}
+
+.deviceImage {
+  background-image: url(../../assets/device.webp);
+  padding-bottom: 66.17%;
+  background-repeat: no-repeat;
+  padding-bottom: 94%;
+  background-size: auto 100%;
+  background-position: 35% center;
+  margin: 0 auto;
+}

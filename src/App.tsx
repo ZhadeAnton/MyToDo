@@ -23,6 +23,7 @@ import {
   selectUserError,
   selectUserLoading
 } from './redux/user/userSelectors'
+import TodoPage from './pages/todo/TodoPage.component'
 
 interface Props {
   user: IUser | undefined,
@@ -54,6 +55,7 @@ const App: React.FC<Props & Functions> = ({
         <Route exact path='/login' component={LoginPage}/>
         <Route exact path='/greeting' component={GreetingPage}/>
         <Route exact path='/info' component={Information}/>
+        <Route exact path='/todo' component={TodoPage}/>
       </Switch>
     </>
   )

@@ -1,15 +1,16 @@
 import React from 'react'
+import {Row, Col} from 'antd';
+import cn from 'classnames'
 
-import classNames from 'classnames'
-import styles from './hero.module.scss'
+import styles from './sectionHero.module.scss'
+import phone from '../../assets/phone.jpg'
 import CustomButton from '../../components/customButton/CustonButton.component'
 
 const HeroSection: React.FC = () => {
   return (
     <section className={styles.hero}>
-      <div className={classNames(styles.wrapper, 'container')}>
-        <div className={styles.textBlock}>
-
+      <Row className={cn(styles.wrapper, 'container')}>
+        <Col span={12} className={styles.textBlock}>
           <h1 className={styles.title}>
             A to-do lost you&#39;d actually use
           </h1>
@@ -23,11 +24,12 @@ const HeroSection: React.FC = () => {
           <CustomButton>
             Get Started
           </CustomButton>
-        </div>
+        </Col>
 
-        <div className={styles.phoneBlock}>
-        </div>
-      </div>
+        <Col span={12} className={styles.phoneBlock}>
+          <img src={phone} alt=""/>
+        </Col>
+      </Row>
     </section>
   )
 }
