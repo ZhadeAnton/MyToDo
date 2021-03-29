@@ -7,6 +7,12 @@ import
 DeviceSection from '../../sections/device-section/SectionDevice.component'
 import
 FeedbackSection from '../../sections/feedback-section/SectionFeedback.component'
+import
+SectionFooter
+  from '../../sections/footer-section/SectionFooter.component'
+import
+AvailableSection
+  from '../../sections/available-section/SectionAvailable.component'
 
 const MainPage: React.FC = () => {
   return (
@@ -15,6 +21,8 @@ const MainPage: React.FC = () => {
       <BlockSection />
       <DeviceSection />
       <FeedbackSection />
+      <AvailableSection />
+      <SectionFooter />
     </>
   )
 }
