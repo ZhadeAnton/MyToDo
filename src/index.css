@@ -59,6 +59,11 @@ input {
   --fs-h1: 4vw;
   --fs-brand-title: 3vw;
   --fs-text: 2vw;
+
+  /*Measures*/
+  --gutter-header: 80px;
+  --toDo-containers-barder-radius: .9rem;
+  --toDo-containers-background-color: #FEFEFF
 }
 
 .ml-sm {
