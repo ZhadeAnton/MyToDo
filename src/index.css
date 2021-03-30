@@ -62,8 +62,8 @@ input {
 
   /*Measures*/
   --gutter-header: 80px;
-  --toDo-containers-barder-radius: .9rem;
-  --toDo-containers-background-color: #FEFEFF
+  --toDo-container-barder-radius: .9rem;
+  --toDo-container-background-color: #FEFEFF
 }
 
 .ml-sm {

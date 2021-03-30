@@ -22,7 +22,7 @@ import {
   selectCurrentUser,
   selectUserError,
   selectUserLoading
-} from './redux/user/userSelectors'
+} from './redux/userSelectors'
 import TodoPage from './pages/todo/TodoPage.component'
 
 interface Props {
