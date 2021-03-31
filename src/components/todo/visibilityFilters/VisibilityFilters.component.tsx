@@ -1,18 +1,14 @@
 import React from 'react'
-import {Dispatch} from 'redux'
-import {connect} from 'react-redux'
 import cx from 'classnames'
 
-import {setFilter} from '../../../redux/todo/todoActionCreators'
 import {VISIBILITY_FILTERS} from '../../../redux/todo/todoConstants'
-import {RootState} from '../../../redux/store'
 
 interface Props {
   activeFilter: string,
   setFilter: (filter: string) => void,
 }
 
-const VisibilityFilters: React.FC<Props> = ({activeFilter, setFilter}) => {
+const VisibilityFilters = (props: Props) => {
   return (
     <div>
       {Object.keys(VISIBILITY_FILTERS).map((filterKey: string) => {
@@ -21,11 +17,11 @@ const VisibilityFilters: React.FC<Props> = ({activeFilter, setFilter}) => {
           <span
             key={`visibility-filter-${currentFilter}`}
             onClick={() => {
-              setFilter(currentFilter);
+              props.setFilter(currentFilter);
             }}
             className={cx(
                 'filter',
-                currentFilter === activeFilter && 'filter--active'
+                currentFilter === props.activeFilter && 'filter--active'
             )}
           >
             {currentFilter}
@@ -37,12 +33,4 @@ const VisibilityFilters: React.FC<Props> = ({activeFilter, setFilter}) => {
   )
 }
 
-const mapStateToProps = (state: RootState) => {
-  return {activeFilter: state.visibilityFilter};
-};
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setFilter: (filter: string) => dispatch(setFilter(filter))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(VisibilityFilters)
+export default VisibilityFilters

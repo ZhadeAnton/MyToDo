@@ -2,11 +2,8 @@ import React from 'react'
 
 import styles from './todoPage.module.scss'
 import todoBg from '../../assets/todo/todo-bg.webp'
-import AddTodo from '../../components/todo/addTodo/AddTodo.component'
-import TodoList from '../../components/todo/todoList/TodoList.component'
-import
-VisibilityFilters
-  from '../../components/todo/visibilityFilters/VisibilityFilters.component'
+// eslint-disable-next-line max-len
+import TodoComponent from '../../components/todo/todoComponent/TodoComponent.container'
 
 const TodoPage = () => {
   return (
@@ -19,9 +16,7 @@ const TodoPage = () => {
       <div className={styles.content}>
         <section className={styles.tasksContainer}>
           <div className={styles.todoSection}>
-            <TodoList />
-            <AddTodo />
-            <VisibilityFilters />
+            <TodoComponent />
           </div>
         </section>
       </div>

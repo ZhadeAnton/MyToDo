@@ -1,16 +1,13 @@
 import React, {useState} from 'react'
 import {Input, Button} from 'antd';
-import {connect} from 'react-redux'
-import {Dispatch} from 'redux';
 
 import styles from './addTodo.module.scss'
-import {addTodo} from '../../../redux/todo/todoActionCreators';
 
 interface Props {
   addTodo: (title: string) => void
 }
 
-const AddTodo: React.FC<Props> = ({addTodo}) => {
+const AddTodo = (props: Props) => {
   const [value, setValue] = useState('')
 
   const updateInput = (input: string) => {
@@ -18,7 +15,7 @@ const AddTodo: React.FC<Props> = ({addTodo}) => {
   }
 
   const handleAddTodo = () => {
-    addTodo(value)
+    props.addTodo(value)
     setValue('')
   }
 
@@ -38,8 +35,4 @@ const AddTodo: React.FC<Props> = ({addTodo}) => {
   )
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addTodo: (title: string) => dispatch(addTodo(title))
-})
-
-export default connect(null, mapDispatchToProps)(AddTodo)
+export default AddTodo

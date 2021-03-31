@@ -18,7 +18,7 @@ export const deleteTodo = (id: number): actions.DeleteTodo => ({
   payload: id
 })
 
-export const setFilter = (filter: string) => ({
+export const setFilter = (filter: string): actions.SetFilter => ({
   type: actions.SET_FILTER,
   payload: filter
 })
