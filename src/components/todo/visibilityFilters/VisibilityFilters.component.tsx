@@ -1,6 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
+import styles from './visibilityFilters.module.scss'
 import {VISIBILITY_FILTERS} from '../../../redux/todo/todoConstants'
 interface Props {
   activeFilter: string,
@@ -14,13 +15,13 @@ const VisibilityFilters = (props: Props) => {
         const currentFilter = VISIBILITY_FILTERS[filterKey]
         return (
           <span
-            key={`visibility-filter-${currentFilter}`}
+            key={`${currentFilter}`}
             onClick={() => {
               props.setFilter(currentFilter);
             }}
             className={cx(
-                'filter',
-                currentFilter === props.activeFilter && 'filter--active'
+                styles.filter,
+                currentFilter === props.activeFilter && styles.filterActive
             )}
           >
             {currentFilter}

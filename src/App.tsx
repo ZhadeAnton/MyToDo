@@ -5,25 +5,23 @@ import {message} from 'antd'
 import {createStructuredSelector} from 'reselect'
 
 import {checkUserSession} from './redux/user/userActionCreators'
-import Header from './components/header/Header.container'
-import LoginPage from './pages/login/login.page'
-import GreetingPage from './pages/greetingPage/greeting.page'
-import MainPage from './pages/main/main.page'
+import LoginPage from './routes/login/LoginPage.component'
+import MainPage from './routes/main/MainPage.component'
 
 import {
   Switch,
   Route,
 } from 'react-router-dom'
 import {UserTypes} from './redux/user/userActionTypes'
-import {RootState} from './redux/store';
-import Information from './pages/information/Information';
+import {RootState} from './redux/store/store';
 import {IUser} from './redux/user/userInterfaces'
 import {
   selectCurrentUser,
   selectUserError,
   selectUserLoading
-} from './redux/userSelectors'
-import TodoPage from './pages/todo/TodoPage.component'
+} from './redux/user/userSelectors'
+import TodoPage from './routes/todo/TodoPage.component'
+import Header from './sections/headerSection/Header.component'
 
 interface Props {
   user: IUser | undefined,
@@ -53,8 +51,6 @@ const App: React.FC<Props & Functions> = ({
       <Switch>
         <Route exact path='/' component={MainPage}/>
         <Route exact path='/login' component={LoginPage}/>
-        <Route exact path='/greeting' component={GreetingPage}/>
-        <Route exact path='/info' component={Information}/>
         <Route exact path='/todo' component={TodoPage}/>
       </Switch>
     </>

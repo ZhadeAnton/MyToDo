@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect'
-import {RootState} from '../store'
+import {RootState} from '../store/store'
 import {VISIBILITY_FILTERS} from './todoConstants'
 
 const getTodosState = (state: RootState) => state.todo
