@@ -2,10 +2,10 @@ import React from 'react'
 
 import styles from './todoPage.module.scss'
 import todoBg from '../../assets/todo/todo-bg.webp'
-// eslint-disable-next-line max-len
-import TodoComponent from '../../components/todo/todoComponent/TodoComponent.container'
+import TodoComponentContainer
+  from '../../components/todo/todoComponent/TodoComponent.container'
 
-const TodoPage = () => {
+const TodoPage: React.FC = () => {
   return (
     <section className={styles.todoPage}>
       <div className={styles.background}>
@@ -16,7 +16,7 @@ const TodoPage = () => {
       <div className={styles.content}>
         <section className={styles.tasksContainer}>
           <div className={styles.todoSection}>
-            <TodoComponent />
+            <TodoComponentContainer />
           </div>
         </section>
       </div>

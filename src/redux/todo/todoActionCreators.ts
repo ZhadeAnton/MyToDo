@@ -2,10 +2,7 @@ import * as actions from './todoActionTypes'
 
 export const addTodo = (title: string): actions.AddTodo => ({
   type: actions.ADD_TODO,
-  payload: {
-    id: Number(new Date()),
-    title,
-  }
+  payload: title
 })
 
 export const toggleTodo = (id: number): actions.ToggleTodo => ({

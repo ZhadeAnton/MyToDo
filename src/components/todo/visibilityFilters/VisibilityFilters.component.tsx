@@ -2,7 +2,6 @@ import React from 'react'
 import cx from 'classnames'
 
 import {VISIBILITY_FILTERS} from '../../../redux/todo/todoConstants'
-
 interface Props {
   activeFilter: string,
   setFilter: (filter: string) => void,

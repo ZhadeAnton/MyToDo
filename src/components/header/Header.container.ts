@@ -11,7 +11,7 @@ const mapStateToProps = (state: RootState) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
-  signOut: () => dispatch<any>(signOutStart())
+  signOut: () => dispatch(signOutStart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

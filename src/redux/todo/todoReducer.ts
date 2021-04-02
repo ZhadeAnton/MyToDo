@@ -15,7 +15,8 @@ const todoReducer = (
     action: actions.TodoTypes): TodoState => {
   switch (action.type) {
     case actions.ADD_TODO: {
-      const {id, title} = action.payload
+      const title = action.payload
+      const id = Number(new Date())
       return {
         ...state,
         allIds: [...state.allIds, id],

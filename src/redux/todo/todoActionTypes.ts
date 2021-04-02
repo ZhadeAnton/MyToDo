@@ -1,9 +1,7 @@
-import {IAddTodo} from './todoInterfaces'
-
 export const ADD_TODO = 'ADD_TODO'
 export interface AddTodo {
   type: typeof ADD_TODO,
-  payload: IAddTodo
+  payload: string
 }
 
 export const TOGGLE_TODO = 'TOGGLE_TODO'

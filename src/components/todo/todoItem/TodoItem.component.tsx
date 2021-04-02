@@ -3,33 +3,33 @@ import {Checkbox} from 'antd';
 import {DeleteOutlined} from '@ant-design/icons';
 
 import styles from './todoItem.module.scss'
+import {ITodo} from '../../../redux/todo/todoInterfaces';
 
 interface Props {
   deleteTodo: (id: number) => void,
   toggleTodo: (id: number) => void,
-  completed: boolean,
-   title: string,
-   id: number
+  key: number,
+  todo: ITodo
 }
 
-const TodoItem = (props: Props) => {
+const TodoItem: React.FC<Props> = ({todo, deleteTodo, toggleTodo}) => {
   return (
-    <div className={styles.todoItem}>
+    <li className={styles.todoItem}>
       <span className={styles.checkBox}>
         <Checkbox
-          checked={props.completed}
-          onChange={() => props.toggleTodo(props.id)}
+          checked={todo.completed}
+          onChange={() => toggleTodo(todo.id)}
         />
       </span>
       <span className={styles.description}>
-        {props.title}
+        {todo.title}
       </span>
       <span className={styles.removeIcon}>
         <DeleteOutlined
-          onClick={() => props.deleteTodo(props.id)}
+          onClick={() => deleteTodo(todo.id)}
         />
       </span>
-    </div>
+    </li>
   )
 }
 
