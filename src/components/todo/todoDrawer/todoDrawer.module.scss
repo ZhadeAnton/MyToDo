@@ -1,0 +1,36 @@
+.drawer {
+  width: 100%;
+  height: 100%;
+}
+
+.drawerNav {
+
+  & > * {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    border-bottom: thin solid red;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.drawerLists {
+  a {
+    display: block;
+    padding: 1rem;
+    border: thin solid green;
+  }
+}

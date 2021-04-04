@@ -1,26 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
 import todoBg from '../../assets/todo/todo-bg.webp'
-import TodoContainer
-  from '../../containers/TodoContainer.container'
 
-const TodoPage: React.FC = () => {
+import { get } from '../../api'
+import DBContext from '../../context/db.context'
+import { ITodoRecive, ITodoListRecive } from '../../interfaces'
+
+import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
+import TodoList from '../../components/todo/todoList/TodoList.component'
+
+const TodoPage = () => {
+  const [todos, setTodos] = useState<ITodoRecive>()
+  const [lists, setLists] = useState<ITodoListRecive>()
+
+  useEffect(() => {
+    get('todos').then(setTodos)
+    get('lists').then(setLists)
+  }, []);
+
   return (
-    <section className={styles.todoPage}>
-      <div className={styles.background}>
-        <img src={todoBg} alt="background"/>
-      </div>
-
-      <div className={styles.aside}>Aside</div>
-      <div className={styles.content}>
-        <section className={styles.tasksContainer}>
-          <div className={styles.todoSection}>
-            <TodoContainer />
-          </div>
+    <DBContext.Provider value={{ todos, lists }}>
+      <section className={styles.todoPage}>
+        <section className={styles.aside}>
+          <TodoDrawer />
         </section>
-      </div>
-    </section>
+
+        <section className={styles.content}>
+          <Switch>
+            <Route
+              path="/todo/:listId?"
+              component={TodoList}
+            />
+          </Switch>
+        </section>
+
+        <div className={styles.background}>
+          <img src={todoBg} alt="background"/>
+        </div>
+      </section>
+    </DBContext.Provider>
   )
 }
 

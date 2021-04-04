@@ -1,8 +1,6 @@
 import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
 
-import TodoComponent
-  from '../components/todo/todoComponent/TodoComponent.component';
 import {
   addTodo,
   toggleTodo,
@@ -13,6 +11,7 @@ import {getTodosByVisibilityFilter} from '../redux/todo/todoSelectors';
 import {ITodo} from '../redux/todo/todoInterfaces';
 import {RootState} from '../redux/store/store'
 import {TodoTypes} from '../redux/todo/todoActionTypes';
+import TodoPage from '../routes/todo/TodoPage.component';
 
 interface StateProps {
   todos: Array<ITodo>,
@@ -42,7 +41,7 @@ const TodoContainer =
 connect<StateProps, DispatchProps, {}, RootState>(
     mapStateToProps,
     mapDispatchToProps
-)(TodoComponent)
+)(TodoPage)
 
 export type TodoProps = StateProps & DispatchProps
 export default TodoContainer

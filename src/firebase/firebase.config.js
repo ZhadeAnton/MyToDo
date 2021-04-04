@@ -13,10 +13,9 @@ const config = {
 
 export const creacteUserProfileDocument =
   async (userAuth, additionalData) => {
-    console.log(userAuth)
     if (!userAuth) return
 
-    const userRef = firestore.doc(`users/${userAuth.uid}`)
+    const userRef = db.doc(`users/${userAuth.uid}`)
     const snapShot = await userRef.get()
 
     if (!snapShot.exists) {
@@ -50,7 +49,7 @@ export const getCurrentUser = () => {
 firebase.initializeApp(config);
 
 export const auth = firebase.auth()
-export const firestore = firebase.firestore()
+export const db = firebase.firestore()
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
 export const facebookProvider = new firebase.auth.FacebookAuthProvider();

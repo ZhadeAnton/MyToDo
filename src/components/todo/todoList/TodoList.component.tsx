@@ -1,33 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import {ITodo} from '../../../redux/todo/todoInterfaces'
-import TodoItem from '../todoItem/TodoItem.component'
+import styles from './todoList.module.scss'
+
+import DBContext from '../../../context/db.context'
 
 interface Props {
-  deleteTodo: (id: number) => void,
-  toggleTodo: (id: number) => void,
-  todos: ITodo[]
+  match: string
 }
 
-const TodoList = (props: Props) => {
-  if (props.todos.length === 0) {
-    return <p>No todos</p>
-  }
+const TodoList = ({ match }: Props) => {
+  console.log(match)
+  const db = useContext(DBContext)
 
   return (
-    <ul>
-      {props.todos.map((todo: ITodo) => {
-        return (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            deleteTodo={props.deleteTodo}
-            toggleTodo={props.toggleTodo}
-          />
-        )
-      }
-      )}
-    </ul>
+    <div className={styles.todoList}>
+      <ul>
+        {
+          db.todos?.map((todo) =>
+            <li key={todo.id}>{todo.title}</li>
+          )
+        }
+      </ul>
+    </div>
   )
 }
 
