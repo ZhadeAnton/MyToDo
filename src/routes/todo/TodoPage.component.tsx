@@ -9,7 +9,7 @@ import DBContext from '../../context/db.context'
 import { ITodoListRecive } from '../../interfaces'
 
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
-import TodoList from '../../components/todo/todoList/TodoList.component'
+import TodoListContainer from '../../containers/TodoListContainer'
 
 const TodoPage = () => {
   const db = useContext(DBContext)
@@ -30,7 +30,7 @@ const TodoPage = () => {
           <Switch>
             <Route
               path="/todo/:listId?"
-              component={TodoList}
+              component={TodoListContainer}
             />
           </Switch>
         </section>
