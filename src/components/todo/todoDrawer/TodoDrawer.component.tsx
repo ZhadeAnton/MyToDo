@@ -5,7 +5,7 @@ import {
   AntDesignOutlined,
   VerticalAlignMiddleOutlined
 } from '@ant-design/icons'
-import { Divider } from 'antd';
+import { Divider, Spin } from 'antd';
 
 import DBContext from '../../../context/db.context'
 
@@ -14,6 +14,8 @@ import CustomLink from '../../custom/customLink/CustomLink'
 
 const TodoDrawer = () => {
   const db = useContext(DBContext)
+
+  if (!db.lists) return <Spin />
 
   return (
     <aside className={styles.drawer}>
@@ -41,7 +43,7 @@ const TodoDrawer = () => {
           db.lists?.map((item) => {
             return (
               <li key={item.title}>
-                <CustomLink to={item.id}>{item.title}</CustomLink>
+                <CustomLink to={`/todo/${item.id}`}>{item.title}</CustomLink>
               </li>
             )
           })

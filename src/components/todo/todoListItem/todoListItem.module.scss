@@ -1,0 +1,15 @@
+.todoItem {
+  display: flex;
+  align-items: center;
+  border: thin solid green;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  p {
+    padding-left: 1.5rem;
+  }
+
+  input {
+    display: inline-block;
+  }
+}

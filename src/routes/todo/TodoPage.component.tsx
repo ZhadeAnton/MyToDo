@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
@@ -6,22 +6,21 @@ import todoBg from '../../assets/todo/todo-bg.webp'
 
 import { get } from '../../api'
 import DBContext from '../../context/db.context'
-import { ITodoRecive, ITodoListRecive } from '../../interfaces'
+import { ITodoListRecive } from '../../interfaces'
 
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoList from '../../components/todo/todoList/TodoList.component'
 
 const TodoPage = () => {
-  const [todos, setTodos] = useState<ITodoRecive>()
+  const db = useContext(DBContext)
   const [lists, setLists] = useState<ITodoListRecive>()
 
   useEffect(() => {
-    get('todos').then(setTodos)
-    get('lists').then(setLists)
-  }, []);
+    db.get('lists')().then(setLists)
+  }, [db]);
 
   return (
-    <DBContext.Provider value={{ todos, lists }}>
+    <DBContext.Provider value={{ lists, get }}>
       <section className={styles.todoPage}>
         <section className={styles.aside}>
           <TodoDrawer />

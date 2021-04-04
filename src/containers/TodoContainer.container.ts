@@ -8,13 +8,12 @@ import {
   setFilter
 } from '../redux/todo/todoActionCreators';
 import {getTodosByVisibilityFilter} from '../redux/todo/todoSelectors';
-import {ITodo} from '../redux/todo/todoInterfaces';
 import {RootState} from '../redux/store/store'
 import {TodoTypes} from '../redux/todo/todoActionTypes';
 import TodoPage from '../routes/todo/TodoPage.component';
 
 interface StateProps {
-  todos: Array<ITodo>,
+  todos: Array<any>,
   activeFilter: string
 }
 
