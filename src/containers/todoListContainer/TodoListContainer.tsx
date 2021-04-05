@@ -1,0 +1,48 @@
+import React, { useState, useEffect, useContext } from 'react'
+import { Spin } from 'antd';
+
+import DBContext from '../../context/db.context'
+import { ITodoRecive } from '../../interfaces';
+
+import styles from './todoListContainer.module.scss'
+import TodoList from '../../components/todo/todoList/TodoList.component';
+import TodoForm from '../../components/todo/todoForm/TodoForm';
+
+interface Props {
+  match: {
+    params: {
+      listId: string
+    }
+  }
+}
+
+const TodoListContainer = ({ match }: Props) => {
+  const db = useContext(DBContext)
+  const [todos, setTodos] = useState<ITodoRecive>([])
+
+  useEffect(() => {
+    db.getListsTodos(match.params.listId).then(setTodos)
+  }, [db, match.params.listId])
+
+  const list = db.lists?.find((list) => list.id === match.params.listId)
+
+  const handleSubmit = (title: string) => {
+  }
+
+  if (!list || !todos) return <Spin />
+
+  return (
+    <div className={styles.todoListContainer}>
+      <TodoList
+        list={list}
+        todos={todos}
+      />
+
+      <TodoForm
+        onSubmit={handleSubmit}
+      />
+    </div>
+  )
+}
+
+export default TodoListContainer
