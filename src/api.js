@@ -9,7 +9,8 @@ export function getLists() {
           ...doc.data()
         }))
         return items
-      }).catch((error) => console.log(error))
+      })
+      .catch((error) => console.log(error))
 }
 
 export function getListsTodos(listId) {
@@ -27,13 +28,23 @@ export function getListsTodos(listId) {
 }
 
 export function createTodo(data) {
-  return db.collection('todos').add({
-    ...data,
-    completed: false
-  })
+  return db.collection('todos')
+      .add({
+        ...data,
+        completed: false
+      })
       .then((docRef) => docRef.get())
       .then((doc) => ({
         id: doc.id,
         ...doc.data()
       }))
+      .catch((error) => console.log(error))
+}
+
+export function deleteTodo(todoId) {
+  return db.collection('todos')
+      .doc(todoId)
+      .delete()
+      .then(() => todoId)
+      .catch((error) => console.log(error))
 }

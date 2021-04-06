@@ -1,6 +1,11 @@
 import { createContext } from 'react'
 
-import { getListsTodos, getLists, createTodo } from '../api'
+import {
+  getListsTodos,
+  getLists,
+  createTodo,
+  deleteTodo
+} from '../api'
 import { ITodoListRecive, ITodoRecive } from '../interfaces'
 
 interface DBContext {
@@ -8,7 +13,8 @@ interface DBContext {
   lists: ITodoListRecive,
   getListsTodos: (collection: string) => any,
   getLists: () => any,
-  createTodo: (data: {}) => any
+  createTodo: (data: {}) => any,
+  deleteTodo: (todoId: string) => any
 }
 
 export default createContext<DBContext>(
@@ -17,6 +23,7 @@ export default createContext<DBContext>(
       lists: [],
       getListsTodos,
       getLists,
-      createTodo
+      createTodo,
+      deleteTodo
     }
 )

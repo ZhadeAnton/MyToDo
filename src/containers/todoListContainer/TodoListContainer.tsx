@@ -37,6 +37,13 @@ const TodoListContainer = ({ match }: Props) => {
         })
   }
 
+  const handleDelete = (todoId: string) => {
+    db.deleteTodo(todoId)
+        .then((todoId: string) => {
+          setTodos([...todos.filter((t) => t.id !== todoId)])
+        })
+  }
+
   if (!list || !todos) return <Spin />
 
   return (
@@ -44,6 +51,7 @@ const TodoListContainer = ({ match }: Props) => {
       <TodoList
         list={list}
         todos={todos}
+        onDelete={handleDelete}
       />
 
       <TodoForm

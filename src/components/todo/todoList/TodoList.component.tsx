@@ -6,10 +6,11 @@ import { ITodoRecive, ITodoList } from '../../../interfaces'
 
 interface Props {
   todos: ITodoRecive,
-  list: ITodoList
+  list: ITodoList,
+  onDelete: (todoId: string) => void
 }
 
-const TodoList = ({ todos, list }: Props) => {
+const TodoList = ({ todos, list, onDelete }: Props) => {
   return (
     <div className={styles.todoList}>
       <p>{list.title}</p>
@@ -19,6 +20,7 @@ const TodoList = ({ todos, list }: Props) => {
             <TodoListItem
               key={todo.id}
               todo={todo}
+              onDelete={onDelete}
             />
           )
         }
