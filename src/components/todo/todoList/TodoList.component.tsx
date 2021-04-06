@@ -2,13 +2,11 @@ import React from 'react'
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem.component'
-import { ITodoRecive } from '../../../interfaces'
+import { ITodoRecive, ITodoList } from '../../../interfaces'
 
 interface Props {
   todos: ITodoRecive,
-  list: {
-    title: string
-  }
+  list: ITodoList
 }
 
 const TodoList = ({ todos, list }: Props) => {

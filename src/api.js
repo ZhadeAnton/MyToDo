@@ -25,3 +25,15 @@ export function getListsTodos(listId) {
       })
       .catch((error) => console.log(error))
 }
+
+export function createTodo(data) {
+  return db.collection('todos').add({
+    ...data,
+    completed: false
+  })
+      .then((docRef) => docRef.get())
+      .then((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+}

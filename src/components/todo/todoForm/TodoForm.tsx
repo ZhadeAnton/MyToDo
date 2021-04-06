@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 
 import styles from './todoForm.module.scss'
 
@@ -13,7 +13,8 @@ const TodoForm = ({ onSubmit }: Props) => {
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
 
-    onSubmit(title)
+    onSubmit(title.trim())
+    setTitle('')
   }
 
   const changeHandler = (event: React.SyntheticEvent) => {
@@ -29,6 +30,8 @@ const TodoForm = ({ onSubmit }: Props) => {
         value={title}
         onChange={changeHandler}
       />
+
+      <Button>Send todo</Button>
     </form>
   )
 }

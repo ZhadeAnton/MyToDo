@@ -1,11 +1,13 @@
 export interface ITodo {
   title: string,
-  id: string
+  listId: string,
+  id: string,
+  completed: boolean
 }
 
 export type ITodoRecive = ITodo[] | undefined
 
-interface ITodoList {
+export interface ITodoList {
   title: string,
   id: string
 }
