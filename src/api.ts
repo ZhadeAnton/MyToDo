@@ -13,9 +13,9 @@ export function getLists() {
       .catch((error) => console.log(error))
 }
 
-export function getListsTodos(listId) {
+export function getListsTodos(listId: string) {
   return db.collection('todos')
-      .where('listId', '==', listId)
+      .where('listId', '==', `${listId}`)
       .get()
       .then((snapShot) => {
         const items = snapShot.docs.map((doc) => ({
@@ -27,7 +27,7 @@ export function getListsTodos(listId) {
       .catch((error) => console.log(error))
 }
 
-export function createTodo(data) {
+export function createTodo(data: {}) {
   return db.collection('todos')
       .add({
         ...data,
@@ -41,7 +41,17 @@ export function createTodo(data) {
       .catch((error) => console.log(error))
 }
 
-export function deleteTodo(todoId) {
+export function updateTodo(todoId: string, data: {}) {
+  return db.collection('todos')
+      .doc(todoId)
+      .update(data)
+      .then(() => ({
+        id: todoId,
+        ...data
+      }))
+}
+
+export function deleteTodo(todoId: string) {
   return db.collection('todos')
       .doc(todoId)
       .delete()

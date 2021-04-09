@@ -8,13 +8,22 @@ import { ITodo } from '../../../interfaces';
 
 interface Props {
   todo: ITodo,
-  onDelete: (todoId: string) => void
+  onDelete: (todoId: string) => void,
+  onChange: (todoId: string, data: {}) => void
 }
 
-const TodoListItem = ({ todo, onDelete }: Props) => {
+const TodoListItem = ({ todo, onDelete, onChange }: Props) => {
+  function handleChecked(completed: boolean) {
+    onChange(todo.id, {completed})
+  }
+
   return (
     <li className={styles.todoItem}>
-      <Checkbox />
+      <Checkbox
+        checked={todo.completed}
+        onChange={(e) => handleChecked(e.target.checked)}
+      />
+
       <p>{todo.title}</p>
       <i onClick={() => onDelete(todo.id)}><DeleteOutlined /></i>
     </li>

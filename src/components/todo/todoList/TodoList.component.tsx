@@ -6,14 +6,15 @@ import { ITodoRecive, ITodoList } from '../../../interfaces'
 
 interface Props {
   todos: ITodoRecive,
-  list: ITodoList,
-  onDelete: (todoId: string) => void
+  lists: ITodoList,
+  onDelete: (todoId: string) => void,
+  onChange: (todoId: string, data: {}) => void
 }
 
-const TodoList = ({ todos, list, onDelete }: Props) => {
+const TodoList = ({ todos, lists, onDelete, onChange }: Props) => {
   return (
     <div className={styles.todoList}>
-      <p>{list.title}</p>
+      <p>{lists.title}</p>
       <ul>
         {
           todos?.map((todo) =>
@@ -21,6 +22,7 @@ const TodoList = ({ todos, list, onDelete }: Props) => {
               key={todo.id}
               todo={todo}
               onDelete={onDelete}
+              onChange={onChange}
             />
           )
         }

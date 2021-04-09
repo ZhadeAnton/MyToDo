@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useContext } from 'react'
+import React from 'react'
 import {
   HomeOutlined,
   AntDesignOutlined,
@@ -7,15 +7,13 @@ import {
 } from '@ant-design/icons'
 import { Divider, Spin } from 'antd';
 
-import DBContext from '../../../context/db.context'
-
 import styles from './todoDrawer.module.scss'
 import CustomLink from '../../custom/customLink/CustomLink'
+import useApi from '../../../hooks/api';
 
 const TodoDrawer = () => {
-  const db = useContext(DBContext)
-
-  if (!db.lists) return <Spin />
+  const { data: { lists } } = useApi()
+  if (!lists) return <Spin />
 
   return (
     <aside className={styles.drawer}>
@@ -40,9 +38,9 @@ const TodoDrawer = () => {
 
       <ul className={styles.drawerLists}>
         {
-          db.lists?.map((item) => {
+          lists?.map((item) => {
             return (
-              <li key={item.title}>
+              <li key={item.id}>
                 <CustomLink to={`/todo/${item.id}`}>{item.title}</CustomLink>
               </li>
             )
