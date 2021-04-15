@@ -17,8 +17,8 @@ import {
   selectUserError,
   selectUserLoading,
 } from './redux/user/userSelectors';
-import TodoPage from './routes/todo/TodoPage.component';
-import Header from './sections/headerSection/Header.component';
+import
+TodoPageContainer from './containers/todoListContainer/TodoPageContainer';
 
 interface Props {
   user: IUser | undefined;
@@ -44,11 +44,10 @@ const App: React.FC<Props & Functions> = ({
 
   return (
     <>
-      <Header />
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/todo/:listid?' component={TodoPage} />
+        <Route exact path='/todo/:listid?' component={TodoPageContainer} />
       </Switch>
     </>
   );

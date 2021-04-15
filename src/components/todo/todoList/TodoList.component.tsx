@@ -1,32 +1,44 @@
 import React from 'react'
+import { Pagination } from 'antd';
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem.component'
-import { ITodoRecive, ITodoList } from '../../../interfaces'
+import { ITodoList, ITodo } from '../../../interfaces'
 
 interface Props {
-  todos: ITodoRecive,
-  lists: ITodoList,
-  onDelete: (todoId: string) => void,
-  onChange: (todoId: string, data: {}) => void
+  todos: Array<ITodo>,
+  list: ITodoList,
+  deleteTodo: (todo: ITodo) => void,
+  updateTodo: (todoId: string, data: {}) => void,
+  handleSelect: (todo: ITodo) => void,
 }
 
-const TodoList = ({ todos, lists, onDelete, onChange }: Props) => {
+const TodoList = ({
+  todos,
+  list,
+  deleteTodo,
+  updateTodo,
+  handleSelect,
+  // Todo: I'm not like this realization with Props...
+}: Props) => {
+  const todosLenght = todos?.length
   return (
     <div className={styles.todoList}>
-      <p>{lists.title}</p>
+      <p>{list.title}</p>
       <ul>
         {
           todos?.map((todo) =>
             <TodoListItem
               key={todo.id}
               todo={todo}
-              onDelete={onDelete}
-              onChange={onChange}
+              deleteTodo={deleteTodo}
+              updateTodo={updateTodo}
+              onSelect={handleSelect}
             />
           )
         }
       </ul>
+      <Pagination defaultCurrent={1} total={todosLenght} />
     </div>
   )
 }

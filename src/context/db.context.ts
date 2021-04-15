@@ -1,10 +1,10 @@
 import { createContext } from 'react'
 
 import {
-  getListsTodos,
-  getLists,
-  createTodo,
-  deleteTodo
+  fetchListTodos,
+  fetchLists,
+  fetchCreateTodo,
+  fetchDeleteTodo
 } from '../api'
 import { ITodoListRecive, ITodoRecive } from '../interfaces'
 
@@ -14,16 +14,16 @@ interface DBContext {
   getListsTodos: (collection: string) => any,
   getLists: () => any,
   createTodo: (data: {}) => any,
-  deleteTodo: (todoId: string) => any
+  fetchDeleteTodo: (todoId: string) => any
 }
 
 export default createContext<DBContext>(
     {
       todos: [],
       lists: [],
-      getListsTodos,
-      getLists,
-      createTodo,
-      deleteTodo
+      getListsTodos: fetchListTodos,
+      getLists: fetchLists,
+      createTodo: fetchCreateTodo,
+      fetchDeleteTodo
     }
 )

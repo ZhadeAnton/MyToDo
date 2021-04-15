@@ -18,7 +18,7 @@ code {
 *::after {
     padding: 0;
     margin: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 a, a:visited, a:active {
@@ -51,6 +51,8 @@ input {
   --color-grey-2: #F6F6F6;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-todo-background: #dddcdc;
+
   --clamped-size: clamp(1rem, -5.7500rem + 18.7500vw, 5rem);
   --fullHeight: 100vh - 64px;
 
@@ -62,6 +64,7 @@ input {
 
   /*Measures*/
   --gutter-header: 80px;
+  --todo-item-height: 2.5rem;
   --toDo-container-barder-radius: .9rem;
   --toDo-container-background-color: #FEFEFF
 }

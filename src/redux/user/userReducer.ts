@@ -1,5 +1,5 @@
 import {IUser} from './userInterfaces'
-import * as UserActions from './userActionTypes'
+import * as actions from './userActionTypes'
 
 export interface UserState {
   currentUser?: IUser | undefined,
@@ -15,35 +15,35 @@ const INITIAL_STATE: UserState = {
 
 const userReducer = (
     state: UserState = INITIAL_STATE,
-    action: UserActions.UserTypes): UserState => {
+    action: actions.UserTypes): UserState => {
   switch (action.type) {
-    case UserActions.EMAIL_SIGN_IN_START:
-    case UserActions.GOOGLE_SIGN_IN_START:
-    case UserActions.FACEBOOK_SIGN_IN_START:
-    case UserActions.SIGN_UP_START:
+    case actions.EMAIL_SIGN_IN_START:
+    case actions.GOOGLE_SIGN_IN_START:
+    case actions.FACEBOOK_SIGN_IN_START:
+    case actions.SIGN_UP_START:
       return {
         ...state,
         isLoading: true,
         userError: null,
       }
 
-    case UserActions.SIGN_IN_SUCCESS:
+    case actions.SIGN_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
         isLoading: false,
       }
 
-    case UserActions.SIGN_OUT_SUCCESS:
+    case actions.SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: undefined,
         userError: null,
       }
 
-    case UserActions.SIGN_IN_FAILURE:
-    case UserActions.SIGN_UP_FAILURE:
-    case UserActions.SIGN_OUT_FAILURE:
+    case actions.SIGN_IN_FAILURE:
+    case actions.SIGN_UP_FAILURE:
+    case actions.SIGN_OUT_FAILURE:
       return {
         ...state,
         isLoading: false,

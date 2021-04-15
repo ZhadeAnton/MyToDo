@@ -13,10 +13,12 @@ SectionFooter
 import
 AvailableSection
   from '../../sections/availableSection/SectionAvailable.component'
+import Header from '../../sections/headerSection/Header.component'
 
 const MainPage: React.FC = () => {
   return (
     <>
+      <Header />
       <HeroSection />
       <BlockSection />
       <DeviceSection />

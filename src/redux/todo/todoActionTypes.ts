@@ -1,29 +1,61 @@
-export const ADD_TODO = 'ADD_TODO'
-export interface AddTodo {
-  type: typeof ADD_TODO,
+import { ICreateTodo, ITodo, ITodoList } from '../../interfaces'
+
+export const GET_LIST_TODOS = 'GET_LIST_TODOS'
+export interface GetListTodos {
+  type: typeof GET_LIST_TODOS,
   payload: string
 }
 
-export const TOGGLE_TODO = 'TOGGLE_TODO'
-export interface ToggleTodo {
-  type: typeof TOGGLE_TODO,
-  payload: number
+export const GET_LIST_TODOS_SUCCESS = 'GET_LIST_TODOS_SUCCESS'
+export interface GetListTodosSuccess {
+  type: typeof GET_LIST_TODOS_SUCCESS,
+  payload: Array<ITodo>
+}
+
+export const GET_LISTS = 'GET_LISTS'
+export interface GetLists {
+  type: typeof GET_LISTS
+}
+
+export const GET_LISTS_SUCCESS = 'GET_LISTS_SUCCESS'
+export interface GetListsSuccess {
+  type: typeof GET_LISTS_SUCCESS,
+  payload: Array<ITodoList>
+}
+
+export const CREATE_TODO = 'CREATE_TODO'
+export interface CreateTodo {
+  type: typeof CREATE_TODO,
+  payload: ICreateTodo
+}
+
+export const UPDATE_TODO = 'UPDATE_TODO'
+export interface UpdateTodo {
+  type: typeof UPDATE_TODO,
+  payload: {
+    todoId: string,
+    data: {}
+  }
 }
 
 export const DELETE_TODO = 'DELETE_TODO'
 export interface DeleteTodo {
   type: typeof DELETE_TODO,
-  payload: number
+  payload: ITodo
 }
 
-export const SET_FILTER = 'SET_FILTER'
-export interface SetFilter {
-  type: typeof SET_FILTER,
+export const TODOS_FAILURE = 'TODOS_FAILURE'
+export interface TodosFailure {
+  type: typeof TODOS_FAILURE,
   payload: string
 }
 
 export type TodoTypes =
-| AddTodo
-| ToggleTodo
+| GetListTodos
+| GetListTodosSuccess
+| GetLists
+| GetListsSuccess
+| CreateTodo
+| UpdateTodo
 | DeleteTodo
-| SetFilter
+| TodosFailure

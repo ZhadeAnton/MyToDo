@@ -1,57 +1,46 @@
+import { ITodo, ITodoList } from '../../interfaces'
 import * as actions from './todoActionTypes'
 
 export interface TodoState {
-  allIds: Array<number>,
-  byIds: any
+  todos: Array<ITodo>,
+  lists: Array<ITodoList>
 }
 
 const INITIAL_STATE: TodoState = {
-  allIds: [],
-  byIds: {}
+  todos: [],
+  lists: []
 }
 
-const todoReducer = (
-    state = INITIAL_STATE,
-    action: actions.TodoTypes): TodoState => {
+const todoReducer =
+(state = INITIAL_STATE, action: actions.TodoTypes): TodoState => {
   switch (action.type) {
-    case actions.ADD_TODO: {
-      const title = action.payload
-      const id = Number(new Date())
+    case actions.GET_LIST_TODOS_SUCCESS:
       return {
         ...state,
-        allIds: [...state.allIds, id],
-        byIds: {...state.byIds,
-          [id]: {
-            title,
-            completed: false
-          }}
+        todos: [...state.todos, ...action.payload]
       }
-    }
 
-    case actions.TOGGLE_TODO: {
-      const id = action.payload
+    case actions.GET_LISTS_SUCCESS:
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed
-          }
-        }
+        lists: [...state.lists, ...action.payload]
       }
-    }
 
-    case actions.DELETE_TODO: {
-      const id = action.payload
-      return {
-        ...state,
-        allIds: state.allIds.filter((todoId) => todoId !== id)
-      }
-    }
+      // case actions.CREATE_TODO:
+      //   return {
+      //     ...state,
+      //     todos: [...state.todos, action.payload]
+      //   }
+
+      // case actions.DELETE_TODO:
+      //   return {
+      //     ...state,
+      // eslint-disable-next-line max-len
+      //     todos: [...state.todos.filter((todo) => todo.id !== action.payload.id)]
+      //   }
 
     default:
-      return state;
+      return state
   }
 }
 

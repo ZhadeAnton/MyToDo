@@ -31,7 +31,7 @@ const TodoForm = ({ onSubmit }: Props) => {
         onChange={changeHandler}
       />
 
-      <Button>Send todo</Button>
+      <Button onClick={handleSubmit}>Send todo</Button>
     </form>
   )
 }

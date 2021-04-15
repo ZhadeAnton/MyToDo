@@ -9,10 +9,13 @@ import { Divider, Spin } from 'antd';
 
 import styles from './todoDrawer.module.scss'
 import CustomLink from '../../custom/customLink/CustomLink'
-import useApi from '../../../hooks/api';
+import { ITodoList } from '../../../interfaces';
 
-const TodoDrawer = () => {
-  const { data: { lists } } = useApi()
+interface Props {
+  lists: Array<ITodoList>
+}
+
+const TodoDrawer = ({lists }: Props) => {
   if (!lists) return <Spin />
 
   return (

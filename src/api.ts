@@ -1,6 +1,6 @@
 import { db } from './firebase.config';
 
-export function getLists() {
+export function fetchLists() {
   return db.collection('lists')
       .get()
       .then((snapShot) => {
@@ -13,7 +13,7 @@ export function getLists() {
       .catch((error) => console.log(error))
 }
 
-export function getListsTodos(listId: string) {
+export function fetchListTodos(listId: string) {
   return db.collection('todos')
       .where('listId', '==', `${listId}`)
       .get()
@@ -27,7 +27,7 @@ export function getListsTodos(listId: string) {
       .catch((error) => console.log(error))
 }
 
-export function createTodo(data: {}) {
+export function fetchCreateTodo(data: {}) {
   return db.collection('todos')
       .add({
         ...data,
@@ -41,7 +41,7 @@ export function createTodo(data: {}) {
       .catch((error) => console.log(error))
 }
 
-export function updateTodo(todoId: string, data: {}) {
+export function fetchUpdateTodo(todoId: string, data: {}) {
   return db.collection('todos')
       .doc(todoId)
       .update(data)
@@ -51,7 +51,7 @@ export function updateTodo(todoId: string, data: {}) {
       }))
 }
 
-export function deleteTodo(todoId: string) {
+export function fetchDeleteTodo(todoId: string) {
   return db.collection('todos')
       .doc(todoId)
       .delete()
