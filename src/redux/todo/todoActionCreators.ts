@@ -45,9 +45,21 @@ export const updateTodo = (todoId: string, data: {}): actions.UpdateTodo => ({
   }
 })
 
-export const deleteTodo = (todo: ITodo): actions.DeleteTodo => ({
+export const updateTodoSuccess = (
+    updatedTodo: ITodo): actions.UpdateTodoSuccess => ({
+  type: actions.UPDATE_TODO_SUCCESS,
+  payload: updatedTodo
+})
+
+export const deleteTodo = (todoId: string): actions.DeleteTodo => ({
   type: actions.DELETE_TODO,
-  payload: todo
+  payload: todoId
+})
+
+export const deleteTodoSuccess = (
+    todoId: string): actions.DeleteTodoSuccess => ({
+  type: actions.DELETE_TODO_SUCCESS,
+  payload: todoId
 })
 
 export const todosFailure = (error: string): actions.TodosFailure => ({

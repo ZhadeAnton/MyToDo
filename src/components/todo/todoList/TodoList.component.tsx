@@ -8,32 +8,25 @@ import { ITodoList, ITodo } from '../../../interfaces'
 interface Props {
   todos: Array<ITodo>,
   list: ITodoList,
-  deleteTodo: (todo: ITodo) => void,
+  deleteTodo: (todo: string) => void,
   updateTodo: (todoId: string, data: {}) => void,
   handleSelect: (todo: ITodo) => void,
 }
 
-const TodoList = ({
-  todos,
-  list,
-  deleteTodo,
-  updateTodo,
-  handleSelect,
-  // Todo: I'm not like this realization with Props...
-}: Props) => {
-  const todosLenght = todos?.length
+const TodoList: React.FC<Props> = (props) => {
+  const todosLenght = props.todos?.length
   return (
     <div className={styles.todoList}>
-      <p>{list.title}</p>
+      <p>{props.list.title}</p>
       <ul>
         {
-          todos?.map((todo) =>
+          props.todos?.map((todo) =>
             <TodoListItem
               key={todo.id}
               todo={todo}
-              deleteTodo={deleteTodo}
-              updateTodo={updateTodo}
-              onSelect={handleSelect}
+              deleteTodo={props.deleteTodo}
+              updateTodo={props.updateTodo}
+              onSelect={props.handleSelect}
             />
           )
         }

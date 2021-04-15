@@ -32,12 +32,26 @@ const todoReducer =
         todos: [...state.todos, action.payload]
       }
 
-      // case actions.DELETE_TODO:
-      //   return {
-      //     ...state,
-      // eslint-disable-next-line max-len
-      //     todos: [...state.todos.filter((todo) => todo.id !== action.payload.id)]
-      //   }
+    case actions.DELETE_TODO_SUCCESS:
+      return {
+        ...state,
+        todos: [...state.todos.filter((todo) => todo.id !== action.payload)]
+      }
+
+    case actions.UPDATE_TODO_SUCCESS:
+      return {
+        ...state,
+        todos: [...state.todos.map((todo) => {
+          if (todo.id === action.payload.id) {
+            return {
+              ...todo,
+              ...action.payload
+            }
+          }
+
+          return todo
+        })]
+      }
 
     default:
       return state

@@ -31,10 +31,19 @@ export function* createTodo({payload: {title, listId}}) {
   }
 }
 
-export function* deleteTodo(todoId) {
+export function* updateTodo({payload: {todoId, data}}) {
   try {
-    const todo = yield api.fetchDeleteTodo(todoId)
-    yield put(actionCreators.deleteTodo(todo))
+    const newTodo = yield call(api.fetchUpdateTodo, todoId, data)
+    yield put(actionCreators.updateTodoSuccess(newTodo))
+  } catch (error) {
+    yield put(actionCreators.todosFailure(error.message))
+  }
+}
+
+export function* deleteTodo({payload}) {
+  try {
+    const todo = yield call(api.fetchDeleteTodo, payload)
+    yield put(actionCreators.deleteTodoSuccess(todo))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
@@ -52,6 +61,10 @@ function* onCreateTodo() {
   yield takeLatest(actionTypes.CREATE_TODO, createTodo)
 }
 
+function* onUpdateTodo() {
+  yield takeLatest(actionTypes.UPDATE_TODO, updateTodo)
+}
+
 function* onDeleteTodo() {
   yield takeLatest(actionTypes.DELETE_TODO, deleteTodo)
 }
@@ -61,6 +74,7 @@ export default function* todoSagas() {
     call(onGetListTodos),
     call(onGetLists),
     call(onCreateTodo),
+    call(onUpdateTodo),
     call(onDeleteTodo)
   ])
 }

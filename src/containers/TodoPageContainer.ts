@@ -4,19 +4,19 @@ import { Dispatch, compose } from 'redux'
 import {
   ITodo,
   ITodoList,
-} from '../../interfaces';
+} from '../interfaces';
 
-import { TodoState } from '../../redux/todo/todoReducer';
-import { RootState } from '../../redux/store/store';
-import { TodoTypes } from '../../redux/todo/todoActionTypes';
+import { TodoState } from '../redux/todo/todoReducer';
+import { RootState } from '../redux/store/store';
+import { TodoTypes } from '../redux/todo/todoActionTypes';
 import {
   getLists,
   getListTodos,
   createTodo,
   deleteTodo,
   updateTodo,
-} from '../../redux/todo/todoActionCreators'
-import TodoPage from '../../routes/todo/TodoPage.component';
+} from '../redux/todo/todoActionCreators'
+import TodoPage from '../routes/todo/TodoPage.component';
 
 interface OwnProps extends TodoState {
   match: {
@@ -37,9 +37,9 @@ interface StateProps {
 interface DispatchProps {
   getLists: () => void,
   getTodos: (listId: string) => void,
-  createTodo: (title: string, listId: string) => any,
-  updateTodo: (todoId: string, data: {}) => any
-  deleteTodo: (todo: ITodo) => any
+  createTodo: (title: string, listId: string) => void,
+  updateTodo: (todoId: string, data: {}) => void
+  deleteTodo: (todo: string) => void
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   createTodo: (title: string, listId: string) =>
     dispatch(createTodo(title, listId)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
-  deleteTodo: (todo: ITodo) => dispatch(deleteTodo(todo))
+  deleteTodo: (todo: string) => dispatch(deleteTodo(todo))
 })
 
 const TodoPageContainer = compose(

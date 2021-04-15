@@ -3,36 +3,31 @@ import { Checkbox } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 
 import styles from './todoListItem.module.scss'
-
 import { ITodo } from '../../../interfaces';
 
 interface Props {
   todo: ITodo,
-  deleteTodo: (todo: ITodo) => void,
+  deleteTodo: (todo: string) => void,
   updateTodo: (todoId: string, data: {}) => void,
   onSelect: (todo: ITodo) => void
 }
 
-const TodoListItem = ({
-  todo,
-  deleteTodo,
-  updateTodo,
-  onSelect,
-  // Todo: looks terable...
-}: Props) => {
+const TodoListItem: React.FC<Props> = (props) => {
   function handleChecked(completed: boolean) {
-    updateTodo(todo.id, {completed})
+    props.updateTodo(props.todo.id, {completed})
   }
 
   return (
     <li className={styles.todoItem}>
       <Checkbox
-        checked={todo.completed}
+        checked={props.todo.completed}
         onChange={(e) => handleChecked(e.target.checked)}
       />
 
-      <p onClick={() => onSelect(todo)}>{todo.title}</p>
-      <div onClick={() => deleteTodo(todo)}><DeleteOutlined /></div>
+      <p onClick={() => props.onSelect(props.todo)}>{props.todo.title}</p>
+      <div
+        onClick={() => props.deleteTodo(props.todo.id)}>
+        <DeleteOutlined /></div>
     </li>
   )
 }

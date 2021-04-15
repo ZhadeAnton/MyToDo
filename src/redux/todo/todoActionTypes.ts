@@ -47,10 +47,22 @@ export interface UpdateTodo {
   }
 }
 
+export const UPDATE_TODO_SUCCESS = 'UPDATE_TODO_SUCCESS'
+export interface UpdateTodoSuccess {
+  type: typeof UPDATE_TODO_SUCCESS,
+  payload: ITodo
+}
+
 export const DELETE_TODO = 'DELETE_TODO'
 export interface DeleteTodo {
   type: typeof DELETE_TODO,
-  payload: ITodo
+  payload: string
+}
+
+export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
+export interface DeleteTodoSuccess {
+  type: typeof DELETE_TODO_SUCCESS,
+  payload: string
 }
 
 export const TODOS_FAILURE = 'TODOS_FAILURE'
@@ -61,11 +73,13 @@ export interface TodosFailure {
 
 export type TodoTypes =
 | GetListTodos
-| GetListTodosSuccess
 | GetLists
-| GetListsSuccess
 | CreateTodo
-| CreateTodoSuccess
 | UpdateTodo
 | DeleteTodo
+| GetListTodosSuccess
+| GetListsSuccess
+| CreateTodoSuccess
+| UpdateTodoSuccess
+| DeleteTodoSuccess
 | TodosFailure

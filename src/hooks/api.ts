@@ -36,13 +36,6 @@ export default function useApi() {
         })
   }
 
-  function deleteTodo(todoId: string) {
-    return api.fetchDeleteTodo(todoId)
-        .then((todoId) => {
-          setTodos([...todos.filter((todo) => todo.id !== todoId)])
-        })
-  }
-
   return {
     data: {
       lists,
@@ -53,7 +46,6 @@ export default function useApi() {
       getListTodos,
       getLists,
       createTodo,
-      deleteTodo,
       updateTodo
     }
   }

@@ -18,7 +18,7 @@ import {
   selectUserLoading,
 } from './redux/user/userSelectors';
 import
-TodoPageContainer from './containers/todoListContainer/TodoPageContainer';
+TodoPageContainer from './containers/TodoPageContainer';
 
 interface Props {
   user: IUser | undefined;

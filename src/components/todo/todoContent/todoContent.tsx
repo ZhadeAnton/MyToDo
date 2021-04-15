@@ -15,10 +15,10 @@ interface Props {
   }
   todos: Array<ITodo>,
   lists: ITodoList[],
-  getTodos: (listId: string) => any,
-  createTodo: (title: string, listId: string) => any,
-  updateTodo: (todoId: string, data: {}) => any
-  deleteTodo: (todo: ITodo) => any
+  getTodos: (listId: string) => void,
+  createTodo: (title: string, listId: string) => void,
+  updateTodo: (todoId: string, data: {}) => void
+  deleteTodo: (todo: string) => void
 }
 
 const TodoContent: React.FC<Props> = (props) => {

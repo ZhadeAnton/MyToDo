@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
 import {
-  TodoListProps } from '../../containers/todoListContainer/TodoPageContainer'
+  TodoListProps } from '../../containers/TodoPageContainer'
 import todoBg from '../../assets/todo/todo-bg.webp'
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoContent from '../../components/todo/todoContent/todoContent'
