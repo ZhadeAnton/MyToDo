@@ -1,0 +1,12 @@
+.todoForm {
+  display: flex;
+
+  input {
+    max-width: 500px;
+  }
+
+  button {
+    width: 100px;
+    z-index: 2;
+  }
+}

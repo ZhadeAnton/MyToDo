@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect'
-import {RootState} from '../store'
+import {RootState} from '../store/store'
 
 const selectUser = (state: RootState) => state.user
 

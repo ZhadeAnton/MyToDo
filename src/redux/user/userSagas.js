@@ -8,7 +8,7 @@ import {
   facebookProvider,
   getCurrentUser,
   creacteUserProfileDocument
-} from '../../firebase/firebase.config'
+} from '../../firebase.config'
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {

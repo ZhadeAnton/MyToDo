@@ -18,7 +18,7 @@ code {
 *::after {
     padding: 0;
     margin: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 a, a:visited, a:active {
@@ -30,7 +30,7 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
-ul, li {
+ul, li, p {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -51,6 +51,8 @@ input {
   --color-grey-2: #F6F6F6;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-todo-background: #dddcdc;
+
   --clamped-size: clamp(1rem, -5.7500rem + 18.7500vw, 5rem);
   --fullHeight: 100vh - 64px;
 
@@ -62,8 +64,9 @@ input {
 
   /*Measures*/
   --gutter-header: 80px;
-  --toDo-containers-barder-radius: .9rem;
-  --toDo-containers-background-color: #FEFEFF
+  --todo-item-height: 2.5rem;
+  --toDo-container-barder-radius: .9rem;
+  --toDo-container-background-color: #FEFEFF
 }
 
 .ml-sm {

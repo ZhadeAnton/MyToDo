@@ -1,0 +1,34 @@
+.drawer {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-white);
+}
+
+.drawerNav {
+
+  & > * {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.drawerLists {
+  a {
+    display: block;
+    padding: 1rem;
+  }
+}

@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   'rules': {
+    'object-curly-spacing': 0,
     'linebreak-style': 0,
     'semi': 0,
     'require-jsdoc': 0,
