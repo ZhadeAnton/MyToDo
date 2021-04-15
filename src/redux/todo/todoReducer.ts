@@ -17,7 +17,7 @@ const todoReducer =
     case actions.GET_LIST_TODOS_SUCCESS:
       return {
         ...state,
-        todos: [...state.todos, ...action.payload]
+        todos: [...action.payload]
       }
 
     case actions.GET_LISTS_SUCCESS:
@@ -26,11 +26,11 @@ const todoReducer =
         lists: [...state.lists, ...action.payload]
       }
 
-      // case actions.CREATE_TODO:
-      //   return {
-      //     ...state,
-      //     todos: [...state.todos, action.payload]
-      //   }
+    case actions.CREATE_TODO_SUCCESS:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload]
+      }
 
       // case actions.DELETE_TODO:
       //   return {

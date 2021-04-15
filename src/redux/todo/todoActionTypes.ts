@@ -1,4 +1,4 @@
-import { ICreateTodo, ITodo, ITodoList } from '../../interfaces'
+import { ITodo, ITodoList } from '../../interfaces'
 
 export const GET_LIST_TODOS = 'GET_LIST_TODOS'
 export interface GetListTodos {
@@ -26,7 +26,16 @@ export interface GetListsSuccess {
 export const CREATE_TODO = 'CREATE_TODO'
 export interface CreateTodo {
   type: typeof CREATE_TODO,
-  payload: ICreateTodo
+  payload: {
+    title: string,
+    listId: string
+  }
+}
+
+export const CREATE_TODO_SUCCESS = 'CREATE_TODO_SUCCESS'
+export interface CreateTodoSuccess {
+  type: typeof CREATE_TODO_SUCCESS,
+  payload: ITodo
 }
 
 export const UPDATE_TODO = 'UPDATE_TODO'
@@ -56,6 +65,7 @@ export type TodoTypes =
 | GetLists
 | GetListsSuccess
 | CreateTodo
+| CreateTodoSuccess
 | UpdateTodo
 | DeleteTodo
 | TodosFailure

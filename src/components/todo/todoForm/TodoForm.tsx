@@ -4,16 +4,17 @@ import { Input, Button } from 'antd';
 import styles from './todoForm.module.scss'
 
 interface Props {
-  onSubmit: (title: string) => void
+  listId: string,
+  onSubmit: (title: string, listId: string) => void
 }
 
-const TodoForm = ({ onSubmit }: Props) => {
+const TodoForm: React.FC<Props> = ({ onSubmit, listId }) => {
   const [title, setTitle] = useState('')
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
 
-    onSubmit(title.trim())
+    onSubmit(title, listId)
     setTitle('')
   }
 

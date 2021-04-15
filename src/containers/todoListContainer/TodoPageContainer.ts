@@ -4,7 +4,6 @@ import { Dispatch, compose } from 'redux'
 import {
   ITodo,
   ITodoList,
-  ICreateTodo,
 } from '../../interfaces';
 
 import { TodoState } from '../../redux/todo/todoReducer';
@@ -38,7 +37,7 @@ interface StateProps {
 interface DispatchProps {
   getLists: () => void,
   getTodos: (listId: string) => void,
-  createTodo: ({title, listId}: ICreateTodo) => any,
+  createTodo: (title: string, listId: string) => any,
   updateTodo: (todoId: string, data: {}) => any
   deleteTodo: (todo: ITodo) => any
 }
@@ -51,8 +50,8 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   getLists: () => dispatch(getLists()),
   getTodos: (listId: string) => dispatch(getListTodos(listId)),
-  createTodo: ({title, listId}: ICreateTodo) =>
-    dispatch(createTodo({title, listId})),
+  createTodo: (title: string, listId: string) =>
+    dispatch(createTodo(title, listId)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
   deleteTodo: (todo: ITodo) => dispatch(deleteTodo(todo))
 })

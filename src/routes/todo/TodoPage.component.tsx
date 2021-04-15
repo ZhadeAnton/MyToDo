@@ -8,18 +8,9 @@ import todoBg from '../../assets/todo/todo-bg.webp'
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoContent from '../../components/todo/todoContent/todoContent'
 
-const TodoPage: React.FC<TodoListProps> = ({
-  match,
-  todos,
-  lists,
-  getLists,
-  getTodos,
-  createTodo,
-  updateTodo,
-  deleteTodo
-}) => {
+const TodoPage: React.FC<TodoListProps> = (props) => {
   useEffect(() => {
-    getLists()
+    props.getLists()
   }, [])
 
   return (
@@ -28,7 +19,7 @@ const TodoPage: React.FC<TodoListProps> = ({
         <section className={styles.aside}>
 
           <TodoDrawer
-            lists={lists}
+            lists={props.lists}
           />
         </section>
 
@@ -37,13 +28,13 @@ const TodoPage: React.FC<TodoListProps> = ({
             <Route
               path="/todo/:listId?"
               render={() => <TodoContent
-                todos={todos}
-                lists={lists}
-                match={match}
-                getTodos={getTodos}
-                createTodo={createTodo}
-                deleteTodo={deleteTodo}
-                updateTodo={updateTodo}
+                todos={props.todos}
+                lists={props.lists}
+                match={props.match}
+                getTodos={props.getTodos}
+                createTodo={props.createTodo}
+                deleteTodo={props.deleteTodo}
+                updateTodo={props.updateTodo}
               />}
             />
           </Switch>

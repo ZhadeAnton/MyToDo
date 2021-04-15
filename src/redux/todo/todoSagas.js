@@ -3,9 +3,9 @@ import * as actionCreators from './todoActionCreators'
 import * as actionTypes from './todoActionTypes'
 import * as api from '../../api'
 
-export function* getTodos(listId) {
+export function* getTodos({payload}) {
   try {
-    const todos = yield api.fetchListTodos(listId)
+    const todos = yield call(api.fetchListTodos, payload)
     yield put(actionCreators.getListTodosSuccess(todos))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
@@ -14,7 +14,6 @@ export function* getTodos(listId) {
 
 export function* getLists() {
   try {
-    yield console.log('fetche for lists')
     const lists = yield api.fetchLists()
     yield put(actionCreators.getListsSuccess(lists))
   } catch (error) {
@@ -22,10 +21,11 @@ export function* getLists() {
   }
 }
 
-export function* createTodo(data) {
+export function* createTodo({payload: {title, listId}}) {
   try {
-    const newTodo = yield api.fetchCreateTodo(data)
-    yield put(actionCreators.createTodo(newTodo))
+    const data = {title, listId}
+    const newTodo = yield call(api.fetchCreateTodo, data)
+    yield put(actionCreators.createTodoSuccess(newTodo))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
