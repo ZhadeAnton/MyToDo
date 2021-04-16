@@ -47,8 +47,8 @@ const TodoContent: React.FC<Props> = (props) => {
   if (!currentList || !props.todos) return <Spin />
 
   return (
-    <div className={styles.todoListContainer}>
-      <div className={styles.todoSection}>
+    <div className={styles.todoContent}>
+      <div className={styles.todoTasks}>
         <TodoList
           list={currentList}
           todos={props.todos}

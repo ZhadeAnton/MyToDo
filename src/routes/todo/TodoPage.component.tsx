@@ -16,14 +16,13 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
   return (
     <section className={styles.todoPage}>
       <div className={styles.todoWrapper}>
-        <section className={styles.aside}>
-
+        <aside className={styles.todoDrawer}>
           <TodoDrawer
             lists={props.lists}
           />
-        </section>
+        </aside>
 
-        <section className={styles.content}>
+        <section className={styles.todoContent}>
           <Switch>
             <Route
               path="/todo/:listId?"

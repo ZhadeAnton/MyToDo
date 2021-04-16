@@ -64,9 +64,21 @@ input {
 
   /*Measures*/
   --gutter-header: 80px;
-  --todo-item-height: 2.5rem;
-  --toDo-container-barder-radius: .9rem;
-  --toDo-container-background-color: #FEFEFF
+
+  /*To-do Page*/
+  --todo-item-background: #ffffff;
+  --todo-item-text-color: #000000;
+  --todo-item-icon-color: var(--color-grey);
+  --todo-item-icon-color-hover: #da0c0c;
+  --todo-item-border-style: thin solid var(--color-grey);
+
+  --todo-item-padding: .5rem .5rem;
+  --todo-item-gutter-down: .3rem;
+  --todo-item-text-size: 1.3rem;
+  --todo-item-icon-size: 1.2rem;
+  --todo-item-check-button-gutter: .5rem;
+
+  --todo-item-icon-transition: .2s linear;
 }
 
 .ml-sm {

@@ -1,33 +1,38 @@
-.todoItem {
+.todoListItem {
   display: flex;
   align-items: center;
-  border: thin solid green;
-  margin-bottom: .6rem;
-  background-color: var(--color-todo-background);
   cursor: pointer;
-  height: var(--todo-item-height);
-  padding: 0 .4rem;
+  // padding: var(--todo-item-padding);
+  margin-bottom: var(--todo-item-gutter-down);
+  border: var(--todo-item-border-style);
+  background-color: var(--todo-item-background);
+}
 
-  p {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-left: .7rem;
-    font-size: 20px;
-  }
+.checkbox {
+  margin-right: var(--todo-item-check-button-gutter);
+}
 
-  input {
-    display: inline-block;
-  }
+.text {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: var(--todo-item-text-size);
+  color: var(--todo-item-text-color);
+}
 
-  div {
-    margin-left: auto;
+.deleteIcon {
+  display: inline-block;
+  
+  svg {
+    width: var(--todo-item-icon-size);
+    height: var(--todo-item-icon-size);
+    fill: var(--todo-item-icon-color);
+    transition: fill var(--todo-item-icon-transition);
 
-    svg {
-      width: 1rem;
-      height: 1rem;
-      fill: red;
+
+    &:hover {
+      fill: var(--todo-item-icon-color-hover);
     }
   }
 }
