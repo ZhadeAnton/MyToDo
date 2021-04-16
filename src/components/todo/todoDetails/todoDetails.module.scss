@@ -1,11 +1,33 @@
 .todoDetails {
-  width: 100%;
-  height: 100%;
   display: flex;
-  padding: 2rem;
+  position: relative;
+  height: 100%;
   z-index: 10;
+  padding: var(--todo-details-padding);
+  width: var(--todo-details-width);
+  background-color: var(--todo-details-background-color);
+}
 
-  i {
-    font-size: 28px;
+.topBanner {
+  width: 100%;
+}
+
+.bannerTitle {
+  font-size: var(--todo-details-title-size);
+}
+
+.closeBtn {
+  display: inline-block;
+  position: absolute;
+  top: 1%;
+  right: 3%;
+  font-size: var(--todo-details-close-btn-size);
+
+  svg {
+    fill: var(--todo-details-close-btn-color);
+
+    &:hover {
+      fill: var(--todo-details-close-btn-hover)
+    }
   }
 }

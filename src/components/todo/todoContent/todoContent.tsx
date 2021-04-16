@@ -48,7 +48,7 @@ const TodoContent: React.FC<Props> = (props) => {
 
   return (
     <div className={styles.todoContent}>
-      <div className={styles.todoTasks}>
+      <div className={styles.todoTasksWrapper}>
         <TodoList
           list={currentList}
           todos={props.todos}
@@ -57,10 +57,12 @@ const TodoContent: React.FC<Props> = (props) => {
           handleSelect={handleSelect}
         />
 
-        <TodoForm
-          listId={listId}
-          onSubmit={handleSubmit}
-        />
+        <div className={styles.todoContentForm}>
+          <TodoForm
+            listId={listId}
+            onSubmit={handleSubmit}
+          />
+        </div>
       </div>
 
       <div className={styles.todoDetails}>

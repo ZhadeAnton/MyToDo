@@ -2,14 +2,17 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  // padding: var(--todo-item-padding);
+  position: relative;
   margin-bottom: var(--todo-item-gutter-down);
   border: var(--todo-item-border-style);
   background-color: var(--todo-item-background);
 }
 
 .checkbox {
-  margin-right: var(--todo-item-check-button-gutter);
+  position: absolute;
+  top: 50%;
+  left: var(--todo-item-checkBox-left-position);
+  transform: translateY(-50%);
 }
 
 .text {
@@ -17,12 +20,18 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-left: var(--todo-item-text-margin-right);
+  padding: var(--todo-item-padding);
   font-size: var(--todo-item-text-size);
   color: var(--todo-item-text-color);
 }
 
 .deleteIcon {
-  display: inline-block;
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: var(--todo-item-icon-right-position);
+  transform: translateY(-50%);
   
   svg {
     width: var(--todo-item-icon-size);

@@ -32,7 +32,7 @@ const TodoForm: React.FC<Props> = ({ onSubmit, listId }) => {
         onChange={changeHandler}
       />
 
-      <Button onClick={handleSubmit}>Send todo</Button>
+      <Button size="large" onClick={handleSubmit}>Add tast</Button>
     </form>
   )
 }

@@ -18,8 +18,7 @@ const TodoListItem: React.FC<Props> = (props) => {
   }
 
   return (
-    <li className={styles.todoListItem}
-      onClick={() => props.onSelect(props.todo)}>
+    <li className={styles.todoListItem}>
       <span className={styles.checkbox}>
         <Checkbox
           checked={props.todo.completed}
@@ -27,7 +26,9 @@ const TodoListItem: React.FC<Props> = (props) => {
         />
       </span>
 
-      <div className={styles.text}>
+      <div className={styles.text}
+        onClick={() => props.onSelect(props.todo)}
+      >
         <p>{props.todo.title}</p>
       </div>
 

@@ -6,6 +6,10 @@
 .todoWrapper {
   display: flex;
   width: 100%;
+  background-image: url('../../assets/todo/todo-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .todoDrawer {
