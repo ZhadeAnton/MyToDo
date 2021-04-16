@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
 import React from 'react'
-import {
-  HomeOutlined,
-  AntDesignOutlined,
-  VerticalAlignMiddleOutlined
-} from '@ant-design/icons'
+
 import { Divider, Spin } from 'antd';
 
 import styles from './todoDrawer.module.scss'
+import {ReactComponent as IconHome} from '../../../assets/todo/icons/todo-icon-home.svg'
+import {ReactComponent as IconImportant} from '../../../assets/todo/icons/todo-icon-important.svg'
+import {ReactComponent as IconPlanned} from '../../../assets/todo/icons/todo-icon-planned.svg'
+import {ReactComponent as IconList} from '../../../assets/todo/icons/todo-icon-list.svg'
 import CustomLink from '../../custom/customLink/CustomLink'
 import { ITodoList } from '../../../interfaces';
 
@@ -19,13 +19,13 @@ const TodoDrawer = ({lists }: Props) => {
   if (!lists) return <Spin />
 
   return (
-    <aside className={styles.drawer}>
-      <ul className={styles.drawerNav}>
+    <aside className={styles.todoDrawer}>
+      <ul className={styles.topList}>
         {
           [
-            { title: 'Home', icon: <HomeOutlined />, to: '/todo'},
-            { title: 'Important', icon: <AntDesignOutlined />, to: '/todo/important'},
-            { title: 'Planned', icon: <VerticalAlignMiddleOutlined />, to: '/todo/planned'}
+            { title: 'Home', icon: <IconHome />, to: '/'},
+            { title: 'Important', icon: <IconImportant />, to: '/todo/important'},
+            { title: 'Planned', icon: <IconPlanned />, to: '/todo/planned'}
           ].map((item) => {
             return (
               <li key={item.title}>
@@ -37,13 +37,16 @@ const TodoDrawer = ({lists }: Props) => {
         }
       </ul>
 
-      <Divider>Lists</Divider>
+      <Divider />
 
-      <ul className={styles.drawerLists}>
+      <ul className={styles.todoList}>
         {
           lists?.map((item) => {
             return (
-              <li key={item.id}>
+              <li
+                key={item.id}
+              >
+                <i><IconList /></i>
                 <CustomLink to={`/todo/${item.id}`}>{item.title}</CustomLink>
               </li>
             )

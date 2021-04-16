@@ -18,16 +18,24 @@ const TodoListItem: React.FC<Props> = (props) => {
   }
 
   return (
-    <li className={styles.todoItem}>
-      <Checkbox
-        checked={props.todo.completed}
-        onChange={(e) => handleChecked(e.target.checked)}
-      />
+    <li className={styles.todoListItem}>
+      <span className={styles.checkbox}>
+        <Checkbox
+          checked={props.todo.completed}
+          onChange={(e) => handleChecked(e.target.checked)}
+        />
+      </span>
 
-      <p onClick={() => props.onSelect(props.todo)}>{props.todo.title}</p>
-      <div
+      <div className={styles.text}
+        onClick={() => props.onSelect(props.todo)}
+      >
+        <p>{props.todo.title}</p>
+      </div>
+
+      <div className={styles.deleteIcon}
         onClick={() => props.deleteTodo(props.todo.id)}>
-        <DeleteOutlined /></div>
+        <DeleteOutlined />
+      </div>
     </li>
   )
 }

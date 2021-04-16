@@ -47,8 +47,8 @@ const TodoContent: React.FC<Props> = (props) => {
   if (!currentList || !props.todos) return <Spin />
 
   return (
-    <div className={styles.todoListContainer}>
-      <div className={styles.todoSection}>
+    <div className={styles.todoContent}>
+      <div className={styles.todoTasksWrapper}>
         <TodoList
           list={currentList}
           todos={props.todos}
@@ -57,10 +57,12 @@ const TodoContent: React.FC<Props> = (props) => {
           handleSelect={handleSelect}
         />
 
-        <TodoForm
-          listId={listId}
-          onSubmit={handleSubmit}
-        />
+        <div className={styles.todoContentForm}>
+          <TodoForm
+            listId={listId}
+            onSubmit={handleSubmit}
+          />
+        </div>
       </div>
 
       <div className={styles.todoDetails}>

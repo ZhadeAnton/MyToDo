@@ -11,10 +11,15 @@ interface Props {
 
 const TodoDetails = ({ todo, onClose }: Props) => {
   return (
-    <div className={styles.todoDetails}>
-      <p>{todo.title}</p>
-      <i onClick={onClose}><CloseOutlined /></i>
-    </div>
+    <aside className={styles.todoDetails}>
+      <div className={styles.topBanner}>
+        <p className={styles.bannerTitle}>{todo.title}</p>
+      </div>
+
+      <span className={styles.closeBtn}>
+        <i onClick={onClose}><CloseOutlined /></i>
+      </span>
+    </aside>
   )
 }
 

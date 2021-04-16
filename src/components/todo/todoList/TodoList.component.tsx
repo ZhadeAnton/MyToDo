@@ -1,5 +1,4 @@
 import React from 'react'
-import { Pagination } from 'antd';
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem.component'
@@ -14,10 +13,11 @@ interface Props {
 }
 
 const TodoList: React.FC<Props> = (props) => {
-  const todosLenght = props.todos?.length
   return (
     <div className={styles.todoList}>
-      <p>{props.list.title}</p>
+      <div className={styles.title}>
+        <p>{props.list.title}</p>
+      </div>
       <ul>
         {
           props.todos?.map((todo) =>
@@ -31,7 +31,6 @@ const TodoList: React.FC<Props> = (props) => {
           )
         }
       </ul>
-      <Pagination defaultCurrent={1} total={todosLenght} />
     </div>
   )
 }

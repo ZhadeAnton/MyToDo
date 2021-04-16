@@ -2,11 +2,11 @@
   display: flex;
 
   input {
-    max-width: 500px;
+    width: 100%;
   }
 
   button {
-    width: 100px;
-    z-index: 2;
+    z-index: 10;
+    margin-left: 1rem;
   }
 }

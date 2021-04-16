@@ -1,25 +1,29 @@
 .todoPage {
   height: 100vh;
+  overflow: hidden;
 }
 
 .todoWrapper {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  width: 100%;
+  background-image: url('../../assets/todo/todo-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.aside {
-  grid-column: 1 / 3;
-  height: 100%;
-  background-color: rgb(209, 209, 209);
+.todoDrawer {
+  flex: 1;
 }
 
-.content {
-  grid-column: 3 / 13;
+.todoContent {
+  flex: 5;
 }
 
 .background {
 width: 100%;
 height: auto;
+position: absolute;
 
   img {
     height: 100vh;

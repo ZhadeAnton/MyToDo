@@ -1,0 +1,16 @@
+.todoContent {
+  display: flex;
+  min-height: 100%;
+}
+
+.todoTasksWrapper {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.todoContentForm {
+  width: 100%;
+  padding: var(--todo-content-form-padding);
+}
