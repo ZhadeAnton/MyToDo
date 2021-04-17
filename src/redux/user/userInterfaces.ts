@@ -4,7 +4,7 @@ export interface IUser {
   id: string,
   photoURL: string,
   createAt: {[key: string]: string},
-  uid?: string,
+  uid: string,
   data?: any
 }
 

@@ -17,6 +17,7 @@ import {
   updateTodo,
 } from '../redux/todo/todoActionCreators'
 import TodoPage from '../routes/todo/TodoPage.component';
+import { IUser } from '../redux/user/userInterfaces';
 
 interface OwnProps extends TodoState {
   match: {
@@ -31,11 +32,12 @@ interface OwnProps extends TodoState {
 
 interface StateProps {
   todos: Array<ITodo> | [],
-  lists: Array<ITodoList> | []
+  lists: Array<ITodoList> | [],
+  user: IUser | undefined
 }
 
 interface DispatchProps {
-  getLists: () => void,
+  getLists: (userId: string) => void,
   getTodos: (listId: string) => void,
   createTodo: (title: string, listId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
@@ -44,11 +46,12 @@ interface DispatchProps {
 
 const mapStateToProps = (state: RootState): StateProps => ({
   todos: state.todo.todos,
-  lists: state.todo.lists
+  lists: state.todo.lists,
+  user: state.user.currentUser
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
-  getLists: () => dispatch(getLists()),
+  getLists: (userId: string) => dispatch(getLists(userId)),
   getTodos: (listId: string) => dispatch(getListTodos(listId)),
   createTodo: (title: string, listId: string) =>
     dispatch(createTodo(title, listId)),

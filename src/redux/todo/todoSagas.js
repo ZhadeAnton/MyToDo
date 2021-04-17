@@ -3,18 +3,19 @@ import * as actionCreators from './todoActionCreators'
 import * as actionTypes from './todoActionTypes'
 import * as api from '../../api'
 
-export function* getTodos({payload}) {
+export function* getTodos({payload: listId}) {
   try {
-    const todos = yield call(api.fetchListTodos, payload)
+    const todos = yield call(api.fetchListTodos, listId)
     yield put(actionCreators.getListTodosSuccess(todos))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
 }
 
-export function* getLists() {
+export function* getLists({payload: userId}) {
   try {
-    const lists = yield api.fetchLists()
+    yield console.log('SAGA TODO', userId)
+    const lists = yield api.fetchLists(userId)
     yield put(actionCreators.getListsSuccess(lists))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))

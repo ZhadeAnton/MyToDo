@@ -12,8 +12,9 @@ export const getListTodosSuccess = (
   payload: todos
 })
 
-export const getLists = (): actions.GetLists => ({
-  type: actions.GET_LISTS
+export const getLists = (userId: string): actions.GetLists => ({
+  type: actions.GET_LISTS,
+  payload: userId
 })
 
 export const getListsSuccess = (

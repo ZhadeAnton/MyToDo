@@ -1,7 +1,8 @@
 import { db } from './firebase.config';
 
-export function fetchLists() {
+export function fetchLists(userId: string) {
   return db.collection('lists')
+      .where('userId', '==', `${userId}`)
       .get()
       .then((snapShot) => {
         const items = snapShot.docs.map((doc) => ({

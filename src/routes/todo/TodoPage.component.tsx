@@ -6,17 +6,23 @@ import {
   TodoListProps } from '../../containers/TodoPageContainer'
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoContent from '../../components/todo/todoContent/todoContent'
+import { Spin } from 'antd'
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
+  if (!props.user) return <Spin />
+
   useEffect(() => {
-    props.getLists()
-  }, [])
+    if (props.user) {
+      props.getLists(props.user.uid)
+    }
+  }, [props.user])
 
   return (
     <section className={styles.todoPage}>
       <div className={styles.todoWrapper}>
         <aside className={styles.todoDrawer}>
           <TodoDrawer
+            user={props.user}
             lists={props.lists}
           />
         </aside>

@@ -10,16 +10,22 @@ import {ReactComponent as IconPlanned} from '../../../assets/todo/icons/todo-ico
 import {ReactComponent as IconList} from '../../../assets/todo/icons/todo-icon-list.svg'
 import CustomLink from '../../custom/customLink/CustomLink'
 import { ITodoList } from '../../../interfaces';
+import { IUser } from '../../../redux/user/userInterfaces';
+import UserProfileContainer from '../../../containers/UserProfileContainer.container';
 
 interface Props {
+  user: IUser | undefined,
   lists: Array<ITodoList>
 }
 
-const TodoDrawer = ({lists }: Props) => {
-  if (!lists) return <Spin />
+const TodoDrawer: React.FC<Props> = (props) => {
+  if (!props.lists) return <Spin />
 
   return (
     <aside className={styles.todoDrawer}>
+      <div>
+        <UserProfileContainer />
+      </div>
       <ul className={styles.topList}>
         {
           [
@@ -41,7 +47,7 @@ const TodoDrawer = ({lists }: Props) => {
 
       <ul className={styles.todoList}>
         {
-          lists?.map((item) => {
+          props.lists?.map((item) => {
             return (
               <li
                 key={item.id}

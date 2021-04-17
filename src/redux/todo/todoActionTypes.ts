@@ -14,7 +14,8 @@ export interface GetListTodosSuccess {
 
 export const GET_LISTS = 'GET_LISTS'
 export interface GetLists {
-  type: typeof GET_LISTS
+  type: typeof GET_LISTS,
+  payload: string
 }
 
 export const GET_LISTS_SUCCESS = 'GET_LISTS_SUCCESS'
