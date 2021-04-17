@@ -6,6 +6,7 @@ import * as api from '../../api'
 export function* getTodos({payload: listId}) {
   try {
     const todos = yield call(api.fetchListTodos, listId)
+    yield console.log('NEW TODOS', todos)
     yield put(actionCreators.getListTodosSuccess(todos))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
@@ -22,10 +23,15 @@ export function* getLists({payload: userId}) {
   }
 }
 
-export function* createTodo({payload: {title, listId}}) {
+export function* createTodo({payload: {title, listId, userId}}) {
   try {
-    const data = {title, listId}
-    const newTodo = yield call(api.fetchCreateTodo, data)
+    const newTodo = yield call(api.fetchCreateTodo, {
+      title,
+      listId,
+      userId,
+      completed: false,
+      important: false
+    })
     yield put(actionCreators.createTodoSuccess(newTodo))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))

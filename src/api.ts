@@ -32,7 +32,6 @@ export function fetchCreateTodo(data: {}) {
   return db.collection('todos')
       .add({
         ...data,
-        completed: false
       })
       .then((docRef) => docRef.get())
       .then((doc) => ({

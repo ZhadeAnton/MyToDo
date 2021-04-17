@@ -9,7 +9,9 @@ import TodoContent from '../../components/todo/todoContent/todoContent'
 import { Spin } from 'antd'
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
-  if (!props.user) return <Spin />
+  const userId = props.user?.uid
+
+  if (!userId) return <Spin />
 
   useEffect(() => {
     if (props.user) {
@@ -34,6 +36,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
               render={() => <TodoContent
                 todos={props.todos}
                 lists={props.lists}
+                userId={userId}
                 match={props.match}
                 getTodos={props.getTodos}
                 createTodo={props.createTodo}

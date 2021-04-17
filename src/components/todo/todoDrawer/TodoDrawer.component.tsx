@@ -29,7 +29,7 @@ const TodoDrawer: React.FC<Props> = (props) => {
       <ul className={styles.topList}>
         {
           [
-            { title: 'Home', icon: <IconHome />, to: '/'},
+            { title: 'Home', icon: <IconHome />, to: '/todo/all'},
             { title: 'Important', icon: <IconImportant />, to: '/todo/important'},
             { title: 'Planned', icon: <IconPlanned />, to: '/todo/planned'}
           ].map((item) => {

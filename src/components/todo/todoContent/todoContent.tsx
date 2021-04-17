@@ -15,8 +15,9 @@ interface Props {
   }
   todos: Array<ITodo>,
   lists: ITodoList[],
+  userId: string,
   getTodos: (listId: string) => void,
-  createTodo: (title: string, listId: string) => void,
+  createTodo: (title: string, listId: string, userId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todo: string) => void
 }
@@ -33,7 +34,7 @@ const TodoContent: React.FC<Props> = (props) => {
   props.lists?.find((list: ITodoList) => list.id === listId)
 
   const handleSubmit = (title: string) => {
-    props.createTodo(title, listId)
+    props.createTodo(title, listId, props.userId)
   }
 
   const handleSelect = (todo: ITodo) => {
@@ -52,7 +53,6 @@ const TodoContent: React.FC<Props> = (props) => {
         <TodoList
           list={currentList}
           todos={props.todos}
-          deleteTodo={props.deleteTodo}
           updateTodo={props.updateTodo}
           handleSelect={handleSelect}
         />

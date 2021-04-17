@@ -1,13 +1,12 @@
 import React from 'react'
 import { Checkbox } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { StarOutlined, StarFilled } from '@ant-design/icons';
 
 import styles from './todoListItem.module.scss'
 import { ITodo } from '../../../interfaces';
 
 interface Props {
   todo: ITodo,
-  deleteTodo: (todo: string) => void,
   updateTodo: (todoId: string, data: {}) => void,
   onSelect: (todo: ITodo) => void
 }
@@ -15,6 +14,10 @@ interface Props {
 const TodoListItem: React.FC<Props> = (props) => {
   function handleChecked(completed: boolean) {
     props.updateTodo(props.todo.id, {completed})
+  }
+
+  function handleImportant(important: boolean) {
+    props.updateTodo(props.todo.id, {important: !important})
   }
 
   return (
@@ -32,9 +35,12 @@ const TodoListItem: React.FC<Props> = (props) => {
         <p>{props.todo.title}</p>
       </div>
 
-      <div className={styles.deleteIcon}
-        onClick={() => props.deleteTodo(props.todo.id)}>
-        <DeleteOutlined />
+      <div className={styles.starIcon}
+        onClick={() => handleImportant(props.todo.important)}
+      >
+        {
+          props.todo.important ? <StarFilled /> : <StarOutlined />
+        }
       </div>
     </li>
   )

@@ -29,7 +29,8 @@ export interface CreateTodo {
   type: typeof CREATE_TODO,
   payload: {
     title: string,
-    listId: string
+    listId: string,
+    userId: string,
   }
 }
 

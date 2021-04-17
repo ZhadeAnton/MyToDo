@@ -24,11 +24,15 @@ export const getListsSuccess = (
 })
 
 export const createTodo = (
-    title: string, listId: string): actions.CreateTodo => ({
+    title: string,
+    listId: string,
+    userId: string
+): actions.CreateTodo => ({
   type: actions.CREATE_TODO,
   payload: {
     title,
-    listId
+    listId,
+    userId,
   }
 })
 

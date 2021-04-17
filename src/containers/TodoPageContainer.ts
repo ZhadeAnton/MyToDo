@@ -39,7 +39,7 @@ interface StateProps {
 interface DispatchProps {
   getLists: (userId: string) => void,
   getTodos: (listId: string) => void,
-  createTodo: (title: string, listId: string) => void,
+  createTodo: (title: string, listId: string, userId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todo: string) => void
 }
@@ -53,8 +53,8 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   getLists: (userId: string) => dispatch(getLists(userId)),
   getTodos: (listId: string) => dispatch(getListTodos(listId)),
-  createTodo: (title: string, listId: string) =>
-    dispatch(createTodo(title, listId)),
+  createTodo: (title: string, listId: string, userId: string) =>
+    dispatch(createTodo(title, listId, userId)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
   deleteTodo: (todo: string) => dispatch(deleteTodo(todo))
 })

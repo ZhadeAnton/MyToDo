@@ -1,8 +1,10 @@
 export interface ITodo {
   title: string,
   listId: string,
+  userId: string,
   id: string,
-  completed: boolean
+  completed: boolean,
+  important: boolean
 }
 
 export type ITodoRecive = ITodo[]
