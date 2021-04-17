@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Dispatch, compose } from 'redux'
+import { Dispatch } from 'redux'
 
 import {
   ITodo,
@@ -56,11 +56,10 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   deleteTodo: (todo: string) => dispatch(deleteTodo(todo))
 })
 
-const TodoPageContainer = compose(
-    connect<StateProps, DispatchProps, OwnProps, RootState>(
-        mapStateToProps,
-        mapDispatchToProps
-    )
+const TodoPageContainer =
+connect<StateProps, DispatchProps, OwnProps, RootState>(
+    mapStateToProps,
+    mapDispatchToProps
 )(TodoPage)
 
 export type TodoListProps = StateProps & DispatchProps & OwnProps
