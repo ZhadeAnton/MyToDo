@@ -15,6 +15,7 @@ const todoReducer =
 (state = INITIAL_STATE, action: actions.TodoTypes): TodoState => {
   switch (action.type) {
     case actions.GET_LIST_TODOS_SUCCESS:
+    case actions.GET_ALL_TODOS_SUCCESS:
       return {
         ...state,
         todos: [...action.payload]
@@ -23,7 +24,7 @@ const todoReducer =
     case actions.GET_LISTS_SUCCESS:
       return {
         ...state,
-        lists: [...state.lists, ...action.payload]
+        lists: [...action.payload]
       }
 
     case actions.CREATE_TODO_SUCCESS:

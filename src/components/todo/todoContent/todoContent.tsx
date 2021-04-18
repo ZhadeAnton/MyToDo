@@ -1,41 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import { Spin } from 'antd'
+import React, { useState } from 'react'
 
 import styles from './todoContent.module.scss'
-import { ITodo, ITodoList } from '../../../interfaces'
+import { ICreatedTodo, ITodo, ITodoList } from '../../../interfaces'
 import TodoList from '../todoList/TodoList.component'
 import TodoForm from '../todoForm/TodoForm'
 import TodoDetails from '../todoDetails/TodoDetails'
 
 interface Props {
-  match: {
-    params: {
-      listid: string
-    }
-  }
   todos: Array<ITodo>,
   lists: ITodoList[],
+  listId: string,
+  currentList: ITodoList | undefined,
   userId: string,
   getTodos: (listId: string) => void,
-  createTodo: (title: string, listId: string, userId: string) => void,
+  createTodo: ({}: ICreatedTodo) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todo: string) => void
+  handleSubmit: (title: string) => void
 }
 
 const TodoContent: React.FC<Props> = (props) => {
   const [selectedTodo, setSelectedTodo] = useState<ITodo | null>(null)
-  const listId = props.match.params.listid
-
-  useEffect(() => {
-    props.getTodos(listId)
-  }, [listId])
-
-  const currentList =
-  props.lists?.find((list: ITodoList) => list.id === listId)
-
-  const handleSubmit = (title: string) => {
-    props.createTodo(title, listId, props.userId)
-  }
 
   const handleSelect = (todo: ITodo) => {
     setSelectedTodo(todo)
@@ -45,13 +30,11 @@ const TodoContent: React.FC<Props> = (props) => {
     setSelectedTodo(null)
   }
 
-  if (!currentList || !props.todos) return <Spin />
-
   return (
     <div className={styles.todoContent}>
       <div className={styles.todoTasksWrapper}>
         <TodoList
-          list={currentList}
+          list={props.currentList}
           todos={props.todos}
           updateTodo={props.updateTodo}
           handleSelect={handleSelect}
@@ -59,8 +42,8 @@ const TodoContent: React.FC<Props> = (props) => {
 
         <div className={styles.todoContentForm}>
           <TodoForm
-            listId={listId}
-            onSubmit={handleSubmit}
+            listId={props.listId}
+            onSubmit={props.handleSubmit}
           />
         </div>
       </div>

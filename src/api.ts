@@ -4,13 +4,15 @@ export function fetchLists(userId: string) {
   return db.collection('lists')
       .where('userId', '==', `${userId}`)
       .get()
-      .then((snapShot) => {
-        const items = snapShot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data()
-        }))
-        return items
-      })
+      .then(getSnapshots)
+      .catch((error) => console.log(error))
+}
+
+export function fetchTodos(userId: string) {
+  return db.collection('todos')
+      .where('userId', '==', `${userId}`)
+      .get()
+      .then(getSnapshots)
       .catch((error) => console.log(error))
 }
 
@@ -18,13 +20,7 @@ export function fetchListTodos(listId: string) {
   return db.collection('todos')
       .where('listId', '==', `${listId}`)
       .get()
-      .then((snapShot) => {
-        const items = snapShot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data()
-        }))
-        return items
-      })
+      .then(getSnapshots)
       .catch((error) => console.log(error))
 }
 
@@ -57,4 +53,11 @@ export function fetchDeleteTodo(todoId: string) {
       .delete()
       .then(() => todoId)
       .catch((error) => console.log(error))
+}
+
+function getSnapshots(snapShot: any) {
+  return snapShot.docs.map((doc: any) => ({
+    id: doc.id,
+    ...doc.data()
+  }))
 }

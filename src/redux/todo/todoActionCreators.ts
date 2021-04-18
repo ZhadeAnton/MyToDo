@@ -1,5 +1,16 @@
-import { ITodo, ITodoList } from '../../interfaces'
+import { ICreatedTodo, ITodo, ITodoList } from '../../interfaces'
 import * as actions from './todoActionTypes'
+
+export const getAllTodos = (userId: string): actions.GetAllTodos => ({
+  type: actions.GET_ALL_TODOS,
+  payload: userId
+})
+
+export const getAllTodosSuccess = (
+    todos: Array<ITodo>): actions.GetAllTodosSuccess => ({
+  type: actions.GET_ALL_TODOS_SUCCESS,
+  payload: todos
+})
 
 export const getListTodos = (listId: string): actions.GetListTodos => ({
   type: actions.GET_LIST_TODOS,
@@ -23,11 +34,11 @@ export const getListsSuccess = (
   payload: lists
 })
 
-export const createTodo = (
-    title: string,
-    listId: string,
-    userId: string
-): actions.CreateTodo => ({
+export const createTodo = ({
+  title,
+  listId,
+  userId
+}: ICreatedTodo): actions.CreateTodo => ({
   type: actions.CREATE_TODO,
   payload: {
     title,

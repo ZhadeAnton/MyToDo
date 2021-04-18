@@ -6,7 +6,7 @@ import { ITodoList, ITodo } from '../../../interfaces'
 
 interface Props {
   todos: Array<ITodo>,
-  list: ITodoList,
+  list: ITodoList | undefined,
   updateTodo: (todoId: string, data: {}) => void,
   handleSelect: (todo: ITodo) => void,
 }
@@ -15,7 +15,7 @@ const TodoList: React.FC<Props> = (props) => {
   return (
     <div className={styles.todoList}>
       <div className={styles.title}>
-        <p>{props.list.title}</p>
+        <p>{props.list?.title}</p>
       </div>
       <ul>
         {

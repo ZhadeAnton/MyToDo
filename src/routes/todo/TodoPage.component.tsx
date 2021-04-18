@@ -7,17 +7,48 @@ import {
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoContent from '../../components/todo/todoContent/todoContent'
 import { Spin } from 'antd'
+import { ITodo, ITodoList } from '../../interfaces'
+
+interface FilterTodos {
+  [key: string]: any
+}
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
   const userId = props.user?.uid
-
-  if (!userId) return <Spin />
+  const listId = props.match.params.listid
+  const currentList = props.lists?.find((list: ITodoList) =>
+    list.id === listId)
 
   useEffect(() => {
     if (props.user) {
-      props.getLists(props.user.uid)
+      props.getLists(props.user?.uid)
+      props.getTodos(props.user?.uid)
+      console.log(props.match)
     }
-  }, [props.user])
+  }, [props.user, props.match])
+
+  const getTodosByFilter: FilterTodos = ({
+    'all': (todos: any) => todos,
+    'important': (todos: any) => todos.filter((t: any) => t.important),
+    // 'planned': (todos: Array<ITodo) => todos.filter((t) => t.planned)
+  })
+
+  const getTodosByLists = (listId: string, todos: Array<ITodo>) =>
+    todos.filter((t) => t.listId === listId)
+
+  const todos = listId
+  ? getTodosByLists(listId, props.todos)
+  : getTodosByFilter[listId](props.todos)
+
+  const handleSubmit = (title: string) => {
+    props.createTodo({
+      title,
+      userId: userId || '',
+      listId: listId || ''
+    })
+  }
+
+  if (!userId) return <Spin />
 
   return (
     <section className={styles.todoPage}>
@@ -34,14 +65,16 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
             <Route
               path="/todo/:listId?"
               render={() => <TodoContent
-                todos={props.todos}
+                todos={todos}
                 lists={props.lists}
+                currentList={currentList}
                 userId={userId}
-                match={props.match}
-                getTodos={props.getTodos}
+                listId={listId}
+                getTodos={props.getListTodos}
                 createTodo={props.createTodo}
                 deleteTodo={props.deleteTodo}
                 updateTodo={props.updateTodo}
+                handleSubmit={handleSubmit}
               />}
             />
           </Switch>

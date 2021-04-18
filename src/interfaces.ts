@@ -20,3 +20,9 @@ export type ICreateTodo = {
   title: string,
   listId: string
 }
+
+export type ICreatedTodo = {
+  title: string,
+  userId: string,
+  listId: string
+}

@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react'
-
-import { Divider, Spin } from 'antd';
+import { Divider} from 'antd';
 
 import styles from './todoDrawer.module.scss'
 import {ReactComponent as IconHome} from '../../../assets/todo/icons/todo-icon-home.svg'
@@ -19,8 +18,6 @@ interface Props {
 }
 
 const TodoDrawer: React.FC<Props> = (props) => {
-  if (!props.lists) return <Spin />
-
   return (
     <aside className={styles.todoDrawer}>
       <div>
@@ -47,13 +44,13 @@ const TodoDrawer: React.FC<Props> = (props) => {
 
       <ul className={styles.todoList}>
         {
-          props.lists?.map((item) => {
+          props.lists?.map((list) => {
             return (
               <li
-                key={item.id}
+                key={list.id}
               >
                 <i><IconList /></i>
-                <CustomLink to={`/todo/${item.id}`}>{item.title}</CustomLink>
+                <CustomLink to={`/todo/${list.id}`}>{list.title}</CustomLink>
               </li>
             )
           })
