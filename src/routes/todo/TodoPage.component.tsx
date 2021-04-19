@@ -10,12 +10,13 @@ import { Spin } from 'antd'
 import { ITodo, ITodoList } from '../../interfaces'
 
 interface FilterTodos {
-  [key: string]: any
+  [key: string]: (todos: Array<ITodo>) => Array<ITodo>
 }
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
   const userId = props.user?.uid
-  const listId = props.match.params.listid
+  const listId = props.match.params.listid || ''
+  const path = props.match.path
   const currentList = props.lists?.find((list: ITodoList) =>
     list.id === listId)
 
@@ -28,8 +29,9 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
   }, [props.user, props.match])
 
   const getTodosByFilter: FilterTodos = ({
-    'all': (todos: any) => todos,
-    'important': (todos: any) => todos.filter((t: any) => t.important),
+    '/todo': (todos) => todos,
+    '/todo/general': (todos) => todos,
+    '/todo/important': (todos) => todos.filter((t: any) => t.important),
     // 'planned': (todos: Array<ITodo) => todos.filter((t) => t.planned)
   })
 
@@ -38,7 +40,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
 
   const todos = listId
   ? getTodosByLists(listId, props.todos)
-  : getTodosByFilter[listId](props.todos)
+  : getTodosByFilter[path](props.todos)
 
   const handleSubmit = (title: string) => {
     props.createTodo({
@@ -63,7 +65,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
         <section className={styles.todoContent}>
           <Switch>
             <Route
-              path="/todo/:listId?"
+              path="/todo/:listId"
               render={() => <TodoContent
                 todos={todos}
                 lists={props.lists}
