@@ -1,0 +1,10 @@
+.stepItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: thin solid grey;
+
+  i {
+    font-size: 1.5rem;
+  }
+}

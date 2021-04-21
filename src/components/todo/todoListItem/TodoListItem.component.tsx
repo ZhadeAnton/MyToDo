@@ -38,6 +38,12 @@ const TodoListItem: React.FC<Props> = (props) => {
         <p>{props.todo.title}</p>
       </div>
 
+      <span className={styles.todoSteps}>
+        {
+          props.todo.steps?.length ?' Steps :' + props.todo.steps?.length : ''
+        }
+      </span>
+
       <span className={styles.listItemTimestamp}>
         {moment(timeStamp)
             .format('dddd, MMMM Do YYYY, h:mm:ss a').toString()}

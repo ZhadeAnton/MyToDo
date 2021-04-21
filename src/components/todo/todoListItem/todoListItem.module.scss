@@ -26,6 +26,11 @@
   color: var(--todo-item-text-color);
 }
 
+.todoSteps {
+  width: 100%;
+  display: flex;
+}
+
 .listItemTimestamp {
   width: 100%;
   align-self: flex-end;
