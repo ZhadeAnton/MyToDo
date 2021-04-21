@@ -1,6 +1,6 @@
 .todoDetails {
   display: flex;
-  position: relative;
+  flex-direction: column;
   height: 100%;
   z-index: 10;
   padding: var(--todo-details-padding);
@@ -8,19 +8,31 @@
   background-color: var(--todo-details-background-color);
 }
 
-.topBanner {
+.topLine {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.bannerTitle {
+.bottomLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.todoData {
   font-size: var(--todo-details-title-size);
+}
+
+.todoDetailsDeleteIcon {
+  font-size: 1.5rem;
 }
 
 .closeBtn {
   display: inline-block;
-  position: absolute;
-  top: 1%;
-  right: 3%;
+  align-self: top;
+  
   font-size: var(--todo-details-close-btn-size);
 
   svg {

@@ -15,7 +15,7 @@ interface Props {
   getTodos: (listId: string) => void,
   createTodo: ({}: ICreatedTodo) => void,
   updateTodo: (todoId: string, data: {}) => void
-  deleteTodo: (todo: string) => void
+  deleteTodo: (todoId: string) => void
   handleSubmit: (title: string) => void
 }
 
@@ -53,6 +53,8 @@ const TodoContent: React.FC<Props> = (props) => {
           <TodoDetails
             todo={selectedTodo}
             onClose={handleCloseDetail}
+            onDelete={props.deleteTodo}
+            onUpdate={props.updateTodo}
           />
         }
       </div>

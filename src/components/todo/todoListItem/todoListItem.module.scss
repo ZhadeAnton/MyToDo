@@ -26,6 +26,12 @@
   color: var(--todo-item-text-color);
 }
 
+.listItemTimestamp {
+  width: 100%;
+  align-self: flex-end;
+  text-align: center;
+}
+
 .starIcon {
   display: block;
   position: absolute;

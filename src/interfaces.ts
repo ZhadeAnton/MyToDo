@@ -5,6 +5,7 @@ export interface ITodo {
   id: string,
   completed: boolean,
   important: boolean
+  timestamp: any
 }
 
 export type ITodoRecive = ITodo[]

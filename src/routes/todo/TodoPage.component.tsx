@@ -24,7 +24,6 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     if (props.user) {
       props.getLists(props.user?.uid)
       props.getTodos(props.user?.uid)
-      console.log(props.match)
     }
   }, [props.user, props.match])
 

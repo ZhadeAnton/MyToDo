@@ -1,6 +1,7 @@
 import React from 'react'
 import { Checkbox } from 'antd';
 import { StarOutlined, StarFilled } from '@ant-design/icons';
+import moment from 'moment'
 
 import styles from './todoListItem.module.scss'
 import { ITodo } from '../../../interfaces';
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const TodoListItem: React.FC<Props> = (props) => {
+  const timeStamp = props.todo.timestamp.toDate()
+
   function handleChecked(completed: boolean) {
     props.updateTodo(props.todo.id, {completed})
   }
@@ -34,6 +37,11 @@ const TodoListItem: React.FC<Props> = (props) => {
       >
         <p>{props.todo.title}</p>
       </div>
+
+      <span className={styles.listItemTimestamp}>
+        {moment(timeStamp)
+            .format('dddd, MMMM Do YYYY, h:mm:ss a').toString()}
+      </span>
 
       <div className={styles.starIcon}
         onClick={() => handleImportant(props.todo.important)}
