@@ -1,0 +1,14 @@
+import {createSelector} from 'reselect'
+import {RootState} from '../store/store'
+
+const selectTodoState = (state: RootState) => state.todo
+
+export const selectCurrentTodos = createSelector(
+    [selectTodoState],
+    (todoState) => todoState.todos
+)
+
+export const selectCurrentLists = createSelector(
+    [selectTodoState],
+    (todoState) => todoState.lists
+)

@@ -6,17 +6,18 @@ export interface ITodo {
   completed: boolean,
   important: boolean
   timestamp: any,
-  steps: [] | undefined
+  steps?: Array<ITodoStep>
 }
 
-export type ITodoRecive = ITodo[]
+export interface ITodoStep {
+  text: string,
+  completed: boolean
+}
 
 export interface ITodoList {
   title: string,
   id: string
 }
-
-export type ITodoListRecive = ITodoList[]
 
 export type ICreateTodo = {
   title: string,

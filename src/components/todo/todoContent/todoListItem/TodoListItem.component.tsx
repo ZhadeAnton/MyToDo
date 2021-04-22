@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Checkbox } from 'antd';
 import { StarOutlined, StarFilled } from '@ant-design/icons';
 import moment from 'moment'
@@ -22,6 +22,9 @@ const TodoListItem: React.FC<Props> = (props) => {
   function handleImportant(important: boolean) {
     props.updateTodo(props.todo.id, {important: !important})
   }
+
+  useEffect(() => {
+  }, [props.todo])
 
   return (
     <li className={styles.todoListItem}>

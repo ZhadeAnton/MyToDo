@@ -20,6 +20,10 @@ import {
 } from '../redux/todo/todoActionCreators'
 import TodoPage from '../routes/todo/TodoPage.component';
 import { IUser } from '../redux/user/userInterfaces';
+import {
+  selectCurrentLists,
+  selectCurrentTodos } from '../redux/todo/todoSelectors';
+import { selectCurrentUser } from '../redux/user/userSelectors';
 
 interface OwnProps extends TodoState {
   match: {
@@ -50,9 +54,9 @@ interface DispatchProps {
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  todos: state.todo.todos,
-  lists: state.todo.lists,
-  user: state.user.currentUser
+  todos: selectCurrentTodos(state),
+  lists: selectCurrentLists(state),
+  user: selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({

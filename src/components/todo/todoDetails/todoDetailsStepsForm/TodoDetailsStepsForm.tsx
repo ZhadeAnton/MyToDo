@@ -14,10 +14,11 @@ interface Props {
 const TodoDetailsStepsForm: React.FC<Props> = (props) => {
   const [stepText, setStepText] = useState('')
 
-  const handleStepSubmit = (e: React.SyntheticEvent) => {
+  const handleAddStep = (e: React.SyntheticEvent) => {
     e.preventDefault()
     props.onUpdate(props.todo.id,
-        {steps: firebase.firestore.FieldValue.arrayUnion(stepText)})
+        {steps: firebase.firestore.FieldValue
+            .arrayUnion({text: stepText, completed: false})})
     setStepText('')
   }
 
@@ -35,7 +36,7 @@ const TodoDetailsStepsForm: React.FC<Props> = (props) => {
         onChange={(e) => hanldleStepText(e.target.value)}
       />
 
-      <Button onClick={(e) => handleStepSubmit(e)}>Confirm</Button>
+      <Button onClick={(e) => handleAddStep(e)}>Confirm</Button>
     </form>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem.component'
@@ -12,6 +12,9 @@ interface Props {
 }
 
 const TodoList: React.FC<Props> = (props) => {
+  useEffect(() => {
+  }, [props.todos])
+
   return (
     <div className={styles.todoList}>
       <div className={styles.title}>
@@ -19,7 +22,7 @@ const TodoList: React.FC<Props> = (props) => {
       </div>
       <ul>
         {
-          props.todos?.map((todo) =>
+          props.todos.map((todo) =>
             <TodoListItem
               key={todo.id}
               todo={todo}

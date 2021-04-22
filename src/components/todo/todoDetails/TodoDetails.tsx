@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styles from './todoDetails.module.scss'
 import { ITodo } from '../../../interfaces'
@@ -18,6 +18,9 @@ interface Props {
 }
 
 const TodoDetails: React.FC<Props> = (props) => {
+  useEffect(() => {
+  }, [props.todo])
+
   return (
     <aside className={styles.todoDetails}>
       <TodoDetailsTopLine

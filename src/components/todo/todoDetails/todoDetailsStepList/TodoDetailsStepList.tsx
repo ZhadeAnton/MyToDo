@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Divider } from 'antd'
 
 import styles from './todoDetailsStepList.module.scss'
-import { ITodo } from '../../../../interfaces'
+import { ITodo, ITodoStep } from '../../../../interfaces'
 import TodoDetailsStepItem from '../todoDetailsStepItem/TodoDetailsStepItem'
-import firebase from 'firebase'
 
 interface Props {
   todo: ITodo,
@@ -12,22 +11,21 @@ interface Props {
 }
 
 const TodoDetailsStepList: React.FC<Props> = (props) => {
-  const handleStepRemove = (step: any) => {
-    props.onUpdate(props.todo.id,
-        {steps: firebase.firestore.FieldValue.arrayRemove(step)})
-  }
+  useEffect(() => {
+  }, [props.todo])
 
   return (
     <ul className={styles.stepList}>
       <Divider />
       Steps :
       {
-        props.todo.steps?.map((step, idx) => {
+        props.todo.steps?.map((step: ITodoStep, idx) => {
           return (
             <TodoDetailsStepItem
               key={idx}
+              todo={props.todo}
               step={step}
-              onStepDelete={handleStepRemove}
+              onUpdate={props.onUpdate}
             />
           )
         })

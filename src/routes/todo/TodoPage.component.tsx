@@ -21,11 +21,9 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     list.id === listId)
 
   useEffect(() => {
-    if (props.user) {
-      props.getLists(props.user?.uid)
-      props.getTodos(props.user?.uid)
-    }
-  }, [props.user, props.match])
+    props.getLists(userId!)
+    props.getTodos(userId!)
+  }, [props.match, props.user])
 
   const getTodosByFilter: FilterTodos = ({
     '/todo': (todos) => todos,
