@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem.component'
-import { ITodoList, ITodo } from '../../../interfaces'
+import { ITodoList, ITodo } from '../../../../interfaces'
 
 interface Props {
   todos: Array<ITodo>,

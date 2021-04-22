@@ -2,11 +2,11 @@ import React from 'react'
 
 import TodoDrawerFilterItem from '../todoDrawerFilterItem/TodoDrawerFilterItem'
 import {ReactComponent as IconHome}
-  from '../../../assets/todo/icons/todo-icon-home.svg'
+  from '../../../../assets/todo/icons/todo-icon-home.svg'
 import {ReactComponent as IconImportant}
-  from '../../../assets/todo/icons/todo-icon-important.svg'
+  from '../../../../assets/todo/icons/todo-icon-important.svg'
 import {ReactComponent as IconPlanned}
-  from '../../../assets/todo/icons/todo-icon-planned.svg'
+  from '../../../../assets/todo/icons/todo-icon-planned.svg'
 
 const drawerFilter = [
   { title: 'Home', icon: <IconHome />, to: '/todo/general'},

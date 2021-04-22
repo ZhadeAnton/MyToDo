@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CustomLink from '../../custom/customLink/CustomLink'
+import CustomLink from '../../../custom/customLink/CustomLink'
 
 interface Props {
   item: {

@@ -104,6 +104,7 @@ input {
   --todo-details-padding: 2rem 1rem;
   --todo-details-width: 20rem;
   --todo-details-title-size: 2rem;
+  --todo-details-title-margin-bottom: 1rem;
   --todo-details-close-btn-size: 1.5rem;
 }
 

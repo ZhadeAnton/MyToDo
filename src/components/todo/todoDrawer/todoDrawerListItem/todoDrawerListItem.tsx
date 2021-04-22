@@ -1,9 +1,9 @@
 import React from 'react'
 
 import {ReactComponent as IconList}
-  from '../../../assets/todo/icons/todo-icon-list.svg'
-import { ITodoList } from '../../../interfaces'
-import CustomLink from '../../custom/customLink/CustomLink'
+  from '../../../../assets/todo/icons/todo-icon-list.svg'
+import { ITodoList } from '../../../../interfaces'
+import CustomLink from '../../../custom/customLink/CustomLink'
 
 interface Props {
   list: ITodoList

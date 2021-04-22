@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 import styles from './todoContent.module.scss'
 import { ICreatedTodo, ITodo, ITodoList } from '../../../interfaces'
-import TodoList from '../todoList/TodoList.component'
-import TodoForm from '../todoForm/TodoForm'
+import TodoList from './todoList/TodoList.component'
+import TodoForm from './todoForm/TodoForm'
 import TodoDetails from '../todoDetails/TodoDetails'
 
 interface Props {

@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import { CloseOutlined, DeleteOutlined } from '@ant-design/icons'
-import { Input } from 'antd';
-import moment from 'moment'
-import firebase from 'firebase'
+import React from 'react'
 
 import styles from './todoDetails.module.scss'
 import { ITodo } from '../../../interfaces'
-import { Button } from 'antd'
-import TodoDetailsStepList from '../todoDetailsStepList/TodoDetailsStepList';
 
-const { TextArea } = Input;
+import TodoDetailsStepList from './todoDetailsStepList/TodoDetailsStepList';
+import TodoDetailsBottomLine
+  from './todoDetailsBottomLine/todoDetailsBottomLine';
+import TodoDetailsStepsForm from './todoDetailsStepsForm/TodoDetailsStepsForm';
+import TodoDetailsTodoForm from './todoDetailsTodoForm/TodoDetailsTodoForm';
+import TodoDetailsTopLine from './todoDetailsTopLine/TodoDetailsTopLine'
 
 interface Props {
   todo: ITodo,
@@ -19,101 +18,33 @@ interface Props {
 }
 
 const TodoDetails: React.FC<Props> = (props) => {
-  const [todoText, setTodoText] = useState('')
-  const [stepText, setStepText] = useState('')
-  const timeStamp = props.todo.timestamp.toDate()
-
-  useEffect(() => {
-    setTodoText(props.todo.title)
-    console.log('rerender!!!!')
-  }, [props.todo])
-
-  const handleChange = (value: string) => {
-    setTodoText(value)
-  }
-
-  const hanldleStepText = (value: string) => {
-    setStepText(value)
-  }
-
-  const handleDeleteTodo = () => {
-    props.onDelete(props.todo.id)
-    props.onClose()
-  }
-
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    props.onUpdate(props.todo.id, {title: todoText})
-    setTodoText('')
-  }
-
-  const handleStepSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    props.onUpdate(props.todo.id,
-        {steps: firebase.firestore.FieldValue.arrayUnion(stepText)})
-    setStepText('')
-  }
-
-  const handleStepRemove = (step: any) => {
-    props.onUpdate(props.todo.id,
-        {steps: firebase.firestore.FieldValue.arrayRemove(step)})
-  }
-
   return (
     <aside className={styles.todoDetails}>
-      <div className={styles.topLine}>
-        <h3>Todo details</h3>
-        <span className={styles.closeBtn}>
-          <i onClick={props.onClose}><CloseOutlined /></i>
-        </span>
-      </div>
+      <TodoDetailsTopLine
+        todo={props.todo}
+        onDetailsClose={props.onClose}
+      />
 
-      <form className={styles.todoTextForm}>
-        <Input
-          value={todoText}
-          onChange={(e) => handleChange(e.target.value)}
-          onPressEnter={(e) => handleSubmit(e)}
-          autoFocus
-          allowClear
-        />
-
-        <Button onClick={(e) => handleSubmit(e)}>Confirm</Button>
-      </form>
+      <TodoDetailsTodoForm
+        todo={props.todo}
+        onUpdate={props.onUpdate}
+      />
 
       <TodoDetailsStepList
         todo={props.todo}
-        onStepDelete={handleStepRemove}
+        onUpdate={props.onUpdate}
       />
 
-      <form className={styles.stepsForm}>
-        Add step
-        <TextArea
-          showCount
-          maxLength={100}
-          value={stepText}
-          onChange={(e) => hanldleStepText(e.target.value)}
-        />
+      <TodoDetailsStepsForm
+        todo={props.todo}
+        onUpdate={props.onUpdate}
+      />
 
-        <Button onClick={(e) => handleStepSubmit(e)}>Confirm</Button>
-      </form>
-
-      <div className={styles.bottomLine}>
-        <span className={styles.todoDetailsTime}>
-          Created&nbsp;
-          {
-            moment()
-                .from(timeStamp, true)
-                .toString()
-          }
-          &nbsp;ago
-        </span>
-
-        <span
-          className={styles.todoDetailsDeleteIcon}
-          onClick={() => handleDeleteTodo()}>
-          <DeleteOutlined />
-        </span>
-      </div>
+      <TodoDetailsBottomLine
+        todo={props.todo}
+        onDeleteTodo={props.onDelete}
+        onClose={props.onClose}
+      />
     </aside>
   )
 }

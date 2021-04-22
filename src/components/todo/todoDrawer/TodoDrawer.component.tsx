@@ -6,8 +6,8 @@ import styles from './todoDrawer.module.scss'
 import { ITodoList } from '../../../interfaces';
 import { IUser } from '../../../redux/user/userInterfaces';
 import UserProfileContainer from '../../../containers/UserProfileContainer.container';
-import TodoDrawerList from '../todoDrawerList/TodoDrawerList';
-import TodoDrawerFilterList from '../todoDrawerFilterList/todoDrawerFilterList';
+import TodoDrawerList from './todoDrawerList/TodoDrawerList';
+import TodoDrawerFilterList from './todoDrawerFilterList/todoDrawerFilterList';
 interface Props {
   user: IUser | undefined,
   lists: Array<ITodoList>,

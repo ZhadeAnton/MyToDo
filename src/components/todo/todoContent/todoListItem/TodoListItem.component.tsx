@@ -4,7 +4,7 @@ import { StarOutlined, StarFilled } from '@ant-design/icons';
 import moment from 'moment'
 
 import styles from './todoListItem.module.scss'
-import { ITodo } from '../../../interfaces';
+import { ITodo } from '../../../../interfaces';
 
 interface Props {
   todo: ITodo,

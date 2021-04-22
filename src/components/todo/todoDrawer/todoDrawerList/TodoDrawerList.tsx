@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ITodoList } from '../../../interfaces'
+import { ITodoList } from '../../../../interfaces'
 import TodoDrawerListItem from '../todoDrawerListItem/todoDrawerListItem'
 
 interface Props {

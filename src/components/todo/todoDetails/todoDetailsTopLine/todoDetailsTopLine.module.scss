@@ -1,0 +1,22 @@
+.topLine {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--todo-details-title-margin-bottom);
+  font-size: var(--todo-details-title-size);
+}
+
+.closeBtn {
+  display: inline-block;
+  align-self: top;
+  
+  font-size: var(--todo-details-close-btn-size);
+
+  svg {
+    fill: var(--todo-details-close-btn-color);
+
+    &:hover {
+      fill: var(--todo-details-close-btn-hover)
+    }
+  }
+}
