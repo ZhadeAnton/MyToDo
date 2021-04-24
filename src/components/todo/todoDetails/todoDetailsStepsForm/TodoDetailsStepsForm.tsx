@@ -1,24 +1,22 @@
 import React, { useState } from 'react'
 import { Button } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
-import firebase from 'firebase'
 
 import styles from './todoDetailsStepsForm.module.scss'
 import { ITodo } from '../../../../interfaces'
+import { TodoListProps } from '../../../../containers/TodoPageContainer'
 
 interface Props {
   todo: ITodo,
-  onUpdate: (todoId: string, data: {}) => void
+  addTodoStep: TodoListProps['addTodoStep']
 }
 
 const TodoDetailsStepsForm: React.FC<Props> = (props) => {
-  const [stepText, setStepText] = useState('')
+  const [stepTitle, setStepText] = useState('')
 
   const handleAddStep = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    props.onUpdate(props.todo.id,
-        {steps: firebase.firestore.FieldValue
-            .arrayUnion({text: stepText, completed: false})})
+    props.addTodoStep(props.todo.id, stepTitle)
     setStepText('')
   }
 
@@ -32,11 +30,11 @@ const TodoDetailsStepsForm: React.FC<Props> = (props) => {
       <TextArea
         showCount
         maxLength={100}
-        value={stepText}
+        value={stepTitle}
         onChange={(e) => hanldleStepText(e.target.value)}
       />
 
-      <Button onClick={(e) => handleAddStep(e)}>Confirm</Button>
+      <Button onClick={(e) => handleAddStep(e)}>Add step</Button>
     </form>
   )
 }

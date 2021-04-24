@@ -4,10 +4,11 @@ import { Divider } from 'antd'
 import styles from './todoDetailsStepList.module.scss'
 import { ITodo, ITodoStep } from '../../../../interfaces'
 import TodoDetailsStepItem from '../todoDetailsStepItem/TodoDetailsStepItem'
+import { TodoListProps } from '../../../../containers/TodoPageContainer'
 
 interface Props {
   todo: ITodo,
-  onUpdate: (todoId: string, data: {}) => void
+  deleteTodoStep: TodoListProps['deleteTodoStep']
 }
 
 const TodoDetailsStepList: React.FC<Props> = (props) => {
@@ -25,7 +26,7 @@ const TodoDetailsStepList: React.FC<Props> = (props) => {
               key={idx}
               todo={props.todo}
               step={step}
-              onUpdate={props.onUpdate}
+              deleteTodoStep={props.deleteTodoStep}
             />
           )
         })

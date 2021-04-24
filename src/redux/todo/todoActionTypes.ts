@@ -1,4 +1,11 @@
-import { ICreatedTodo, ICreateList, ITodo, ITodoList } from '../../interfaces'
+import {
+  IUpdatedTodo,
+  ICreateList,
+  ITodo,
+  ITodoList,
+  IAddTodoStep,
+  IDeleteTodoStep
+} from '../../interfaces'
 
 export const GET_ALL_TODOS = 'GET_ALL_TODOS'
 export interface GetAllTodos {
@@ -39,7 +46,7 @@ export interface GetListsSuccess {
 export const CREATE_TODO = 'CREATE_TODO'
 export interface CreateTodo {
   type: typeof CREATE_TODO,
-  payload: ICreatedTodo
+  payload: IUpdatedTodo
 }
 
 export const CREATE_TODO_SUCCESS = 'CREATE_TODO_SUCCESS'
@@ -75,6 +82,12 @@ export interface UpdateTodoSuccess {
   payload: ITodo
 }
 
+export const ADD_TODO_STEP = 'ADD_TODO_STEP'
+export interface AddTodoStep {
+  type: typeof ADD_TODO_STEP,
+  payload: IAddTodoStep
+}
+
 export const DELETE_TODO = 'DELETE_TODO'
 export interface DeleteTodo {
   type: typeof DELETE_TODO,
@@ -85,6 +98,12 @@ export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
 export interface DeleteTodoSuccess {
   type: typeof DELETE_TODO_SUCCESS,
   payload: string
+}
+
+export const DELETE_TODO_STEP = 'DELETE_TODO_STEP'
+export interface DeleteTodoStep {
+  type: typeof DELETE_TODO_STEP,
+  payload: IDeleteTodoStep
 }
 
 export const DELETE_LIST = 'DELETE_LIST'
@@ -113,6 +132,7 @@ export type TodoTypes =
 | CreateTodo
 | CreateList
 | UpdateTodo
+| AddTodoStep
 | DeleteTodo
 | GetListTodosSuccess
 | GetListsSuccess
@@ -122,4 +142,5 @@ export type TodoTypes =
 | DeleteTodoSuccess
 | DeleteListSuccess
 | DeleteList
+| DeleteTodoStep
 | TodosFailure

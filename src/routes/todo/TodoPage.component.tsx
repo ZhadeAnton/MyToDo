@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
@@ -8,12 +8,15 @@ import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoContent from '../../components/todo/todoContent/todoContent'
 import { Spin } from 'antd'
 import { ITodo, ITodoList } from '../../interfaces'
+import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
 
 interface FilterTodos {
   [key: string]: (todos: Array<ITodo>) => Array<ITodo>
 }
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
+  const [selectedTodo, setSelectedTodo] = useState<ITodo | null>(null)
+
   const userId = props.user?.uid
   const listId = props.match.params.listid || ''
   const path = props.match.path
@@ -21,6 +24,8 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     list.id === listId)
 
   useEffect(() => {
+    setSelectedTodo(null)
+
     props.getTodos(userId!)
     props.getLists(userId!)
   }, [props.match, props.user])
@@ -45,6 +50,15 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
       userId: userId || '',
       listId: listId || ''
     })
+  }
+
+
+  const handleSelect = (todo: ITodo) => {
+    setSelectedTodo(todo)
+  }
+
+  const handleCloseDetail = () => {
+    setSelectedTodo(null)
   }
 
   if (!userId) return <Spin />
@@ -76,9 +90,23 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
                 deleteTodo={props.deleteTodo}
                 updateTodo={props.updateTodo}
                 handleSubmit={handleSubmit}
+                onSelectTodo={handleSelect}
               />}
             />
           </Switch>
+
+          <div className={styles.todoDetails}>
+            { selectedTodo &&
+              <TodoDetails
+                todo={selectedTodo}
+                addTodoStep={props.addTodoStep}
+                deleteTodoStep={props.deleteTodoStep}
+                onClose={handleCloseDetail}
+                onDelete={props.deleteTodo}
+                onUpdate={props.updateTodo}
+              />
+            }
+          </div>
         </section>
       </div>
     </section>

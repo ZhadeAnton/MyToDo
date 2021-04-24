@@ -2,9 +2,10 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
 import {
-  ICreatedTodo,
+  IUpdatedTodo,
   ITodo,
   ITodoList,
+  ITodoStep,
 } from '../interfaces';
 
 import { TodoState } from '../redux/todo/todoReducer';
@@ -16,7 +17,9 @@ import {
   getListTodos,
   createTodo,
   createList,
+  addTodoStep,
   deleteTodo,
+  deleteTodoStep,
   deleteList,
   updateTodo,
 } from '../redux/todo/todoActionCreators'
@@ -49,11 +52,13 @@ interface StateProps {
 interface DispatchProps {
   getTodos: (userId: string) => void,
   getListTodos: (listId: string) => void,
-  createTodo: ({}: ICreatedTodo) => void,
+  createTodo: ({}: IUpdatedTodo) => void,
   createList: (userId: string, title: string) => void,
+  addTodoStep: (todoId: string, stepTitle: string) => void,
   getLists: (userId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todoId: string) => void,
+  deleteTodoStep: (todoId: string, step: ITodoStep) => void,
   deleteList: (listId: string) => void
 }
 
@@ -67,12 +72,16 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   getTodos: (userId: string) => dispatch(getAllTodos(userId)),
   getLists: (userId: string) => dispatch(getLists(userId)),
   getListTodos: (listId: string) => dispatch(getListTodos(listId)),
-  createTodo: ({title, userId, listId}: ICreatedTodo) =>
+  createTodo: ({title, userId, listId}: IUpdatedTodo) =>
     dispatch(createTodo({title, userId, listId})),
   createList: (userId: string, title: string) =>
     dispatch(createList(userId, title)),
+  addTodoStep: (todoId: string, stepTitle: string) =>
+    dispatch(addTodoStep(todoId, stepTitle)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
   deleteTodo: (todo: string) => dispatch(deleteTodo(todo)),
+  deleteTodoStep: (todoId: string, step: ITodoStep) =>
+    dispatch(deleteTodoStep(todoId, step)),
   deleteList: (listId: string) => dispatch(deleteList(listId))
 })
 

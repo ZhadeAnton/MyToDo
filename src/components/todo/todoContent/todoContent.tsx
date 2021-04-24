@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import styles from './todoContent.module.scss'
-import { ICreatedTodo, ITodo, ITodoList } from '../../../interfaces'
+import { IUpdatedTodo, ITodo, ITodoList } from '../../../interfaces'
 import TodoList from './todoList/TodoList.component'
 import TodoForm from './todoForm/TodoForm'
-import TodoDetails from '../todoDetails/TodoDetails'
 
 interface Props {
   todos: Array<ITodo>,
@@ -13,23 +12,14 @@ interface Props {
   currentList: ITodoList | undefined,
   userId: string,
   getTodos: (listId: string) => void,
-  createTodo: ({}: ICreatedTodo) => void,
+  createTodo: ({}: IUpdatedTodo) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todoId: string) => void
-  handleSubmit: (title: string) => void
+  handleSubmit: (title: string) => void,
+  onSelectTodo: (todo: ITodo) => void
 }
 
 const TodoContent: React.FC<Props> = (props) => {
-  const [selectedTodo, setSelectedTodo] = useState<ITodo | null>(null)
-
-  const handleSelect = (todo: ITodo) => {
-    setSelectedTodo(todo)
-  }
-
-  const handleCloseDetail = () => {
-    setSelectedTodo(null)
-  }
-
   return (
     <div className={styles.todoContent}>
       <div className={styles.todoTasksWrapper}>
@@ -37,7 +27,7 @@ const TodoContent: React.FC<Props> = (props) => {
           list={props.currentList}
           todos={props.todos}
           updateTodo={props.updateTodo}
-          handleSelect={handleSelect}
+          handleSelect={props.onSelectTodo}
         />
 
         <div className={styles.todoContentForm}>
@@ -46,17 +36,6 @@ const TodoContent: React.FC<Props> = (props) => {
             onSubmit={props.handleSubmit}
           />
         </div>
-      </div>
-
-      <div className={styles.todoDetails}>
-        { selectedTodo &&
-          <TodoDetails
-            todo={selectedTodo}
-            onClose={handleCloseDetail}
-            onDelete={props.deleteTodo}
-            onUpdate={props.updateTodo}
-          />
-        }
       </div>
     </div>
   )

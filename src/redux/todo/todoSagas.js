@@ -2,6 +2,7 @@ import {takeLatest, put, all, call} from 'redux-saga/effects'
 import * as actionCreators from './todoActionCreators'
 import * as actionTypes from './todoActionTypes'
 import * as api from '../../api'
+import firebase from 'firebase'
 
 export function* getTodos({payload: userId}) {
   try {
@@ -56,10 +57,19 @@ export function* createList({payload: {userId, title}}) {
   }
 }
 
-export function* updateTodo(todoId, data) {
+export function* updateTodo({payload: {todoId, data}}) {
   try {
     const newTodo = yield call(api.fetchUpdateTodo, todoId, data)
     yield put(actionCreators.updateTodoSuccess(newTodo))
+  } catch (error) {
+    yield put(actionCreators.todosFailure(error.message))
+  }
+}
+
+export function* addTodoStep({payload: {todoId, stepTitle}}) {
+  try {
+    yield call(api.fetchUpdateTodo, todoId, {
+      steps: firebase.firestore.FieldValue.arrayUnion({stepTitle})})
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
@@ -69,6 +79,15 @@ export function* deleteTodo({payload}) {
   try {
     const todoId = yield call(api.fetchDeleteTodo, payload)
     yield put(actionCreators.deleteTodoSuccess(todoId))
+  } catch (error) {
+    yield put(actionCreators.todosFailure(error.message))
+  }
+}
+
+export function* deleteTodoStep({payload: {todoId, step}}) {
+  try {
+    yield call(api.fetchUpdateTodo, todoId, {
+      steps: firebase.firestore.FieldValue.arrayRemove(step)})
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
@@ -107,8 +126,16 @@ function* onUpdateTodo() {
   yield takeLatest(actionTypes.UPDATE_TODO, updateTodo)
 }
 
+function* onAddTodoStep() {
+  yield takeLatest(actionTypes.ADD_TODO_STEP, addTodoStep)
+}
+
 function* onDeleteTodo() {
   yield takeLatest(actionTypes.DELETE_TODO, deleteTodo)
+}
+
+function* onDeleteTodoStep() {
+  yield takeLatest(actionTypes.DELETE_TODO_STEP, deleteTodoStep)
 }
 
 function* onDeleteList() {
@@ -123,7 +150,9 @@ export default function* todoSagas() {
     call(onCreateTodo),
     call(onCreatelist),
     call(onUpdateTodo),
+    call(onAddTodoStep),
     call(onDeleteTodo),
+    call(onDeleteTodoStep),
     call(onDeleteList)
   ])
 }

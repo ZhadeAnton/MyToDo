@@ -10,8 +10,16 @@ export interface ITodo {
 }
 
 export interface ITodoStep {
-  text: string,
-  completed: boolean
+  stepTitle: string,
+}
+
+export interface IAddTodoStep extends ITodoStep {
+  todoId: string
+}
+
+export interface IDeleteTodoStep {
+  todoId: string,
+  step: ITodoStep
 }
 
 export interface ITodoList {
@@ -25,13 +33,11 @@ export interface ICreateList {
   userId: string,
 }
 
-export type ICreateTodo = {
+export interface ICreateTodo {
   title: string,
   listId: string
 }
 
-export type ICreatedTodo = {
-  title: string,
+export interface IUpdatedTodo extends ICreateTodo {
   userId: string,
-  listId: string
 }

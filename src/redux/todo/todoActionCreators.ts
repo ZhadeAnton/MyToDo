@@ -1,4 +1,8 @@
-import { ICreatedTodo, ITodo, ITodoList } from '../../interfaces'
+import {
+  IUpdatedTodo,
+  ITodo,
+  ITodoList,
+  ITodoStep} from '../../interfaces'
 import * as actions from './todoActionTypes'
 
 export const getAllTodos = (userId: string): actions.GetAllTodos => ({
@@ -38,7 +42,7 @@ export const createTodo = ({
   title,
   listId,
   userId
-}: ICreatedTodo): actions.CreateTodo => ({
+}: IUpdatedTodo): actions.CreateTodo => ({
   type: actions.CREATE_TODO,
   payload: { title, listId, userId, }
 })
@@ -72,6 +76,12 @@ export const updateTodoSuccess = (
   payload: updatedTodo
 })
 
+export const addTodoStep = (
+    todoId: string, stepTitle: string): actions.AddTodoStep => ({
+  type: actions.ADD_TODO_STEP,
+  payload: { todoId, stepTitle: stepTitle }
+})
+
 export const deleteTodo = (todoId: string): actions.DeleteTodo => ({
   type: actions.DELETE_TODO,
   payload: todoId
@@ -81,6 +91,12 @@ export const deleteTodoSuccess = (
     todoId: string): actions.DeleteTodoSuccess => ({
   type: actions.DELETE_TODO_SUCCESS,
   payload: todoId
+})
+
+export const deleteTodoStep = (
+    todoId: string, step: ITodoStep): actions.DeleteTodoStep => ({
+  type: actions.DELETE_TODO_STEP,
+  payload: { todoId, step }
 })
 
 export const deleteList = (listId: string): actions.DeleteList => ({

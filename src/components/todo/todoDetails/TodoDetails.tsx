@@ -9,9 +9,12 @@ import TodoDetailsBottomLine
 import TodoDetailsStepsForm from './todoDetailsStepsForm/TodoDetailsStepsForm';
 import TodoDetailsTodoForm from './todoDetailsTodoForm/TodoDetailsTodoForm';
 import TodoDetailsTopLine from './todoDetailsTopLine/TodoDetailsTopLine'
+import { TodoListProps } from '../../../containers/TodoPageContainer';
 
 interface Props {
   todo: ITodo,
+  addTodoStep: TodoListProps['addTodoStep'],
+  deleteTodoStep: TodoListProps['deleteTodoStep'],
   onClose: () => void,
   onDelete: (todoId: string) => void,
   onUpdate: (todoId: string, data: {}) => void
@@ -35,12 +38,12 @@ const TodoDetails: React.FC<Props> = (props) => {
 
       <TodoDetailsStepList
         todo={props.todo}
-        onUpdate={props.onUpdate}
+        deleteTodoStep={props.deleteTodoStep}
       />
 
       <TodoDetailsStepsForm
         todo={props.todo}
-        onUpdate={props.onUpdate}
+        addTodoStep={props.addTodoStep}
       />
 
       <TodoDetailsBottomLine
