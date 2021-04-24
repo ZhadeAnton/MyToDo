@@ -47,7 +47,17 @@ export function* createTodo({payload: {title, listId, userId}}) {
   }
 }
 
-export function* updateTodo({payload: {todoId, data}}) {
+export function* createList({payload: {userId, title}}) {
+  try {
+    const newList = yield call(api.fetchCreateList, { userId, title })
+    yield console.log(newList)
+    yield put(actionCreators.createListSuccess(newList))
+  } catch (error) {
+    yield put(actionCreators.todosFailure(error.message))
+  }
+}
+
+export function* updateTodo(todoId, data) {
   try {
     const newTodo = yield call(api.fetchUpdateTodo, todoId, data)
     yield put(actionCreators.updateTodoSuccess(newTodo))
@@ -81,6 +91,10 @@ function* onCreateTodo() {
   yield takeLatest(actionTypes.CREATE_TODO, createTodo)
 }
 
+function* onCreatelist() {
+  yield takeLatest(actionTypes.CREATE_LIST, createList)
+}
+
 function* onUpdateTodo() {
   yield takeLatest(actionTypes.UPDATE_TODO, updateTodo)
 }
@@ -95,6 +109,7 @@ export default function* todoSagas() {
     call(onGetListTodos),
     call(onGetLists),
     call(onCreateTodo),
+    call(onCreatelist),
     call(onUpdateTodo),
     call(onDeleteTodo)
   ])

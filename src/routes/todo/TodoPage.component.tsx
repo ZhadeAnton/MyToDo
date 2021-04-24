@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
@@ -21,8 +21,8 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     list.id === listId)
 
   useEffect(() => {
-    props.getLists(userId!)
     props.getTodos(userId!)
+    props.getLists(userId!)
   }, [props.match, props.user])
 
   const getTodosByFilter: FilterTodos = ({
@@ -56,6 +56,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
           <TodoDrawer
             user={props.user}
             lists={props.lists}
+            createList={props.createList}
           />
         </aside>
 

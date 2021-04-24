@@ -4,7 +4,7 @@ export function fetchLists(userId: string) {
   return db.collection('lists')
       .where('userId', '==', `${userId}`)
       .get()
-      .then(getSnapshots)
+      .then(getFromSnapshot)
       .catch((error) => console.log(error))
 }
 
@@ -12,7 +12,7 @@ export function fetchTodos(userId: string) {
   return db.collection('todos')
       .where('userId', '==', `${userId}`)
       .get()
-      .then(getSnapshots)
+      .then(getFromSnapshot)
       .catch((error) => console.log(error))
 }
 
@@ -20,7 +20,7 @@ export function fetchListTodos(listId: string) {
   return db.collection('todos')
       .where('listId', '==', `${listId}`)
       .get()
-      .then(getSnapshots)
+      .then(getFromSnapshot)
       .catch((error) => console.log(error))
 }
 
@@ -30,10 +30,17 @@ export function fetchCreateTodo(data: {}) {
         ...data,
       })
       .then((docRef) => docRef.get())
-      .then((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }))
+      .then(getFromDoc)
+      .catch((error) => console.log(error))
+}
+
+export function fetchCreateList(data: {}) {
+  return db.collection('lists')
+      .add({
+        ...data
+      })
+      .then((docRef) => docRef.get())
+      .then(getFromDoc)
       .catch((error) => console.log(error))
 }
 
@@ -55,9 +62,16 @@ export function fetchDeleteTodo(todoId: string) {
       .catch((error) => console.log(error))
 }
 
-function getSnapshots(snapShot: any) {
+function getFromSnapshot(snapShot: any) {
   return snapShot.docs.map((doc: any) => ({
     id: doc.id,
     ...doc.data()
   }))
+}
+
+function getFromDoc(doc: any) {
+  return ({
+    id: doc.id,
+    ...doc.data()
+  })
 }

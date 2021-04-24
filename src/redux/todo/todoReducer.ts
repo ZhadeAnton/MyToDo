@@ -33,6 +33,12 @@ const todoReducer =
         todos: [...state.todos, action.payload]
       }
 
+    case actions.CREATE_LIST_SUCCESS:
+      return {
+        ...state,
+        lists: [...state.lists, action.payload]
+      }
+
     case actions.DELETE_TODO_SUCCESS:
       return {
         ...state,

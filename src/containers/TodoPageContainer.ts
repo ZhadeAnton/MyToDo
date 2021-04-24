@@ -15,6 +15,7 @@ import {
   getLists,
   getListTodos,
   createTodo,
+  createList,
   deleteTodo,
   updateTodo,
 } from '../redux/todo/todoActionCreators'
@@ -48,6 +49,7 @@ interface DispatchProps {
   getTodos: (userId: string) => void,
   getListTodos: (listId: string) => void,
   createTodo: ({}: ICreatedTodo) => void,
+  createList: (userId: string, title: string) => void,
   getLists: (userId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todo: string) => void
@@ -65,6 +67,8 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   getListTodos: (listId: string) => dispatch(getListTodos(listId)),
   createTodo: ({title, userId, listId}: ICreatedTodo) =>
     dispatch(createTodo({title, userId, listId})),
+  createList: (userId: string, title: string) =>
+    dispatch(createList(userId, title)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
   deleteTodo: (todo: string) => dispatch(deleteTodo(todo))
 })

@@ -40,11 +40,7 @@ export const createTodo = ({
   userId
 }: ICreatedTodo): actions.CreateTodo => ({
   type: actions.CREATE_TODO,
-  payload: {
-    title,
-    listId,
-    userId,
-  }
+  payload: { title, listId, userId, }
 })
 
 export const createTodoSuccess = (
@@ -53,12 +49,21 @@ export const createTodoSuccess = (
   payload: newTodo
 })
 
+export const createList = (
+    userId: string, title: string): actions.CreateList => ({
+  type: actions.CREATE_LIST,
+  payload: { userId, title }
+})
+
+export const createListSuccess = (
+    {title, id, userId}: ITodoList): actions.CreateListSuccess => ({
+  type: actions.CREATE_LIST_SUCCESS,
+  payload: { title, id, userId }
+})
+
 export const updateTodo = (todoId: string, data: {}): actions.UpdateTodo => ({
   type: actions.UPDATE_TODO,
-  payload: {
-    todoId,
-    data
-  }
+  payload: { todoId, data }
 })
 
 export const updateTodoSuccess = (

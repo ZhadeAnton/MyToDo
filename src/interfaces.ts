@@ -16,7 +16,13 @@ export interface ITodoStep {
 
 export interface ITodoList {
   title: string,
-  id: string
+  id: string,
+  userId: string,
+}
+
+export interface ICreateList {
+  title: string,
+  userId: string,
 }
 
 export type ICreateTodo = {
