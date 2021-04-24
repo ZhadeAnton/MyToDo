@@ -83,6 +83,17 @@ export const deleteTodoSuccess = (
   payload: todoId
 })
 
+export const deleteList = (listId: string): actions.DeleteList => ({
+  type: actions.DELETE_LIST,
+  payload: listId
+})
+
+export const deleteListSuccess = (
+    listId: string): actions.DeleteListSuccess => ({
+  type: actions.DELETE_LIST_SUCCESS,
+  payload: listId
+})
+
 export const todosFailure = (error: string): actions.TodosFailure => ({
   type: actions.TODOS_FAILURE,
   payload: error

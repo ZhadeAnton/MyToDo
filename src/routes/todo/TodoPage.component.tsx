@@ -57,6 +57,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
             user={props.user}
             lists={props.lists}
             createList={props.createList}
+            deleteList={props.deleteList}
           />
         </aside>
 

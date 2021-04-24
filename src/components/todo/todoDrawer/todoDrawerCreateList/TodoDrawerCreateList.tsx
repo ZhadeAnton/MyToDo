@@ -5,7 +5,7 @@ import { TodoListProps } from '../../../../containers/TodoPageContainer';
 
 interface Props {
   userId: string,
-  createList: TodoListProps['createList']
+  createList: TodoListProps['createList'],
 }
 
 const TodoDrawerCreateList: React.FC<Props> = (props) => {
@@ -19,6 +19,7 @@ const TodoDrawerCreateList: React.FC<Props> = (props) => {
 
   const handleSubmit = () => {
     props.createList(props.userId, listTitle)
+    handleCancelCreating()
   }
 
   return (

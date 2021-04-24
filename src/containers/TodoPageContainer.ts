@@ -17,6 +17,7 @@ import {
   createTodo,
   createList,
   deleteTodo,
+  deleteList,
   updateTodo,
 } from '../redux/todo/todoActionCreators'
 import TodoPage from '../routes/todo/TodoPage.component';
@@ -52,7 +53,8 @@ interface DispatchProps {
   createList: (userId: string, title: string) => void,
   getLists: (userId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
-  deleteTodo: (todo: string) => void
+  deleteTodo: (todoId: string) => void,
+  deleteList: (listId: string) => void
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
@@ -70,7 +72,8 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   createList: (userId: string, title: string) =>
     dispatch(createList(userId, title)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
-  deleteTodo: (todo: string) => dispatch(deleteTodo(todo))
+  deleteTodo: (todo: string) => dispatch(deleteTodo(todo)),
+  deleteList: (listId: string) => dispatch(deleteList(listId))
 })
 
 const TodoPageContainer =

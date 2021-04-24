@@ -13,7 +13,8 @@ import { TodoListProps } from '../../../containers/TodoPageContainer';
 interface Props {
   user: IUser | undefined,
   lists: Array<ITodoList>,
-  createList: TodoListProps['createList']
+  createList: TodoListProps['createList'],
+  deleteList: TodoListProps['deleteList']
 }
 
 const TodoDrawer: React.FC<Props> = (props) => {
@@ -27,7 +28,10 @@ const TodoDrawer: React.FC<Props> = (props) => {
 
       <Divider />
 
-      <TodoDrawerList lists={props.lists} />
+      <TodoDrawerList
+        lists={props.lists}
+        deleteList={props.deleteList}
+      />
 
       <TodoDrawerCreateList
         userId={props.user!.uid}

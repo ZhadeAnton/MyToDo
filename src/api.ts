@@ -62,6 +62,14 @@ export function fetchDeleteTodo(todoId: string) {
       .catch((error) => console.log(error))
 }
 
+export function fetchDeleteList(listId: string) {
+  return db.collection('lists')
+      .doc(listId)
+      .delete()
+      .then(() => listId)
+      .catch((error) => console.log(error))
+}
+
 function getFromSnapshot(snapShot: any) {
   return snapShot.docs.map((doc: any) => ({
     id: doc.id,

@@ -45,6 +45,12 @@ const todoReducer =
         todos: [...state.todos.filter((todo) => todo.id !== action.payload)]
       }
 
+    case actions.DELETE_LIST_SUCCESS:
+      return {
+        ...state,
+        lists: [...state.lists.filter((list) => list.id !== action.payload)]
+      }
+
     case actions.UPDATE_TODO_SUCCESS:
       return {
         ...state,
