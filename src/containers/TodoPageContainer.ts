@@ -18,6 +18,8 @@ import {
   createTodo,
   createList,
   addTodoStep,
+  selectTodo,
+  closeSelectedTodo,
   deleteTodo,
   deleteTodoStep,
   deleteList,
@@ -27,7 +29,8 @@ import TodoPage from '../routes/todo/TodoPage.component';
 import { IUser } from '../redux/user/userInterfaces';
 import {
   selectCurrentLists,
-  selectCurrentTodos } from '../redux/todo/todoSelectors';
+  selectCurrentTodos,
+  selectTodoForDetails} from '../redux/todo/todoSelectors';
 import { selectCurrentUser } from '../redux/user/userSelectors';
 
 interface OwnProps extends TodoState {
@@ -46,16 +49,19 @@ interface OwnProps extends TodoState {
 interface StateProps {
   todos: Array<ITodo> | [],
   lists: Array<ITodoList> | [],
+  selectedTodo: ITodo | null,
   user: IUser | undefined
 }
 
 interface DispatchProps {
   getTodos: (userId: string) => void,
   getListTodos: (listId: string) => void,
+  getLists: (userId: string) => void,
   createTodo: ({}: IUpdatedTodo) => void,
+  selectTodo: (todo: ITodo) => void,
+  closeSelectedTodo: () => void,
   createList: (userId: string, title: string) => void,
   addTodoStep: (todoId: string, stepTitle: string) => void,
-  getLists: (userId: string) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todoId: string) => void,
   deleteTodoStep: (todoId: string, step: ITodoStep) => void,
@@ -65,6 +71,7 @@ interface DispatchProps {
 const mapStateToProps = (state: RootState): StateProps => ({
   todos: selectCurrentTodos(state),
   lists: selectCurrentLists(state),
+  selectedTodo: selectTodoForDetails(state),
   user: selectCurrentUser(state)
 })
 
@@ -79,6 +86,8 @@ const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
   addTodoStep: (todoId: string, stepTitle: string) =>
     dispatch(addTodoStep(todoId, stepTitle)),
   updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
+  selectTodo: (todo: ITodo) => dispatch(selectTodo(todo)),
+  closeSelectedTodo: () => dispatch(closeSelectedTodo()),
   deleteTodo: (todo: string) => dispatch(deleteTodo(todo)),
   deleteTodoStep: (todoId: string, step: ITodoStep) =>
     dispatch(deleteTodoStep(todoId, step)),

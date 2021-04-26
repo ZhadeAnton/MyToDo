@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
@@ -15,8 +15,6 @@ interface FilterTodos {
 }
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
-  const [selectedTodo, setSelectedTodo] = useState<ITodo | null>(null)
-
   const userId = props.user?.uid
   const listId = props.match.params.listid || ''
   const path = props.match.path
@@ -24,7 +22,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     list.id === listId)
 
   useEffect(() => {
-    setSelectedTodo(null)
+    props.closeSelectedTodo()
 
     props.getTodos(userId!)
     props.getLists(userId!)
@@ -50,14 +48,6 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
       userId: userId || '',
       listId: listId || ''
     })
-  }
-
-  const handleSelect = (todo: ITodo) => {
-    setSelectedTodo(todo)
-  }
-
-  const handleCloseDetail = () => {
-    setSelectedTodo(null)
   }
 
   if (!userId) return <Spin />
@@ -88,22 +78,22 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
               deleteTodo={props.deleteTodo}
               updateTodo={props.updateTodo}
               handleSubmit={handleSubmit}
-              onSelectTodo={handleSelect}
+              onSelectTodo={props.selectTodo}
             />}
           />
         </Switch>
       </section>
 
       <aside className={styles.todoDetails}>
-        { selectedTodo &&
+        { props.selectedTodo &&
           <TodoDetails
-            todo={selectedTodo}
+            todo={props.selectedTodo}
             addTodoStep={props.addTodoStep}
             deleteTodoStep={props.deleteTodoStep}
-            onClose={handleCloseDetail}
+            onSelectTodo={props.selectTodo}
+            onClose={props.closeSelectedTodo}
             onDelete={props.deleteTodo}
             onUpdate={props.updateTodo}
-            onSelectTodo={handleSelect}
           />
         }
       </aside>

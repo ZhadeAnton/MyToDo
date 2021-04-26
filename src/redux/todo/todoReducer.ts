@@ -3,12 +3,14 @@ import * as actions from './todoActionTypes'
 
 export interface TodoState {
   todos: Array<ITodo>,
-  lists: Array<ITodoList>
+  lists: Array<ITodoList>,
+  selectedTodo: ITodo | null
 }
 
 const INITIAL_STATE: TodoState = {
   todos: [],
-  lists: []
+  lists: [],
+  selectedTodo: null
 }
 
 const todoReducer =
@@ -37,6 +39,18 @@ const todoReducer =
       return {
         ...state,
         lists: [...state.lists, action.payload]
+      }
+
+    case actions.SELECT_TODO:
+      return {
+        ...state,
+        selectedTodo: action.payload
+      }
+
+    case actions.CLOSE_SELECTED_TODO:
+      return {
+        ...state,
+        selectedTodo: null
       }
 
     case actions.ADD_TODO_STEP:

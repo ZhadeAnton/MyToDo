@@ -67,6 +67,17 @@ export interface CreateListSuccess {
   payload: ITodoList
 }
 
+export const SELECT_TODO = 'SELECT_TODO'
+export interface SelectTodo {
+  type: typeof SELECT_TODO,
+  payload: ITodo
+}
+
+export const CLOSE_SELECTED_TODO = 'CLOSE_SELECTED_TODO'
+export interface CloseSelectedTodo {
+  type: typeof CLOSE_SELECTED_TODO
+}
+
 export const UPDATE_TODO = 'UPDATE_TODO'
 export interface UpdateTodo {
   type: typeof UPDATE_TODO,
@@ -131,6 +142,8 @@ export type TodoTypes =
 | GetLists
 | CreateTodo
 | CreateList
+| SelectTodo
+| CloseSelectedTodo
 | UpdateTodo
 | AddTodoStep
 | DeleteTodo

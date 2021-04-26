@@ -65,6 +65,15 @@ export const createListSuccess = (
   payload: { title, id, userId }
 })
 
+export const selectTodo = (todo: ITodo): actions.SelectTodo => ({
+  type: actions.SELECT_TODO,
+  payload: todo
+})
+
+export const closeSelectedTodo = (): actions.CloseSelectedTodo => ({
+  type: actions.CLOSE_SELECTED_TODO
+})
+
 export const updateTodo = (todoId: string, data: {}): actions.UpdateTodo => ({
   type: actions.UPDATE_TODO,
   payload: { todoId, data }

@@ -12,3 +12,8 @@ export const selectCurrentLists = createSelector(
     [selectTodoState],
     (todoState) => todoState.lists
 )
+
+export const selectTodoForDetails = createSelector(
+    [selectTodoState],
+    (todoState) => todoState.selectedTodo
+)
