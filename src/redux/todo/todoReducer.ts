@@ -39,6 +39,34 @@ const todoReducer =
         lists: [...state.lists, action.payload]
       }
 
+    case actions.ADD_TODO_STEP:
+      return {
+        ...state,
+        todos: [...state.todos.map((todo) => {
+          if (todo.id === action.payload.todoId) {
+            todo.steps?.push({stepTitle: action.payload.stepTitle})
+          }
+
+          return todo
+        })]
+      }
+
+    case actions.DELETE_TODO_STEP:
+      return {
+        ...state,
+        todos: [...state.todos.map((todo) => {
+          if (todo.id === action.payload.todoId) {
+            return {
+              ...todo,
+              steps: todo.steps?.filter((step: any) =>
+                step !== action.payload.step)
+            }
+          }
+
+          return todo
+        })]
+      }
+
     case actions.DELETE_TODO_SUCCESS:
       return {
         ...state,

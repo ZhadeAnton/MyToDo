@@ -22,20 +22,18 @@ interface Props {
 const TodoContent: React.FC<Props> = (props) => {
   return (
     <div className={styles.todoContent}>
-      <div className={styles.todoTasksWrapper}>
-        <TodoList
-          list={props.currentList}
-          todos={props.todos}
-          updateTodo={props.updateTodo}
-          handleSelect={props.onSelectTodo}
-        />
+      <TodoList
+        list={props.currentList}
+        todos={props.todos}
+        updateTodo={props.updateTodo}
+        handleSelect={props.onSelectTodo}
+      />
 
-        <div className={styles.todoContentForm}>
-          <TodoForm
-            listId={props.listId}
-            onSubmit={props.handleSubmit}
-          />
-        </div>
+      <div className={styles.todoContentForm}>
+        <TodoForm
+          listId={props.listId}
+          onSubmit={props.handleSubmit}
+        />
       </div>
     </div>
   )

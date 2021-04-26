@@ -9,7 +9,7 @@ import { ITodo, ITodoStep } from '../../../../interfaces';
 interface Props {
   todo: ITodo,
   step: ITodoStep,
-  deleteTodoStep: TodoListProps['deleteTodoStep']
+  deleteTodoStep: TodoListProps['deleteTodoStep'],
 }
 
 const TodoDetailsStepItem: React.FC<Props> = (props) => {

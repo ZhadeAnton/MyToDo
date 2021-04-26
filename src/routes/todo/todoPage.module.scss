@@ -1,23 +1,28 @@
 .todoPage {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.todoWrapper {
   display: flex;
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
   background-image: url('../../assets/todo/todo-bg.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 
+.todoContentWrapper {
+  width: 100%;
+}
+
 .todoDrawer {
-  flex: 1;
+  flex: 0 1 0;
 }
 
 .todoContent {
-  flex: 5;
+  flex: 1 0 auto;
+}
+
+.todoDetails {
+  flex: 0 1 0;
 }
 
 .background {

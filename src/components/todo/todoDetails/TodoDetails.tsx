@@ -17,11 +17,13 @@ interface Props {
   deleteTodoStep: TodoListProps['deleteTodoStep'],
   onClose: () => void,
   onDelete: (todoId: string) => void,
-  onUpdate: (todoId: string, data: {}) => void
+  onUpdate: (todoId: string, data: {}) => void,
+  onSelectTodo: (todo: ITodo) => void
 }
 
 const TodoDetails: React.FC<Props> = (props) => {
   useEffect(() => {
+    console.log('Details rerender!')
   }, [props.todo])
 
   return (

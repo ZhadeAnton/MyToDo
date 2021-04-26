@@ -52,7 +52,6 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     })
   }
 
-
   const handleSelect = (todo: ITodo) => {
     setSelectedTodo(todo)
   }
@@ -65,50 +64,49 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
 
   return (
     <section className={styles.todoPage}>
-      <div className={styles.todoWrapper}>
-        <aside className={styles.todoDrawer}>
-          <TodoDrawer
-            user={props.user}
-            lists={props.lists}
-            createList={props.createList}
-            deleteList={props.deleteList}
+      <aside className={styles.todoDrawer}>
+        <TodoDrawer
+          user={props.user}
+          lists={props.lists}
+          createList={props.createList}
+          deleteList={props.deleteList}
+        />
+      </aside>
+
+      <section className={styles.todoContent}>
+        <Switch>
+          <Route
+            path="/todo/:listId"
+            render={() => <TodoContent
+              todos={todos}
+              lists={props.lists}
+              currentList={currentList}
+              userId={userId}
+              listId={listId}
+              getTodos={props.getListTodos}
+              createTodo={props.createTodo}
+              deleteTodo={props.deleteTodo}
+              updateTodo={props.updateTodo}
+              handleSubmit={handleSubmit}
+              onSelectTodo={handleSelect}
+            />}
           />
-        </aside>
+        </Switch>
+      </section>
 
-        <section className={styles.todoContent}>
-          <Switch>
-            <Route
-              path="/todo/:listId"
-              render={() => <TodoContent
-                todos={todos}
-                lists={props.lists}
-                currentList={currentList}
-                userId={userId}
-                listId={listId}
-                getTodos={props.getListTodos}
-                createTodo={props.createTodo}
-                deleteTodo={props.deleteTodo}
-                updateTodo={props.updateTodo}
-                handleSubmit={handleSubmit}
-                onSelectTodo={handleSelect}
-              />}
-            />
-          </Switch>
-
-          <div className={styles.todoDetails}>
-            { selectedTodo &&
-              <TodoDetails
-                todo={selectedTodo}
-                addTodoStep={props.addTodoStep}
-                deleteTodoStep={props.deleteTodoStep}
-                onClose={handleCloseDetail}
-                onDelete={props.deleteTodo}
-                onUpdate={props.updateTodo}
-              />
-            }
-          </div>
-        </section>
-      </div>
+      <aside className={styles.todoDetails}>
+        { selectedTodo &&
+          <TodoDetails
+            todo={selectedTodo}
+            addTodoStep={props.addTodoStep}
+            deleteTodoStep={props.deleteTodoStep}
+            onClose={handleCloseDetail}
+            onDelete={props.deleteTodo}
+            onUpdate={props.updateTodo}
+            onSelectTodo={handleSelect}
+          />
+        }
+      </aside>
     </section>
   )
 }

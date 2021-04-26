@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Divider } from 'antd'
 
 import styles from './todoDetailsStepList.module.scss'
@@ -8,13 +8,10 @@ import { TodoListProps } from '../../../../containers/TodoPageContainer'
 
 interface Props {
   todo: ITodo,
-  deleteTodoStep: TodoListProps['deleteTodoStep']
+  deleteTodoStep: TodoListProps['deleteTodoStep'],
 }
 
 const TodoDetailsStepList: React.FC<Props> = (props) => {
-  useEffect(() => {
-  }, [props.todo])
-
   return (
     <ul className={styles.stepList}>
       <Divider />
