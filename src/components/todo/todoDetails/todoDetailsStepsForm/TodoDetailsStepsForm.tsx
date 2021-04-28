@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'antd'
-import TextArea from 'antd/lib/input/TextArea'
+import Input from 'antd/lib/input/TextArea'
 
 import styles from './todoDetailsStepsForm.module.scss'
 import { ITodo } from '../../../../interfaces'
@@ -27,9 +27,7 @@ const TodoDetailsStepsForm: React.FC<Props> = (props) => {
   return (
     <form className={styles.stepsForm}>
         Add step
-      <TextArea
-        showCount
-        maxLength={100}
+      <Input
         value={stepTitle}
         onChange={(e) => hanldleStepText(e.target.value)}
       />

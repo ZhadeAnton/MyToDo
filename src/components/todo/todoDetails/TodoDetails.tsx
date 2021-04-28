@@ -8,7 +8,7 @@ import TodoDetailsBottomLine
   from './todoDetailsBottomLine/todoDetailsBottomLine';
 import TodoDetailsStepsForm from './todoDetailsStepsForm/TodoDetailsStepsForm';
 import TodoDetailsTodoForm from './todoDetailsTodoForm/TodoDetailsTodoForm';
-import TodoDetailsTopLine from './todoDetailsTopLine/TodoDetailsTopLine'
+import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
 import DatePickerForm from '../../form/datePicker/DatePicker';
 
@@ -28,8 +28,7 @@ const TodoDetails: React.FC<Props> = (props) => {
 
   return (
     <aside className={styles.todoDetails}>
-      <TodoDetailsTopLine
-        todo={props.todo}
+      <CloseDetailsButton
         onDetailsClose={props.onClose}
       />
 

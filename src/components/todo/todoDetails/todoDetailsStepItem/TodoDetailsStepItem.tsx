@@ -17,7 +17,8 @@ const TodoDetailsStepItem: React.FC<Props> = (props) => {
     <li className={styles.stepItem}>
       <Checkbox
       />
-      <span>
+
+      <span className={styles.title}>
         {props.step.stepTitle}
       </span>
 

@@ -1,12 +1,7 @@
-.topLine {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--todo-details-title-margin-bottom);
-  font-size: var(--todo-details-title-size);
-}
-
 .closeBtn {
+  position: absolute;
+  top: .1rem;
+  right: .1rem;
   display: inline-block;
   align-self: top;
   

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Divider } from 'antd'
 
 import styles from './todoDetailsStepList.module.scss'
 import { ITodo, ITodoStep } from '../../../../interfaces'
@@ -18,8 +17,6 @@ const TodoDetailsStepList: React.FC<Props> = (props) => {
 
   return (
     <ul className={styles.stepList}>
-      <Divider />
-      Steps :
       {
         props.todo.steps?.map((step: ITodoStep, idx) => {
           return (
@@ -32,7 +29,6 @@ const TodoDetailsStepList: React.FC<Props> = (props) => {
           )
         })
       }
-      <Divider />
     </ul>
   )
 }

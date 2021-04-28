@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Input } from 'antd'
+import { Input } from 'antd'
 
 import styles from './todoDetailsTodoForm.module.scss'
 import { ITodo } from '../../../../interfaces'
@@ -11,6 +11,7 @@ interface Props {
 
 const TodoDetailsTodoForm: React.FC<Props> = (props) => {
   const [todoText, setTodoText] = useState('')
+  const [isEdit, setIsEdit] = useState(false)
 
   useEffect(() => {
     setTodoText(props.todo.title)
@@ -20,23 +21,32 @@ const TodoDetailsTodoForm: React.FC<Props> = (props) => {
     setTodoText(value)
   }
 
+  const handleEditTitle = () => {
+    setIsEdit(true)
+  }
+
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
     props.onUpdate(props.todo.id, {title: todoText})
-    setTodoText('')
+    setIsEdit(false)
   }
 
   return (
-    <form className={styles.todoTextForm}>
-      <Input
-        value={todoText}
-        onChange={(e) => handleChange(e.target.value)}
-        onPressEnter={(e) => handleSubmit(e)}
-        autoFocus
-        allowClear
-      />
-
-      <Button onClick={(e) => handleSubmit(e)}>Confirm</Button>
+    <form
+      className={styles.todoTextForm}
+      onClick={handleEditTitle}
+    >
+      { isEdit ?
+        <Input
+          value={todoText}
+          bordered={false}
+          onChange={(e) => handleChange(e.target.value)}
+          onPressEnter={(e) => handleSubmit(e)}
+          onBlur={() => setIsEdit(false)}
+          autoFocus
+        />
+        : props.todo.title
+      }
     </form>
   )
 }
