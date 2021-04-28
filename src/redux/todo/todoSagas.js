@@ -40,6 +40,7 @@ export function* createTodo({payload: {title, listId, userId}}) {
       completed: false,
       important: false,
       timestamp: new Date(),
+      planned: '',
       steps: []
     })
     yield put(actionCreators.createTodoSuccess(newTodo))

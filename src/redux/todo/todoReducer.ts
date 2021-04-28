@@ -1,10 +1,10 @@
-import { ITodo, ITodoList } from '../../interfaces'
+import { ITodo, ITodoList, ITodoStep } from '../../interfaces'
 import * as actions from './todoActionTypes'
 
 export interface TodoState {
   todos: Array<ITodo>,
   lists: Array<ITodoList>,
-  selectedTodo: ITodo | null
+  selectedTodo: ITodo | null | any
 }
 
 const INITIAL_STATE: TodoState = {
@@ -65,6 +65,7 @@ const todoReducer =
         })]
       }
 
+
     case actions.DELETE_TODO_STEP:
       return {
         ...state,
@@ -78,7 +79,12 @@ const todoReducer =
           }
 
           return todo
-        })]
+        })],
+        selectedTodo: {
+          ...state.selectedTodo,
+          steps: state.selectedTodo?.steps!
+              .filter((step: ITodoStep) => step !== action.payload.step)
+        }
       }
 
     case actions.DELETE_TODO_SUCCESS:

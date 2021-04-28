@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import styles from './todoDetails.module.scss'
 import { ITodo } from '../../../interfaces'
@@ -10,6 +10,7 @@ import TodoDetailsStepsForm from './todoDetailsStepsForm/TodoDetailsStepsForm';
 import TodoDetailsTodoForm from './todoDetailsTodoForm/TodoDetailsTodoForm';
 import TodoDetailsTopLine from './todoDetailsTopLine/TodoDetailsTopLine'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
+import DatePickerForm from '../../form/datePicker/DatePicker';
 
 interface Props {
   todo: ITodo,
@@ -21,10 +22,9 @@ interface Props {
   onSelectTodo: (todo: ITodo) => void
 }
 
+
 const TodoDetails: React.FC<Props> = (props) => {
-  useEffect(() => {
-    console.log('Details rerender!')
-  }, [props.todo])
+  const todoId = props.todo.id
 
   return (
     <aside className={styles.todoDetails}>
@@ -46,6 +46,11 @@ const TodoDetails: React.FC<Props> = (props) => {
       <TodoDetailsStepsForm
         todo={props.todo}
         addTodoStep={props.addTodoStep}
+      />
+
+      <DatePickerForm
+        todoId={todoId}
+        onUpdate={props.onUpdate}
       />
 
       <TodoDetailsBottomLine

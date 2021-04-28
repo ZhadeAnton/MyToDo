@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Divider } from 'antd'
 
 import styles from './todoDetailsStepList.module.scss'
@@ -12,6 +12,10 @@ interface Props {
 }
 
 const TodoDetailsStepList: React.FC<Props> = (props) => {
+  useEffect(() => {
+    console.log('render list')
+  }, [props.todo])
+
   return (
     <ul className={styles.stepList}>
       <Divider />
