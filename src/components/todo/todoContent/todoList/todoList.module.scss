@@ -3,6 +3,7 @@
 }
 
 .title {
+  text-transform: capitalize;
   font-size: var(--todo-content-list-title-size);
   color: var(--todo-content-list-title-color);
   margin-bottom: var(--todo-content-list-title-gut-bot);

@@ -9,6 +9,7 @@ interface Props {
   todos: Array<ITodo>,
   lists: ITodoList[],
   listId: string,
+  path: string,
   currentList: ITodoList | undefined,
   userId: string,
   getTodos: (listId: string) => void,
@@ -25,6 +26,7 @@ const TodoContent: React.FC<Props> = (props) => {
       <TodoList
         list={props.currentList}
         todos={props.todos}
+        path={props.path}
         updateTodo={props.updateTodo}
         handleSelect={props.onSelectTodo}
       />

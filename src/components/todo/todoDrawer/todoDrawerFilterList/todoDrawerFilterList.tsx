@@ -8,18 +8,25 @@ import {ReactComponent as IconImportant}
 import {ReactComponent as IconPlanned}
   from '../../../../assets/todo/icons/todo-icon-planned.svg'
 
+interface Props {
+}
+
 const drawerFilter = [
-  { title: 'Home', icon: <IconHome />, to: '/todo/general'},
+  { title: 'Tasks', icon: <IconHome />, to: '/todo/tasks'},
+  { title: 'Unlisted', icon: <IconHome />, to: '/todo/unlisted'},
   { title: 'Important', icon: <IconImportant />, to: '/todo/important'},
   { title: 'Planned', icon: <IconPlanned />, to: '/todo/planned'}
 ]
 
-const TodoDrawerFilterList = () => {
+const TodoDrawerFilterList: React.FC<Props> = (props) => {
   return (
     <ul>
       {
         drawerFilter.map((item) =>
-          <TodoDrawerFilterItem key={item.title} item={item} />)
+          <TodoDrawerFilterItem
+            key={item.title}
+            item={item}
+          />)
       }
     </ul>
   )

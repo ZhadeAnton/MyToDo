@@ -7,6 +7,7 @@ import { ITodoList, ITodo } from '../../../../interfaces'
 interface Props {
   todos: Array<ITodo>,
   list: ITodoList | undefined,
+  path: string,
   updateTodo: (todoId: string, data: {}) => void,
   handleSelect: (todo: ITodo) => void,
 }
@@ -17,9 +18,9 @@ const TodoList: React.FC<Props> = (props) => {
 
   return (
     <div className={styles.todoList}>
-      <div className={styles.title}>
-        <p>{props.list?.title}</p>
-      </div>
+      <p className={styles.title}>
+        {props.list?.title || `${props.path.slice(6)}`}
+      </p>
       <ul>
         {
           props.todos.map((todo) =>

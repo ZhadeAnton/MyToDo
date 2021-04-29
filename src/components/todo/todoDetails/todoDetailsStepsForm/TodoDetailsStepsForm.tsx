@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { Button } from 'antd'
-import Input from 'antd/lib/input/TextArea'
+import React from 'react'
 
 import styles from './todoDetailsStepsForm.module.scss'
 import { ITodo } from '../../../../interfaces'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import AddNewItem from '../../../form/addNewItem/AddNewItem'
 
 interface Props {
   todo: ITodo,
@@ -12,28 +11,19 @@ interface Props {
 }
 
 const TodoDetailsStepsForm: React.FC<Props> = (props) => {
-  const [stepTitle, setStepText] = useState('')
-
-  const handleAddStep = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    props.addTodoStep(props.todo.id, stepTitle)
-    setStepText('')
-  }
-
-  const hanldleStepText = (value: string) => {
-    setStepText(value)
+  const handleAddStep = (title: string) => {
+    props.addTodoStep(props.todo.id, title)
   }
 
   return (
-    <form className={styles.stepsForm}>
-        Add step
-      <Input
-        value={stepTitle}
-        onChange={(e) => hanldleStepText(e.target.value)}
-      />
+    <div
+      className={styles.stepsForm}>
+      <AddNewItem
+        handleSubmit={handleAddStep}
+      >
+        Add step</AddNewItem>
 
-      <Button onClick={(e) => handleAddStep(e)}>Add step</Button>
-    </form>
+    </div>
   )
 }
 

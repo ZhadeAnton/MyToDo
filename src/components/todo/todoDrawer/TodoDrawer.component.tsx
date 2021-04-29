@@ -3,13 +3,13 @@ import React from 'react'
 import { Divider} from 'antd';
 
 import styles from './todoDrawer.module.scss'
-import { ITodoList } from '../../../interfaces';
 import { IUser } from '../../../redux/user/userInterfaces';
 import UserProfileContainer from '../../../containers/UserProfileContainer.container';
 import TodoDrawerList from './todoDrawerList/TodoDrawerList';
 import TodoDrawerFilterList from './todoDrawerFilterList/todoDrawerFilterList';
-import TodoDrawerCreateList from './todoDrawerCreateList/TodoDrawerCreateList';
 import { TodoListProps } from '../../../containers/TodoPageContainer';
+import { ITodoList } from '../../../interfaces';
+import AddNewList from '../../form/addNewList/AddNewList';
 interface Props {
   user: IUser | undefined,
   lists: Array<ITodoList>,
@@ -33,8 +33,8 @@ const TodoDrawer: React.FC<Props> = (props) => {
         deleteList={props.deleteList}
       />
 
-      <TodoDrawerCreateList
-        userId={props.user!.uid}
+      <AddNewList
+        userId={props.user!.id}
         createList={props.createList}
       />
     </aside>

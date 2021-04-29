@@ -26,10 +26,6 @@ a, a:visited, a:active {
     display: inline-block;
 }
 
-h1, h2, h3, h4 {
-  margin: 0;
-}
-
 ul, li, p {
   list-style: none;
   margin: 0;
@@ -40,35 +36,29 @@ a {
   text-decoration: none;
 }
 
-input {
-  margin: 0 !important;
-}
-
 :root {
+  /* Colors */
   --color-brand: #0DA5F3;
   --color-brand-background: #F3F3F3;
-  --color-grey: #dddcdc;
-  --color-grey-2: #F6F6F6;
+  --color-grey-dark: #dddcdc;
+  --color-grey-light: #F6F6F6;
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-todo-background: #dddcdc;
 
-  --clamped-size: clamp(1rem, -5.7500rem + 18.7500vw, 5rem);
-  --fullHeight: 100vh - 64px;
+  /* Forms */
+  --add-new-item-padding: 1rem .2rem;
+  --add-new-item-icon-size: 2rem;
+  --add-new-item-title-size: 1.3rem;
+  --add-new-item-title-margin-left: .5rem;
+  --add-new-item-transition: all .2s linear;
+  --add-new-item-hover-bg: var(--color-grey-light);
+  --add-new-item-hover-title: var(--color-brand);
+  --add-new-item-hover-icon: var(--color-brand);
 
-  --borderRadius: 1rem;
-
-  --fs-h1: 4vw;
-  --fs-brand-title: 3vw;
-  --fs-text: 2vw;
-
-  /*Measures*/
-  --gutter-header: 80px;
-
-  /*To-do Page*/
+  /* To-do Page */ 
   --todo-drawer-background-color: var(--color-white);
   --todo-drawer-links-color: var(--color-black);
-  --todo-drawer-links-hover-color: var(--color-grey);
+  --todo-drawer-links-hover-color: var(--color-grey-dark);
   --todo-drawer-padding: 1rem;
   --todo-drawer-font-size: 1.2rem;
   --todo-drawer-icon-size: 1.4rem;
@@ -86,9 +76,9 @@ input {
 
   --todo-item-background: #ffffff;
   --todo-item-text-color: #000000;
-  --todo-item-icon-color: var(--color-grey);
+  --todo-item-icon-color: var(--color-grey-dark);
   --todo-item-icon-color-hover: #da0c0c;
-  --todo-item-border-style: thin solid var(--color-grey);
+  --todo-item-border-style: thin solid var(--color-grey-dark);
   --todo-item-padding: .6rem .6rem;
   --todo-item-gutter-down: .1rem;
   --todo-item-text-size: 1.5rem;
@@ -100,7 +90,7 @@ input {
 
   --todo-details-background-color: #ffffff;
   --todo-details-close-btn-hover: #da0c0c;
-  --todo-details-close-btn-color: var(--color-grey);
+  --todo-details-close-btn-color: var(--color-grey-dark);
   --todo-details-padding: 2.5rem 1rem;
   --todo-details-width: 20rem;
   --todo-details-title-size: 2rem;

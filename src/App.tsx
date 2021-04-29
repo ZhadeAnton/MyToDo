@@ -17,7 +17,8 @@ const App: React.FC<AppProps> = (props) => {
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/todo/general' component={TodoPageContainer} />
+        <Route exact path='/todo/tasks' component={TodoPageContainer} />
+        <Route exact path='/todo/unlisted' component={TodoPageContainer} />
         <Route exact path='/todo/important' component={TodoPageContainer} />
         <Route exact path='/todo/planned' component={TodoPageContainer} />
         <Route exact path='/todo' component={TodoPageContainer} />

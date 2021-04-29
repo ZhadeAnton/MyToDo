@@ -23,16 +23,18 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
 
   useEffect(() => {
     props.closeSelectedTodo()
+    console.log(props.match)
 
     props.getTodos(userId!)
     props.getLists(userId!)
   }, [props.match, props.user])
 
   const getTodosByFilter: FilterTodos = ({
-    '/todo': (todos) => todos,
-    '/todo/general': (todos) => todos,
+    '/todo': (todos) => todos.filter((t) => t),
+    '/todo/tasks': (todos) => todos.filter((t) => t),
+    '/todo/unlisted': (todos) => todos.filter((t) => t.listId === ''),
     '/todo/important': (todos) => todos.filter((t: any) => t.important),
-    // 'planned': (todos: Array<ITodo) => todos.filter((t) => t.planned)
+    '/todo/planned': (todos) => todos.filter((t) => t.planned)
   })
 
   const getTodosByLists = (listId: string, todos: Array<ITodo>) =>
@@ -70,6 +72,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
             render={() => <TodoContent
               todos={todos}
               lists={props.lists}
+              path={path}
               currentList={currentList}
               userId={userId}
               listId={listId}
