@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { TodoListProps } from '../../../containers/TodoPageContainer';
-import AddNewItem from '../addNewItem/AddNewItem';
+import { TodoListProps } from '../../../../containers/TodoPageContainer';
+import AddNewItem from '../../../form/addNewItem/AddNewItem';
 
 interface Props {
   userId: string,

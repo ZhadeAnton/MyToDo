@@ -28,23 +28,23 @@ const AddNewItem: React.FC<Props> = (props) => {
       {
         isEdit
         ?
-        <div className={styles.addItemInput}>
-          <Input
-            value={title}
-            autoFocus
-            onBlur={() => handleCancelCreating()}
-            onChange={(e) => setTitle(e.target.value)}
-            onPressEnter={() => handlePressEnter(title)}
-          />
-        </div>
+          <div className={styles.addItemInput}>
+            <Input
+              value={title}
+              autoFocus
+              onBlur={() => handleCancelCreating()}
+              onChange={(e) => setTitle(e.target.value)}
+              onPressEnter={() => handlePressEnter(title)}
+            />
+          </div>
         :
-        <div
-          className={styles.addItem}
-          onClick={() => setIsEdit(true)}
-        >
-          <PlusOutlined />
-          <p>{props.children}</p>
-        </div>
+          <div
+            className={styles.addItem}
+            onClick={() => setIsEdit(true)}
+          >
+            <PlusOutlined />
+            <p>{props.children}</p>
+          </div>
       }
     </>
   )

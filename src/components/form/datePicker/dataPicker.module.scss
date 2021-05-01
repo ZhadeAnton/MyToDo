@@ -1,3 +1,9 @@
 .dataPicker {
+  display: flex;
   padding: 1rem 0;
+  cursor: pointer;
+
+  button {
+    height: 100%;
+  }
 }

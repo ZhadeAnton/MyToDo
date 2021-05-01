@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { DatePicker, Space, Button } from 'antd';
+import React from 'react'
+import { DatePicker } from 'antd';
 import moment from 'moment'
 
 import styles from './dataPicker.module.scss'
@@ -11,20 +11,10 @@ interface Props {
 }
 
 const DatePickerForm: React.FC<Props> = (props) => {
-  const [date, setDate] = useState('')
-
-  function handleChange(value: any) {
-    setDate(value)
-  }
-
-  function handleUpdate() {
+  function handleUpdateDate(date: any) {
     props.onUpdate(props.todoId, {planned: moment(date)
         .format('dddd, MMMM Do YYYY, h:mm:ss a')
         .toString()})
-  }
-
-  function handleRemoveDate() {
-    props.onUpdate(props.todoId, {planned: ''})
   }
 
   function disabledDate(current: any) {
@@ -33,23 +23,12 @@ const DatePickerForm: React.FC<Props> = (props) => {
 
   return (
     <div className={styles.dataPicker}>
-      <Space direction="vertical" size={12}>
-        <DatePicker
-          showTime
-          onOk={handleChange}
-          disabledDate={disabledDate}
-        />
-      </Space>
-
-      <Button
-        onClick={handleUpdate}
-      >Set date
-      </Button>
-
-      <Button
-        onClick={handleRemoveDate}
-      >Clean date
-      </Button>
+      <DatePicker
+        showTime
+        size='large'
+        onOk={handleUpdateDate}
+        disabledDate={disabledDate}
+      />
     </div>
   )
 }

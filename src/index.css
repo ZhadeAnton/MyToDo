@@ -44,6 +44,7 @@ a {
   --color-grey-light: #F6F6F6;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-icon: #353535;
 
   /* Forms */
   --add-new-item-padding: 1rem .2rem;
@@ -59,7 +60,8 @@ a {
   --todo-drawer-background-color: var(--color-white);
   --todo-drawer-links-color: var(--color-black);
   --todo-drawer-links-hover-color: var(--color-grey-dark);
-  --todo-drawer-padding: 1rem;
+  --todo-drawer-width: 19rem;
+  --todo-drawer-padding: 1rem .5rem;
   --todo-drawer-font-size: 1.2rem;
   --todo-drawer-icon-size: 1.4rem;
   --todo-drawer-list-icon-color: var(--color-black);
@@ -88,14 +90,32 @@ a {
   --todo-item-icon-right-position: 1rem;
   --todo-item-icon-transition: .2s linear;
 
-  --todo-details-background-color: #ffffff;
+  --todo-details-background-color: var(--color-white);
   --todo-details-close-btn-hover: #da0c0c;
   --todo-details-close-btn-color: var(--color-grey-dark);
-  --todo-details-padding: 2.5rem 1rem;
-  --todo-details-width: 20rem;
-  --todo-details-title-size: 2rem;
-  --todo-details-title-margin-bottom: 1rem;
+  --todo-details-width: 25rem;
+  --todo-details-padding: 4rem .9rem 1rem .9rem;
   --todo-details-close-btn-size: 1.5rem;
+  --todo-details-todo-title-size: 1.8rem;
+  --todo-details-todo-title-padding: .9rem;
+  --todo-details-todo-border-color: var(--color-black);
+  --todo-details-title-margin-bottom: .5rem;
+  --todo-details-title-margin-left: .5rem;
+  --todo-details-title-tooltip-color: var(--color-brand);
+  --todo-details-list-item-font-size: 1.5rem;
+  --todo-details-list-item-padding: .4rem 1rem;
+  --todo-details-list-item-title-mar-left: .4rem;
+  --todo-details-list-item-icon-size: 1.5rem;
+  --todo-details-list-item-border-bot: var(--color-grey-light);
+  --todo-details-date-padding: 1rem .5rem;
+  --todo-details-date-icon-size: 1.5rem;
+  --todo-details-date-icon-color: var(--color-icon);
+  --todo-details-date-background-color: var(--color-grey-light);
+  --todo-details-bottom-padding: 1rem;
+  --todo-details-bottom-icons-size: 1.5rem;
+  --todo-details-bottom-text-size: 1.2rem;
+  --todo-details-bottom-icon-color: var(--color-icon);
+  --todo-details-bottom-background-color: var(--color-grey-light);
 }
 
 .ml-sm {

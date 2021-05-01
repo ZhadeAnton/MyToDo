@@ -2,5 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto;
+
+  padding: var(--todo-details-bottom-padding);
+  font-size: var(--todo-details-bottom-text-size);
+  background-color: var(--todo-details-bottom-background-color);
+
+  svg {
+    font-size: var(--todo-details-bottom-icons-size);
+    fill: var(--todo-details-bottom-icons-color);
+  }
 }

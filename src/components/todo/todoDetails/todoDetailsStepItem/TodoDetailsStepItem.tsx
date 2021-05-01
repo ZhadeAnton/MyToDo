@@ -1,10 +1,10 @@
 import React from 'react'
-import { DeleteOutlined } from '@ant-design/icons'
-import { Checkbox } from 'antd';
+import { DeleteOutlined, PushpinOutlined } from '@ant-design/icons'
 
-import styles from './todoDetailsStepItem.module.scss'
 import { TodoListProps } from '../../../../containers/TodoPageContainer';
 import { ITodo, ITodoStep } from '../../../../interfaces';
+
+import styles from './todoDetailsStepItem.module.scss'
 
 interface Props {
   todo: ITodo,
@@ -14,19 +14,19 @@ interface Props {
 
 const TodoDetailsStepItem: React.FC<Props> = (props) => {
   return (
-    <li className={styles.stepItem}>
-      <Checkbox
+    <li className={styles.stepListItem}>
+      <PushpinOutlined
+        className={styles.pinIcon}
       />
 
-      <span className={styles.title}>
+      <p>
         {props.step.stepTitle}
-      </span>
+      </p>
 
-      <i
+      <DeleteOutlined
+        className={styles.deleteIcon}
         onClick={() => props.deleteTodoStep(props.todo.id, props.step)}
-      >
-        <DeleteOutlined />
-      </i>
+      />
     </li>
   )
 }

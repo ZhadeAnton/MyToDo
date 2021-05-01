@@ -9,7 +9,7 @@ import TodoDrawerList from './todoDrawerList/TodoDrawerList';
 import TodoDrawerFilterList from './todoDrawerFilterList/todoDrawerFilterList';
 import { TodoListProps } from '../../../containers/TodoPageContainer';
 import { ITodoList } from '../../../interfaces';
-import AddNewList from '../../form/addNewList/AddNewList';
+import AddNewList from './addNewList/AddNewList';
 interface Props {
   user: IUser | undefined,
   lists: Array<ITodoList>,

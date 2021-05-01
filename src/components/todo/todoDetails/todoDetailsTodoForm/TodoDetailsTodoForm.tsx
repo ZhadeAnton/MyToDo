@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Input } from 'antd'
+import { Tooltip } from 'antd';
 
 import styles from './todoDetailsTodoForm.module.scss'
 import { ITodo } from '../../../../interfaces'
+import { EditOutlined } from '@ant-design/icons'
 
 interface Props {
   todo: ITodo,
@@ -36,16 +38,26 @@ const TodoDetailsTodoForm: React.FC<Props> = (props) => {
       className={styles.todoTextForm}
       onClick={handleEditTitle}
     >
-      { isEdit ?
+      { isEdit
+      ?
         <Input
           value={todoText}
           bordered={false}
           onChange={(e) => handleChange(e.target.value)}
           onPressEnter={(e) => handleSubmit(e)}
           onBlur={() => setIsEdit(false)}
+          maxLength={25}
           autoFocus
         />
-        : props.todo.title
+      :
+        <div className={styles.todoTitle}>
+          <Tooltip title="Edit todo title">
+            <EditOutlined
+              className={styles.tooltip}
+            />
+          </Tooltip>
+          <p>{props.todo.title}</p>
+        </div>
       }
     </form>
   )

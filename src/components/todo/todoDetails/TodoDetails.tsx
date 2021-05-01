@@ -10,7 +10,7 @@ import TodoDetailsStepsForm from './todoDetailsStepsForm/TodoDetailsStepsForm';
 import TodoDetailsTodoForm from './todoDetailsTodoForm/TodoDetailsTodoForm';
 import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
-import DatePickerForm from '../../form/datePicker/DatePicker';
+import TodoDetailsDate from './todoDetailsDate/TodoDetailsDate';
 
 interface Props {
   todo: ITodo,
@@ -24,14 +24,8 @@ interface Props {
 
 
 const TodoDetails: React.FC<Props> = (props) => {
-  const todoId = props.todo.id
-
   return (
     <aside className={styles.todoDetails}>
-      <CloseDetailsButton
-        onDetailsClose={props.onClose}
-      />
-
       <TodoDetailsTodoForm
         todo={props.todo}
         onUpdate={props.onUpdate}
@@ -47,8 +41,8 @@ const TodoDetails: React.FC<Props> = (props) => {
         addTodoStep={props.addTodoStep}
       />
 
-      <DatePickerForm
-        todoId={todoId}
+      <TodoDetailsDate
+        todo={props.todo}
         onUpdate={props.onUpdate}
       />
 
@@ -56,6 +50,10 @@ const TodoDetails: React.FC<Props> = (props) => {
         todo={props.todo}
         onDeleteTodo={props.onDelete}
         onClose={props.onClose}
+      />
+
+      <CloseDetailsButton
+        onDetailsClose={props.onClose}
       />
     </aside>
   )

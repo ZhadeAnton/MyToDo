@@ -27,4 +27,8 @@
 
 .addItemInput {
   padding: var(--add-new-item-padding);
+
+  Input {
+    font-size: var(--add-new-item-title-size);
+  }
 }

@@ -1,16 +1,24 @@
-.stepItem {
+.stepListItem {
   display: flex;
   align-items: center;
-  border-bottom: thin solid grey;
-  cursor: pointer;
+  padding: var(--todo-details-list-item-padding);
+  font-size: var(--todo-details-list-item-font-size);
+  border-bottom: thin solid var(--todo-details-list-item-border-bot);
 
-  i {
-    font-size: 1.5rem;
-    margin-left: auto;
+  p {
+    margin-left: var(--todo-details-list-item-title-mar-left);
   }
 }
 
-.title {
-  font-size: 1.1rem;
-  margin-left: 1rem;
+.pinIcon {
+  user-select: none;
+
+  svg {
+    cursor: default;
+  }
+}
+
+.deleteIcon {
+  margin-left: auto;
+  font-size: var(--todo-details-list-item-icon-size);
 }

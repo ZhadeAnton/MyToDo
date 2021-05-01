@@ -1,0 +1,16 @@
+.detailsDate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  background-color: var(--todo-details-date-background-color);
+  padding: var(--todo-details-date-padding);
+
+  svg {
+    font-size: var(--todo-details-date-icon-size);
+  }
+}
+.icon {
+  font-size: var(--todo-details-date-icon-size);
+  fill: var(--todo-details-date-icon-color);
+}
