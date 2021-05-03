@@ -1,9 +1,14 @@
 .dataPicker {
   display: flex;
-  padding: 1rem 0;
-  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 2rem;
+  background-color: var(--todo-details-date-background-color);
+  padding: var(--todo-details-date-padding);
 
-  button {
-    height: 100%;
+  svg {
+    font-size: var(--todo-details-date-icon-size);
+    fill: var(--todo-details-date-icon-color);
   }
 }

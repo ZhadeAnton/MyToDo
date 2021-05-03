@@ -1,32 +1,36 @@
 import React from 'react'
 
 import styles from './todoContent.module.scss'
-import { IUpdatedTodo, ITodo, ITodoList } from '../../../interfaces'
 import TodoList from './todoList/TodoList.component'
 import TodoForm from './todoForm/TodoForm'
+import { TodoListProps } from '../../../containers/TodoPageContainer'
+import { ITodoList } from '../../../interfaces'
 
 interface Props {
-  todos: Array<ITodo>,
-  lists: ITodoList[],
   listId: string,
   path: string,
-  currentList: ITodoList | undefined,
   userId: string,
-  getTodos: (listId: string) => void,
-  createTodo: ({}: IUpdatedTodo) => void,
-  updateTodo: (todoId: string, data: {}) => void
-  deleteTodo: (todoId: string) => void
+  currentList: ITodoList | undefined,
+  selectedTodo: TodoListProps['selectedTodo'],
   handleSubmit: (title: string) => void,
-  onSelectTodo: (todo: ITodo) => void
+  todos: TodoListProps['todos'],
+  lists: TodoListProps['lists'],
+  getTodos: TodoListProps['getTodos'],
+  createTodo: TodoListProps['createTodo'],
+  updateTodo: TodoListProps['updateTodo'],
+  deleteTodo: TodoListProps['deleteTodo'],
+  onSelectTodo: TodoListProps['selectedTodo'],
+  onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
 }
 
 const TodoContent: React.FC<Props> = (props) => {
   return (
     <div className={styles.todoContent}>
       <TodoList
-        list={props.currentList}
         todos={props.todos}
+        list={props.currentList}
         path={props.path}
+        selectedTodo={props.selectedTodo}
         updateTodo={props.updateTodo}
         handleSelect={props.onSelectTodo}
       />

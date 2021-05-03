@@ -1,20 +1,27 @@
 import React from 'react'
-import { DatePicker } from 'antd';
+import { DatePicker, Tooltip } from 'antd';
 import moment from 'moment'
 
 import styles from './dataPicker.module.scss'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
+import { ITodo } from '../../../interfaces';
+import {ReactComponent as RemoveClock}
+  from '../../../assets/todo/icons/remove-clock.svg'
 
 interface Props {
-  todoId: string,
+  todo: ITodo,
   onUpdate: TodoListProps['updateTodo']
 }
 
 const DatePickerForm: React.FC<Props> = (props) => {
   function handleUpdateDate(date: any) {
-    props.onUpdate(props.todoId, {planned: moment(date)
+    props.onUpdate(props.todo.id, {planned: moment(date)
         .format('dddd, MMMM Do YYYY, h:mm:ss a')
         .toString()})
+  }
+
+  function handleRemoveDate() {
+    props.onUpdate(props.todo.id, {planned: ''})
   }
 
   function disabledDate(current: any) {
@@ -29,6 +36,22 @@ const DatePickerForm: React.FC<Props> = (props) => {
         onOk={handleUpdateDate}
         disabledDate={disabledDate}
       />
+
+      <Tooltip
+        placement="topLeft"
+        title="Remove planned date"
+      >
+        {
+          props.todo.planned
+          ?
+            <RemoveClock
+              onClick={() => handleRemoveDate()}>
+            Remove date
+            </RemoveClock>
+          :
+            null
+        }
+      </Tooltip>
     </div>
   )
 }

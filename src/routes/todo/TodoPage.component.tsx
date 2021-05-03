@@ -23,7 +23,6 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
 
   useEffect(() => {
     props.closeSelectedTodo()
-    console.log(props.match)
 
     props.getTodos(userId!)
     props.getLists(userId!)
@@ -73,14 +72,16 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
               todos={todos}
               lists={props.lists}
               path={path}
-              currentList={currentList}
               userId={userId}
               listId={listId}
+              selectedTodo={props.selectedTodo}
+              currentList={currentList}
               getTodos={props.getListTodos}
               createTodo={props.createTodo}
               deleteTodo={props.deleteTodo}
               updateTodo={props.updateTodo}
               handleSubmit={handleSubmit}
+              onCloseSelectedTodo={props.closeSelectedTodo}
               onSelectTodo={props.selectTodo}
             />}
           />

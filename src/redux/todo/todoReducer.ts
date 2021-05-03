@@ -65,7 +65,6 @@ const todoReducer =
         })]
       }
 
-
     case actions.DELETE_TODO_STEP:
       return {
         ...state,

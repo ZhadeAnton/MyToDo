@@ -39,11 +39,17 @@ a {
 :root {
   /* Colors */
   --color-brand: #0DA5F3;
+  --color-brand-light: #cee9f7;
   --color-brand-background: #F3F3F3;
-  --color-grey-dark: #dddcdc;
-  --color-grey-light: #F6F6F6;
+  --color-grey-light: #c0c0c0fd;
+  --color-grey-dark: #838383;
+  --color-grey-strong: #383838;
   --color-white: #ffffff;
+  --color-white-light: #f1faee;
+  --color-white-dark: rgb(252, 244, 237);
   --color-black: #000000;
+  --color-gold: rgb(233, 226, 7);
+  --color-red: rgb(237, 79, 7);
   --color-icon: #353535;
 
   /* Forms */
@@ -52,7 +58,7 @@ a {
   --add-new-item-title-size: 1.3rem;
   --add-new-item-title-margin-left: .5rem;
   --add-new-item-transition: all .2s linear;
-  --add-new-item-hover-bg: var(--color-grey-light);
+  --add-new-item-hover-bg: var(--color-white-light);
   --add-new-item-hover-title: var(--color-brand);
   --add-new-item-hover-icon: var(--color-brand);
 
@@ -77,18 +83,28 @@ a {
   --todo-content-form-padding: 1.5rem var(--todo-content-list-padding);
 
   --todo-item-background: #ffffff;
-  --todo-item-text-color: #000000;
-  --todo-item-icon-color: var(--color-grey-dark);
-  --todo-item-icon-color-hover: #da0c0c;
-  --todo-item-border-style: thin solid var(--color-grey-dark);
-  --todo-item-padding: .6rem .6rem;
-  --todo-item-gutter-down: .1rem;
   --todo-item-text-size: 1.5rem;
-  --todo-item-text-margin-right: 2.4rem;
-  --todo-item-checkBox-left-position: 1rem;
-  --todo-item-icon-size: 1.5rem;
-  --todo-item-icon-right-position: 1rem;
-  --todo-item-icon-transition: .2s linear;
+  --todo-item-text-color: #000000;
+  --todo-item-border-style: thin solid var(--color-grey-dark);
+  --todo-item-border-radius: 5px;
+  --todo-item-padding: .5rem .6rem .3rem .6rem;
+  --todo-item-transition: .1s linear;
+  --todo-item-gutter-down: .1rem;
+  --todo-item-checkbox-size: 1.5rem;
+  --todo-item-hover-bg: var(--color-white-dark);
+  --todo-item-selected-bg: var(--color-white-light);
+  --todo-item-content-mar-right: 1.7rem;
+  --todo-item-info-color: var(--color-grey-light);
+  --todo-item-info-font-size: .9rem;
+  --todo-item-info-items-mar-left: 1.1rem;
+  --todo-item-info-planned-text-color: var(--color-grey-strong);
+  --todo-item-info-planned-icon-color: var(--color-grey-strong);
+  --todo-item-info-planned-icon-size: 1rem;
+  --todo-item-info-planned-icon-mar-left: .3rem;
+  --todo-item-icon-important-size: 1.7rem;
+  --todo-item-icon-important-color: var(--color-grey-dark);
+  --todo-item-icon-important-filled-color: var(--color-red);
+  --todo-item-icon-important-color-hover: var(--color-red);
 
   --todo-details-background-color: var(--color-white);
   --todo-details-close-btn-hover: #da0c0c;
@@ -107,7 +123,7 @@ a {
   --todo-details-list-item-title-mar-left: .4rem;
   --todo-details-list-item-icon-size: 1.5rem;
   --todo-details-list-item-border-bot: var(--color-grey-light);
-  --todo-details-date-padding: 1rem .5rem;
+  --todo-details-date-padding: 1rem;
   --todo-details-date-icon-size: 1.5rem;
   --todo-details-date-icon-color: var(--color-icon);
   --todo-details-date-background-color: var(--color-grey-light);
