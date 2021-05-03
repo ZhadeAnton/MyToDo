@@ -1,14 +1,34 @@
 .dataPicker {
   display: flex;
+  flex-direction: column;
+  background-color: var(--date-picker-bg);
+  padding: var(--date-picker-padding);
+  margin: var(--date-picker-margin);
+
+  h3 {
+    font-size: var(--date-picker-title-font-size);
+    color: var(--date-picker-title-color);
+  }
+
+  &:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.planned {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto;
-  margin-bottom: 2rem;
-  background-color: var(--todo-details-date-background-color);
-  padding: var(--todo-details-date-padding);
+  font-size: var(--date-picker-time-font-size);
+  color: var(--date-picker-time-color);
 
   svg {
-    font-size: var(--todo-details-date-icon-size);
-    fill: var(--todo-details-date-icon-color);
+    cursor: pointer;
+    z-index: 10;
+    width: var(--date-picker-icon-size);
+    height: var(--date-picker-icon-size);
+    fill: var(--date-picker-icon-color);
   }
 }

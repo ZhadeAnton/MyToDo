@@ -4,7 +4,7 @@ import { DeleteOutlined, PushpinOutlined } from '@ant-design/icons'
 import { TodoListProps } from '../../../../containers/TodoPageContainer';
 import { ITodo, ITodoStep } from '../../../../interfaces';
 
-import styles from './todoDetailsStepItem.module.scss'
+import styles from './stepItem.module.scss'
 
 interface Props {
   todo: ITodo,

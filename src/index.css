@@ -26,6 +26,11 @@ a, a:visited, a:active {
     display: inline-block;
 }
 
+h1, h2, h3, h4 {
+  padding: 0;
+  margin: 0;
+}
+
 ul, li, p {
   list-style: none;
   margin: 0;
@@ -61,6 +66,16 @@ a {
   --add-new-item-hover-bg: var(--color-white-light);
   --add-new-item-hover-title: var(--color-brand);
   --add-new-item-hover-icon: var(--color-brand);
+
+  --date-picker-bg: var(--color-white-dark);
+  --date-picker-padding: 1rem;
+  --date-picker-margin: auto 0 2rem 0;
+  --date-picker-title-font-size: 1.3rem;
+  --date-picker-title-color: var(--color-brand);
+  --date-picker-time-font-size: 1.1rem;
+  --date-picker-time-color: var(--color-brand);
+  --date-picker-icon-size: 2rem;
+  --date-picker-icon-color: var(--color-icon);
 
   /* To-do Page */ 
   --todo-drawer-background-color: var(--color-white);
@@ -123,15 +138,11 @@ a {
   --todo-details-list-item-title-mar-left: .4rem;
   --todo-details-list-item-icon-size: 1.5rem;
   --todo-details-list-item-border-bot: var(--color-grey-light);
-  --todo-details-date-padding: 1rem;
-  --todo-details-date-icon-size: 1.5rem;
-  --todo-details-date-icon-color: var(--color-icon);
-  --todo-details-date-background-color: var(--color-grey-light);
   --todo-details-bottom-padding: 1rem;
   --todo-details-bottom-icons-size: 1.5rem;
   --todo-details-bottom-text-size: 1.2rem;
   --todo-details-bottom-icon-color: var(--color-icon);
-  --todo-details-bottom-background-color: var(--color-grey-light);
+  --todo-details-bottom-background-color: var(--color-white-light);
 }
 
 .ml-sm {

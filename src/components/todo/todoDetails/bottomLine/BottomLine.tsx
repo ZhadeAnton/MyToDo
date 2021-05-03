@@ -3,7 +3,7 @@ import moment from 'moment'
 import { DeleteOutlined } from '@ant-design/icons'
 import { Tooltip } from 'antd';
 
-import styles from './todoDetailsBottomLine.module.scss'
+import styles from './bottomLine.module.scss'
 import { ITodo } from '../../../../interfaces'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
 

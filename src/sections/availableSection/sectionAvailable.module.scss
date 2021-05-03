@@ -18,13 +18,3 @@
   font-weight: 500;
   font-style: normal;
 }
-
-  svg {
-    fill: #dbdbdb;
-    cursor: pointer;
-    transition: .1s linear;
-
-    &:hover {
-      fill: #0080ff;
-    }
-  }

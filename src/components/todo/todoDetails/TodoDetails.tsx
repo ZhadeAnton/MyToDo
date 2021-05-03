@@ -2,15 +2,13 @@ import React from 'react'
 
 import styles from './todoDetails.module.scss'
 import { ITodo } from '../../../interfaces'
-
-import TodoDetailsStepList from './todoDetailsStepList/TodoDetailsStepList';
-import TodoDetailsBottomLine
-  from './todoDetailsBottomLine/todoDetailsBottomLine';
-import TodoDetailsStepsForm from './todoDetailsStepsForm/TodoDetailsStepsForm';
-import TodoDetailsTodoForm from './todoDetailsTodoForm/TodoDetailsTodoForm';
-import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
+import TodoForm from './todoForm/TodoForm';
+import StepList from './stepList/StepList';
+import StepsForm from './stepsForm/StepsForm';
 import DatePickerForm from '../../form/datePicker/DatePicker';
+import BottomLine from './bottomLine/BottomLine';
+import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 
 interface Props {
   todo: ITodo,
@@ -26,17 +24,17 @@ interface Props {
 const TodoDetails: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDetails}>
-      <TodoDetailsTodoForm
+      <TodoForm
         todo={props.todo}
         onUpdate={props.onUpdate}
       />
 
-      <TodoDetailsStepList
+      <StepList
         todo={props.todo}
         deleteTodoStep={props.deleteTodoStep}
       />
 
-      <TodoDetailsStepsForm
+      <StepsForm
         todo={props.todo}
         addTodoStep={props.addTodoStep}
       />
@@ -46,7 +44,7 @@ const TodoDetails: React.FC<Props> = (props) => {
         onUpdate={props.onUpdate}
       />
 
-      <TodoDetailsBottomLine
+      <BottomLine
         todo={props.todo}
         onDeleteTodo={props.onDelete}
         onClose={props.onClose}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './todoDetailsStepsForm.module.scss'
+import styles from './stepsForm.module.scss'
 import { ITodo } from '../../../../interfaces'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
 import AddNewItem from '../../../form/addNewItem/AddNewItem'
