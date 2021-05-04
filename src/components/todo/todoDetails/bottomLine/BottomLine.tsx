@@ -1,26 +1,23 @@
 import React from 'react'
 import moment from 'moment'
-import { DeleteOutlined } from '@ant-design/icons'
-import { Tooltip } from 'antd';
 
 import styles from './bottomLine.module.scss'
-import { ITodo } from '../../../../interfaces'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import RemoveIcon from '../../../custom/customRemoveIcon/CustomRemoveIcon';
 
 interface Props {
-  todo: ITodo,
+  selectedTodo: TodoListProps['selectedTodo'],
   onDeleteTodo: TodoListProps['deleteTodo'],
-  onClose: () => void,
+  onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
 }
 
-const TodoDetailsBottomLine: React.FC<Props> = (props) => {
-  const timeStamp = props.todo.timestamp.toDate()
+const BottomLine: React.FC<Props> = (props) => {
+  const timeStamp = props.selectedTodo!.timestamp.toDate()
 
   const handleDeleteTodo = () => {
-    props.onDeleteTodo(props.todo.id)
-    props.onClose()
+    props.onDeleteTodo(props.selectedTodo!.id)
+    props.onCloseSelectedTodo()
   }
-
 
   return (
     <div className={styles.bottomLine}>
@@ -34,13 +31,13 @@ const TodoDetailsBottomLine: React.FC<Props> = (props) => {
         &nbsp;ago
       </span>
 
-      <Tooltip placement="topRight" title="Delete todo">
-        <span onClick={handleDeleteTodo}>
-          <DeleteOutlined />
-        </span>
-      </Tooltip>
+      <RemoveIcon
+        toolTip='Remove todo'
+        placement='topLeft'
+        onClick={() => handleDeleteTodo()}
+      />
     </div>
   )
 }
 
-export default TodoDetailsBottomLine
+export default BottomLine

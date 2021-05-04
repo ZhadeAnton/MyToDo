@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { Spin } from 'antd'
 
 import styles from './todoPage.module.scss'
+import { ITodo, ITodoList } from '../../interfaces'
 import {
   TodoListProps } from '../../containers/TodoPageContainer'
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
 import TodoContent from '../../components/todo/todoContent/todoContent'
-import { Spin } from 'antd'
-import { ITodo, ITodoList } from '../../interfaces'
 import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
 
 interface FilterTodos {
@@ -91,11 +91,11 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
       <aside className={styles.todoDetails}>
         { props.selectedTodo &&
           <TodoDetails
-            todo={props.selectedTodo}
+            selectedTodo={props.selectedTodo}
             addTodoStep={props.addTodoStep}
             deleteTodoStep={props.deleteTodoStep}
             onSelectTodo={props.selectTodo}
-            onClose={props.closeSelectedTodo}
+            onCloseSelectedTodo={props.closeSelectedTodo}
             onDelete={props.deleteTodo}
             onUpdate={props.updateTodo}
           />

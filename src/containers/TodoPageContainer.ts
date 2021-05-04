@@ -1,37 +1,15 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
-import {
-  IUpdatedTodo,
-  ITodo,
-  ITodoList,
-  ITodoStep,
-} from '../interfaces';
-
+import * as interfaces from '../interfaces';
+import * as actions from '../redux/todo/todoActionCreators'
+import * as selectors from '../redux/todo/todoSelectors';
 import { TodoState } from '../redux/todo/todoReducer';
 import { RootState } from '../redux/store/store';
 import { TodoTypes } from '../redux/todo/todoActionTypes';
-import {
-  getAllTodos,
-  getLists,
-  getListTodos,
-  createTodo,
-  createList,
-  addTodoStep,
-  selectTodo,
-  closeSelectedTodo,
-  deleteTodo,
-  deleteTodoStep,
-  deleteList,
-  updateTodo,
-} from '../redux/todo/todoActionCreators'
-import TodoPage from '../routes/todo/TodoPage.component';
 import { IUser } from '../redux/user/userInterfaces';
-import {
-  selectCurrentLists,
-  selectCurrentTodos,
-  selectTodoForDetails} from '../redux/todo/todoSelectors';
 import { selectCurrentUser } from '../redux/user/userSelectors';
+import TodoPage from '../routes/todo/TodoPage.component';
 
 interface OwnProps extends TodoState {
   match: {
@@ -41,15 +19,15 @@ interface OwnProps extends TodoState {
     path: string,
     url: string
   }
-  list: ITodoList,
-  handleSelect: (todo: ITodo) => void,
+  list: interfaces.ITodoList,
+  handleSelect: (todo: interfaces.ITodo) => void,
   handleCloseDetail: () => void
 }
 
 interface StateProps {
-  todos: Array<ITodo> | [],
-  lists: Array<ITodoList> | [],
-  selectedTodo: ITodo | null,
+  todos: Array<interfaces.ITodo> | [],
+  lists: Array<interfaces.ITodoList> | [],
+  selectedTodo: interfaces.ISelecteTodo,
   user: IUser | undefined
 }
 
@@ -57,41 +35,42 @@ interface DispatchProps {
   getTodos: (userId: string) => void,
   getListTodos: (listId: string) => void,
   getLists: (userId: string) => void,
-  createTodo: ({}: IUpdatedTodo) => void,
-  selectTodo: (todo: ITodo) => void,
+  createTodo: ({}: interfaces.IUpdatedTodo) => void,
+  selectTodo: (todo: interfaces.ITodo) => void,
   closeSelectedTodo: () => void,
   createList: (userId: string, title: string) => void,
   addTodoStep: (todoId: string, stepTitle: string) => void,
   updateTodo: (todoId: string, data: {}) => void
   deleteTodo: (todoId: string) => void,
-  deleteTodoStep: (todoId: string, step: ITodoStep) => void,
+  deleteTodoStep: (todoId: string, step: interfaces.ITodoStep) => void,
   deleteList: (listId: string) => void
 }
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  todos: selectCurrentTodos(state),
-  lists: selectCurrentLists(state),
-  selectedTodo: selectTodoForDetails(state),
+  todos: selectors.selectCurrentTodos(state),
+  lists: selectors.selectCurrentLists(state),
+  selectedTodo: selectors.selectTodoForDetails(state),
   user: selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
-  getTodos: (userId: string) => dispatch(getAllTodos(userId)),
-  getLists: (userId: string) => dispatch(getLists(userId)),
-  getListTodos: (listId: string) => dispatch(getListTodos(listId)),
-  createTodo: ({title, userId, listId}: IUpdatedTodo) =>
-    dispatch(createTodo({title, userId, listId})),
-  createList: (userId: string, title: string) =>
-    dispatch(createList(userId, title)),
-  addTodoStep: (todoId: string, stepTitle: string) =>
-    dispatch(addTodoStep(todoId, stepTitle)),
-  updateTodo: (todoId: string, data: {}) => dispatch(updateTodo(todoId, data)),
-  selectTodo: (todo: ITodo) => dispatch(selectTodo(todo)),
-  closeSelectedTodo: () => dispatch(closeSelectedTodo()),
-  deleteTodo: (todo: string) => dispatch(deleteTodo(todo)),
-  deleteTodoStep: (todoId: string, step: ITodoStep) =>
-    dispatch(deleteTodoStep(todoId, step)),
-  deleteList: (listId: string) => dispatch(deleteList(listId))
+  getTodos: (userId: string) => dispatch(actions.getAllTodos(userId)),
+  getLists: (userId: string) => dispatch(actions.getLists(userId)),
+  getListTodos: (listId: string) => dispatch(actions.getListTodos(listId)),
+  createTodo: ({title, userId, listId}: interfaces.IUpdatedTodo) => dispatch(
+      actions.createTodo({title, userId, listId})),
+  createList: (userId: string, title: string) => dispatch(
+      actions.createList(userId, title)),
+  addTodoStep: (todoId: string, stepTitle: string) => dispatch(
+      actions.addTodoStep(todoId, stepTitle)),
+  updateTodo: (todoId: string, data: {}) => dispatch(
+      actions.updateTodo(todoId, data)),
+  selectTodo: (todo: interfaces.ITodo) => dispatch(actions.selectTodo(todo)),
+  closeSelectedTodo: () => dispatch(actions.closeSelectedTodo()),
+  deleteTodo: (todo: string) => dispatch(actions.deleteTodo(todo)),
+  deleteTodoStep: (todoId: string, step: interfaces.ITodoStep) => dispatch(
+      actions.deleteTodoStep(todoId, step)),
+  deleteList: (listId: string) => dispatch(actions.deleteList(listId))
 })
 
 const TodoPageContainer =

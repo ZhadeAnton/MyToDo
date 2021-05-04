@@ -1,49 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { Input } from 'antd'
-import { Tooltip } from 'antd';
-
-import styles from './todoForm.module.scss'
-import { ITodo } from '../../../../interfaces'
+import React, { useState } from 'react'
+import { Input, Tooltip } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
+import styles from './todoForm.module.scss'
+import { TodoListProps } from '../../../../containers/TodoPageContainer'
+
 interface Props {
-  todo: ITodo,
-  onUpdate: (todoId: string, data: {}) => void
+  selectedTodo: TodoListProps['selectedTodo'],
+  onUpdate: TodoListProps['updateTodo']
 }
 
-const TodoDetailsTodoForm: React.FC<Props> = (props) => {
-  const [todoText, setTodoText] = useState('')
+const TodoEditForm: React.FC<Props> = (props) => {
+  const [todoText, setTodoText] = useState(props.selectedTodo!.title)
   const [isEdit, setIsEdit] = useState(false)
-
-  useEffect(() => {
-    setTodoText(props.todo.title)
-  }, [props.todo])
-
-  const handleChange = (value: string) => {
-    setTodoText(value)
-  }
-
-  const handleEditTitle = () => {
-    setIsEdit(true)
-  }
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    props.onUpdate(props.todo.id, {title: todoText})
+    props.onUpdate(props.selectedTodo!.id, {title: todoText})
     setIsEdit(false)
   }
 
   return (
     <form
       className={styles.todoTextForm}
-      onClick={handleEditTitle}
-    >
+      onClick={() => setIsEdit(true)}>
+
       { isEdit
       ?
         <Input
           value={todoText}
           bordered={false}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => setTodoText(e.target.value)}
           onPressEnter={(e) => handleSubmit(e)}
           onBlur={() => setIsEdit(false)}
           maxLength={25}
@@ -51,16 +38,17 @@ const TodoDetailsTodoForm: React.FC<Props> = (props) => {
         />
       :
         <div className={styles.todoTitle}>
-          <Tooltip title="Edit todo title">
+          <Tooltip title="Edit Todo text">
             <EditOutlined
-              className={styles.tooltip}
+              className={styles.toolTipIcon}
             />
           </Tooltip>
-          <p>{props.todo.title}</p>
+
+          <p>{props.selectedTodo!.title}</p>
         </div>
       }
     </form>
   )
 }
 
-export default TodoDetailsTodoForm
+export default TodoEditForm

@@ -1,0 +1,9 @@
+.removeIcon {
+ svg {
+   cursor: pointer;
+
+   &:hover {
+     fill: var(--detele-icon-hover-color);
+   }
+ }
+}

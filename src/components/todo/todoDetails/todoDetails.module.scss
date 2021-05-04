@@ -3,13 +3,9 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  position: relative;
   z-index: 10;
+  position: relative;
   width: var(--todo-details-width);
   padding: var(--todo-details-padding);
   background-color: var(--todo-details-background-color);
-}
-
-.todoInfoWrapper {
-  background-color: var(--todo-details-todo-wrapper-bg);
 }

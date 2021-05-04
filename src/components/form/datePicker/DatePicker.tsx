@@ -4,12 +4,11 @@ import moment from 'moment'
 
 import styles from './dataPicker.module.scss'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
-import { ITodo } from '../../../interfaces';
 import {ReactComponent as RemoveDate}
   from '../../../assets/todo/icons/remove-date.svg'
 
 interface Props {
-  todo: ITodo,
+  selectedTodo: TodoListProps['selectedTodo'],
   onUpdate: TodoListProps['updateTodo']
 }
 
@@ -19,12 +18,12 @@ const DatePickerForm: React.FC<Props> = (props) => {
         .format('MMMM Do YYYY, h:mm a')
         .toString()
 
-    props.onUpdate(props.todo.id, {planned: newDate})
+    props.onUpdate(props.selectedTodo!.id, {planned: newDate})
     message.success(`Added new date ${newDate}`)
   }
 
   function handleRemoveDate() {
-    props.onUpdate(props.todo.id, {planned: ''})
+    props.onUpdate(props.selectedTodo!.id, {planned: ''})
     message.warning('Planned date was removed')
   }
 
@@ -35,7 +34,7 @@ const DatePickerForm: React.FC<Props> = (props) => {
   return (
     <div className={styles.dataPicker}>
       {
-        props.todo.planned
+        props.selectedTodo!.planned
         ?
           <>
             <Divider
@@ -46,7 +45,7 @@ const DatePickerForm: React.FC<Props> = (props) => {
             <div className={styles.planned}>
               <time>
                 {
-                  props.todo.planned
+                  props.selectedTodo!.planned
                 }
               </time>
               <Tooltip placement="topLeft" title="Remove date">

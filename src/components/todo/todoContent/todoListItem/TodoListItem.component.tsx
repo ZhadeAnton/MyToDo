@@ -9,9 +9,9 @@ import { TodoListProps } from '../../../../containers/TodoPageContainer';
 
 interface Props {
   todo: ITodo,
+  updateTodo: TodoListProps['updateTodo'],
   selectedTodo: TodoListProps['selectedTodo'],
-  updateTodo: (todoId: string, data: {}) => void,
-  onSelect: (todo: ITodo) => void
+  onSelectTodo: TodoListProps['selectTodo']
 }
 
 const TodoListItem: React.FC<Props> = (props) => {
@@ -29,7 +29,7 @@ const TodoListItem: React.FC<Props> = (props) => {
     <li
       className={cn(styles.todoListItem,
         props.selectedTodo?.id === props.todo.id ? styles.active : '')}
-      onClick={() => props.onSelect(props.todo)}
+      onClick={() => props.onSelectTodo(props.todo)}
     >
       <input
         type='checkbox'

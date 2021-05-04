@@ -5,10 +5,12 @@ export interface ITodo {
   id: string,
   completed: boolean,
   important: boolean
-  timestamp: any,
-  planned: string
-  steps?: Array<ITodoStep>,
+  timestamp?: any,
+  planned?: string
+  steps: Array<ITodoStep>,
 }
+
+export type ISelecteTodo = ITodo | null
 
 export interface ITodoStep {
   stepTitle: string,

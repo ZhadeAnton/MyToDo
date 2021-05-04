@@ -1,29 +1,25 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import styles from './stepList.module.scss'
-import { ITodo, ITodoStep } from '../../../../interfaces'
+import { ITodoStep } from '../../../../interfaces'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
 import StepItem from '../stepItem/StepItem'
 
 interface Props {
-  todo: ITodo,
+  selectedTodo: TodoListProps['selectedTodo'],
   deleteTodoStep: TodoListProps['deleteTodoStep'],
 }
 
-const TodoDetailsStepList: React.FC<Props> = (props) => {
-  useEffect(() => {
-    console.log('render list')
-  }, [props.todo])
-
+const StepsList: React.FC<Props> = (props) => {
   return (
     <ul className={styles.stepList}>
       {
-        props.todo.steps?.map((step: ITodoStep, idx) => {
+        props.selectedTodo!.steps.map((step: ITodoStep, idx: number) => {
           return (
             <StepItem
               key={idx}
-              todo={props.todo}
               step={step}
+              selectedTodo={props.selectedTodo}
               deleteTodoStep={props.deleteTodoStep}
             />
           )
@@ -33,4 +29,4 @@ const TodoDetailsStepList: React.FC<Props> = (props) => {
   )
 }
 
-export default TodoDetailsStepList
+export default StepsList

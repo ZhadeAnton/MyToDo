@@ -31,10 +31,11 @@ const AddNewItem: React.FC<Props> = (props) => {
           <div className={styles.addItemInput}>
             <Input
               value={title}
-              autoFocus
               onBlur={() => handleCancelCreating()}
               onChange={(e) => setTitle(e.target.value)}
               onPressEnter={() => handlePressEnter(title)}
+              autoFocus
+              maxLength={20}
             />
           </div>
         :

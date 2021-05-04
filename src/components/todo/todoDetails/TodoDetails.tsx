@@ -1,57 +1,55 @@
 import React from 'react'
 
 import styles from './todoDetails.module.scss'
-import { ITodo } from '../../../interfaces'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
-import TodoForm from './todoForm/TodoForm';
-import StepList from './stepList/StepList';
+import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import StepsForm from './stepsForm/StepsForm';
 import DatePickerForm from '../../form/datePicker/DatePicker';
 import BottomLine from './bottomLine/BottomLine';
-import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
+import TodoEditForm from './todoForm/TodoForm';
+import StepsList from './stepList/StepList';
 
 interface Props {
-  todo: ITodo,
+  selectedTodo: TodoListProps['selectedTodo'],
   addTodoStep: TodoListProps['addTodoStep'],
   deleteTodoStep: TodoListProps['deleteTodoStep'],
-  onClose: () => void,
-  onDelete: (todoId: string) => void,
-  onUpdate: (todoId: string, data: {}) => void,
-  onSelectTodo: (todo: ITodo) => void
+  onDelete: TodoListProps['deleteTodo'],
+  onUpdate: TodoListProps['updateTodo'],
+  onSelectTodo: TodoListProps['selectTodo'],
+  onCloseSelectedTodo: TodoListProps['closeSelectedTodo'],
 }
-
 
 const TodoDetails: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDetails}>
-      <TodoForm
-        todo={props.todo}
+      <TodoEditForm
+        selectedTodo={props.selectedTodo}
         onUpdate={props.onUpdate}
       />
 
-      <StepList
-        todo={props.todo}
+      <StepsList
+        selectedTodo={props.selectedTodo}
         deleteTodoStep={props.deleteTodoStep}
       />
 
       <StepsForm
-        todo={props.todo}
+        selectedTodo={props.selectedTodo}
         addTodoStep={props.addTodoStep}
       />
 
       <DatePickerForm
-        todo={props.todo}
+        selectedTodo={props.selectedTodo}
         onUpdate={props.onUpdate}
       />
 
       <BottomLine
-        todo={props.todo}
+        selectedTodo={props.selectedTodo}
         onDeleteTodo={props.onDelete}
-        onClose={props.onClose}
+        onCloseSelectedTodo={props.onCloseSelectedTodo}
       />
 
       <CloseDetailsButton
-        onDetailsClose={props.onClose}
+        onCloseSelectedTodo={props.onCloseSelectedTodo}
       />
     </aside>
   )

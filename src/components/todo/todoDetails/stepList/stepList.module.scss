@@ -1,5 +1,6 @@
 .stepList {
-  padding: 1rem 0;
-  max-height: 400px;
-  overflow: auto;
+  padding: var(--todo-details-list-padding);
+  max-height: var(--todo-details-list-max-height);
+  overflow-y: auto;
+  overflow-x: hidden;
 }

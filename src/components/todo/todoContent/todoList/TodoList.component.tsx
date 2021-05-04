@@ -2,16 +2,16 @@ import React, { useEffect } from 'react'
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem.component'
-import { ITodoList, ITodo } from '../../../../interfaces'
+import { ITodoList } from '../../../../interfaces'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
 
 interface Props {
-  todos: Array<ITodo>,
+  todos: TodoListProps['todos'],
   list: ITodoList | undefined,
   path: string,
   selectedTodo: TodoListProps['selectedTodo'],
-  updateTodo: (todoId: string, data: {}) => void,
-  handleSelect: (todo: ITodo) => void,
+  updateTodo: TodoListProps['updateTodo'],
+  onSelectTodo: TodoListProps['selectTodo'],
 }
 
 const TodoList: React.FC<Props> = (props) => {
@@ -23,6 +23,7 @@ const TodoList: React.FC<Props> = (props) => {
       <p className={styles.title}>
         {props.list?.title || `${props.path.slice(6)}`}
       </p>
+
       <ul>
         {
           props.todos.map((todo) =>
@@ -31,7 +32,7 @@ const TodoList: React.FC<Props> = (props) => {
               todo={todo}
               selectedTodo={props.selectedTodo}
               updateTodo={props.updateTodo}
-              onSelect={props.handleSelect}
+              onSelectTodo={props.onSelectTodo}
             />
           )
         }

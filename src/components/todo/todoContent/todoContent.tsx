@@ -19,7 +19,7 @@ interface Props {
   createTodo: TodoListProps['createTodo'],
   updateTodo: TodoListProps['updateTodo'],
   deleteTodo: TodoListProps['deleteTodo'],
-  onSelectTodo: TodoListProps['selectedTodo'],
+  onSelectTodo: TodoListProps['selectTodo'],
   onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
 }
 
@@ -32,7 +32,7 @@ const TodoContent: React.FC<Props> = (props) => {
         path={props.path}
         selectedTodo={props.selectedTodo}
         updateTodo={props.updateTodo}
-        handleSelect={props.onSelectTodo}
+        onSelectTodo={props.onSelectTodo}
       />
 
       <div className={styles.todoContentForm}>

@@ -1,34 +1,26 @@
 import React from 'react'
-import { DeleteOutlined, PushpinOutlined } from '@ant-design/icons'
-
-import { TodoListProps } from '../../../../containers/TodoPageContainer';
-import { ITodo, ITodoStep } from '../../../../interfaces';
 
 import styles from './stepItem.module.scss'
+import { ITodoStep } from '../../../../interfaces';
+import { TodoListProps } from '../../../../containers/TodoPageContainer';
+import RemoveIcon from '../../../custom/customRemoveIcon/CustomRemoveIcon';
 
 interface Props {
-  todo: ITodo,
   step: ITodoStep,
+  selectedTodo: TodoListProps['selectedTodo'],
   deleteTodoStep: TodoListProps['deleteTodoStep'],
 }
 
-const TodoDetailsStepItem: React.FC<Props> = (props) => {
+const StepItem: React.FC<Props> = (props) => {
   return (
-    <li className={styles.stepListItem}>
-      <PushpinOutlined
-        className={styles.pinIcon}
-      />
+    <li className={styles.stepItem}>
+      <p>{props.step.stepTitle}</p>
 
-      <p>
-        {props.step.stepTitle}
-      </p>
-
-      <DeleteOutlined
-        className={styles.deleteIcon}
-        onClick={() => props.deleteTodoStep(props.todo.id, props.step)}
+      <RemoveIcon
+        onClick={() => props.deleteTodoStep(props.selectedTodo!.id, props.step)}
       />
     </li>
   )
 }
 
-export default TodoDetailsStepItem
+export default StepItem

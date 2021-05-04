@@ -1,13 +1,11 @@
-.closeBtn {
+.closeDetailsIcon {
   position: absolute;
-  top: .1rem;
-  right: .1rem;
-  display: inline-block;
-  align-self: top;
-  
+  top: .6rem;
+  right: .6rem;
   font-size: var(--todo-details-close-btn-size);
 
   svg {
+    cursor: pointer;
     fill: var(--todo-details-close-btn-color);
 
     &:hover {
