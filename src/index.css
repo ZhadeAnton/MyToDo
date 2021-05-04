@@ -57,8 +57,21 @@ a {
   --color-red: rgb(237, 79, 7);
   --color-icon: #353535;
 
+  /* Measures */
+  --transition: .2s linear;
+
   /* Custom Elements*/
   --detele-icon-hover-color: var(--color-red);
+
+  --sort-item-padding: 1.4rem;
+  --sort-item-bg: var(--color-white);
+  --sort-item-font-size: 1.2rem;
+  --sort-item-color: var(--color-brand);
+  --sort-item-icon-size: 1.2rem;
+  --sort-item-icon-color: var(--color-icon);
+  --sort-item-icon-mar-right: 1rem;
+  --sort-item-icon-active-bg: var(--color-brand-light);
+  --sort-item-icon-hover-bg: var(--color-brand-light);
 
   /* Forms */
   --add-new-item-padding: 1rem .2rem;
@@ -94,11 +107,16 @@ a {
   --todo-drawer-link-left-gutter: 1rem;
   --todo-drawer-links-transition: .2s linear;
 
-  --todo-content-list-title-color: var(--color-white);
-  --todo-content-list-title-gut-bot: 1rem;
-  --todo-content-list-padding: 2rem;
-  --todo-content-list-title-size: 2rem;
-  --todo-content-form-padding: 1.5rem var(--todo-content-list-padding);
+  --todo-content-padding-side: 2rem;
+  --todo-content-banner-padding: 1.5rem var(--todo-content-padding-side);
+  --todo-content-banner-mar-bot: 2rem;
+  --todo-content-banner-bg: var(--color-brand);
+  --todo-content-banner-color: var(--color-black);
+  --todo-content-banner-title-size: 2rem;
+  --todo-content-banner-title-color: var(--color-white);
+  --todo-content-banner-sort-icon-size: 2rem;
+  --todo-content-list-padding: 0 var(--todo-content-padding-side);
+  --todo-content-form-padding: 1.5rem var(--todo-content-padding-side);
 
   --todo-item-background: #ffffff;
   --todo-item-text-size: 1.5rem;

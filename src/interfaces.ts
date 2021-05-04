@@ -5,7 +5,7 @@ export interface ITodo {
   id: string,
   completed: boolean,
   important: boolean
-  timestamp?: any,
+  timestamp: any,
   planned?: string
   steps: Array<ITodoStep>,
 }

@@ -1,0 +1,28 @@
+.sortList {
+  padding: 0;
+}
+
+.sortItem {
+  display: flex;
+  align-items: center;
+  font-size: var(--sort-item-font-size);
+  color: var(--sort-item-color);
+  padding: var(--sort-item-padding);
+  background-color: var(--sort-item-bg);
+  transition: background-color var(--transition);
+
+  &:hover {
+    background-color: var(--sort-item-icon-hover-bg);
+  }
+
+  svg {
+    margin-right: var(--sort-item-icon-mar-right);
+    color: var(--sort-item-icon-color);
+    width: var(--sort-item-icon-size);
+    height: var(--sort-item-icon-size);
+  }
+}
+
+.sortItemActive {
+  background-color: var(--sort-item-icon-active-bg);
+}

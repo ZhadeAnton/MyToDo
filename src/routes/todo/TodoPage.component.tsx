@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Spin } from 'antd'
 
@@ -14,7 +14,13 @@ interface FilterTodos {
   [key: string]: (todos: Array<ITodo>) => Array<ITodo>
 }
 
+interface SortTodos {
+  [key: string]: (a: any, b: any) => number
+}
+
 const TodoPage: React.FC<TodoListProps> = (props) => {
+  const [sortBy, setSortBy] = useState<string>('date')
+
   const userId = props.user?.uid
   const listId = props.match.params.listid || ''
   const path = props.match.path
@@ -51,6 +57,20 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     })
   }
 
+  function handleSortChange(sort: string) {
+    setSortBy(sort)
+  }
+
+  const sortFn: SortTodos = {
+    title: (a, b) => a.title.localeCompare(b.title),
+    date: (a, b) => b.timestamp - a.timestamp,
+    important: (a, b) => b.important - a.important,
+    completed: (a, b) => b.completed - a.completed,
+    unCompleted: (a, b) => a.completed - b.completed
+  }
+
+  const sortedTodos = sortBy ? todos.slice().sort(sortFn[sortBy]) : todos
+
   if (!userId) return <Spin />
 
   return (
@@ -69,11 +89,12 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
           <Route
             path="/todo/:listId"
             render={() => <TodoContent
-              todos={todos}
+              todos={sortedTodos}
               lists={props.lists}
               path={path}
               userId={userId}
               listId={listId}
+              checkedSort={sortBy}
               selectedTodo={props.selectedTodo}
               currentList={currentList}
               getTodos={props.getListTodos}
@@ -83,6 +104,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
               handleSubmit={handleSubmit}
               onCloseSelectedTodo={props.closeSelectedTodo}
               onSelectTodo={props.selectTodo}
+              handleSortChange={handleSortChange}
             />}
           />
         </Switch>

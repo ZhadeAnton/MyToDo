@@ -1,18 +1,21 @@
 import React from 'react'
 
 import styles from './todoContent.module.scss'
+import { ITodoList } from '../../../interfaces'
 import TodoList from './todoList/TodoList.component'
 import TodoForm from './todoForm/TodoForm'
 import { TodoListProps } from '../../../containers/TodoPageContainer'
-import { ITodoList } from '../../../interfaces'
+import TopBanner from './topBanner/TopBanner'
 
 interface Props {
   listId: string,
   path: string,
   userId: string,
+  checkedSort: string,
   currentList: ITodoList | undefined,
   selectedTodo: TodoListProps['selectedTodo'],
   handleSubmit: (title: string) => void,
+  handleSortChange: (sort: string) => void,
   todos: TodoListProps['todos'],
   lists: TodoListProps['lists'],
   getTodos: TodoListProps['getTodos'],
@@ -26,10 +29,15 @@ interface Props {
 const TodoContent: React.FC<Props> = (props) => {
   return (
     <div className={styles.todoContent}>
-      <TodoList
-        todos={props.todos}
+      <TopBanner
         list={props.currentList}
         path={props.path}
+        checkedSort={props.checkedSort}
+        handleSortChange={props.handleSortChange}
+      />
+
+      <TodoList
+        todos={props.todos}
         selectedTodo={props.selectedTodo}
         updateTodo={props.updateTodo}
         onSelectTodo={props.onSelectTodo}
