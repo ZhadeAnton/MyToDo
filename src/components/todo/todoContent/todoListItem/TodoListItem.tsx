@@ -25,11 +25,19 @@ const TodoListItem: React.FC<Props> = (props) => {
     props.updateTodo(props.todo.id, {important: !important})
   }
 
+  function handleClick(e: any) {
+    if (e.target.tagName !== 'INPUT'
+      && e.target.tagName !== 'path'
+      && e.target.tagName !== 'svg') {
+      props.onSelectTodo(props.todo)
+    }
+  }
+
   return (
     <li
       className={cn(styles.todoListItem,
         props.selectedTodo?.id === props.todo.id ? styles.active : '')}
-      onClick={() => props.onSelectTodo(props.todo)}
+      onClick={(e) => handleClick(e)}
     >
       <input
         type='checkbox'

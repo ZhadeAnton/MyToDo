@@ -25,6 +25,7 @@
 }
 
 .checkbox {
+  cursor: pointer;
   width: var(--todo-item-checkbox-size);
   height: var(--todo-item-checkbox-size);
 }

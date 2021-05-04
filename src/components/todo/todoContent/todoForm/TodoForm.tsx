@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 
 import styles from './todoForm.module.scss'
 
@@ -27,12 +27,12 @@ const TodoForm: React.FC<Props> = ({ onSubmit, listId }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.todoForm}>
       <Input
-        placeholder="What do you want to do?"
-        value={title}
+        placeholder="Add a Task"
         onChange={changeHandler}
+        onPressEnter={handleSubmit}
+        value={title}
+        maxLength={40}
       />
-
-      <Button size="large" onClick={handleSubmit}>Add tast</Button>
     </form>
   )
 }

@@ -117,6 +117,9 @@ a {
   --todo-content-banner-sort-icon-size: 2rem;
   --todo-content-list-padding: 0 var(--todo-content-padding-side);
   --todo-content-form-padding: 1.5rem var(--todo-content-padding-side);
+  --todo-content-form-input-font-size: 1.5rem;
+  --todo-content-form-input-color: var(--color-grey-dark);
+  --todo-content-form-input-padding: .5rem;
 
   --todo-item-background: #ffffff;
   --todo-item-text-size: 1.5rem;
@@ -126,9 +129,9 @@ a {
   --todo-item-padding: .5rem .6rem .3rem .6rem;
   --todo-item-transition: .1s linear;
   --todo-item-gutter-down: .1rem;
-  --todo-item-checkbox-size: 1.5rem;
+  --todo-item-checkbox-size: 1.8rem;
   --todo-item-hover-bg: var(--color-white-dark);
-  --todo-item-selected-bg: var(--color-white-light);
+  --todo-item-selected-bg: var(--color-brand-light);
   --todo-item-content-mar-right: 1.7rem;
   --todo-item-info-color: var(--color-grey-light);
   --todo-item-info-font-size: .9rem;

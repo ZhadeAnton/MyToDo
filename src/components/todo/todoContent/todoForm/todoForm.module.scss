@@ -3,10 +3,8 @@
 
   input {
     width: 100%;
-  }
-
-  button {
-    z-index: 10;
-    margin-left: 1rem;
+    color: var(--todo-content-form-input-color);
+    padding: var(--todo-content-form-input-padding);
+    font-size: var(--todo-content-form-input-font-size);
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './todoContent.module.scss'
 import { ITodoList } from '../../../interfaces'
-import TodoList from './todoList/TodoList.component'
+import TodoList from './todoList/TodoList'
 import TodoForm from './todoForm/TodoForm'
 import { TodoListProps } from '../../../containers/TodoPageContainer'
 import TopBanner from './topBanner/TopBanner'
