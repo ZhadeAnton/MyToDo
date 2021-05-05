@@ -2,9 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import styles from './header.module.scss'
-import Logo from '../../components/logo/logo.component'
-import UserProfileContainer
-  from '../../containers/UserProfileContainer.container'
+import Logo from '../../components/custom/logo/logo.component'
 import CustomLink from '../../components/custom/customLink/CustomLink'
 
 const Header = () => {
@@ -22,7 +20,6 @@ const Header = () => {
           </ul>
         </nav>
         <div className={styles.user}>
-          <UserProfileContainer />
         </div>
       </div>
     </header>

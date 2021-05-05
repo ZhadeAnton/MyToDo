@@ -86,17 +86,30 @@ a {
   --sort-item-icon-active-bg: var(--color-brand-light);
   --sort-item-icon-hover-bg: var(--color-brand-light);
 
+  --user-profile-padding: .2rem;
+  --user-profile-title-color: var(--color-brand);
+  --user-profile-title-font-size: 1.4rem;
+  --user-profile-avatar-mar-left: .5rem;
+  --user-profile-dropdown-padding: .5rem;
+  --user-profile-dropdown-item-padding: 1rem;
+  --user-profile-dropdown-item-font-size: 1.2rem;
+  --user-profile-dropdown-item-color: var(--color-brand);
+  --user-profile-dropdown-item-bg-color: var(--color-white-light);
+  --user-profile-dropdown-item-hover-bg-color: var(--color-grey-strong);
+  --user-profile-dropdown-icon-size: 1.1rem;
+  --user-profile-dropdown-items-space: .5rem;
+
   /* Forms */
   --add-new-item-padding: 1rem .2rem;
   --add-new-item-icon-size: 2rem;
   --add-new-item-title-size: 1.3rem;
   --add-new-item-title-margin-left: .5rem;
   --add-new-item-transition: all .2s linear;
-  --add-new-item-hover-bg: var(--color-white-light);
+  --add-new-item-hover-bg: var(--color-brand-light);
   --add-new-item-hover-title: var(--color-brand);
   --add-new-item-hover-icon: var(--color-brand);
 
-  --date-picker-bg: var(--color-white-dark);
+  --date-picker-bg: var(--color-brand-light);
   --date-picker-padding: 1rem;
   --date-picker-margin: auto 0 2rem 0;
   --date-picker-title-font-size: 1.3rem;
@@ -107,13 +120,18 @@ a {
   --date-picker-icon-color: var(--color-icon);
 
   /* To-do Page */ 
-  --todo-drawer-background-color: var(--color-white);
-  --todo-drawer-links-color: var(--color-black);
-  --todo-drawer-links-hover-color: var(--color-grey-dark);
-  --todo-drawer-width: 19rem;
-  --todo-drawer-padding: 1rem .5rem;
-  --todo-drawer-font-size: 1.2rem;
+  --todo-drawer-padding-side: .5rem;
+  --todo-drawer-padding: 0rem;
   --todo-drawer-icon-size: 1.4rem;
+  --todo-drawer-background-color: var(--color-white);
+  --todo-drawer-filter-list-padding: .1rem var(--todo-drawer-padding-side);
+  --todo-drawer-filter-item-padding: .5rem var(--todo-drawer-padding-side);
+  --todo-drawer-filter-item-title-mar-left: 1rem;
+  --todo-drawer-filter-item-fons-size: 1.2rem;
+  --todo-drawer-filter-item-color: var(--color-brand);
+  --todo-drawer-filter-item-icon-color: var(--color-icon);
+  --todo-drawer-filter-item-hover-bg: var(--color-brand-light);
+  --todo-drawer-width: 20rem;
   --todo-drawer-list-icon-color: var(--color-black);
   --todo-drawer-link-padding: .4rem 0;
   --todo-drawer-link-item-padding: 0 1rem;
@@ -182,7 +200,7 @@ a {
   --todo-details-list-item-icon-color: var(--color-icon);
   --todo-details-list-item-border-bot: var(--color-grey-light);
   --todo-details-steps-form-padding: .5rem 0;
-  --todo-details-bottom-background-color: var(--color-white-light);
+  --todo-details-bottom-background-color: var(--color-brand-light);
   --todo-details-bottom-padding: 1rem;
   --todo-details-bottom-text-size: 1.2rem;
   --todo-details-bottom-text-color: var(--color-brand);

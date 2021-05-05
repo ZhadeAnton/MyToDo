@@ -3,10 +3,12 @@ import { Dispatch } from 'redux'
 
 import * as interfaces from '../interfaces';
 import * as actions from '../redux/todo/todoActionCreators'
+import { signOutStart } from '../redux/user/userActionCreators'
 import * as selectors from '../redux/todo/todoSelectors';
 import { TodoState } from '../redux/todo/todoReducer';
 import { RootState } from '../redux/store/store';
 import { TodoTypes } from '../redux/todo/todoActionTypes';
+import { UserTypes } from '../redux/user/userActionTypes';
 import { IUser } from '../redux/user/userInterfaces';
 import { selectCurrentUser } from '../redux/user/userSelectors';
 import TodoPage from '../routes/todo/TodoPage.component';
@@ -32,6 +34,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
+  signOutStart: () => void,
   getTodos: (userId: string) => void,
   getListTodos: (listId: string) => void,
   getLists: (userId: string) => void,
@@ -53,7 +56,9 @@ const mapStateToProps = (state: RootState): StateProps => ({
   user: selectCurrentUser(state)
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<TodoTypes>): DispatchProps => ({
+const mapDispatchToProps = (
+    dispatch: Dispatch<TodoTypes | UserTypes>): DispatchProps => ({
+  signOutStart: () => dispatch(signOutStart()),
   getTodos: (userId: string) => dispatch(actions.getAllTodos(userId)),
   getLists: (userId: string) => dispatch(actions.getLists(userId)),
   getListTodos: (listId: string) => dispatch(actions.getListTodos(listId)),

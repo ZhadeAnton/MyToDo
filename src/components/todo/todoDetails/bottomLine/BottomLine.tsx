@@ -3,7 +3,7 @@ import moment from 'moment'
 
 import styles from './bottomLine.module.scss'
 import { TodoListProps } from '../../../../containers/TodoPageContainer'
-import RemoveIcon from '../../../custom/customRemoveIcon/CustomRemoveIcon';
+import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
 
 interface Props {
   selectedTodo: TodoListProps['selectedTodo'],

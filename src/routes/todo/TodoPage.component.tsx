@@ -81,6 +81,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
           lists={props.lists}
           createList={props.createList}
           deleteList={props.deleteList}
+          signOutStart={props.signOutStart}
         />
       </aside>
 

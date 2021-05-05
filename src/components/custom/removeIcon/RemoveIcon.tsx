@@ -2,7 +2,7 @@ import React from 'react'
 import { Tooltip } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 
-import styles from './customRemoveIcon.module.scss'
+import styles from './removeIcon.module.scss'
 
 interface Props {
   className?: string,

@@ -1,29 +1,26 @@
 import React from 'react'
+import {
+  StarOutlined,
+  FireOutlined,
+  BellOutlined,
+  DiffOutlined } from '@ant-design/icons'
 
-import TodoDrawerFilterItem from '../todoDrawerFilterItem/TodoDrawerFilterItem'
-import {ReactComponent as IconHome}
-  from '../../../../assets/todo/icons/todo-icon-home.svg'
-import {ReactComponent as IconImportant}
-  from '../../../../assets/todo/icons/todo-icon-important.svg'
-import {ReactComponent as IconPlanned}
-  from '../../../../assets/todo/icons/todo-icon-planned.svg'
+import styles from './todoDrawerFilterList.module.scss'
+import FilterItem from '../todoDrawerFilterItem/FilterItem'
 
-interface Props {
-}
-
-const drawerFilter = [
-  { title: 'Tasks', icon: <IconHome />, to: '/todo/tasks'},
-  { title: 'Unlisted', icon: <IconHome />, to: '/todo/unlisted'},
-  { title: 'Important', icon: <IconImportant />, to: '/todo/important'},
-  { title: 'Planned', icon: <IconPlanned />, to: '/todo/planned'}
+const drawerFilterItems = [
+  { title: 'Tasks', icon: <FireOutlined />, to: '/todo/tasks'},
+  { title: 'Unlisted', icon: <DiffOutlined />, to: '/todo/unlisted'},
+  { title: 'Important', icon: <StarOutlined />, to: '/todo/important'},
+  { title: 'Planned', icon: <BellOutlined />, to: '/todo/planned'}
 ]
 
-const TodoDrawerFilterList: React.FC<Props> = (props) => {
+const TodoDrawerFilterList = () => {
   return (
-    <ul>
+    <ul className={styles.filterList}>
       {
-        drawerFilter.map((item) =>
-          <TodoDrawerFilterItem
+        drawerFilterItems.map((item) =>
+          <FilterItem
             key={item.title}
             item={item}
           />)

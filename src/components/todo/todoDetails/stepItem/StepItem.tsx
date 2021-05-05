@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './stepItem.module.scss'
 import { ITodoStep } from '../../../../interfaces';
 import { TodoListProps } from '../../../../containers/TodoPageContainer';
-import RemoveIcon from '../../../custom/customRemoveIcon/CustomRemoveIcon';
+import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
 
 interface Props {
   step: ITodoStep,

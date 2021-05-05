@@ -1,0 +1,26 @@
+.filterItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: var(--todo-drawer-filter-item-padding);
+  font-size: var(--todo-drawer-filter-item-fons-size);
+  transition: background-color var(--todo-drawer-links-transition);
+
+  a {
+    width: 100%;
+    color: var(--todo-drawer-filter-item-color);
+    margin-left: var(--todo-drawer-filter-item-title-mar-left);
+  }
+
+  svg {
+    width: var(--todo-drawer-icon-size);
+    height: var(--todo-drawer-icon-size);
+    fill: var(--todo-drawer-filter-item-icon-color);
+  }
+
+  &:hover {
+    background-color: var(--todo-drawer-filter-item-hover-bg);
+  }
+}

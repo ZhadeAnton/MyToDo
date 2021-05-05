@@ -3,25 +3,28 @@ import React from 'react'
 import { Divider} from 'antd';
 
 import styles from './todoDrawer.module.scss'
-import { IUser } from '../../../redux/user/userInterfaces';
-import UserProfileContainer from '../../../containers/UserProfileContainer.container';
 import TodoDrawerList from './todoDrawerList/TodoDrawerList';
 import TodoDrawerFilterList from './todoDrawerFilterList/todoDrawerFilterList';
 import { TodoListProps } from '../../../containers/TodoPageContainer';
-import { ITodoList } from '../../../interfaces';
 import AddNewList from './addNewList/AddNewList';
+import UserProfile from '../../custom/userProfile/UserProfile.component';
 interface Props {
-  user: IUser | undefined,
-  lists: Array<ITodoList>,
+  user: TodoListProps['user'],
+  lists: TodoListProps['lists'],
   createList: TodoListProps['createList'],
-  deleteList: TodoListProps['deleteList']
+  deleteList: TodoListProps['deleteList'],
+  signOutStart: TodoListProps['signOutStart']
 }
 
 const TodoDrawer: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDrawer}>
-      <div>
-        <UserProfileContainer />
+      <div className={styles.userProfileWrapper}>
+        <UserProfile
+          user={props.user}
+          signOutStart={props.signOutStart}
+          dropdownPlacement='bottomRight'
+        />
       </div>
 
       <TodoDrawerFilterList />
