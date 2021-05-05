@@ -14,7 +14,7 @@ interface Props {
 const TopBanner: React.FC<Props> = (props) => {
   return (
     <div className={styles.topBanner}>
-      <h2 className={styles.title}>
+      <h2>
         {props.list?.title || `${props.path.slice(6)}`}
       </h2>
 

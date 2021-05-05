@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pagination } from 'antd';
+import { List } from 'antd';
 
 import styles from './todoList.module.scss'
 import TodoListItem from '../todoListItem/TodoListItem'
@@ -14,30 +14,25 @@ interface Props {
 
 const TodoList: React.FC<Props> = (props) => {
   return (
-    <>
-      <ul className={styles.todoList}>
-        {
-          props.todos.map((todo) =>
-            <TodoListItem
-              key={todo.id}
-              todo={todo}
-              selectedTodo={props.selectedTodo}
-              updateTodo={props.updateTodo}
-              onSelectTodo={props.onSelectTodo}
-            />
-          )
-        }
-      </ul>
-
-      <Pagination
-        defaultCurrent={1}
-        total={props.todos.length}
-        pageSize={5}
-        showLessItems
-        hideOnSinglePage
-        responsive
-      />
-    </>
+    <List
+      className={styles.todoList}
+      dataSource={props.todos}
+      pagination={{
+        pageSize: 8,
+        hideOnSinglePage: true,
+        className: 'todoContentList-pagination'
+      }}
+      renderItem={(todo: any) => (
+        <TodoListItem
+          key={todo.id}
+          todo={todo}
+          selectedTodo={props.selectedTodo}
+          updateTodo={props.updateTodo}
+          onSelectTodo={props.onSelectTodo}
+        />
+      )}
+    >
+    </List>
   )
 }
 

@@ -41,6 +41,13 @@ a {
   text-decoration: none;
 }
 
+.todoContentList-pagination {
+  padding: var(--todo-content-pagination-padding);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 :root {
   /* Colors */
   --color-brand: #0DA5F3;
@@ -116,10 +123,12 @@ a {
   --todo-content-banner-title-color: var(--color-white);
   --todo-content-banner-sort-icon-size: 2rem;
   --todo-content-list-padding: 0 var(--todo-content-padding-side);
+  --todo-content-pagination-padding: .5rem var(--todo-content-padding-side);
   --todo-content-form-padding: 1.5rem var(--todo-content-padding-side);
   --todo-content-form-input-font-size: 1.5rem;
   --todo-content-form-input-color: var(--color-grey-dark);
-  --todo-content-form-input-padding: .5rem;
+  --todo-content-form-padding: 2rem var(--todo-content-padding-side);
+  --todo-content-form-input-padding: 1.5rem;
 
   --todo-item-background: #ffffff;
   --todo-item-text-size: 1.5rem;

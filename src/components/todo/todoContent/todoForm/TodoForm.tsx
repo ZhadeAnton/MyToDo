@@ -20,12 +20,14 @@ const TodoForm: React.FC<Props> = ({ onSubmit, listId }) => {
 
   const changeHandler = (event: React.SyntheticEvent) => {
     const { value } = event.target as HTMLInputElement
-
     setTitle(value)
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.todoForm}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.todoForm}
+    >
       <Input
         placeholder="Add a Task"
         onChange={changeHandler}
