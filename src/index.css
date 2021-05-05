@@ -48,6 +48,12 @@ a {
   left: 0;
 }
 
+.todoDetailsStepsList-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 :root {
   /* Colors */
   --color-brand: #0DA5F3;
@@ -167,7 +173,7 @@ a {
   --todo-details-title-margin-left: .5rem;
   --todo-details-title-tooltip-color: var(--color-brand);
   --todo-details-list-padding: .9rem 0;
-  --todo-details-list-max-height: 350px;
+  --todo-details-list-height: 20rem;
   --todo-details-list-item-font-size: 1.5rem;
   --todo-details-list-item-text-color: var(--color-grey-dark);
   --todo-details-list-item-padding: .4rem 1rem;

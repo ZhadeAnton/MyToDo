@@ -31,8 +31,7 @@ const TodoList: React.FC<Props> = (props) => {
           onSelectTodo={props.onSelectTodo}
         />
       )}
-    >
-    </List>
+    />
   )
 }
 
