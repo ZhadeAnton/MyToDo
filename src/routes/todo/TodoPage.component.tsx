@@ -4,19 +4,12 @@ import { Spin } from 'antd'
 
 import styles from './todoPage.module.scss'
 import { ITodo, ITodoList } from '../../interfaces'
+import { getTodosByFilter, sortFn } from './utils'
 import {
   TodoListProps } from '../../containers/TodoPageContainer'
-import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.component'
+import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
 import TodoContent from '../../components/todo/todoContent/todoContent'
 import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
-
-interface FilterTodos {
-  [key: string]: (todos: Array<ITodo>) => Array<ITodo>
-}
-
-interface SortTodos {
-  [key: string]: (a: any, b: any) => number
-}
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
   const [sortBy, setSortBy] = useState<string>('date')
@@ -34,20 +27,14 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     props.getLists(userId!)
   }, [props.match, props.user])
 
-  const getTodosByFilter: FilterTodos = ({
-    '/todo': (todos) => todos.filter((t) => t),
-    '/todo/tasks': (todos) => todos.filter((t) => t),
-    '/todo/unlisted': (todos) => todos.filter((t) => t.listId === ''),
-    '/todo/important': (todos) => todos.filter((t: any) => t.important),
-    '/todo/planned': (todos) => todos.filter((t) => t.planned)
-  })
-
   const getTodosByLists = (listId: string, todos: Array<ITodo>) =>
     todos.filter((t) => t.listId === listId)
 
   const todos = listId
   ? getTodosByLists(listId, props.todos)
   : getTodosByFilter[path](props.todos)
+
+  const sortedTodos = sortBy ? todos.slice().sort(sortFn[sortBy]) : todos
 
   const handleSubmit = (title: string) => {
     props.createTodo({
@@ -61,15 +48,6 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     setSortBy(sort)
   }
 
-  const sortFn: SortTodos = {
-    title: (a, b) => a.title.localeCompare(b.title),
-    date: (a, b) => b.timestamp - a.timestamp,
-    important: (a, b) => b.important - a.important,
-    completed: (a, b) => b.completed - a.completed,
-    unCompleted: (a, b) => a.completed - b.completed
-  }
-
-  const sortedTodos = sortBy ? todos.slice().sort(sortFn[sortBy]) : todos
 
   if (!userId) return <Spin />
 
@@ -103,8 +81,8 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
               deleteTodo={props.deleteTodo}
               updateTodo={props.updateTodo}
               handleSubmit={handleSubmit}
-              onCloseSelectedTodo={props.closeSelectedTodo}
               onSelectTodo={props.selectTodo}
+              onCloseSelectedTodo={props.closeSelectedTodo}
               handleSortChange={handleSortChange}
             />}
           />

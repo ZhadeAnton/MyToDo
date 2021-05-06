@@ -7,7 +7,7 @@ interface Props {
   item: {
     title: string,
     icon: React.SVGProps<SVGSVGElement>,
-    to: string
+    to: string,
   }
 }
 
@@ -15,7 +15,8 @@ const FilterItem: React.FC<Props> = (props) => {
   return (
     <li
       className={styles.filterItem}
-      key={props.item.to}>
+      key={props.item.to}
+    >
       <span>
         {props.item.icon}
       </span>

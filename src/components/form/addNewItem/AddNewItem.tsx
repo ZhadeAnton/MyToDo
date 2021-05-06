@@ -6,6 +6,7 @@ import styles from './addNewItem.module.scss'
 
 interface Props {
   children: React.ReactChild,
+  className?: string,
   handleSubmit: (title: string) => void
 }
 
@@ -24,7 +25,7 @@ const AddNewItem: React.FC<Props> = (props) => {
   }
 
   return (
-    <>
+    <div className={styles.newItem}>
       {
         isEdit
         ?
@@ -47,7 +48,7 @@ const AddNewItem: React.FC<Props> = (props) => {
             <p>{props.children}</p>
           </div>
       }
-    </>
+    </div>
   )
 }
 

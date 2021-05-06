@@ -17,7 +17,7 @@
   svg {
     width: var(--todo-drawer-icon-size);
     height: var(--todo-drawer-icon-size);
-    fill: var(--todo-drawer-filter-item-icon-color);
+    fill: inherit;
   }
 
   &:hover {

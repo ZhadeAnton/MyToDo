@@ -54,6 +54,12 @@ a {
   left: 0;
 }
 
+.todoDrawerCreateList-pagination {
+  position: absolute;
+  bottom: -1rem;
+  left: 1rem;
+}
+
 :root {
   /* Colors */
   --color-brand: #0DA5F3;
@@ -100,14 +106,16 @@ a {
   --user-profile-dropdown-items-space: .5rem;
 
   /* Forms */
-  --add-new-item-padding: 1rem .2rem;
+  --add-new-item-height: 4rem;
+  --add-new-item-padding: 1rem .5rem;
   --add-new-item-icon-size: 2rem;
   --add-new-item-title-size: 1.3rem;
   --add-new-item-title-margin-left: .5rem;
-  --add-new-item-transition: all .2s linear;
+  --add-new-item-transition: background-color .2s linear;
   --add-new-item-hover-bg: var(--color-brand-light);
   --add-new-item-hover-title: var(--color-brand);
   --add-new-item-hover-icon: var(--color-brand);
+  --add-new-input-padding: .9rem .5rem;
 
   --date-picker-bg: var(--color-brand-light);
   --date-picker-padding: 1rem;
@@ -121,22 +129,23 @@ a {
 
   /* To-do Page */ 
   --todo-drawer-padding-side: .5rem;
-  --todo-drawer-padding: 0rem;
+  --todo-drawer-width: 20rem;
+  --todo-drawer-padding: 0 var(--todo-drawer-padding-side);
   --todo-drawer-icon-size: 1.4rem;
   --todo-drawer-background-color: var(--color-white);
-  --todo-drawer-filter-list-padding: .1rem var(--todo-drawer-padding-side);
+  --todo-drawer-filter-list-padding: 0;
   --todo-drawer-filter-item-padding: .5rem var(--todo-drawer-padding-side);
   --todo-drawer-filter-item-title-mar-left: 1rem;
-  --todo-drawer-filter-item-fons-size: 1.2rem;
+  --todo-drawer-filter-item-fons-size: 1.3rem;
   --todo-drawer-filter-item-color: var(--color-brand);
   --todo-drawer-filter-item-icon-color: var(--color-icon);
   --todo-drawer-filter-item-hover-bg: var(--color-brand-light);
-  --todo-drawer-width: 20rem;
-  --todo-drawer-list-icon-color: var(--color-black);
-  --todo-drawer-link-padding: .4rem 0;
-  --todo-drawer-link-item-padding: 0 1rem;
-  --todo-drawer-link-left-gutter: 1rem;
-  --todo-drawer-links-transition: .2s linear;
+  --todo-drawer-created-lists-padding: .5rem 0;
+  --todo-drawer-created-lists-item-padding: .5rem var(--todo-drawer-padding-side);
+  --todo-drawer-created-lists-item-font-size: 1.3rem;
+  --todo-drawer-created-lists-item-title-mar-left: 1rem;
+  --todo-drawer-created-lists-item-hover-bg: var(--color-brand-light);
+  --todo-drawer-add-new-item-padding: 1rem;
 
   --todo-content-padding-side: 2rem;
   --todo-content-banner-padding: 1.5rem var(--todo-content-padding-side);

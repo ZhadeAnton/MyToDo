@@ -27,14 +27,14 @@ const TodoDetails: React.FC<Props> = (props) => {
         onUpdate={props.onUpdate}
       />
 
-      <StepsList
-        selectedTodo={props.selectedTodo}
-        deleteTodoStep={props.deleteTodoStep}
-      />
-
       <StepsForm
         selectedTodo={props.selectedTodo}
         addTodoStep={props.addTodoStep}
+      />
+
+      <StepsList
+        selectedTodo={props.selectedTodo}
+        deleteTodoStep={props.deleteTodoStep}
       />
 
       <DatePickerForm

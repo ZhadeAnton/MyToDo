@@ -1,3 +1,7 @@
+.newItem {
+  height: var(--add-new-item-height);
+}
+
 .addItem {
   display: flex;
   align-items: center;
@@ -26,7 +30,7 @@
 }
 
 .addItemInput {
-  padding: var(--add-new-item-padding);
+  padding: var(--add-new-input-padding);
 
   Input {
     font-size: var(--add-new-item-title-size);

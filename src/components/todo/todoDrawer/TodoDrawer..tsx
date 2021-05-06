@@ -3,11 +3,11 @@ import React from 'react'
 import { Divider} from 'antd';
 
 import styles from './todoDrawer.module.scss'
-import TodoDrawerList from './todoDrawerList/TodoDrawerList';
-import TodoDrawerFilterList from './todoDrawerFilterList/todoDrawerFilterList';
+import TodoDrawerFilterList from './filterList/FilterList';
 import { TodoListProps } from '../../../containers/TodoPageContainer';
 import AddNewList from './addNewList/AddNewList';
 import UserProfile from '../../custom/userProfile/UserProfile.component';
+import CreatedLists from './createdLists/CreatedLists';
 interface Props {
   user: TodoListProps['user'],
   lists: TodoListProps['lists'],
@@ -31,14 +31,14 @@ const TodoDrawer: React.FC<Props> = (props) => {
 
       <Divider />
 
-      <TodoDrawerList
-        lists={props.lists}
-        deleteList={props.deleteList}
-      />
-
       <AddNewList
         userId={props.user!.id}
         createList={props.createList}
+      />
+
+      <CreatedLists
+        lists={props.lists}
+        deleteList={props.deleteList}
       />
     </aside>
   )
