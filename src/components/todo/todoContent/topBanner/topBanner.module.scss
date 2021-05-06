@@ -14,7 +14,13 @@
 
   svg {
     cursor: pointer;
+    transition: fill var(--transition);
     width: var(--todo-content-banner-sort-icon-size);
     height: var(--todo-content-banner-sort-icon-size);
+    fill: var(--todo-content-banner-sort-icon-color);
+
+    &:hover {
+      fill: var(--todo-content-banner-sort-icon-hover-bg);
+    }
   }
 }

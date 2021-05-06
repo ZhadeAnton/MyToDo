@@ -40,6 +40,10 @@ const TodoDrawer: React.FC<Props> = (props) => {
         lists={props.lists}
         deleteList={props.deleteList}
       />
+
+      <div className={styles.autor}>
+        Created by Zhade Anton 2021 &copy;
+      </div>
     </aside>
   )
 }

@@ -73,6 +73,23 @@ export interface SelectTodo {
   payload: ITodo
 }
 
+export const CHANGE_TITLE_SELECTED_TODO = 'CHANGE_TITLE_SELECTED_TODO'
+export interface ChangeTitleSelectedTodo {
+  type: typeof CHANGE_TITLE_SELECTED_TODO,
+  payload: string
+}
+
+export const SET_DATE_SELECTED_TODO = 'SET_DATE_SELECTED_TODO'
+export interface SetDateSelectedTodo {
+  type: typeof SET_DATE_SELECTED_TODO,
+  payload: string
+}
+
+export const REMOVE_DATE_SELECTED_TODO = 'REMOVE_DATE_SELECTED_TODO'
+export interface RemoveDateSelectedTodo {
+  type: typeof REMOVE_DATE_SELECTED_TODO
+}
+
 export const CLOSE_SELECTED_TODO = 'CLOSE_SELECTED_TODO'
 export interface CloseSelectedTodo {
   type: typeof CLOSE_SELECTED_TODO
@@ -143,6 +160,9 @@ export type TodoTypes =
 | CreateTodo
 | CreateList
 | SelectTodo
+| ChangeTitleSelectedTodo
+| SetDateSelectedTodo
+| RemoveDateSelectedTodo
 | CloseSelectedTodo
 | UpdateTodo
 | AddTodoStep

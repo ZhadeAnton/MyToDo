@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Input, Tooltip } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { Input, Tooltip, message } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
 import styles from './todoForm.module.scss'
@@ -7,17 +7,30 @@ import { TodoListProps } from '../../../../containers/TodoPageContainer'
 
 interface Props {
   selectedTodo: TodoListProps['selectedTodo'],
+  changeTitleSelectedTodo: TodoListProps['changeTitleSelectedTodo'],
   onUpdate: TodoListProps['updateTodo']
 }
 
 const TodoEditForm: React.FC<Props> = (props) => {
-  const [todoText, setTodoText] = useState(props.selectedTodo!.title)
+  const [todoText, setTodoText] = useState<string>('')
   const [isEdit, setIsEdit] = useState(false)
+
+  useEffect(() => {
+    setTodoText(props.selectedTodo.title)
+  }, [props.selectedTodo])
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    props.onUpdate(props.selectedTodo!.id, {title: todoText})
-    setIsEdit(false)
+
+    if (todoText.trim() !== '') {
+      props.onUpdate(props.selectedTodo!.id, {title: todoText})
+      props.changeTitleSelectedTodo(todoText)
+      setIsEdit(false)
+    } else {
+      message.warning('Todo text can not be empty!')
+      setTodoText(props.selectedTodo.title)
+      setIsEdit(false)
+    }
   }
 
   return (
@@ -44,7 +57,7 @@ const TodoEditForm: React.FC<Props> = (props) => {
             />
           </Tooltip>
 
-          <p>{props.selectedTodo!.title}</p>
+          <p>{todoText}</p>
         </div>
       }
     </form>

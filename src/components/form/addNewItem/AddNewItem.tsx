@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input } from 'antd';
+import { Input, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 import styles from './addNewItem.module.scss'
@@ -20,8 +20,12 @@ const AddNewItem: React.FC<Props> = (props) => {
   }
 
   const handlePressEnter = (title: string) => {
-    props.handleSubmit(title)
-    handleCancelCreating()
+    if (title.trim() !== '') {
+      props.handleSubmit(title)
+      handleCancelCreating()
+    } else {
+      message.warning('Value can not be empty!')
+    }
   }
 
   return (

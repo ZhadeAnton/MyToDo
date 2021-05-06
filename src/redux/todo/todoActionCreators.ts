@@ -70,6 +70,22 @@ export const selectTodo = (todo: ITodo): actions.SelectTodo => ({
   payload: todo
 })
 
+export const changeTitleSelectedTodo = (
+    title: string): actions.ChangeTitleSelectedTodo => ({
+  type: actions.CHANGE_TITLE_SELECTED_TODO,
+  payload: title
+})
+
+export const setDateSelectedTodo = (
+    date: string): actions.SetDateSelectedTodo => ({
+  type: actions.SET_DATE_SELECTED_TODO,
+  payload: date
+})
+
+export const removeDateSelectedTodo = (): actions.RemoveDateSelectedTodo => ({
+  type: actions.REMOVE_DATE_SELECTED_TODO
+})
+
 export const closeSelectedTodo = (): actions.CloseSelectedTodo => ({
   type: actions.CLOSE_SELECTED_TODO
 })

@@ -4,7 +4,7 @@ import styles from './todoDetails.module.scss'
 import { TodoListProps } from '../../../containers/TodoPageContainer';
 import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import StepsForm from './stepsForm/StepsForm';
-import DatePickerForm from '../../form/datePicker/DatePicker';
+import DatePickerForm from './datePicker/DatePicker';
 import BottomLine from './bottomLine/BottomLine';
 import TodoEditForm from './todoForm/TodoForm';
 import StepsList from './stepList/StepList';
@@ -16,6 +16,9 @@ interface Props {
   onDelete: TodoListProps['deleteTodo'],
   onUpdate: TodoListProps['updateTodo'],
   onSelectTodo: TodoListProps['selectTodo'],
+  changeTitleSelectedTodo: TodoListProps['changeTitleSelectedTodo'],
+  setDateSelectedTodo: TodoListProps['setDateSelectedTodo'],
+  removeDateSelectedTodo: TodoListProps['removeDateSelectedTodo'],
   onCloseSelectedTodo: TodoListProps['closeSelectedTodo'],
 }
 
@@ -23,8 +26,10 @@ const TodoDetails: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDetails}>
       <TodoEditForm
-        selectedTodo={props.selectedTodo}
         onUpdate={props.onUpdate}
+        selectedTodo={props.selectedTodo}
+        changeTitleSelectedTodo={props.changeTitleSelectedTodo}
+
       />
 
       <StepsForm
@@ -40,6 +45,8 @@ const TodoDetails: React.FC<Props> = (props) => {
       <DatePickerForm
         selectedTodo={props.selectedTodo}
         onUpdate={props.onUpdate}
+        setDateSelectedTodo={props.setDateSelectedTodo}
+        removeDateSelectedTodo={props.removeDateSelectedTodo}
       />
 
       <BottomLine

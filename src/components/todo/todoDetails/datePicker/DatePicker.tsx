@@ -1,14 +1,15 @@
 import React from 'react'
 import { DatePicker, Divider, Tooltip, message } from 'antd';
+import { StopOutlined } from '@ant-design/icons';
 import moment from 'moment'
 
 import styles from './dataPicker.module.scss'
-import { TodoListProps } from '../../../containers/TodoPageContainer';
-import {ReactComponent as RemoveDate}
-  from '../../../assets/todo/icons/remove-date.svg'
+import { TodoListProps } from '../../../../containers/TodoPageContainer';
 
 interface Props {
   selectedTodo: TodoListProps['selectedTodo'],
+  setDateSelectedTodo: TodoListProps['setDateSelectedTodo'],
+  removeDateSelectedTodo: TodoListProps['removeDateSelectedTodo'],
   onUpdate: TodoListProps['updateTodo']
 }
 
@@ -19,11 +20,13 @@ const DatePickerForm: React.FC<Props> = (props) => {
         .toString()
 
     props.onUpdate(props.selectedTodo!.id, {planned: newDate})
+    props.setDateSelectedTodo(newDate)
     message.success(`Added new date ${newDate}`)
   }
 
   function handleRemoveDate() {
     props.onUpdate(props.selectedTodo!.id, {planned: ''})
+    props.removeDateSelectedTodo()
     message.warning('Planned date was removed')
   }
 
@@ -48,8 +51,11 @@ const DatePickerForm: React.FC<Props> = (props) => {
                   props.selectedTodo!.planned
                 }
               </time>
-              <Tooltip placement="topLeft" title="Remove date">
-                <RemoveDate onClick={() => handleRemoveDate()} />
+
+              <Tooltip
+                placement="topLeft"
+                title="Remove date">
+                <StopOutlined style={{zIndex: 100}} onClick={handleRemoveDate}/>
               </Tooltip>
             </div>
           </>

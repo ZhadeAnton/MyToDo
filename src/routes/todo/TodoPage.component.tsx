@@ -95,10 +95,13 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
             selectedTodo={props.selectedTodo}
             addTodoStep={props.addTodoStep}
             deleteTodoStep={props.deleteTodoStep}
-            onSelectTodo={props.selectTodo}
-            onCloseSelectedTodo={props.closeSelectedTodo}
-            onDelete={props.deleteTodo}
             onUpdate={props.updateTodo}
+            onDelete={props.deleteTodo}
+            onSelectTodo={props.selectTodo}
+            changeTitleSelectedTodo={props.changeTitleSelectedTodo}
+            setDateSelectedTodo={props.setDateSelectedTodo}
+            removeDateSelectedTodo={props.removeDateSelectedTodo}
+            onCloseSelectedTodo={props.closeSelectedTodo}
           />
         }
       </aside>

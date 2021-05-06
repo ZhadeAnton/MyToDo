@@ -117,16 +117,6 @@ a {
   --add-new-item-hover-icon: var(--color-brand);
   --add-new-input-padding: .9rem .5rem;
 
-  --date-picker-bg: var(--color-brand-light);
-  --date-picker-padding: 1rem;
-  --date-picker-margin: auto 0 2rem 0;
-  --date-picker-title-font-size: 1.3rem;
-  --date-picker-title-color: var(--color-brand);
-  --date-picker-time-font-size: 1.1rem;
-  --date-picker-time-color: var(--color-brand);
-  --date-picker-icon-size: 2rem;
-  --date-picker-icon-color: var(--color-icon);
-
   /* To-do Page */ 
   --todo-drawer-padding-side: .5rem;
   --todo-drawer-width: 20rem;
@@ -146,6 +136,7 @@ a {
   --todo-drawer-created-lists-item-title-mar-left: 1rem;
   --todo-drawer-created-lists-item-hover-bg: var(--color-brand-light);
   --todo-drawer-add-new-item-padding: 1rem;
+  --todo-drawer-author-color: var(--color-grey-light);
 
   --todo-content-padding-side: 2rem;
   --todo-content-banner-padding: 1.5rem var(--todo-content-padding-side);
@@ -154,7 +145,9 @@ a {
   --todo-content-banner-color: var(--color-black);
   --todo-content-banner-title-size: 2rem;
   --todo-content-banner-title-color: var(--color-white);
-  --todo-content-banner-sort-icon-size: 2rem;
+  --todo-content-banner-sort-icon-size: 2.2rem;
+  --todo-content-banner-sort-icon-color: var(--color-white);
+  --todo-content-banner-sort-icon-hover-bg: var(--color-gold);
   --todo-content-list-padding: 0 var(--todo-content-padding-side);
   --todo-content-pagination-padding: .5rem var(--todo-content-padding-side);
   --todo-content-form-padding: 1.5rem var(--todo-content-padding-side);
@@ -209,6 +202,16 @@ a {
   --todo-details-list-item-icon-color: var(--color-icon);
   --todo-details-list-item-border-bot: var(--color-grey-light);
   --todo-details-steps-form-padding: .5rem 0;
+  --todo-details-date-picker-bg: var(--color-brand-light);
+  --todo-details-date-picker-padding: 1rem;
+  --todo-details-date-picker-margin: auto 0 2rem 0;
+  --todo-details-date-picker-title-font-size: 1.3rem;
+  --todo-details-date-picker-title-color: var(--color-brand);
+  --todo-details-date-picker-time-font-size: 1.1rem;
+  --todo-details-date-picker-time-color: var(--color-brand);
+  --todo-details-date-picker-icon-size: 2rem;
+  --todo-details-date-picker-icon-color: var(--color-icon);
+  --todo-details-date-picker-icon-hover-bg: var(--color-red);
   --todo-details-bottom-background-color: var(--color-brand-light);
   --todo-details-bottom-padding: 1rem;
   --todo-details-bottom-text-size: 1.2rem;

@@ -4,7 +4,7 @@ import * as actionTypes from './todoActionTypes'
 import * as api from '../../api'
 import firebase from 'firebase'
 
-export function* getTodos({payload: userId}) {
+function* getTodos({payload: userId}) {
   try {
     const todos = yield call(api.fetchTodos, userId)
     yield put(actionCreators.getAllTodosSuccess(todos))
@@ -13,7 +13,7 @@ export function* getTodos({payload: userId}) {
   }
 }
 
-export function* getListTodos({payload: listId}) {
+function* getListTodos({payload: listId}) {
   try {
     const todos = yield call(api.fetchListTodos, listId)
     yield put(actionCreators.getListTodosSuccess(todos))
@@ -22,7 +22,7 @@ export function* getListTodos({payload: listId}) {
   }
 }
 
-export function* getLists({payload: userId}) {
+function* getLists({payload: userId}) {
   try {
     const lists = yield api.fetchLists(userId)
     yield put(actionCreators.getListsSuccess(lists))
@@ -31,7 +31,7 @@ export function* getLists({payload: userId}) {
   }
 }
 
-export function* createTodo({payload: {title, listId, userId}}) {
+function* createTodo({payload: {title, listId, userId}}) {
   try {
     const newTodo = yield call(api.fetchCreateTodo, {
       title,
@@ -49,7 +49,7 @@ export function* createTodo({payload: {title, listId, userId}}) {
   }
 }
 
-export function* createList({payload: {userId, title}}) {
+function* createList({payload: {userId, title}}) {
   try {
     const newList = yield call(api.fetchCreateList, { userId, title })
     yield put(actionCreators.createListSuccess(newList))
@@ -58,7 +58,7 @@ export function* createList({payload: {userId, title}}) {
   }
 }
 
-export function* updateTodo({payload: {todoId, data}}) {
+function* updateTodo({payload: {todoId, data}}) {
   try {
     const newTodo = yield call(api.fetchUpdateTodo, todoId, data)
     yield put(actionCreators.updateTodoSuccess(newTodo))
@@ -67,7 +67,7 @@ export function* updateTodo({payload: {todoId, data}}) {
   }
 }
 
-export function* addTodoStep({payload: {todoId, stepTitle}}) {
+function* addTodoStep({payload: {todoId, stepTitle}}) {
   try {
     yield call(api.fetchUpdateTodo, todoId, {
       steps: firebase.firestore.FieldValue.arrayUnion({stepTitle})})
@@ -76,7 +76,7 @@ export function* addTodoStep({payload: {todoId, stepTitle}}) {
   }
 }
 
-export function* deleteTodo({payload}) {
+function* deleteTodo({payload}) {
   try {
     const todoId = yield call(api.fetchDeleteTodo, payload)
     yield put(actionCreators.deleteTodoSuccess(todoId))
@@ -85,7 +85,7 @@ export function* deleteTodo({payload}) {
   }
 }
 
-export function* deleteTodoStep({payload: {todoId, step}}) {
+function* deleteTodoStep({payload: {todoId, step}}) {
   try {
     yield call(api.fetchUpdateTodo, todoId, {
       steps: firebase.firestore.FieldValue.arrayRemove(step)})
@@ -94,7 +94,7 @@ export function* deleteTodoStep({payload: {todoId, step}}) {
   }
 }
 
-export function* deleteList({payload}) {
+function* deleteList({payload}) {
   try {
     const listId = yield call(api.fetchDeleteList, payload)
     yield put(actionCreators.deleteListSuccess(listId))

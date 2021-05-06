@@ -4,7 +4,7 @@ import * as actions from './todoActionTypes'
 export interface TodoState {
   todos: Array<ITodo>,
   lists: Array<ITodoList>,
-  selectedTodo: ISelecteTodo
+  selectedTodo: ISelecteTodo | any
 }
 
 const INITIAL_STATE: TodoState = {
@@ -78,7 +78,31 @@ const todoReducer =
           }
 
           return todo
-        })]
+        })],
+        selectedTodo: {
+          ...state.selectedTodo,
+          steps: state.selectedTodo.steps.filter((step: any) => {
+            return step !== action.payload.step
+          })
+        }
+      }
+
+    case actions.SET_DATE_SELECTED_TODO:
+      return {
+        ...state,
+        selectedTodo: {
+          ...state.selectedTodo,
+          planned: action.payload
+        }
+      }
+
+    case actions.REMOVE_DATE_SELECTED_TODO:
+      return {
+        ...state,
+        selectedTodo: {
+          ...state.selectedTodo,
+          planned: ''
+        }
       }
 
     case actions.DELETE_TODO_SUCCESS:

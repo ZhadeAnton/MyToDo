@@ -40,6 +40,9 @@ interface DispatchProps {
   getLists: (userId: string) => void,
   createTodo: ({}: interfaces.IUpdatedTodo) => void,
   selectTodo: (todo: interfaces.ITodo) => void,
+  changeTitleSelectedTodo: (title: string) => void,
+  setDateSelectedTodo: (date: string) => void,
+  removeDateSelectedTodo: () => void,
   closeSelectedTodo: () => void,
   createList: (userId: string, title: string) => void,
   addTodoStep: (todoId: string, stepTitle: string) => void,
@@ -71,6 +74,11 @@ const mapDispatchToProps = (
   updateTodo: (todoId: string, data: {}) => dispatch(
       actions.updateTodo(todoId, data)),
   selectTodo: (todo: interfaces.ITodo) => dispatch(actions.selectTodo(todo)),
+  changeTitleSelectedTodo: (title: string) => dispatch(
+      actions.changeTitleSelectedTodo(title)),
+  setDateSelectedTodo: (date: string) => dispatch(
+      actions.setDateSelectedTodo(date)),
+  removeDateSelectedTodo: () => dispatch(actions.removeDateSelectedTodo()),
   closeSelectedTodo: () => dispatch(actions.closeSelectedTodo()),
   deleteTodo: (todo: string) => dispatch(actions.deleteTodo(todo)),
   deleteTodoStep: (todoId: string, step: interfaces.ITodoStep) => dispatch(
