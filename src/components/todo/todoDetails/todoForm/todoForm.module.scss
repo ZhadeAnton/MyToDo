@@ -1,0 +1,31 @@
+.todoTextForm {
+  cursor: pointer;
+  border-bottom: thin solid var(--todo-details-todo-border-color);
+  font-size: var(--todo-details-todo-title-size);
+  padding: var(--todo-details-todo-title-padding);
+  margin-bottom: var(--todo-details-title-margin-bottom);
+
+  Input {
+    font-size: var(--todo-details-todo-title-size);
+    padding: 0;
+    margin: 0;
+    overflow-wrap: anywhere;
+
+  }
+}
+
+.todoTitle {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-left: var(--todo-details-title-margin-left);
+    overflow-wrap: anywhere;
+  }
+}
+
+.toolTipIcon {
+  svg {
+    fill: var(--todo-details-title-tooltip-color);
+  }
+}

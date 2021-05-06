@@ -1,0 +1,23 @@
+.createdListsItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  padding: var(--todo-drawer-created-lists-item-padding);
+
+  a {
+    width: 100%;
+    font-size: var(--todo-drawer-created-lists-item-font-size);
+    margin-left: var(--todo-drawer-created-lists-item-title-mar-left);
+    margin-right: auto;
+  }
+
+  svg {
+    width: var(--todo-drawer-icon-size);
+    height: var(--todo-drawer-icon-size);
+  }
+
+  &:hover {
+    background-color: var(--todo-drawer-created-lists-item-hover-bg);
+  }
+}

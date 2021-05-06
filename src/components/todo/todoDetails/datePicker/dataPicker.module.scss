@@ -1,0 +1,38 @@
+.dataPicker {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--todo-details-date-picker-bg);
+  padding: var(--todo-details-date-picker-padding);
+  margin: var(--todo-details-date-picker-margin);
+
+  h3 {
+    font-size: var(--todo-details-datee-picker-title-font-size);
+    color: var(--todo-details-date-picker-title-color);
+  }
+
+  &:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.planned {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--todo-details-date-picker-time-font-size);
+  color: var(--todo-details-date-picker-time-color);
+  transition: background-color var(--transition);
+
+  svg {
+    cursor: pointer;
+    width: var(--todo-details-date-picker-icon-size);
+    height: var(--todo-details-date-picker-icon-size);
+    fill: var(--todo-details-date-picker-icon-color);
+
+    &:hover {
+      fill: var(--todo-details-date-picker-icon-hover-bg);
+    }
+  }
+}

@@ -6,9 +6,11 @@ import {
   auth,
   googleProvider,
   facebookProvider,
-  getCurrentUser,
-  creacteUserProfileDocument
 } from '../../firebase.config'
+
+import {
+  creacteUserProfileDocument,
+  getCurrentUser } from '../user/userUtils.ts'
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {

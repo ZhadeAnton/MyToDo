@@ -8,6 +8,8 @@ import {
 import {LockOutlined} from '@ant-design/icons';
 
 import styles from './signIn.module.scss'
+import
+AltSignInContainer from '../../../containers/AltSignInContainer.container';
 
 interface Props {
   signInWithEmail(email: string, password: string): void,
@@ -97,6 +99,8 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
             Log in
           </Button>
         </Form.Item>
+
+        <AltSignInContainer />
       </Form>
     </div>
   )

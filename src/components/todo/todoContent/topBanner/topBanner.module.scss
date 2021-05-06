@@ -1,0 +1,26 @@
+.topBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--todo-content-banner-padding);
+  margin-bottom: var(--todo-content-banner-mar-bot);
+  background-color: var(--todo-content-banner-bg);
+
+  h2 {
+    text-transform: capitalize;
+    font-size: var(--todo-content-banner-title-size);
+    color: var(--todo-content-banner-title-color);
+  }
+
+  svg {
+    cursor: pointer;
+    transition: fill var(--transition);
+    width: var(--todo-content-banner-sort-icon-size);
+    height: var(--todo-content-banner-sort-icon-size);
+    fill: var(--todo-content-banner-sort-icon-color);
+
+    &:hover {
+      fill: var(--todo-content-banner-sort-icon-hover-bg);
+    }
+  }
+}

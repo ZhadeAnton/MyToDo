@@ -1,0 +1,10 @@
+.todoForm {
+  display: flex;
+  padding: var(--todo-content-form-padding);
+
+  input {
+    width: 100%;
+    color: var(--todo-content-form-input-color);
+    font-size: var(--todo-content-form-input-padding);
+  }
+}

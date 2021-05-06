@@ -1,66 +1,31 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { message } from 'antd';
-import { createStructuredSelector } from 'reselect';
+import { Switch, Route } from 'react-router-dom';
 
-import { checkUserSession } from './redux/user/userActionCreators';
+import { AppProps } from './containers/AppContainer';
 import LoginPage from './routes/login/LoginPage.component';
 import MainPage from './routes/main/MainPage.component';
-
-import { Switch, Route } from 'react-router-dom';
-import { UserTypes } from './redux/user/userActionTypes';
-import { RootState } from './redux/store/store';
-import { IUser } from './redux/user/userInterfaces';
-import {
-  selectCurrentUser,
-  selectUserError,
-  selectUserLoading,
-} from './redux/user/userSelectors';
 import
 TodoPageContainer from './containers/TodoPageContainer';
 
-interface Props {
-  user: IUser | undefined;
-  isLoading: boolean;
-  error: string | null;
-}
-
-interface Functions {
-  checkUserSession: () => void;
-}
-
-const App: React.FC<Props & Functions> = ({
-  user,
-  isLoading,
-  error,
-  checkUserSession,
-}) => {
+const App: React.FC<AppProps> = (props) => {
   useEffect(() => {
-    error ? message.error(error) : null;
-
-    checkUserSession();
-  }, [error, isLoading]);
+    props.checkUserSession();
+  }, []);
 
   return (
     <>
       <Switch>
         <Route exact path='/' component={MainPage} />
         <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/todo/:listid?' component={TodoPageContainer} />
+        <Route exact path='/todo/tasks' component={TodoPageContainer} />
+        <Route exact path='/todo/unlisted' component={TodoPageContainer} />
+        <Route exact path='/todo/important' component={TodoPageContainer} />
+        <Route exact path='/todo/planned' component={TodoPageContainer} />
+        <Route exact path='/todo' component={TodoPageContainer} />
+        <Route path='/todo/:listid' component={TodoPageContainer} />
       </Switch>
     </>
   );
 };
 
-const mapStateToProps = createStructuredSelector<RootState, Props>({
-  user: selectCurrentUser,
-  error: selectUserError,
-  isLoading: selectUserLoading,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({
-  checkUserSession: () => dispatch(checkUserSession()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App

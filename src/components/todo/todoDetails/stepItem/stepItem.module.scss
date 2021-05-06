@@ -1,0 +1,18 @@
+.stepItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--todo-details-list-item-padding);
+  font-size: var(--todo-details-list-item-font-size);
+  color: var(--todo-details-list-item-text-color);
+  border-bottom: thin solid var(--todo-details-list-item-border-bot);
+
+  p {
+    margin-left: var(--todo-details-list-item-title-mar-left);
+  }
+
+  svg {
+    color: var(--todo-details-list-item-icon-color);
+    font-size: var(--todo-details-list-item-icon-size);
+  }
+}

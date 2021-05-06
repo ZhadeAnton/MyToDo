@@ -1,11 +1,8 @@
 .todoPage {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.todoWrapper {
   display: flex;
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
   background-image: url('../../assets/todo/todo-bg.jpg');
   background-repeat: no-repeat;
   background-position: center center;
@@ -13,11 +10,15 @@
 }
 
 .todoDrawer {
-  flex: 1;
+  flex: content;
 }
 
 .todoContent {
-  flex: 5;
+  flex: auto;
+}
+
+.todoDetails {
+  flex: content;
 }
 
 .background {

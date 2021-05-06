@@ -1,48 +1,17 @@
 .todoDrawer {
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  width: var(--todo-drawer-width);
   padding: var(--todo-drawer-padding);
   background-color: var(--todo-drawer-background-color);
-  font-size: var(--todo-drawer-font-size);
-
-  ul {
-
-    li {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: background-color var(--todo-drawer-links-transition);
-      padding: var(--todo-drawer-link-item-padding);
-
-      a {
-        width: 100%;
-        padding: var(--todo-drawer-link-padding);
-        margin-left: var(--todo-drawer-link-left-gutter);
-        color: var(--todo-drawer-links-color);
-      }
-
-      svg {
-        width: var(--todo-drawer-icon-size);
-        height: var(--todo-drawer-icon-size);
-      }
-
-      i {
-        display: flex;
-        align-items: center;
-      }
-
-      &:hover {
-        background-color: var(--todo-drawer-links-hover-color);
-      }
-    }
-  }
 }
 
-.todoList {
-  svg {
-    fill: var(--todo-drawer-list-icon-color);
-  }
+.userProfileWrapper {
+  padding: 1rem var(--todo-drawer-padding-side);
+}
+
+.autor {
+  position: absolute;
+  bottom: 0;
+  color: var(--todo-drawer-author-color);
 }

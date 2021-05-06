@@ -1,5 +1,20 @@
-import { ITodo, ITodoList } from '../../interfaces'
+import {
+  IUpdatedTodo,
+  ITodo,
+  ITodoList,
+  ITodoStep} from '../../interfaces'
 import * as actions from './todoActionTypes'
+
+export const getAllTodos = (userId: string): actions.GetAllTodos => ({
+  type: actions.GET_ALL_TODOS,
+  payload: userId
+})
+
+export const getAllTodosSuccess = (
+    todos: Array<ITodo>): actions.GetAllTodosSuccess => ({
+  type: actions.GET_ALL_TODOS_SUCCESS,
+  payload: todos
+})
 
 export const getListTodos = (listId: string): actions.GetListTodos => ({
   type: actions.GET_LIST_TODOS,
@@ -12,8 +27,9 @@ export const getListTodosSuccess = (
   payload: todos
 })
 
-export const getLists = (): actions.GetLists => ({
-  type: actions.GET_LISTS
+export const getLists = (userId: string): actions.GetLists => ({
+  type: actions.GET_LISTS,
+  payload: userId
 })
 
 export const getListsSuccess = (
@@ -22,13 +38,13 @@ export const getListsSuccess = (
   payload: lists
 })
 
-export const createTodo = (
-    title: string, listId: string): actions.CreateTodo => ({
+export const createTodo = ({
+  title,
+  listId,
+  userId
+}: IUpdatedTodo): actions.CreateTodo => ({
   type: actions.CREATE_TODO,
-  payload: {
-    title,
-    listId
-  }
+  payload: { title, listId, userId, }
 })
 
 export const createTodoSuccess = (
@@ -37,18 +53,58 @@ export const createTodoSuccess = (
   payload: newTodo
 })
 
+export const createList = (
+    userId: string, title: string): actions.CreateList => ({
+  type: actions.CREATE_LIST,
+  payload: { userId, title }
+})
+
+export const createListSuccess = (
+    {title, id, userId}: ITodoList): actions.CreateListSuccess => ({
+  type: actions.CREATE_LIST_SUCCESS,
+  payload: { title, id, userId }
+})
+
+export const selectTodo = (todo: ITodo): actions.SelectTodo => ({
+  type: actions.SELECT_TODO,
+  payload: todo
+})
+
+export const changeTitleSelectedTodo = (
+    title: string): actions.ChangeTitleSelectedTodo => ({
+  type: actions.CHANGE_TITLE_SELECTED_TODO,
+  payload: title
+})
+
+export const setDateSelectedTodo = (
+    date: string): actions.SetDateSelectedTodo => ({
+  type: actions.SET_DATE_SELECTED_TODO,
+  payload: date
+})
+
+export const removeDateSelectedTodo = (): actions.RemoveDateSelectedTodo => ({
+  type: actions.REMOVE_DATE_SELECTED_TODO
+})
+
+export const closeSelectedTodo = (): actions.CloseSelectedTodo => ({
+  type: actions.CLOSE_SELECTED_TODO
+})
+
 export const updateTodo = (todoId: string, data: {}): actions.UpdateTodo => ({
   type: actions.UPDATE_TODO,
-  payload: {
-    todoId,
-    data
-  }
+  payload: { todoId, data }
 })
 
 export const updateTodoSuccess = (
     updatedTodo: ITodo): actions.UpdateTodoSuccess => ({
   type: actions.UPDATE_TODO_SUCCESS,
   payload: updatedTodo
+})
+
+export const addTodoStep = (
+    todoId: string, stepTitle: string): actions.AddTodoStep => ({
+  type: actions.ADD_TODO_STEP,
+  payload: { todoId, stepTitle: stepTitle }
 })
 
 export const deleteTodo = (todoId: string): actions.DeleteTodo => ({
@@ -60,6 +116,23 @@ export const deleteTodoSuccess = (
     todoId: string): actions.DeleteTodoSuccess => ({
   type: actions.DELETE_TODO_SUCCESS,
   payload: todoId
+})
+
+export const deleteTodoStep = (
+    todoId: string, step: ITodoStep): actions.DeleteTodoStep => ({
+  type: actions.DELETE_TODO_STEP,
+  payload: { todoId, step }
+})
+
+export const deleteList = (listId: string): actions.DeleteList => ({
+  type: actions.DELETE_LIST,
+  payload: listId
+})
+
+export const deleteListSuccess = (
+    listId: string): actions.DeleteListSuccess => ({
+  type: actions.DELETE_LIST_SUCCESS,
+  payload: listId
 })
 
 export const todosFailure = (error: string): actions.TodosFailure => ({

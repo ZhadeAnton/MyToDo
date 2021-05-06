@@ -1,24 +1,63 @@
 import React from 'react'
-import { CloseOutlined } from '@ant-design/icons'
 
 import styles from './todoDetails.module.scss'
-import { ITodo } from '../../../interfaces'
+import { TodoListProps } from '../../../containers/TodoPageContainer';
+import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
+import StepsForm from './stepsForm/StepsForm';
+import DatePickerForm from './datePicker/DatePicker';
+import BottomLine from './bottomLine/BottomLine';
+import TodoEditForm from './todoForm/TodoForm';
+import StepsList from './stepList/StepList';
 
 interface Props {
-  todo: ITodo,
-  onClose: () => void
+  selectedTodo: TodoListProps['selectedTodo'],
+  addTodoStep: TodoListProps['addTodoStep'],
+  deleteTodoStep: TodoListProps['deleteTodoStep'],
+  onDelete: TodoListProps['deleteTodo'],
+  onUpdate: TodoListProps['updateTodo'],
+  onSelectTodo: TodoListProps['selectTodo'],
+  changeTitleSelectedTodo: TodoListProps['changeTitleSelectedTodo'],
+  setDateSelectedTodo: TodoListProps['setDateSelectedTodo'],
+  removeDateSelectedTodo: TodoListProps['removeDateSelectedTodo'],
+  onCloseSelectedTodo: TodoListProps['closeSelectedTodo'],
 }
 
-const TodoDetails = ({ todo, onClose }: Props) => {
+const TodoDetails: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDetails}>
-      <div className={styles.topBanner}>
-        <p className={styles.bannerTitle}>{todo.title}</p>
-      </div>
+      <TodoEditForm
+        onUpdate={props.onUpdate}
+        selectedTodo={props.selectedTodo}
+        changeTitleSelectedTodo={props.changeTitleSelectedTodo}
 
-      <span className={styles.closeBtn}>
-        <i onClick={onClose}><CloseOutlined /></i>
-      </span>
+      />
+
+      <StepsForm
+        selectedTodo={props.selectedTodo}
+        addTodoStep={props.addTodoStep}
+      />
+
+      <StepsList
+        selectedTodo={props.selectedTodo}
+        deleteTodoStep={props.deleteTodoStep}
+      />
+
+      <DatePickerForm
+        selectedTodo={props.selectedTodo}
+        onUpdate={props.onUpdate}
+        setDateSelectedTodo={props.setDateSelectedTodo}
+        removeDateSelectedTodo={props.removeDateSelectedTodo}
+      />
+
+      <BottomLine
+        selectedTodo={props.selectedTodo}
+        onDeleteTodo={props.onDelete}
+        onCloseSelectedTodo={props.onCloseSelectedTodo}
+      />
+
+      <CloseDetailsButton
+        onCloseSelectedTodo={props.onCloseSelectedTodo}
+      />
     </aside>
   )
 }

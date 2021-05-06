@@ -1,20 +1,46 @@
 export interface ITodo {
   title: string,
   listId: string,
+  userId: string,
   id: string,
-  completed: boolean
+  completed: boolean,
+  important: boolean
+  timestamp: any,
+  planned?: string
+  steps: Array<ITodoStep>,
 }
 
-export type ITodoRecive = ITodo[]
+export type ISelecteTodo = ITodo | null
+
+export interface ITodoStep {
+  stepTitle: string,
+}
+
+export interface IAddTodoStep extends ITodoStep {
+  todoId: string
+}
+
+export interface IDeleteTodoStep {
+  todoId: string,
+  step: ITodoStep
+}
 
 export interface ITodoList {
   title: string,
-  id: string
+  id: string,
+  userId: string,
 }
 
-export type ITodoListRecive = ITodoList[]
+export interface ICreateList {
+  title: string,
+  userId: string,
+}
 
-export type ICreateTodo = {
+export interface ICreateTodo {
   title: string,
   listId: string
+}
+
+export interface IUpdatedTodo extends ICreateTodo {
+  userId: string,
 }

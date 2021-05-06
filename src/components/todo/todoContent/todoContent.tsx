@@ -1,78 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { Spin } from 'antd'
+import React from 'react'
 
 import styles from './todoContent.module.scss'
-import { ITodo, ITodoList } from '../../../interfaces'
-import TodoList from '../todoList/TodoList.component'
-import TodoForm from '../todoForm/TodoForm'
-import TodoDetails from '../todoDetails/TodoDetails'
+import { ITodoList } from '../../../interfaces'
+import { TodoListProps } from '../../../containers/TodoPageContainer'
+import TodoList from './todoList/TodoList'
+import TodoForm from './todoForm/TodoForm'
+import TopBanner from './topBanner/TopBanner'
 
 interface Props {
-  match: {
-    params: {
-      listid: string
-    }
-  }
-  todos: Array<ITodo>,
-  lists: ITodoList[],
-  getTodos: (listId: string) => void,
-  createTodo: (title: string, listId: string) => void,
-  updateTodo: (todoId: string, data: {}) => void
-  deleteTodo: (todo: string) => void
+  listId: string,
+  path: string,
+  userId: string,
+  checkedSort: string,
+  currentList: ITodoList | undefined,
+  handleSubmit: (title: string) => void,
+  handleSortChange: (sort: string) => void,
+  todos: TodoListProps['todos'],
+  lists: TodoListProps['lists'],
+  getTodos: TodoListProps['getTodos'],
+  createTodo: TodoListProps['createTodo'],
+  updateTodo: TodoListProps['updateTodo'],
+  deleteTodo: TodoListProps['deleteTodo'],
+  onSelectTodo: TodoListProps['selectTodo'],
+  selectedTodo: TodoListProps['selectedTodo'],
+  onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
 }
 
 const TodoContent: React.FC<Props> = (props) => {
-  const [selectedTodo, setSelectedTodo] = useState<ITodo | null>(null)
-  const listId = props.match.params.listid
-
-  useEffect(() => {
-    props.getTodos(listId)
-  }, [listId])
-
-  const currentList =
-  props.lists?.find((list: ITodoList) => list.id === listId)
-
-  const handleSubmit = (title: string) => {
-    props.createTodo(title, listId)
-  }
-
-  const handleSelect = (todo: ITodo) => {
-    setSelectedTodo(todo)
-  }
-
-  const handleCloseDetail = () => {
-    setSelectedTodo(null)
-  }
-
-  if (!currentList || !props.todos) return <Spin />
-
   return (
     <div className={styles.todoContent}>
-      <div className={styles.todoTasksWrapper}>
-        <TodoList
-          list={currentList}
-          todos={props.todos}
-          deleteTodo={props.deleteTodo}
-          updateTodo={props.updateTodo}
-          handleSelect={handleSelect}
-        />
+      <TopBanner
+        list={props.currentList}
+        path={props.path}
+        checkedSort={props.checkedSort}
+        handleSortChange={props.handleSortChange}
+      />
 
-        <div className={styles.todoContentForm}>
-          <TodoForm
-            listId={listId}
-            onSubmit={handleSubmit}
-          />
-        </div>
-      </div>
+      <TodoList
+        todos={props.todos}
+        selectedTodo={props.selectedTodo}
+        updateTodo={props.updateTodo}
+        onSelectTodo={props.onSelectTodo}
+      />
 
-      <div className={styles.todoDetails}>
-        { selectedTodo &&
-          <TodoDetails
-            todo={selectedTodo}
-            onClose={handleCloseDetail}
-          />
-        }
-      </div>
+      <TodoForm
+        listId={props.listId}
+        onSubmit={props.handleSubmit}
+      />
     </div>
   )
 }

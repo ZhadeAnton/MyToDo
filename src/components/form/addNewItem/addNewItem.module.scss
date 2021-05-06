@@ -1,0 +1,38 @@
+.newItem {
+  height: var(--add-new-item-height);
+}
+
+.addItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: var(--add-new-item-transition);
+  padding: var(--add-new-item-padding);
+  cursor: pointer;
+
+  svg {
+    font-size: var(--add-new-item-icon-size);
+  }
+
+  p {
+    font-size: var(--add-new-item-title-size);
+    margin-left: var(--add-new-item-title-margin-left);
+  }
+
+  &:hover {
+    background-color: var(--add-new-item-hover-bg);
+    color: var(--add-new-item-hover-title);
+
+    svg {
+     fill: var( --add-new-item-hover-icon);
+    }
+  }
+}
+
+.addItemInput {
+  padding: var(--add-new-input-padding);
+
+  Input {
+    font-size: var(--add-new-item-title-size);
+  }
+}
