@@ -7,16 +7,13 @@ import LoginTabs from '../../components/login/loginTabs/LoginTabs';
 
 const LoginPage: React.FC<LoginPageProps> = (props) => {
   return (
-    <section className={styles.login}>
-      <div className={styles.wrapper}>
-
-        <div className={styles.form}>
-          <LoginTabs
-            isLoading={props.isLoading}
-            signInWithEmail={props.signInWithEmail}
-            signUp={props.signUp}
-          />
-        </div>
+    <section className={styles.loginPage}>
+      <div className={styles.loginForm}>
+        <LoginTabs
+          isLoading={props.isLoading}
+          signInWithEmail={props.signInWithEmail}
+          signUp={props.signUp}
+        />
       </div>
     </section>
   )

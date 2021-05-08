@@ -6,6 +6,7 @@ import styles from './loginTabs.module.scss'
 import SingIn from '../signIn/SignIn';
 import SingUp from '../signUp/SignUp';
 import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { UserAddOutlined, LoginOutlined } from '@ant-design/icons';
 
 interface Props {
   isLoading: LoginPageProps['isLoading'],
@@ -15,16 +16,37 @@ interface Props {
 
 const LoginTabs: React.FC<Props> = (props) => {
   return (
-    <div className={styles.loginForm}>
-      <Tabs defaultActiveKey="1">
-        <TabPane tab="Sign In" key="1">
+    <div className={styles.loginTabs}>
+      <Tabs
+        defaultActiveKey="1"
+        size="large"
+        centered={true}
+      >
+        <TabPane
+          tab={
+            <span className={styles.tab}>
+              <LoginOutlined />
+              Sign In
+            </span>
+          }
+          key="1"
+        >
           <Spin spinning={props.isLoading}>
             <SingIn
               signInWithEmail={props.signInWithEmail}
             />
           </Spin>
         </TabPane>
-        <TabPane tab="Sign Up" key="2">
+
+        <TabPane
+          tab={
+            <span className={styles.tab}>
+              <UserAddOutlined />
+              Sign Up
+            </span>
+          }
+          key="2"
+        >
           <Spin spinning={props.isLoading}>
             <SingUp
               signUp={props.signUp}
