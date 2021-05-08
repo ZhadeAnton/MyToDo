@@ -1,0 +1,7 @@
+.signIn {
+  margin-top: var(--login-page-sign-in-mar-top);
+
+  & + div {
+    text-align: center;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import styles from './header.module.scss'
-import Logo from '../../components/custom/logo/logo.component'
+import Logo from '../../components/custom/logo/logo'
 import CustomLink from '../../components/custom/customLink/CustomLink'
 
 const Header = () => {

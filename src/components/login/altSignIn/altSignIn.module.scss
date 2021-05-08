@@ -1,0 +1,33 @@
+.altSignIn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsGroup {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .9;
+    font-size: var(--login-page-sign-in-alt-buttons-font-size);
+    color: var(--login-page-sign-in-alt-buttons-color);
+
+    &:not(:last-child) {
+      margin-bottom: var(--login-page-sign-in-alt-buttons-mar-bot);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    svg {
+      width: var(--login-page-sign-in-alt-icon-size);
+      height: var(--login-page-sign-in-alt-icon-size);
+      margin-right: var(--login-page-sign-in-alt-icon-mar-right);
+    }
+  }
+}

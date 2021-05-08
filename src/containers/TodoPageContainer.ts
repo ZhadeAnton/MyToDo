@@ -3,15 +3,15 @@ import { Dispatch } from 'redux'
 
 import * as interfaces from '../interfaces';
 import * as actions from '../redux/todo/todoActionCreators'
-import { signOutStart } from '../redux/user/userActionCreators'
 import * as selectors from '../redux/todo/todoSelectors';
+import { signOutStart } from '../redux/user/userActionCreators'
 import { TodoState } from '../redux/todo/todoReducer';
 import { RootState } from '../redux/store/store';
 import { TodoTypes } from '../redux/todo/todoActionTypes';
 import { UserTypes } from '../redux/user/userActionTypes';
-import { IUser } from '../redux/user/userInterfaces';
 import { selectCurrentUser } from '../redux/user/userSelectors';
 import TodoPage from '../routes/todo/TodoPage.component';
+import { UserState } from '../redux/user/userReducer';
 
 interface OwnProps extends TodoState {
   match: {
@@ -27,10 +27,10 @@ interface OwnProps extends TodoState {
 }
 
 interface StateProps {
-  todos: Array<interfaces.ITodo> | [],
-  lists: Array<interfaces.ITodoList> | [],
-  selectedTodo: interfaces.ISelecteTodo,
-  user: IUser | undefined
+  todos: TodoState['todos'],
+  lists: TodoState['lists'],
+  selectedTodo: TodoState['selectedTodo'],
+  user: UserState['currentUser']
 }
 
 interface DispatchProps {

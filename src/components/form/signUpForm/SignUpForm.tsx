@@ -2,14 +2,14 @@ import React, {useState} from 'react'
 import {Form, Input, Button} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
-import styles from './signUp.module.scss'
+import styles from './signUpForm.module.scss'
+import { LoginPageProps } from '../../../containers/LoginPageContainer';
 
 interface Props {
-  signUp(displayName: string, email: string, password: string): void
+  signUp: LoginPageProps['signUp']
 }
 
-const SignUp: React.FC<Props> =
-({signUp}) => {
+const SignUpForm: React.FC<Props> = (props) => {
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
@@ -33,7 +33,7 @@ const SignUp: React.FC<Props> =
       return
     }
 
-    signUp(displayName, email, password)
+    props.signUp(displayName, email, password)
   }
 
   const clear = () => {
@@ -48,7 +48,7 @@ const SignUp: React.FC<Props> =
   return (
     <div className={styles.signUp}>
       <Form
-        name="register"
+        name="sign-up"
         size='large'
         onFinish={clear}
         preserve={false}
@@ -149,4 +149,4 @@ const SignUp: React.FC<Props> =
   )
 }
 
-export default SignUp
+export default SignUpForm

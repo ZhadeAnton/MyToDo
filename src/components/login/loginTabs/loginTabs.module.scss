@@ -1,0 +1,12 @@
+.loginTabs {
+  width: 100%;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: var(--login-page-tabs-font-size);
+  margin-right: var(--login-page-tabs-gutter);
+}
