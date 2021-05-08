@@ -5,7 +5,7 @@ import CustomLink
 
 import styles from './footer.module.scss'
 
-const SectionFooter = () => {
+const Footer = () => {
   return (
     <footer>
       <Divider orientation="left">About Any.do</Divider>
@@ -41,4 +41,4 @@ const SectionFooter = () => {
   )
 }
 
-export default SectionFooter
+export default Footer
