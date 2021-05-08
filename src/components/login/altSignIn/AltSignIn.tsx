@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from 'antd';
+import { Button, Divider } from 'antd';
 
 import styles from './altSignIn.module.scss'
 import {GooglePlusOutlined, FacebookOutlined} from '@ant-design/icons';
@@ -13,31 +13,28 @@ interface Props {
 
 const AltSignIn: React.FC<Props> = (props) => {
   return (
-    <div className={styles.alternativeSignIn}>
-      <div className={styles.orSeparator}>
-        <span className={styles.orSideLine}></span>
-        <p>or</p>
-        <span className={styles.orSideLine}></span>
-      </div>
+    <div className={styles.altSignIn}>
+      <Divider plain>or</Divider>
 
       <div className={styles.buttonsGroup}>
         <Button
-          style={{background: 'red'}}
+          style={{backgroundColor: '#DD4B39'}}
           loading={props.isLoading}
           type="primary"
           size="large"
           icon={<GooglePlusOutlined />}
           onClick={() => props.signInWithGoogle()}>
-          Google
+          Sign in with Google
         </Button>
 
         <Button
           loading={props.isLoading}
+          style={{backgroundColor: '#5890FF'}}
           type="primary"
           size="large"
           icon={<FacebookOutlined />}
           onClick={() => props.signInWithFacebook()}>
-          Facebook
+          Sign in with Facebook
         </Button>
       </div>
     </div>

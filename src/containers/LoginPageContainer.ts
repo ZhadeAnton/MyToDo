@@ -5,9 +5,11 @@ import * as actions from '../redux/user/userActionCreators'
 import {RootState} from '../redux/store/store'
 import {UserTypes} from '../redux/user/userActionTypes'
 import LoginPage from '../routes/login/LoginPage'
+import { UserState } from '../redux/user/userReducer'
 
 interface StateProps {
-  isLoading: boolean
+  isLoading: UserState['isLoading'],
+  userError: UserState['userError']
 }
 
 interface DispatchProps {
@@ -18,7 +20,8 @@ interface DispatchProps {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  isLoading: state.user.isLoading
+  isLoading: state.user.isLoading,
+  userError: state.user.userError
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({

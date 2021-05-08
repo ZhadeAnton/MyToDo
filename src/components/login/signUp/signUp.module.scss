@@ -1,8 +1,14 @@
 .signUp {
   margin-top: 2rem;
 
+  h2 {
+    text-align: center;
+    color: var(--login-page-sign-up-title-color);
+    font-size: var(--login-page-sign-up-title-font-size);
+  }
+
   input {
-    padding: .2rem .4rem !important;
+    padding: var(--login-page-inputs-padding);
   }
 }
 
