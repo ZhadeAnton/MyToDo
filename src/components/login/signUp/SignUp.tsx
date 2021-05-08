@@ -48,7 +48,7 @@ const SignUp: React.FC<Props> = (props) => {
   return (
     <div className={styles.signUp}>
       <Form
-        name="register"
+        name="sign-up"
         size='large'
         onFinish={clear}
         preserve={false}

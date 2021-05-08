@@ -7,10 +7,13 @@ import SingIn from '../signIn/SignIn';
 import SingUp from '../signUp/SignUp';
 import { LoginPageProps } from '../../../containers/LoginPageContainer';
 import { UserAddOutlined, LoginOutlined } from '@ant-design/icons';
+import AltSignIn from '../altSignIn/AltSignIn';
 
 interface Props {
   isLoading: LoginPageProps['isLoading'],
   signInWithEmail: LoginPageProps['signInWithEmail'],
+  signInWithGoogle: LoginPageProps['signInWithGoogle'],
+  signInWithFacebook: LoginPageProps['signInWithFacebook'],
   signUp: LoginPageProps['signUp']
 }
 
@@ -34,6 +37,11 @@ const LoginTabs: React.FC<Props> = (props) => {
           <Spin spinning={props.isLoading}>
             <SingIn
               signInWithEmail={props.signInWithEmail}
+            />
+            <AltSignIn
+              isLoading={props.isLoading}
+              signInWithFacebook={props.signInWithFacebook}
+              signInWithGoogle={props.signInWithGoogle}
             />
           </Spin>
         </TabPane>

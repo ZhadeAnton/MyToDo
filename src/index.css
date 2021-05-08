@@ -126,13 +126,15 @@ a {
   /* Login Page */
   --login-page-bg: var(--color-white-dark);
   --login-page-form-bg: var(--color-white);
-  --login-page-max-width: 30rem;
+  --login-page-max-width: 32rem;
   --login-page-max-height: 50rem;
   --login-page-mar-top: 5rem;
   --login-page-form-padding: 3rem;
   --login-page-form-border-radius: 1rem;
-  --login-page-tabs-font-size: 1.4rem;
   --login-page-form-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
+  --login-page-tabs-font-size: 1.4rem;
+  --login-page-tabs-gutter: 5rem;
+  --login-page-sign-in-mar-top: .5rem;
 
   /* To-do Page */ 
   --todo-drawer-padding-side: .5rem;

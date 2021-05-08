@@ -11,8 +11,10 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
       <div className={styles.loginForm}>
         <LoginTabs
           isLoading={props.isLoading}
-          signInWithEmail={props.signInWithEmail}
           signUp={props.signUp}
+          signInWithEmail={props.signInWithEmail}
+          signInWithGoogle={props.signInWithGoogle}
+          signInWithFacebook={props.signInWithFacebook}
         />
       </div>
     </section>
