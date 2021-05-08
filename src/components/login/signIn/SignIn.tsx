@@ -8,14 +8,13 @@ import {
 import {LockOutlined} from '@ant-design/icons';
 
 import styles from './signIn.module.scss'
-import
-AltSignInContainer from '../../../containers/AltSignInContainer.container';
+import { LoginPageProps } from '../../../containers/LoginPageContainer';
 
 interface Props {
-  signInWithEmail(email: string, password: string): void,
+  signInWithEmail: LoginPageProps['signInWithEmail'],
 }
 
-const SingIn: React.FC<Props> = ({signInWithEmail}) => {
+const SingIn: React.FC<Props> = (props) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''
@@ -31,7 +30,7 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
-    signInWithEmail(email, password)
+    props.signInWithEmail(email, password)
   }
 
   const clear = () => {
@@ -99,8 +98,6 @@ const SingIn: React.FC<Props> = ({signInWithEmail}) => {
             Log in
           </Button>
         </Form.Item>
-
-        <AltSignInContainer />
       </Form>
     </div>
   )

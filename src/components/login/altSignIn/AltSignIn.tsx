@@ -3,10 +3,15 @@ import {Button} from 'antd';
 
 import styles from './altSignIn.module.scss'
 import {GooglePlusOutlined, FacebookOutlined} from '@ant-design/icons';
-import {AltSignInProps} from '../../../containers/AltSignInContainer.container';
+import { LoginPageProps } from '../../../containers/LoginPageContainer';
 
-const AltSignIn: React.FC<AltSignInProps> =
-({signInWithGoogle, signInWithFacebook, isLoading}) => {
+interface Props {
+  isLoading: LoginPageProps['isLoading'],
+  signInWithGoogle: LoginPageProps['signInWithGoogle'],
+  signInWithFacebook: LoginPageProps['signInWithFacebook']
+}
+
+const AltSignIn: React.FC<Props> = (props) => {
   return (
     <div className={styles.alternativeSignIn}>
       <div className={styles.orSeparator}>
@@ -18,20 +23,20 @@ const AltSignIn: React.FC<AltSignInProps> =
       <div className={styles.buttonsGroup}>
         <Button
           style={{background: 'red'}}
-          loading={isLoading}
+          loading={props.isLoading}
           type="primary"
           size="large"
           icon={<GooglePlusOutlined />}
-          onClick={() => signInWithGoogle()}>
+          onClick={() => props.signInWithGoogle()}>
           Google
         </Button>
 
         <Button
-          loading={isLoading}
+          loading={props.isLoading}
           type="primary"
           size="large"
           icon={<FacebookOutlined />}
-          onClick={() => signInWithFacebook()}>
+          onClick={() => props.signInWithFacebook()}>
           Facebook
         </Button>
       </div>
