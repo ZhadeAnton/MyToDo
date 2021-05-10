@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,IAAI,CAAC;EACH,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,gCAAgC;EAC3C,YAAY,EAAE,6BAA6B;CAC5C",
+    "sources": [
+        "loginTabs.module.scss"
+    ],
+    "names": [],
+    "file": "loginTabs.module.css"
+}

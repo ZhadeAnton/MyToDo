@@ -1,0 +1,26 @@
+.available {
+  text-align: center;
+  margin: 3rem;
+}
+
+.availableTitle {
+  margin-bottom: 2rem;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.availableDevice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #9197a3;
+  font-size: 9px;
+  font-weight: 500;
+  font-style: normal;
+}
+/*# sourceMappingURL=sectionAvailable.module.css.map */

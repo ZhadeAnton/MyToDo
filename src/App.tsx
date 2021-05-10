@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { AppProps } from './containers/AppContainer';
 import MainPageContainer from './containers/MainPageContainer';
@@ -10,10 +10,6 @@ const App: React.FC<AppProps> = (props) => {
   useEffect(() => {
     props.checkUserSession();
   }, []);
-
-  if (!!props.user) {
-    <Redirect to='/login' />
-  }
 
   return (
     <>

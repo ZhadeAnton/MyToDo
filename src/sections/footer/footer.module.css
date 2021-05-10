@@ -1,0 +1,9 @@
+.footer {
+  padding: 4rem 0;
+  background-color: var(--color-brand-background);
+}
+
+.footer ul {
+  text-align: center;
+}
+/*# sourceMappingURL=footer.module.css.map */

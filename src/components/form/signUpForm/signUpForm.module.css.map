@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,UAAU,EAAE,IAAI;CAKjB;;AAND,AAGE,OAHK,CAGL,KAAK,CAAC;EACJ,OAAO,EAAE,sBAAsB;CAChC;;AAGH,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "signUpForm.module.scss"
+    ],
+    "names": [],
+    "file": "signUpForm.module.css"
+}

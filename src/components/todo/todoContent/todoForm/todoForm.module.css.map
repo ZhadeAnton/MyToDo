@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,OAAO,EAAE,gCAAgC;CAO1C;;AATD,AAIE,SAJO,CAIP,KAAK,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,KAAK,EAAE,oCAAoC;EAC3C,SAAS,EAAE,sCAAsC;CAClD",
+    "sources": [
+        "todoForm.module.scss"
+    ],
+    "names": [],
+    "file": "todoForm.module.css"
+}

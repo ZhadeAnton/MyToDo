@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,aAAa;EAE9B,OAAO,EAAE,kCAAkC;EAC3C,SAAS,EAAE,oCAAoC;EAC/C,KAAK,EAAE,qCAAqC;EAC5C,gBAAgB,EAAE,2CAA2C;CAM9D;;AAdD,AAUE,WAVS,CAUT,GAAG,CAAC;EACF,SAAS,EAAE,qCAAqC;EAChD,IAAI,EAAE,sCAAsC;CAC7C",
+    "sources": [
+        "bottomLine.module.scss"
+    ],
+    "names": [],
+    "file": "bottomLine.module.css"
+}

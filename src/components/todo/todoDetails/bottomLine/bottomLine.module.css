@@ -1,0 +1,21 @@
+.bottomLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: var(--todo-details-bottom-padding);
+  font-size: var(--todo-details-bottom-text-size);
+  color: var(--todo-details-bottom-text-color);
+  background-color: var(--todo-details-bottom-background-color);
+}
+
+.bottomLine svg {
+  font-size: var(--todo-details-bottom-icons-size);
+  fill: var(--todo-details-bottom-icons-color);
+}
+/*# sourceMappingURL=bottomLine.module.css.map */
