@@ -1,0 +1,12 @@
+.signInForm {
+  padding-top: 2rem;
+}
+
+.signInForm input {
+  padding: .2rem .4rem !important;
+}
+
+.submitBtn {
+  width: 100%;
+}
+/*# sourceMappingURL=signInForm.module.css.map */

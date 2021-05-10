@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 @import '~antd/dist/antd.css';
 
 body {
   margin: 0;
-  font-family: 'Roboto', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -80,8 +80,12 @@ a {
   --color-red: rgb(237, 79, 7);
   --color-icon: #353535;
 
+  /* Sizes */
+  --header-height: 80px;
+
   /* Measures */
   --transition: .2s linear;
+  --box-shadow: 0 6px 15px 0 var(--color-grey-light);
 
   /* Custom Elements*/
   --detele-icon-hover-color: var(--color-red);
@@ -122,6 +126,20 @@ a {
   --add-new-item-hover-title: var(--color-brand);
   --add-new-item-hover-icon: var(--color-brand);
   --add-new-input-padding: .9rem .5rem;
+
+  /* Main Page */
+  --main-page-header-height: var(--header-height);
+  --main-page-header-shadow: 0 6px 15px 0 var(--color-grey-light);
+  --main-page-header-nav-links-padding: 1rem;
+  --main-page-header-nav-links-color: var(--color-black);
+  --main-page-header-nav-links-font-size: 1.5rem;
+  --main-page-header-nav-links-hover-bg: var(--color-white-light);
+  --main-page-header-nav-links-hover-color: var(--color-brand);
+  --main-page-hero-blocks-padding: 3rem;
+  --main-page-hero-info-blocks-mar-top: 3rem;
+  --main-page-hero-info-blocks-items-mar-bot: 2rem;
+  --main-page-block-img-shadow: 0 6px 15px 0 var(--color-grey-light);
+  --main-page-block-gutter: 4rem;
 
   /* Login Page */
   --login-page-bg: var(--color-white-dark);

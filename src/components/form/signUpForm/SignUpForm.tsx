@@ -68,6 +68,7 @@ const SignUpForm: React.FC<Props> = (props) => {
             onChange={handleChange}
             value={displayName}
             autoFocus
+            autoComplete="name"
           />
         </Form.Item>
 
@@ -86,6 +87,7 @@ const SignUpForm: React.FC<Props> = (props) => {
             allowClear
             onChange={handleChange}
             value={email}
+            autoComplete="email"
           />
         </Form.Item>
 
@@ -102,6 +104,7 @@ const SignUpForm: React.FC<Props> = (props) => {
             prefix={<LockOutlined />}
             onChange={handleChange}
             value={password}
+            autoComplete="new-password"
           />
         </Form.Item>
 
@@ -131,6 +134,7 @@ const SignUpForm: React.FC<Props> = (props) => {
             prefix={<LockOutlined />}
             onChange={handleChange}
             value={confirmPassword}
+            autoComplete="new-password"
           />
         </Form.Item>
 

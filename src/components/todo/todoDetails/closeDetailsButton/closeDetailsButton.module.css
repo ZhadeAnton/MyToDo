@@ -1,0 +1,16 @@
+.closeDetailsIcon {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  font-size: var(--todo-details-close-btn-size);
+}
+
+.closeDetailsIcon svg {
+  cursor: pointer;
+  fill: var(--todo-details-close-btn-color);
+}
+
+.closeDetailsIcon svg:hover {
+  fill: var(--todo-details-close-btn-hover);
+}
+/*# sourceMappingURL=closeDetailsButton.module.css.map */

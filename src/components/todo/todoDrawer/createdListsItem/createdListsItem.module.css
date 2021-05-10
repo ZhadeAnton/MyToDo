@@ -1,0 +1,28 @@
+.createdListsItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  cursor: pointer;
+  padding: var(--todo-drawer-created-lists-item-padding);
+}
+
+.createdListsItem a {
+  width: 100%;
+  font-size: var(--todo-drawer-created-lists-item-font-size);
+  margin-left: var(--todo-drawer-created-lists-item-title-mar-left);
+  margin-right: auto;
+}
+
+.createdListsItem svg {
+  width: var(--todo-drawer-icon-size);
+  height: var(--todo-drawer-icon-size);
+}
+
+.createdListsItem:hover {
+  background-color: var(--todo-drawer-created-lists-item-hover-bg);
+}
+/*# sourceMappingURL=createdListsItem.module.css.map */

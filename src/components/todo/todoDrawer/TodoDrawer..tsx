@@ -6,7 +6,7 @@ import styles from './todoDrawer.module.scss'
 import TodoDrawerFilterList from './filterList/FilterList';
 import { TodoListProps } from '../../../containers/TodoPageContainer';
 import AddNewList from './addNewList/AddNewList';
-import UserProfile from '../../custom/userProfile/UserProfile.component';
+import UserProfile from '../../custom/userProfile/UserProfile';
 import CreatedLists from './createdLists/CreatedLists';
 interface Props {
   user: TodoListProps['user'],

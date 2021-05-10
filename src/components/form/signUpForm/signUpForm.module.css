@@ -1,0 +1,12 @@
+.signUp {
+  margin-top: 2rem;
+}
+
+.signUp input {
+  padding: .2rem .4rem !important;
+}
+
+.submitBtn {
+  width: 100%;
+}
+/*# sourceMappingURL=signUpForm.module.css.map */

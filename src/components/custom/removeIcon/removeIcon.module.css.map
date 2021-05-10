@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACC,WADU,CACV,GAAG,CAAC;EACF,MAAM,EAAE,OAAO;CAKhB;;AAPF,AAIG,WAJQ,CACV,GAAG,AAGA,MAAM,CAAC;EACN,IAAI,EAAE,8BAA8B;CACrC",
+    "sources": [
+        "removeIcon.module.scss"
+    ],
+    "names": [],
+    "file": "removeIcon.module.css"
+}
