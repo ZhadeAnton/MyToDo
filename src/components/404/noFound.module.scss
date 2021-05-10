@@ -1,0 +1,26 @@
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+
+  h1 {
+    font-size: 6rem;
+    line-height: 5rem;
+    font-weight: 900;
+  }
+
+  h3 {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+
+  a {
+    font-size: 1.5rem;
+  }
+}
+
+.content {
+  text-align: center;
+}

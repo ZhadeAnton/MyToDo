@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Switch, Route } from 'react-router-dom'
-import { Spin } from 'antd'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
 import { ITodo, ITodoList } from '../../interfaces'
@@ -49,7 +48,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
   }
 
 
-  if (!userId) return <Spin />
+  if (!userId) return <Redirect to="/login" />
 
   return (
     <section className={styles.todoPage}>
