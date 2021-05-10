@@ -5,20 +5,18 @@
   justify-content: center;
   text-align: center;
 
-  & > * {
+  h2 {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
     max-width: 840px;
   }
-}
 
-.title {
-  font-size: 2.2em;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.text {
-  margin-bottom: 30px;
-  font-size: 1.5em;
+  p {
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    max-width: 840px;
+  }
 }
 
 .deviceImage {

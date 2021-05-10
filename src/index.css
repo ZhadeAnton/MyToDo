@@ -85,6 +85,7 @@ a {
 
   /* Measures */
   --transition: .2s linear;
+  --box-shadow: 0 6px 15px 0 var(--color-grey-light);
 
   /* Custom Elements*/
   --detele-icon-hover-color: var(--color-red);
@@ -137,6 +138,8 @@ a {
   --main-page-hero-blocks-padding: 3rem;
   --main-page-hero-info-blocks-mar-top: 3rem;
   --main-page-hero-info-blocks-items-mar-bot: 2rem;
+  --main-page-block-img-shadow: 0 6px 15px 0 var(--color-grey-light);
+  --main-page-block-gutter: 4rem;
 
   /* Login Page */
   --login-page-bg: var(--color-white-dark);

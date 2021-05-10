@@ -6,7 +6,6 @@ import Header from '../../sections/header/Header'
 import HeroSection from '../../sections/heroSection/SectionHero'
 import BlockSection from '../../sections/blockSection/SectionBlock'
 import DeviceSection from '../../sections/deviceSection/SectionDevice'
-import FeedbackSection from '../../sections/feedbackSection/SectionFeedback'
 import AvailableSection from '../../sections/availableSection/SectionAvailable'
 import Footer from '../../sections/footer/Footer'
 
@@ -20,7 +19,6 @@ const MainPage: React.FC<MainPageProps> = (props) => {
       <HeroSection />
       <BlockSection />
       <DeviceSection />
-      <FeedbackSection />
       <AvailableSection />
       <Footer />
     </>

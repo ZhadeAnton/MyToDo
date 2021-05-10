@@ -1,8 +1,23 @@
 .footer {
-  padding: 4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
   background-color: var(--color-brand-background);
 
-   ul {
-     text-align: center;
-   }
+  p {
+    margin-right: 1.2rem;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: var(--color-grey-dark);
+    transition: fill var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      fill: var(--color-black);
+    }
+  }
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import {Row, Col} from 'antd'
 
 import styles from './sectionAvailable.module.scss'
 import {ReactComponent as IPhone} from '../../assets/available/iPhone.svg'
@@ -18,34 +17,46 @@ import {ReactComponent as Wear} from '../../assets/available/wear.svg'
 import {ReactComponent as Huawei} from '../../assets/available/huawei.svg'
 import {ReactComponent as Desktop} from '../../assets/available/desktop.svg'
 
+const devices = [
+  { name: 'IPhone', icon: <IPhone /> },
+  { name: 'Android', icon: <Android /> },
+  { name: 'IPad', icon: <IPad /> },
+  { name: 'Mac', icon: <Mac /> },
+  { name: 'Web', icon: <Web /> },
+  { name: 'Siri', icon: <Siri /> },
+  { name: 'Alexa', icon: <Alexa /> },
+  { name: 'Google', icon: <Google /> },
+  { name: 'Window', icon: <Window /> },
+  { name: 'Chrome', icon: <Chrome /> },
+  { name: 'Firefox', icon: <Firefox /> },
+  { name: 'AppWatch', icon: <AppWatch /> },
+  { name: 'Wear', icon: <Wear /> },
+  { name: 'Huawei', icon: <Huawei /> },
+  { name: 'Desktop', icon: <Desktop /> },
+]
+
 const AvailableSection = () => {
   return (
     <section className={styles.available}>
-      <Row>
-        <Col span={24}>
-          <h2 className={styles.availableTitle}>Available on:</h2>
-        </Col>
+      <div>
+        <h2>Available on:</h2>
 
-        <Col span={24}>
-          <ul className={styles.availableDevice}>
-            <li><IPhone /><p>IPhone</p></li>
-            <li><Android /><p>Android</p></li>
-            <li><IPad /><p>IPad</p></li>
-            <li><Mac /><p>Mac</p></li>
-            <li><Web /><p>Web</p></li>
-            <li><Siri /><p>Siri</p></li>
-            <li><Alexa /><p>Amazon Alexa</p></li>
-            <li><Google /><p>Google Assistent</p></li>
-            <li><Window /><p>Window</p></li>
-            <li><Chrome /><p>Chrome</p></li>
-            <li><Firefox /><p>Firefox</p></li>
-            <li><AppWatch /><p>AppWatch</p></li>
-            <li><Wear /><p>Wear OS</p></li>
-            <li><Huawei /><p>Huawei</p></li>
-            <li><Desktop /><p>Desktop</p></li>
-          </ul>
-        </Col>
-      </Row>
+        <ul className={styles.listDevices}>
+          {
+            devices.map((item, idx) => {
+              return (
+                <li
+                  className={styles.listItem}
+                  key={idx}
+                >
+                  <p>{item.name}</p>
+                  <span>{item.icon}</span>
+                </li>
+              )
+            })
+          }
+        </ul>
+      </div>
     </section>
   )
 }
