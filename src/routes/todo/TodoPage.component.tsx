@@ -47,7 +47,6 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
     setSortBy(sort)
   }
 
-
   if (!userId) return <Redirect to="/login" />
 
   return (

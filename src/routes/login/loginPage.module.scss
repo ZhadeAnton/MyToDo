@@ -4,6 +4,13 @@
   display: flex;
   justify-content: center;
   background-color: var(--login-page-bg);
+  position: relative;
+}
+
+.homeLink {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
 
 .loginForm {

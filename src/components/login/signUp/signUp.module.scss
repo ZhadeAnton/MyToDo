@@ -1,10 +1,10 @@
 .signUp {
-  margin-top: 2rem;
+  margin-top: var(--login-page-title-mar-top);
 
   h2 {
     text-align: center;
-    color: var(--login-page-sign-up-title-color);
-    font-size: var(--login-page-sign-up-title-font-size);
+    color: var(--login-page-title-color);
+    font-size: var(--login-page-title-font-size);
   }
 
   input {

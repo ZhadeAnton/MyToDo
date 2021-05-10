@@ -90,6 +90,11 @@ a {
   /* Custom Elements*/
   --detele-icon-hover-color: var(--color-red);
 
+  --home-link-color: var(--color-dark);
+  --home-link-gutter: .8rem;
+  --home-link-font-size: 1.3rem;
+  --home-link-icon-size: 1.2rem;
+
   --sort-item-padding: 1.4rem;
   --sort-item-bg: var(--color-white);
   --sort-item-font-size: 1.2rem;
@@ -147,20 +152,20 @@ a {
   --login-page-max-width: 32rem;
   --login-page-max-height: 45rem;
   --login-page-mar-top: 5rem;
+  --login-page-title-mar-top: .5rem;
+  --login-page-title-font-size: 1.5rem;
+  --login-page-title-color: var(--color-black);
   --login-page-form-padding: 3rem;
   --login-page-form-border-radius: 1rem;
   --login-page-form-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
   --login-page-tabs-font-size: 1.4rem;
   --login-page-tabs-gutter: 5rem;
   --login-page-inputs-padding: .2rem .4rem !important;
-  --login-page-sign-in-mar-top: .5rem;
   --login-page-sign-in-alt-buttons-mar-bot: 1.4rem;
   --login-page-sign-in-alt-buttons-font-size: 1.2rem;
   --login-page-sign-in-alt-buttons-color: var(--color-white);
   --login-page-sign-in-alt-icon-size: 1.4rem;
   --login-page-sign-in-alt-icon-mar-right: 1rem;
-  --login-page-sign-up-title-font-size: 1.5rem;
-  --login-page-sign-up-title-color: var(--color-brand);
 
   /* To-do Page */ 
   --todo-drawer-padding-side: .5rem;
