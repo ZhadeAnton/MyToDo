@@ -1,0 +1,20 @@
+.homeLink {
+  display: flex;
+  align-items: center;
+
+  a {
+    font-size: var(--home-link-font-size);
+    color: var(--home-link-color);
+
+    &:hover {
+      color: var(--color-brand);
+    }
+  }
+
+  svg {
+    width: var(--home-link-icon-size);
+    height: var(--home-link-icon-size);
+    margin-right: var(--home-link-gutter);
+    fill: var(--color-icon);
+  }
+}

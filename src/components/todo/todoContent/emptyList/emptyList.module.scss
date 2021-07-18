@@ -1,0 +1,29 @@
+.emptyList {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  padding: var(--empty-list-padding);
+  margin: var(--empty-list-margin);
+  text-align: center;
+
+  & > * {
+  color: var(--empty-list-color);
+  }
+
+  svg {
+    width: var(--empty-list-icon-size);
+    height: var(--empty-list-icon-size);
+  }
+  
+  h2 {
+    font-size: var(--empty-list-title-font-size);
+
+    span {
+      color: red;
+    }
+  }
+
+  p {
+    font-size: var(--empty-list-subtitle-font-size);
+  }
+}

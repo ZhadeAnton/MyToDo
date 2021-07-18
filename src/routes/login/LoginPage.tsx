@@ -4,6 +4,7 @@ import { message } from 'antd';
 import styles from './loginPage.module.scss'
 import { LoginPageProps } from '../../containers/LoginPageContainer';
 import LoginTabs from '../../components/login/loginTabs/LoginTabs';
+import HomeLink from '../../components/custom/homeLink/HomeLink';
 
 const LoginPage: React.FC<LoginPageProps> = (props) => {
   useEffect(() => {
@@ -15,6 +16,10 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
   return (
     <section className={styles.loginPage}>
       <div className={styles.loginForm}>
+        <div className={styles.homeLink}>
+          <HomeLink />
+        </div>
+
         <LoginTabs
           isLoading={props.isLoading}
           signUp={props.signUp}

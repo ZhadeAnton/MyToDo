@@ -3,7 +3,6 @@ import React from 'react'
 import styles from './signIn.module.scss'
 import { LoginPageProps } from '../../../containers/LoginPageContainer';
 import SignInForm from '../../form/signInForm/SignInForm';
-import Logo from '../../custom/logo/logo';
 
 interface Props {
   signInWithEmail: LoginPageProps['signInWithEmail'],
@@ -12,7 +11,7 @@ interface Props {
 const SingIn: React.FC<Props> = (props) => {
   return (
     <div className={styles.signIn}>
-      <Logo />
+      <h2>Sign in with email</h2>
 
       <SignInForm
         signInWithEmail={props.signInWithEmail}

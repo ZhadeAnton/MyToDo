@@ -9,7 +9,8 @@ import { UserState } from '../redux/user/userReducer'
 
 interface StateProps {
   isLoading: UserState['isLoading'],
-  userError: UserState['userError']
+  userError: UserState['userError'],
+  user: UserState['currentUser']
 }
 
 interface DispatchProps {
@@ -21,7 +22,8 @@ interface DispatchProps {
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.user.isLoading,
-  userError: state.user.userError
+  userError: state.user.userError,
+  user: state.user.currentUser
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<UserTypes>) => ({

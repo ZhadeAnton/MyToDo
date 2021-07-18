@@ -90,6 +90,18 @@ a {
   /* Custom Elements*/
   --detele-icon-hover-color: var(--color-red);
 
+  --empty-list-color: var(--color-grey-dark);
+  --empty-list-padding: 2rem;
+  --empty-list-margin: 0 2rem;
+  --empty-list-title-font-size: 2.5rem;
+  --empty-list-subtitle-font-size: 1.5rem;
+  --empty-list-icon-size: 3rem;
+
+  --home-link-color: var(--color-dark);
+  --home-link-gutter: .8rem;
+  --home-link-font-size: 1.3rem;
+  --home-link-icon-size: 1.2rem;
+
   --sort-item-padding: 1.4rem;
   --sort-item-bg: var(--color-white);
   --sort-item-font-size: 1.2rem;
@@ -101,7 +113,6 @@ a {
   --sort-item-icon-hover-bg: var(--color-brand-light);
 
   /* User Profile */
-
   --user-profile-padding: .2rem;
   --user-profile-title-color: var(--color-brand);
   --user-profile-title-font-size: 1.4rem;
@@ -147,20 +158,20 @@ a {
   --login-page-max-width: 32rem;
   --login-page-max-height: 45rem;
   --login-page-mar-top: 5rem;
+  --login-page-title-mar-top: .5rem;
+  --login-page-title-font-size: 1.5rem;
+  --login-page-title-color: var(--color-black);
   --login-page-form-padding: 3rem;
   --login-page-form-border-radius: 1rem;
   --login-page-form-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
   --login-page-tabs-font-size: 1.4rem;
   --login-page-tabs-gutter: 5rem;
   --login-page-inputs-padding: .2rem .4rem !important;
-  --login-page-sign-in-mar-top: .5rem;
   --login-page-sign-in-alt-buttons-mar-bot: 1.4rem;
   --login-page-sign-in-alt-buttons-font-size: 1.2rem;
   --login-page-sign-in-alt-buttons-color: var(--color-white);
   --login-page-sign-in-alt-icon-size: 1.4rem;
   --login-page-sign-in-alt-icon-mar-right: 1rem;
-  --login-page-sign-up-title-font-size: 1.5rem;
-  --login-page-sign-up-title-color: var(--color-brand);
 
   /* To-do Page */ 
   --todo-drawer-padding-side: .5rem;
@@ -197,7 +208,7 @@ a {
   --todo-content-pagination-padding: .5rem var(--todo-content-padding-side);
   --todo-content-form-padding: 1.5rem var(--todo-content-padding-side);
   --todo-content-form-input-font-size: 1.5rem;
-  --todo-content-form-input-color: var(--color-grey-dark);
+  --todo-content-form-input-color: var(--color-black);
   --todo-content-form-padding: 2rem var(--todo-content-padding-side);
   --todo-content-form-input-padding: 1.5rem;
 

@@ -6,8 +6,12 @@
   background-color: var(--todo-drawer-background-color);
 }
 
-.userProfileWrapper {
+.backLink {
   padding: 1rem var(--todo-drawer-padding-side);
+}
+
+.userProfileWrapper {
+  // padding: 1rem var(--todo-drawer-padding-side);
 }
 
 .autor {

@@ -1,5 +1,11 @@
 .signIn {
-  margin-top: var(--login-page-sign-in-mar-top);
+  margin-top: var(--login-page-title-mar-top);
+
+  h2 {
+    text-align: center;
+    color: var(--login-page-title-color);
+    font-size: var(--login-page-title-font-size);
+  }
 
   & + div {
     text-align: center;

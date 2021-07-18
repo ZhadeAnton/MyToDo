@@ -4,3 +4,10 @@
   height: 100%;
   padding: var(--todo-content-list-padding);
 }
+
+.emptyList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: auto;
+}

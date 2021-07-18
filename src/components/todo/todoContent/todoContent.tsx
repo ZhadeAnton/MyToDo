@@ -37,6 +37,8 @@ const TodoContent: React.FC<Props> = (props) => {
       />
 
       <TodoList
+        list={props.currentList}
+        path={props.path}
         todos={props.todos}
         selectedTodo={props.selectedTodo}
         updateTodo={props.updateTodo}

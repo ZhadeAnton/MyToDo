@@ -11,7 +11,7 @@ import styles from './filterList.module.scss'
 import FilterItem from '../filterItem/FilterItem'
 
 const drawerFilterItems = [
-  { title: 'Tasks', icon: <FireOutlined style={{fill: 'goldenrod'}} />, to: '/todo/tasks' },
+  { title: 'Todos', icon: <FireOutlined style={{fill: 'goldenrod'}} />, to: '/todo' },
   { title: 'Unlisted', icon: <DiffOutlined style={{fill: 'blue'}} />, to: '/todo/unlisted'},
   { title: 'Important', icon: <StarOutlined style={{fill: 'red'}} />, to: '/todo/important'},
   { title: 'Planned', icon: <BellOutlined style={{fill: 'green'}} />, to: '/todo/planned'}

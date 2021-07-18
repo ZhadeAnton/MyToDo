@@ -15,7 +15,8 @@ const TopBanner: React.FC<Props> = (props) => {
   return (
     <div className={styles.topBanner}>
       <h2>
-        {props.list?.title || `${props.path.slice(6)}`}
+        {props.list?.title || `${props.path.slice(6) === ''
+        ? 'Todos' : props.path.slice(6)}`}
       </h2>
 
       <SortItems

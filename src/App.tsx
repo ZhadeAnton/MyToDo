@@ -5,6 +5,7 @@ import { AppProps } from './containers/AppContainer';
 import MainPageContainer from './containers/MainPageContainer';
 import LoginPageContainer from './containers/LoginPageContainer';
 import TodoPageContainer from './containers/TodoPageContainer';
+import NotFound from './components/notFound/NotFound';
 
 const App: React.FC<AppProps> = (props) => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const App: React.FC<AppProps> = (props) => {
         <Route exact path='/todo/important' component={TodoPageContainer} />
         <Route exact path='/todo/planned' component={TodoPageContainer} />
         <Route path='/todo/:listid' component={TodoPageContainer} />
+        <Route component={NotFound} />
       </Switch>
     </>
   )

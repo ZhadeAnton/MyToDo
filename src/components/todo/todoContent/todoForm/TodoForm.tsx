@@ -29,7 +29,7 @@ const TodoForm: React.FC<Props> = ({ onSubmit, listId }) => {
       className={styles.todoForm}
     >
       <Input
-        placeholder="Add a Task"
+        placeholder="Add todo"
         onChange={changeHandler}
         onPressEnter={handleSubmit}
         value={title}
