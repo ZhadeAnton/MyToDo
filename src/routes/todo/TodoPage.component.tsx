@@ -7,8 +7,8 @@ import { getTodosByFilter, sortFn } from './utils'
 import {
   TodoListProps } from '../../containers/TodoPageContainer'
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
-import TodoContent from '../../components/todo/todoContent/todoContent'
 import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
+import TodoContent from '../../components/todo/todoContent/TodoContent'
 
 const TodoPage: React.FC<TodoListProps> = (props) => {
   const [sortBy, setSortBy] = useState<string>('date')
@@ -64,7 +64,7 @@ const TodoPage: React.FC<TodoListProps> = (props) => {
       <section className={styles.todoContent}>
         <Switch>
           <Route
-            path="/todo/:listId"
+            path="/todo/:listId?"
             render={() => <TodoContent
               todos={sortedTodos}
               lists={props.lists}

@@ -24,7 +24,6 @@ const TodoDrawer: React.FC<Props> = (props) => {
         <HomeLink/>
       </div>
 
-
       <div className={styles.userProfileWrapper}>
         <UserProfile
           user={props.user}

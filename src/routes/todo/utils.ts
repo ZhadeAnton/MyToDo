@@ -10,7 +10,6 @@ interface SortTodos {
 
 export const getTodosByFilter: FilterTodos = ({
   '/todo': (todos) => todos.filter((t) => t),
-  '/todo/tasks': (todos) => todos.filter((t) => t),
   '/todo/unlisted': (todos) => todos.filter((t) => t.listId === ''),
   '/todo/important': (todos) => todos.filter((t: any) => t.important),
   '/todo/planned': (todos) => todos.filter((t) => t.planned)

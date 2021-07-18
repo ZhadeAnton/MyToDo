@@ -5,7 +5,7 @@ import { AppProps } from './containers/AppContainer';
 import MainPageContainer from './containers/MainPageContainer';
 import LoginPageContainer from './containers/LoginPageContainer';
 import TodoPageContainer from './containers/TodoPageContainer';
-import NotFound from './components/404/NotFound';
+import NotFound from './components/notFound/NotFound';
 
 const App: React.FC<AppProps> = (props) => {
   useEffect(() => {
