@@ -4,25 +4,24 @@ import moment from 'moment'
 import cn from 'classnames'
 
 import styles from './todoListItem.module.scss'
-import { ITodo } from '../../../../interfaces';
-import { TodoListProps } from '../../../../containers/TodoPageContainer';
+import * as interfaces from '../../../../Interfaces/interfaces';
 
 interface Props {
-  todo: ITodo,
-  updateTodo: TodoListProps['updateTodo'],
-  selectedTodo: TodoListProps['selectedTodo'],
-  onSelectTodo: TodoListProps['selectTodo']
+  todo: interfaces.ITodo,
+  selectedTodo: interfaces.ITodo,
+  onUpdateTodo: interfaces.IFnUpdateTodo,
+  onSelectTodo: interfaces.IFnSelectTodo
 }
 
 const TodoListItem: React.FC<Props> = (props) => {
   const timeStamp = props.todo.timestamp.toDate()
 
   function handleChecked(completed: boolean) {
-    props.updateTodo(props.todo.id, {completed})
+    props.onUpdateTodo(props.todo.id, {completed})
   }
 
   function handleImportant(important: boolean) {
-    props.updateTodo(props.todo.id, {important: !important})
+    props.onUpdateTodo(props.todo.id, {important: !important})
   }
 
   function handleClick(e: any) {

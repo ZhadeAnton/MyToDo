@@ -1,11 +1,11 @@
 import {connect} from 'react-redux'
 import {Dispatch} from 'redux'
 
-import * as actions from '../redux/user/userActionCreators'
-import {RootState} from '../redux/store/store'
-import {UserTypes} from '../redux/user/userActionTypes'
-import LoginPage from '../routes/login/LoginPage'
-import { UserState } from '../redux/user/userReducer'
+import * as actions from '../Redux/User/userActionCreators'
+import {RootState} from '../Redux/Store/Store'
+import {UserTypes} from '../Redux/User/userActionTypes'
+import LoginPage from '../Routes/Login/LoginPage'
+import { UserState } from '../Redux/User/userReducer'
 
 interface StateProps {
   isLoading: UserState['isLoading'],

@@ -3,12 +3,15 @@ import { Input, Tooltip, message } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
 import styles from './todoForm.module.scss'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import {
+  IFnChangeTitleSelectedTodo,
+  IFnUpdateTodo,
+  ITodo } from '../../../../Interfaces/interfaces'
 
 interface Props {
-  selectedTodo: TodoListProps['selectedTodo'],
-  changeTitleSelectedTodo: TodoListProps['changeTitleSelectedTodo'],
-  onUpdate: TodoListProps['updateTodo']
+  selectedTodo: ITodo,
+  changeTitleSelectedTodo: IFnChangeTitleSelectedTodo,
+  onUpdate: IFnUpdateTodo
 }
 
 const TodoEditForm: React.FC<Props> = (props) => {

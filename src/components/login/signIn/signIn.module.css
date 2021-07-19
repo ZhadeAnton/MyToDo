@@ -1,8 +1,0 @@
-.signIn {
-  margin-top: var(--login-page-sign-in-mar-top);
-}
-
-.signIn + div {
-  text-align: center;
-}
-/*# sourceMappingURL=signIn.module.css.map */

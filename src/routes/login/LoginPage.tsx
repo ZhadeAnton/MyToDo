@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { message } from 'antd';
 
 import styles from './loginPage.module.scss'
-import { LoginPageProps } from '../../containers/LoginPageContainer';
+import { LoginPageProps } from '../../Containers/LoginPageContainer';
 import LoginTabs from '../../components/login/loginTabs/LoginTabs';
 import HomeLink from '../../components/custom/homeLink/HomeLink';
 

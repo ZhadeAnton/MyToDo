@@ -2,18 +2,17 @@ import React from 'react'
 import { List } from 'antd';
 
 import styles from './todoList.module.scss'
-import { ITodoList } from '../../../../interfaces';
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import * as interfaces from '../../../../Interfaces/interfaces';
 import TodoListItem from '../todoListItem/TodoListItem'
 import EmptyList from '../emptyList/Emptylist';
 
 interface Props {
-  list: ITodoList | undefined,
+  list: interfaces.ITodoList | undefined,
   path: string,
-  todos: TodoListProps['todos'],
-  selectedTodo: TodoListProps['selectedTodo'],
-  updateTodo: TodoListProps['updateTodo'],
-  onSelectTodo: TodoListProps['selectTodo'],
+  todos: interfaces.ArrayOfTodos,
+  selectedTodo: interfaces.ITodo,
+  onUpdateTodo: interfaces.IFnUpdateTodo,
+  onSelectTodo: interfaces.IFnSelectTodo,
 }
 
 const TodoList: React.FC<Props> = (props) => {
@@ -34,7 +33,7 @@ const TodoList: React.FC<Props> = (props) => {
             key={todo.id}
             todo={todo}
             selectedTodo={props.selectedTodo}
-            updateTodo={props.updateTodo}
+            onUpdateTodo={props.onUpdateTodo}
             onSelectTodo={props.onSelectTodo}
           />
         )}

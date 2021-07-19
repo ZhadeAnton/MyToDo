@@ -2,7 +2,7 @@ import React from 'react'
 import { FileSearchOutlined } from '@ant-design/icons'
 
 import styles from './emptyList.module.scss'
-import { ITodoList } from '../../../../interfaces'
+import { ITodoList } from '../../../../Interfaces/interfaces'
 
 interface Props {
   list: ITodoList | undefined,

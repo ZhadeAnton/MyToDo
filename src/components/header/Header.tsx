@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 import cn from 'classnames'
 
 import styles from './header.module.scss'
-import { MainPageProps } from '../../containers/MainPageContainer'
-import UserProfile from '../../components/custom/userProfile/UserProfile'
-import Logo from '../../components/custom/logo/logo'
+import { MainPageProps } from '../../Containers/MainPageContainer'
+import UserProfile from '../custom/userProfile/UserProfile'
+import Logo from '../custom/logo/logo'
 
 interface Props {
   user: MainPageProps['user'],

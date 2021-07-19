@@ -4,13 +4,13 @@ import { StopOutlined } from '@ant-design/icons';
 import moment from 'moment'
 
 import styles from './dataPicker.module.scss'
-import { TodoListProps } from '../../../../containers/TodoPageContainer';
+import * as interfaces from '../../../../Interfaces/interfaces';
 
 interface Props {
-  selectedTodo: TodoListProps['selectedTodo'],
-  setDateSelectedTodo: TodoListProps['setDateSelectedTodo'],
-  removeDateSelectedTodo: TodoListProps['removeDateSelectedTodo'],
-  onUpdate: TodoListProps['updateTodo']
+  selectedTodo: interfaces.ITodo,
+  onSetDateTodo: interfaces.IFnSetDateSelectedTodo,
+  onRemoveDateTodo: interfaces.IFnRemoveDateSelectedTodo,
+  onUpdate: interfaces.IFnUpdateTodo
 }
 
 const DatePickerForm: React.FC<Props> = (props) => {
@@ -20,13 +20,13 @@ const DatePickerForm: React.FC<Props> = (props) => {
         .toString()
 
     props.onUpdate(props.selectedTodo!.id, {planned: newDate})
-    props.setDateSelectedTodo(newDate)
+    props.onSetDateTodo(newDate)
     message.success(`Added new date ${newDate}`)
   }
 
   function handleRemoveDate() {
     props.onUpdate(props.selectedTodo!.id, {planned: ''})
-    props.removeDateSelectedTodo()
+    props.onRemoveDateTodo()
     message.warning('Planned date was removed')
   }
 

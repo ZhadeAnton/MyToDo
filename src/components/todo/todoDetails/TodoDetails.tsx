@@ -1,7 +1,8 @@
 import React from 'react'
 
 import styles from './todoDetails.module.scss'
-import { TodoListProps } from '../../../containers/TodoPageContainer';
+import * as interfaces from '../../../Interfaces/interfaces'
+
 import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import StepsForm from './stepsForm/StepsForm';
 import DatePickerForm from './datePicker/DatePicker';
@@ -10,16 +11,16 @@ import TodoEditForm from './todoForm/TodoForm';
 import StepsList from './stepList/StepList';
 
 interface Props {
-  selectedTodo: TodoListProps['selectedTodo'],
-  addTodoStep: TodoListProps['addTodoStep'],
-  deleteTodoStep: TodoListProps['deleteTodoStep'],
-  onDelete: TodoListProps['deleteTodo'],
-  onUpdate: TodoListProps['updateTodo'],
-  onSelectTodo: TodoListProps['selectTodo'],
-  changeTitleSelectedTodo: TodoListProps['changeTitleSelectedTodo'],
-  setDateSelectedTodo: TodoListProps['setDateSelectedTodo'],
-  removeDateSelectedTodo: TodoListProps['removeDateSelectedTodo'],
-  onCloseSelectedTodo: TodoListProps['closeSelectedTodo'],
+  selectedTodo: interfaces.ITodo,
+  onAddTodoStep: interfaces.IFnAddTodoStep,
+  onDeleteTodoStep: interfaces.IFnDeleteTodoStep,
+  onDeleteTodo: interfaces.IFnDeleteTodo,
+  onUpdate: interfaces.IFnUpdateTodo,
+  onSelectTodo: interfaces.IFnSelectTodo,
+  onChangeTitleSelectedTodo: interfaces.IFnChangeTitleSelectedTodo,
+  onSetDateSelectedTodo: interfaces.IFnSetDateSelectedTodo,
+  onRemoveDateSelectedTodo: interfaces.IFnRemoveDateSelectedTodo,
+  onCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
 }
 
 const TodoDetails: React.FC<Props> = (props) => {
@@ -28,30 +29,30 @@ const TodoDetails: React.FC<Props> = (props) => {
       <TodoEditForm
         onUpdate={props.onUpdate}
         selectedTodo={props.selectedTodo}
-        changeTitleSelectedTodo={props.changeTitleSelectedTodo}
+        changeTitleSelectedTodo={props.onChangeTitleSelectedTodo}
 
       />
 
       <StepsForm
         selectedTodo={props.selectedTodo}
-        addTodoStep={props.addTodoStep}
+        addTodoStep={props.onAddTodoStep}
       />
 
       <StepsList
         selectedTodo={props.selectedTodo}
-        deleteTodoStep={props.deleteTodoStep}
+        deleteTodoStep={props.onDeleteTodoStep}
       />
 
       <DatePickerForm
         selectedTodo={props.selectedTodo}
         onUpdate={props.onUpdate}
-        setDateSelectedTodo={props.setDateSelectedTodo}
-        removeDateSelectedTodo={props.removeDateSelectedTodo}
+        onSetDateTodo={props.onSetDateSelectedTodo}
+        onRemoveDateTodo={props.onRemoveDateSelectedTodo}
       />
 
       <BottomLine
         selectedTodo={props.selectedTodo}
-        onDeleteTodo={props.onDelete}
+        onDeleteTodo={props.onDeleteTodo}
         onCloseSelectedTodo={props.onCloseSelectedTodo}
       />
 

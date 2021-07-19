@@ -1,5 +1,5 @@
 import React from 'react'
-import { ITodoList } from '../../../../interfaces'
+import { ITodoList } from '../../../../Interfaces/interfaces'
 
 import styles from './topBanner.module.scss'
 import SortItems from '../../../form/sortItems/SortedItems'

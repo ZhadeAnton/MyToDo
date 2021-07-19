@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,KAAK;EACV,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,kCAAkC;CAU9C;;AAdD,AAME,iBANe,CAMf,GAAG,CAAC;EACF,MAAM,EAAE,OAAO;EACf,IAAI,EAAE,mCAAmC;CAK1C;;AAbH,AAUI,iBAVa,CAMf,GAAG,AAIA,MAAM,CAAC;EACN,IAAI,EAAE,mCAAmC;CAC1C",
-    "sources": [
-        "closeDetailsButton.module.scss"
-    ],
-    "names": [],
-    "file": "closeDetailsButton.module.css"
-}

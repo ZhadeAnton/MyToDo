@@ -3,11 +3,11 @@ import { Dispatch } from 'redux'
 import { createStructuredSelector } from 'reselect';
 
 import App from '../App'
-import { RootState } from '../redux/store/store';
-import { checkUserSession } from '../redux/user/userActionCreators';
-import { UserTypes } from '../redux/user/userActionTypes';
-import { IUser } from '../redux/user/userInterfaces';
-import { selectCurrentUser } from '../redux/user/userSelectors';
+import { RootState } from '../Redux/Store/Store';
+import { checkUserSession } from '../Redux/User/userActionCreators';
+import { UserTypes } from '../Redux/User/userActionTypes';
+import { IUser } from '../Redux/User/userInterfaces';
+import { selectCurrentUser } from '../Redux/User/userSelectors';
 
 interface StateProps {
   user: IUser | undefined;

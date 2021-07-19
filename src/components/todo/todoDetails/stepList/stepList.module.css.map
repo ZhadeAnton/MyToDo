@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,OAAO,EAAE,gCAAgC;EACzC,MAAM,EAAE,+BAA+B;CACxC",
-    "sources": [
-        "stepList.module.scss"
-    ],
-    "names": [],
-    "file": "stepList.module.css"
-}

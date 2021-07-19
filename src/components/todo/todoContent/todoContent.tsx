@@ -1,29 +1,28 @@
 import React from 'react'
 
 import styles from './todoContent.module.scss'
-import { ITodoList } from '../../../interfaces'
-import { TodoListProps } from '../../../containers/TodoPageContainer'
+import * as interfaces from '../../../Interfaces/interfaces'
+
 import TodoList from './todoList/TodoList'
 import TodoForm from './todoForm/TodoForm'
 import TopBanner from './topBanner/TopBanner'
 
 interface Props {
+  todos: interfaces.ArrayOfTodos,
+  lists: interfaces.ArrayOfTodoLists,
+  currentList: interfaces.ITodoList | undefined,
+  selectedTodo: interfaces.ITodo,
+  userId: string,
   listId: string,
   path: string,
-  userId: string,
   checkedSort: string,
-  currentList: ITodoList | undefined,
-  handleSubmit: (title: string) => void,
-  handleSortChange: (sort: string) => void,
-  todos: TodoListProps['todos'],
-  lists: TodoListProps['lists'],
-  getTodos: TodoListProps['getTodos'],
-  createTodo: TodoListProps['createTodo'],
-  updateTodo: TodoListProps['updateTodo'],
-  deleteTodo: TodoListProps['deleteTodo'],
-  onSelectTodo: TodoListProps['selectTodo'],
-  selectedTodo: TodoListProps['selectedTodo'],
-  onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
+  onCreateTodo: interfaces.IFnCreateTodo,
+  onUpdateTodo: interfaces.IFnUpdateTodo,
+  onDeleteTodo: interfaces.IFnDeleteTodo,
+  onSelectTodo: interfaces.IFnSelectTodo,
+  onCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
+  onSort: (sort: string) => void,
+  onSubmit: (title: string) => void
 }
 
 const TodoContent: React.FC<Props> = (props) => {
@@ -33,7 +32,7 @@ const TodoContent: React.FC<Props> = (props) => {
         list={props.currentList}
         path={props.path}
         checkedSort={props.checkedSort}
-        handleSortChange={props.handleSortChange}
+        handleSortChange={props.onSort}
       />
 
       <TodoList
@@ -41,13 +40,13 @@ const TodoContent: React.FC<Props> = (props) => {
         path={props.path}
         todos={props.todos}
         selectedTodo={props.selectedTodo}
-        updateTodo={props.updateTodo}
+        onUpdateTodo={props.onUpdateTodo}
         onSelectTodo={props.onSelectTodo}
       />
 
       <TodoForm
         listId={props.listId}
-        onSubmit={props.handleSubmit}
+        onSubmit={props.onSubmit}
       />
     </div>
   )

@@ -1,7 +1,7 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects'
 import * as actionCreators from './todoActionCreators'
 import * as actionTypes from './todoActionTypes'
-import * as api from '../../api'
+import * as api from '../../API/API'
 import firebase from 'firebase'
 
 function* getTodos({payload: userId}) {

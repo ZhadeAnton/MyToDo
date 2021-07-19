@@ -7,7 +7,7 @@ import {
 import {LockOutlined} from '@ant-design/icons';
 
 import styles from './signInForm.module.scss'
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { LoginPageProps } from '../../../Containers/LoginPageContainer';
 
 interface Props {
   signInWithEmail: LoginPageProps['signInWithEmail'],

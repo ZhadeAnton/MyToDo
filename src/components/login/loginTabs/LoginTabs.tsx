@@ -5,7 +5,7 @@ const {TabPane} = Tabs;
 import styles from './loginTabs.module.scss'
 import SingIn from '../signIn/SignIn';
 import SingUp from '../signUp/SignUp';
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { LoginPageProps } from '../../../Containers/LoginPageContainer';
 import { UserAddOutlined, LoginOutlined } from '@ant-design/icons';
 import AltSignIn from '../altSignIn/AltSignIn';
 

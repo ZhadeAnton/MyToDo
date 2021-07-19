@@ -4,17 +4,18 @@ import { Divider } from 'antd';
 
 import styles from './todoDrawer.module.scss'
 import TodoDrawerFilterList from './filterList/FilterList';
-import { TodoListProps } from '../../../containers/TodoPageContainer';
 import AddNewList from './addNewList/AddNewList';
 import UserProfile from '../../custom/userProfile/UserProfile';
 import CreatedLists from './createdLists/CreatedLists';
 import HomeLink from '../../custom/homeLink/HomeLink';
+import { IUser } from '../../../Redux/User/userInterfaces';
+import { ArrayOfTodoLists, IFnCreateList, IFnDeleteList } from '../../../Interfaces/interfaces';
 interface Props {
-  user: TodoListProps['user'],
-  lists: TodoListProps['lists'],
-  createList: TodoListProps['createList'],
-  deleteList: TodoListProps['deleteList'],
-  signOutStart: TodoListProps['signOutStart']
+  user: IUser | undefined,
+  lists: ArrayOfTodoLists,
+  onCreateList: IFnCreateList,
+  onDeleteList: IFnDeleteList,
+  onSignOut: () => void
 }
 
 const TodoDrawer: React.FC<Props> = (props) => {
@@ -27,7 +28,7 @@ const TodoDrawer: React.FC<Props> = (props) => {
       <div className={styles.userProfileWrapper}>
         <UserProfile
           user={props.user}
-          signOutStart={props.signOutStart}
+          signOutStart={props.onSignOut}
           dropdownPlacement='bottomRight'
         />
       </div>
@@ -40,12 +41,12 @@ const TodoDrawer: React.FC<Props> = (props) => {
 
       <AddNewList
         userId={props.user!.id}
-        createList={props.createList}
+        onCreateList={props.onCreateList}
       />
 
       <CreatedLists
         lists={props.lists}
-        deleteList={props.deleteList}
+        onDeleteList={props.onDeleteList}
       />
 
       <div className={styles.autor}>

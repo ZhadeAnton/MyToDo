@@ -10,14 +10,13 @@ import {
 } from '@ant-design/icons'
 
 import styles from './userProfile.module.scss'
-import { IUser } from '../../../redux/user/userInterfaces';
-import { TodoListProps } from '../../../containers/TodoPageContainer';
+import { IUser } from '../../../Redux/User/userInterfaces';
 
 interface Props {
   user: IUser | undefined,
-  signOutStart: TodoListProps['signOutStart'],
   dropdownPlacement: 'bottomLeft' | 'topLeft' | 'topCenter'
-  | 'topRight' | 'bottomCenter' | 'bottomRight' | undefined
+  | 'topRight' | 'bottomCenter' | 'bottomRight' | undefined,
+  signOutStart: () => void,
 }
 
 const UserProfile: React.FC<Props> = (props) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './signIn.module.scss'
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { LoginPageProps } from '../../../Containers/LoginPageContainer';
 import SignInForm from '../../form/signInForm/SignInForm';
 
 interface Props {

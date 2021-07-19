@@ -2,13 +2,16 @@ import React from 'react'
 import moment from 'moment'
 
 import styles from './bottomLine.module.scss'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
+import {
+  IFnCloseSelectedTodo,
+  IFnDeleteTodo,
+  ITodo } from '../../../../Interfaces/interfaces';
 
 interface Props {
-  selectedTodo: TodoListProps['selectedTodo'],
-  onDeleteTodo: TodoListProps['deleteTodo'],
-  onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
+  selectedTodo: ITodo,
+  onDeleteTodo: IFnDeleteTodo,
+  onCloseSelectedTodo: IFnCloseSelectedTodo
 }
 
 const BottomLine: React.FC<Props> = (props) => {

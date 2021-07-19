@@ -1,12 +1,12 @@
 import React from 'react'
 
 import styles from './stepsForm.module.scss'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
 import AddNewItem from '../../../form/addNewItem/AddNewItem'
+import { IFnAddTodoStep, ITodo } from '../../../../Interfaces/interfaces'
 
 interface Props {
-  selectedTodo: TodoListProps['selectedTodo'],
-  addTodoStep: TodoListProps['addTodoStep']
+  selectedTodo: ITodo,
+  addTodoStep: IFnAddTodoStep
 }
 
 const StepsForm: React.FC<Props> = (props) => {

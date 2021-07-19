@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
-import { RootState } from '../redux/store/store'
-import { UserTypes } from '../redux/user/userActionTypes'
-import { signOutStart } from '../redux/user/userActionCreators'
-import { UserState } from '../redux/user/userReducer'
-import MainPage from '../routes/main/MainPage'
+import { RootState } from '../Redux/Store/Store'
+import { UserTypes } from '../Redux/User/userActionTypes'
+import { signOutStart } from '../Redux/User/userActionCreators'
+import { UserState } from '../Redux/User/userReducer'
+import MainPage from '../Routes/Main/MainPage'
 
 interface StateProps {
   user: UserState['currentUser']

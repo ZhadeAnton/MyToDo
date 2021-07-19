@@ -1,4 +1,4 @@
-import { auth, db } from '../../firebase.config'
+import { auth, db } from '../../Firebase/Firebase.config'
 
 export const getCurrentUser = () => {
   return new Promise((resolve, reject) => {

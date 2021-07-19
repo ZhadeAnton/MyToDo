@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { AppProps } from './containers/AppContainer';
-import MainPageContainer from './containers/MainPageContainer';
-import LoginPageContainer from './containers/LoginPageContainer';
-import TodoPageContainer from './containers/TodoPageContainer';
+import { AppProps } from './Containers/AppContainer';
+import MainPageContainer from './Containers/MainPageContainer';
+import LoginPageContainer from './Containers/LoginPageContainer';
+import TodoPageContainer from './Containers/TodoPageContainer';
 import NotFound from './components/notFound/NotFound';
 
 const App: React.FC<AppProps> = (props) => {

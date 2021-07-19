@@ -3,13 +3,12 @@ import { NavLink } from 'react-router-dom'
 import { UnorderedListOutlined } from '@ant-design/icons'
 
 import styles from './createdListsItem.module.scss'
-import { ITodoList } from '../../../../interfaces'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import { IFnDeleteList, ITodoList } from '../../../../Interfaces/interfaces'
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon'
 
 interface Props {
   list: ITodoList
-  deleteList: TodoListProps['deleteList']
+  onDeleteList: IFnDeleteList
 }
 
 const CreatedListsItem: React.FC<Props> = (props) => {
@@ -25,7 +24,7 @@ const CreatedListsItem: React.FC<Props> = (props) => {
       </NavLink>
 
       <RemoveIcon
-        onClick={() => props.deleteList(props.list.id)}
+        onClick={() => props.onDeleteList(props.list.id)}
       />
     </li>
   )

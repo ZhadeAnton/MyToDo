@@ -1,13 +1,13 @@
 import React from 'react'
 
 import './mainPage.module.scss'
-import { MainPageProps } from '../../containers/MainPageContainer'
-import Header from '../../sections/header/Header'
-import HeroSection from '../../sections/heroSection/SectionHero'
-import BlockSection from '../../sections/blockSection/SectionBlock'
-import DeviceSection from '../../sections/deviceSection/SectionDevice'
-import AvailableSection from '../../sections/availableSection/SectionAvailable'
-import Footer from '../../sections/footer/Footer'
+import { MainPageProps } from '../../Containers/MainPageContainer'
+import Header from '../../components/header/Header'
+import HeroSection from '../../components/heroSection/SectionHero'
+import BlockSection from '../../components/blockSection/SectionBlock'
+import DeviceSection from '../../components/deviceSection/SectionDevice'
+import AvailableSection from '../../components/availableSection/SectionAvailable'
+import Footer from '../../components/footer/Footer'
 
 const MainPage: React.FC<MainPageProps> = (props) => {
   return (

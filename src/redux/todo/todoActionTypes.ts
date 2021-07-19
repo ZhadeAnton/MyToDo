@@ -5,7 +5,7 @@ import {
   ITodoList,
   IAddTodoStep,
   IDeleteTodoStep
-} from '../../interfaces'
+} from '../../Interfaces/interfaces'
 
 export const GET_ALL_TODOS = 'GET_ALL_TODOS'
 export interface GetAllTodos {

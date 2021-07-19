@@ -2,10 +2,10 @@ import React from 'react'
 import { CloseOutlined } from '@ant-design/icons'
 
 import styles from './closeDetailsButton.module.scss'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import { IFnCloseSelectedTodo } from '../../../../Interfaces/interfaces'
 
 interface Props {
-  onCloseSelectedTodo: TodoListProps['closeSelectedTodo']
+  onCloseSelectedTodo: IFnCloseSelectedTodo
 }
 
 const CloseDetailsButton: React.FC<Props> = (props) => {

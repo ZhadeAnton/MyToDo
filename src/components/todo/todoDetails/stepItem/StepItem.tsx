@@ -1,14 +1,13 @@
 import React from 'react'
 
 import styles from './stepItem.module.scss'
-import { ITodoStep } from '../../../../interfaces';
-import { TodoListProps } from '../../../../containers/TodoPageContainer';
+import { IFnDeleteTodoStep, ITodo, ITodoStep } from '../../../../Interfaces/interfaces';
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
 
 interface Props {
   step: ITodoStep,
-  selectedTodo: TodoListProps['selectedTodo'],
-  deleteTodoStep: TodoListProps['deleteTodoStep'],
+  selectedTodo: ITodo,
+  deleteTodoStep: IFnDeleteTodoStep,
 }
 
 const StepItem: React.FC<Props> = (props) => {

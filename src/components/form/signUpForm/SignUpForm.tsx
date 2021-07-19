@@ -3,7 +3,7 @@ import {Form, Input, Button} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
 import styles from './signUpForm.module.scss'
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { LoginPageProps } from '../../../Containers/LoginPageContainer';
 
 interface Props {
   signUp: LoginPageProps['signUp']

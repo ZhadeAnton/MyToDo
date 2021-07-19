@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   'rules': {
+    'max-len': ['error', { 'code': 90 }],
     'object-curly-spacing': 0,
     'linebreak-style': 0,
     'semi': 0,
