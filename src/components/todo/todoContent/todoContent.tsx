@@ -52,5 +52,4 @@ const TodoContent: React.FC<Props> = (props) => {
   )
 }
 
-
 export default TodoContent
