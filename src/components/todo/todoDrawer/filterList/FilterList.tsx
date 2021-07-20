@@ -11,10 +11,10 @@ import styles from './filterList.module.scss'
 import FilterItem from '../filterItem/FilterItem'
 
 const drawerFilterItems = [
-  { title: 'Todos', icon: <FireOutlined style={{fill: 'goldenrod'}} />, to: '/todo' },
-  { title: 'Unlisted', icon: <DiffOutlined style={{fill: 'blue'}} />, to: '/todo/unlisted'},
-  { title: 'Important', icon: <StarOutlined style={{fill: 'red'}} />, to: '/todo/important'},
-  { title: 'Planned', icon: <BellOutlined style={{fill: 'green'}} />, to: '/todo/planned'}
+  { title: 'Todos', icon: <FireOutlined style={{fill: 'goldenrod'}} />, to: '/' },
+  { title: 'Unlisted', icon: <DiffOutlined style={{fill: 'blue'}} />, to: '/unlisted'},
+  { title: 'Important', icon: <StarOutlined style={{fill: 'red'}} />, to: '/important'},
+  { title: 'Planned', icon: <BellOutlined style={{fill: 'green'}} />, to: '/planned'}
 ]
 
 const TodoDrawerFilterList = () => {

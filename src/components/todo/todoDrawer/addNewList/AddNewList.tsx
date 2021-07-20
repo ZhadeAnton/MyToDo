@@ -1,10 +1,11 @@
 import React from 'react'
 import { IFnCreateList } from '../../../../Interfaces/interfaces';
+import { IUser } from '../../../../Redux/User/userInterfaces';
 
 import AddNewItem from '../../../form/addNewItem/AddNewItem';
 
 interface Props {
-  userId: string,
+  userId: IUser['id'],
   onCreateList: IFnCreateList,
 }
 

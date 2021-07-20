@@ -9,10 +9,10 @@ interface SortTodos {
 }
 
 export const getTodosByFilter: FilterTodos = ({
-  '/todo': (todos) => todos.filter((t) => t),
-  '/todo/unlisted': (todos) => todos.filter((t) => t.listId === ''),
-  '/todo/important': (todos) => todos.filter((t: any) => t.important),
-  '/todo/planned': (todos) => todos.filter((t) => t.planned)
+  '/': (todos) => todos.filter((t) => t),
+  '/unlisted': (todos) => todos.filter((t) => t.listId === ''),
+  '/important': (todos) => todos.filter((t: any) => t.important),
+  '/planned': (todos) => todos.filter((t) => t.planned)
 })
 
 export const sortFn: SortTodos = {

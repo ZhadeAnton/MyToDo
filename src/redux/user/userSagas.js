@@ -8,9 +8,7 @@ import {
   facebookProvider,
 } from '../../Firebase/Firebase.config'
 
-import {
-  creacteUserProfileDocument,
-  getCurrentUser } from './userUtils.ts'
+import { creacteUserProfileDocument } from './userUtils.ts'
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
@@ -61,16 +59,6 @@ export function* signUpStart({payload: {email, password, displayName}}) {
   }
 }
 
-export function* checkUserSession() {
-  try {
-    const userAuth = yield getCurrentUser()
-    if (!userAuth) return
-    yield getSnapshotFromUserAuth(userAuth)
-  } catch (error) {
-    yield put(actionCreators.signInFailure(error))
-  }
-}
-
 export function* signOut() {
   try {
     yield auth.signOut()
@@ -100,17 +88,12 @@ function* onSignOut() {
   yield takeLatest(actionTypes.SIGN_OUT_START, signOut)
 }
 
-function* onCheckUserSession() {
-  yield takeLatest(actionTypes.CHECK_USER_SESSION, checkUserSession)
-}
-
 export default function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onFacebookSignInStart),
     call(onSignInWithEmail),
     call(onSignUpStart),
-    call(onSignOut),
-    call(onCheckUserSession)
+    call(onSignOut)
   ])
 }

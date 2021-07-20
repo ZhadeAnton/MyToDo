@@ -24,13 +24,12 @@ const TodoPage = (props: ITodoContainer) => {
       <section className={styles.todoContent}>
         <Switch>
           <Route
-            path="/todo/:listid?"
+            path="/:listid?"
             render={() =>
               <TodoContent
                 todos={props.filteredTodos}
                 lists={props.lists}
                 path={props.path}
-                userId={props.userId}
                 listId={props.listId}
                 checkedSort={props.sortBy}
                 selectedTodo={props.selectedTodo}

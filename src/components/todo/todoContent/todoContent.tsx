@@ -12,7 +12,6 @@ interface Props {
   lists: interfaces.ArrayOfTodoLists,
   currentList: interfaces.ITodoList | undefined,
   selectedTodo: interfaces.ITodo,
-  userId: string,
   listId: string,
   path: string,
   checkedSort: string,
@@ -21,7 +20,7 @@ interface Props {
   onDeleteTodo: interfaces.IFnDeleteTodo,
   onSelectTodo: interfaces.IFnSelectTodo,
   onCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
-  onSort: (sort: string) => void,
+  onSort: interfaces.IFnSortTodos,
   onSubmit: (title: string) => void
 }
 
@@ -32,7 +31,7 @@ const TodoContent: React.FC<Props> = (props) => {
         list={props.currentList}
         path={props.path}
         checkedSort={props.checkedSort}
-        handleSortChange={props.onSort}
+        onSort={props.onSort}
       />
 
       <TodoList

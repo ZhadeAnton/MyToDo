@@ -7,7 +7,6 @@ import TodoDrawerFilterList from './filterList/FilterList';
 import AddNewList from './addNewList/AddNewList';
 import UserProfile from '../../custom/userProfile/UserProfile';
 import CreatedLists from './createdLists/CreatedLists';
-import HomeLink from '../../custom/homeLink/HomeLink';
 import { IUser } from '../../../Redux/User/userInterfaces';
 import { ArrayOfTodoLists, IFnCreateList, IFnDeleteList } from '../../../Interfaces/interfaces';
 interface Props {
@@ -21,10 +20,6 @@ interface Props {
 const TodoDrawer: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDrawer}>
-      <div className={styles.backLink}>
-        <HomeLink/>
-      </div>
-
       <div className={styles.userProfileWrapper}>
         <UserProfile
           user={props.user}

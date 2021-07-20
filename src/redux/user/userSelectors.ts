@@ -8,11 +8,6 @@ export const selectCurrentUser = createSelector(
     (user) => user.currentUser
 )
 
-export const selectUserError = createSelector(
-    [selectUser],
-    (user) => user.userError
-)
-
 export const selectUserLoading = createSelector(
     [selectUser],
     (user) => user.isLoading

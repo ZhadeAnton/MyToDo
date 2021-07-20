@@ -1,13 +1,4 @@
-import { auth, db } from '../../Firebase/Firebase.config'
-
-export const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      unsubscribe()
-      resolve(userAuth)
-    }, reject)
-  })
-}
+import { db } from '../../Firebase/Firebase.config'
 
 export const creacteUserProfileDocument = async (
     userAuth: {[key: string]: string}, additionalData: {}) => {
@@ -30,7 +21,6 @@ export const creacteUserProfileDocument = async (
         ...additionalData,
       })
     } catch (error) {
-      console.error(error.message)
     }
   }
   return userRef;

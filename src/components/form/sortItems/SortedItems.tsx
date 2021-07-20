@@ -12,10 +12,11 @@ import {
 
 import styles from './sortItems.module.scss'
 import {ReactComponent as SortIcon} from '../../../assets/todo/icons/sort.svg'
+import { IFnSortTodos } from '../../../Interfaces/interfaces';
 
 interface Props {
   checkedSort: string,
-  handleSortChange: (sort: string) => void,
+  handleSortChange: IFnSortTodos,
 }
 
 const SortItems: React.FC<Props> = (props) => {

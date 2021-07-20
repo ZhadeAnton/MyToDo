@@ -19,7 +19,7 @@ const CreatedListsItem: React.FC<Props> = (props) => {
     >
       <UnorderedListOutlined />
 
-      <NavLink to={`/todo/${props.list.id}`}>
+      <NavLink to={`/${props.list.id}`}>
         {props.list.title}
       </NavLink>
 

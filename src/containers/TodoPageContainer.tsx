@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../Hooks/usePreTypedHooks';
-import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 import * as interfaces from '../Interfaces/interfaces';
@@ -12,17 +11,16 @@ import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
 import { IUser } from '../Redux/User/userInterfaces';
 
 import TodoPage from '../Routes/Todo/TodoPage.component';
+import { Redirect } from 'react-router-dom';
 
 export interface ITodoContainer {
     user: IUser | undefined,
-    userId: IUser['id'],
     lists: interfaces.ArrayOfTodoLists,
     path: string,
     listId: string,
     sortBy: string,
     currentList: interfaces.ITodoList | undefined,
     selectedTodo: interfaces.ITodo,
-    sortedTodos: interfaces.ArrayOfTodos,
     filteredTodos: interfaces.ArrayOfTodos,
     handleGetTodos: interfaces.IFnGetTodos,
     handleGetLists: interfaces.IFnGetLists,
@@ -39,8 +37,8 @@ export interface ITodoContainer {
     handleCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
     handleRemoveDateTodo: interfaces.IFnRemoveDateSelectedTodo,
     handleChangeTodoTitle: interfaces.IFnChangeTitleSelectedTodo,
+    handleSort: interfaces.IFnSortTodos,
     handleSignOut: () => void,
-    handleSort: (sort: string) => void,
     handleSubmit: (title: string) => void
 }
 
@@ -57,7 +55,7 @@ function TodoPageContainer(props: any) {
 
   const userId = user?.uid
   const listId = props.match.params.listid || ''
-  const path = props.match.path
+  const path = props.match.url
   const currentList = lists?.find((list: interfaces.ITodoList) => list.id === listId)
 
   useEffect(() => {
@@ -67,14 +65,14 @@ function TodoPageContainer(props: any) {
     handleGetLists(userId!)
   }, [props.match, user])
 
-  const getTodosByLists = (listId: string, todos: Array<interfaces.ITodo>) =>
+  const getTodosByLists = (listId: string, todos: interfaces.ArrayOfTodos) =>
     todos.filter((t) => t.listId === listId)
 
   const filteredTodos = listId
   ? getTodosByLists(listId, todos)
   : getTodosByFilter[path](todos)
 
-  const sortedTodos = sortBy ? todos.slice().sort(sortFn[sortBy]) : todos
+  const sortedTodos = sortBy ? filteredTodos.slice().sort(sortFn[sortBy]) : filteredTodos
 
   const handleSubmit = (title: string) => {
     handleCreateTodo({
@@ -84,7 +82,7 @@ function TodoPageContainer(props: any) {
     })
   }
 
-  const handleSort = (sort: string) => {
+  const handleSort: interfaces.IFnSortTodos = (sort) => {
     setSortBy(sort)
   }
 
@@ -158,12 +156,10 @@ function TodoPageContainer(props: any) {
       lists={lists}
       sortBy={sortBy}
       path={path}
-      userId={userId}
       listId={listId}
       currentList={currentList}
       selectedTodo={selectedTodo}
-      sortedTodos={sortedTodos}
-      filteredTodos={filteredTodos}
+      filteredTodos={sortedTodos}
       handleGetTodos={handleGetTodos}
       handleCreateList={handleCreateList}
       handleDeleteList={handleDeleteList}

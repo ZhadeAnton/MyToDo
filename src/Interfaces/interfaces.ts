@@ -141,3 +141,7 @@ export interface IFnRemoveDateSelectedTodo {
 export interface IFnCloseSelectedTodo {
   (): any
 }
+
+export interface IFnSortTodos {
+  (sort: string): any
+}
