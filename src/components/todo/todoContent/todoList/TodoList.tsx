@@ -19,32 +19,33 @@ const TodoList: React.FC<Props> = (props) => {
   return (
     <>
       {
-       props.todos.length > 0 ?
-      <List
-        className={styles.todoList}
-        dataSource={props.todos}
-        pagination={{
-          pageSize: 8,
-          hideOnSinglePage: true,
-          className: 'todoContentList-pagination'
-        }}
-        renderItem={(todo: any) => (
-          <TodoListItem
-            key={todo.id}
-            todo={todo}
-            selectedTodo={props.selectedTodo}
-            onUpdateTodo={props.onUpdateTodo}
-            onSelectTodo={props.onSelectTodo}
-          />
-        )}
-      />
-    :
-      <div className={styles.emptyList}>
-        <EmptyList
-          path={props.path}
-          list={props.list}
+       props.todos.length > 0
+       ?
+        <List
+          className={styles.todoList}
+          dataSource={props.todos}
+          pagination={{
+            pageSize: 8,
+            hideOnSinglePage: true,
+            className: 'todoContentList-pagination'
+          }}
+          renderItem={(todo: any) => (
+            <TodoListItem
+              key={todo.id}
+              todo={todo}
+              selectedTodo={props.selectedTodo}
+              onUpdateTodo={props.onUpdateTodo}
+              onSelectTodo={props.onSelectTodo}
+            />
+          )}
         />
-      </div>
+      :
+        <div className={styles.emptyList}>
+          <EmptyList
+            path={props.path}
+            list={props.list}
+          />
+        </div>
       }
     </>
   )

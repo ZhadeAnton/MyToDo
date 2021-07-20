@@ -1,12 +1,10 @@
 import React from 'react';
 import { Menu, Dropdown } from 'antd';
 import { Avatar } from 'antd';
-import { NavLink } from 'react-router-dom'
 import {
   LogoutOutlined,
   UserOutlined,
   DownOutlined,
-  AuditOutlined
 } from '@ant-design/icons'
 
 import styles from './userProfile.module.scss'
@@ -20,25 +18,19 @@ interface Props {
 }
 
 const UserProfile: React.FC<Props> = (props) => {
-  const menu = (
-    <Menu className={styles.dropdownList}>
-      <Menu.Item icon={<AuditOutlined />}>
-        <NavLink to='/login'>
-          Login page
-        </NavLink>
-      </Menu.Item>
-
-      <Menu.Item onClick={props.signOutStart}
-        icon={<LogoutOutlined />}>
-          Log out
-      </Menu.Item>
-    </Menu>
-  );
-
   return (
     <>
       <Dropdown
-        overlay={menu}
+        overlay={
+          <Menu className={styles.dropdownList}>
+            <Menu.Item
+              onClick={props.signOutStart}
+              icon={<LogoutOutlined />}
+            >
+              Log out
+            </Menu.Item>
+          </Menu>
+        }
         placement={props.dropdownPlacement}
         trigger={['click']}
       >
@@ -54,6 +46,7 @@ const UserProfile: React.FC<Props> = (props) => {
               src={props.user!.photoURL}
               icon={<UserOutlined />}
             />
+
             <DownOutlined
               style={{
                 color: 'blue',

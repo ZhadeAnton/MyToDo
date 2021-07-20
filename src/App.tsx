@@ -2,14 +2,13 @@ import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 
 import { TodoPageContainerWithrouter } from './Containers/TodoPageContainer';
+import { IAppContainer } from './Containers/AppContainer';
+
 import NotFound from './components/notFound/NotFound';
 import LoginPageContainer from './Containers/LoginPageContainer';
-import { useAppSelector } from './Hooks/usePreTypedHooks';
 
-const App = () => {
-  const user = useAppSelector((state) => state.user.currentUser)
-
-  if (!user) {
+const App = (props: IAppContainer) => {
+  if (!props.user) {
     return <LoginPageContainer />
   }
 

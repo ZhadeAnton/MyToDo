@@ -2,7 +2,7 @@ import React from 'react'
 import { IFnSortTodos, ITodoList } from '../../../../Interfaces/interfaces'
 
 import styles from './topBanner.module.scss'
-import SortItems from '../../../form/sortItems/SortedItems'
+import SortedItems from '../../../form/sortItems/SortedItems'
 
 interface Props {
   list: ITodoList | undefined,
@@ -18,7 +18,7 @@ const TopBanner: React.FC<Props> = (props) => {
         {props.list?.title || `${props.path.slice(1)}`}
       </h2>
 
-      <SortItems
+      <SortedItems
         checkedSort={props.checkedSort}
         handleSortChange={props.onSort}
       />

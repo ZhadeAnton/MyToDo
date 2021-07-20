@@ -50,23 +50,17 @@ const TodoListItem: React.FC<Props> = (props) => {
 
         <div className={styles.todoInfo}>
           {
-            props.todo.steps?.length
-            ?
+            props.todo.steps?.length &&
               <span className={styles.todoSteps}>
                 Steps: {props.todo.steps?.length}
               </span>
-            :
-              null
           }
 
           {
-            props.todo.planned
-            ?
+            props.todo.planned &&
               <span className={styles.todoPlanned}>
                 Planned <BellOutlined />
               </span>
-            :
-              null
           }
 
           <div className={styles.todoTimestamp}>
@@ -78,14 +72,16 @@ const TodoListItem: React.FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      <span className={styles.iconImportant}
-        onClick={() => handleImportant(props.todo.important)}>
+      <span
+        className={styles.iconImportant}
+        onClick={() => handleImportant(props.todo.important)}
+      >
         {
           props.todo.important
           ?
-          <span className={styles.IconFilled}>
-            <StarFilled />
-          </span>
+            <span className={styles.IconFilled}>
+              <StarFilled />
+            </span>
           :
             <StarOutlined />
         }
