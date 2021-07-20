@@ -1,44 +1,33 @@
-import React, { useState } from 'react'
-import { Input, message } from 'antd';
+import React from 'react'
+import { Input } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 import styles from './addNewItem.module.scss'
+import useAddNewItem from '../../../Hooks/useAddNewItem';
 
 interface Props {
   children: React.ReactChild,
-  className?: string,
   handleSubmit: (title: string) => void
 }
 
 const AddNewItem: React.FC<Props> = (props) => {
-  const [title, setTitle] = useState('')
-  const [isEdit, setIsEdit] = useState(false)
+  const newItemHook = useAddNewItem()
 
-  const handleCancelCreating = () => {
-    setIsEdit(false)
-    setTitle('')
-  }
-
-  const handlePressEnter = (title: string) => {
-    if (title.trim() !== '') {
-      props.handleSubmit(title)
-      handleCancelCreating()
-    } else {
-      message.warning('Value can not be empty!')
-    }
+  function handleClickEnter() {
+    newItemHook.handlePressEnter(newItemHook.title, props.handleSubmit)
   }
 
   return (
     <div className={styles.newItem}>
       {
-        isEdit
+        newItemHook.isEdit
         ?
           <div className={styles.addItemInput}>
             <Input
-              value={title}
-              onBlur={() => handleCancelCreating()}
-              onChange={(e) => setTitle(e.target.value)}
-              onPressEnter={() => handlePressEnter(title)}
+              value={newItemHook.title}
+              onBlur={() => newItemHook.handleCancelCreating()}
+              onChange={(e) => newItemHook.setTitle(e.target.value)}
+              onPressEnter={handleClickEnter}
               autoFocus
               maxLength={20}
             />
@@ -46,10 +35,13 @@ const AddNewItem: React.FC<Props> = (props) => {
         :
           <div
             className={styles.addItem}
-            onClick={() => setIsEdit(true)}
+            onClick={() => newItemHook.setIsEdit(true)}
           >
             <PlusOutlined />
-            <p>{props.children}</p>
+
+            <p>
+              {props.children}
+            </p>
           </div>
       }
     </div>

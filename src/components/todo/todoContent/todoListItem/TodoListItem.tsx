@@ -1,10 +1,10 @@
 import React from 'react'
-import { StarOutlined, StarFilled, BellOutlined } from '@ant-design/icons';
-import moment from 'moment'
 import cn from 'classnames'
+import { StarOutlined, StarFilled, BellOutlined } from '@ant-design/icons';
 
 import styles from './todoListItem.module.scss'
 import * as interfaces from '../../../../Interfaces/interfaces';
+import ConvertDate from '../../../custom/ConvertDate/ConvertDate';
 
 interface Props {
   todo: interfaces.ITodo,
@@ -14,8 +14,6 @@ interface Props {
 }
 
 const TodoListItem: React.FC<Props> = (props) => {
-  const timeStamp = props.todo.timestamp.toDate()
-
   function handleChecked(completed: boolean) {
     props.onUpdateTodo(props.todo.id, {completed})
   }
@@ -75,10 +73,8 @@ const TodoListItem: React.FC<Props> = (props) => {
             <p>
               Created&nbsp;
             </p>
-            <time>
-              {moment(timeStamp)
-                  .format('MMMM Do, h:mm a').toString()}
-            </time>
+
+            <ConvertDate date={props.todo.timestamp}/>
           </div>
         </div>
       </div>

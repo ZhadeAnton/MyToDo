@@ -5,6 +5,7 @@ import * as actions from '../Redux/User/userActionCreators'
 import * as interfaces from '../Interfaces/UserInterfaces'
 
 import LoginPage from '../Routes/Login/LoginPage'
+import { Redirect } from 'react-router-dom'
 
 export interface ILoginContainer {
   isLoading: boolean,
@@ -19,6 +20,11 @@ export default function LoginContainer() {
   const dispatch = useAppDispatch()
 
   const isLoading = state.user.isLoading
+  const user = state.user.currentUser
+
+  if (user) {
+    return <Redirect to='/'/>
+  }
 
   const handleSignInWithGoogle: interfaces.IFnSignInWithGoogle = () => {
     dispatch(actions.googleSignInStart())

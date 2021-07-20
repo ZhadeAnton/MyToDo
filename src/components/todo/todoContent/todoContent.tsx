@@ -21,7 +21,7 @@ interface Props {
   onSelectTodo: interfaces.IFnSelectTodo,
   onCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
   onSort: interfaces.IFnSortTodos,
-  onSubmit: (title: string) => void
+  onSubmit: (title: string, listId: string) => void
 }
 
 const TodoContent: React.FC<Props> = (props) => {

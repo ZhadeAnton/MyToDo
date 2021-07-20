@@ -14,6 +14,7 @@ const TodoPage = (props: ITodoContainer) => {
       <aside className={styles.todoDrawer}>
         <TodoDrawer
           user={props.user}
+          userId={props.userId}
           lists={props.lists}
           onCreateList={props.handleCreateList}
           onDeleteList={props.handleDeleteList}

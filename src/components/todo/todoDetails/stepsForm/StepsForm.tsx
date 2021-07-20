@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './stepsForm.module.scss'
-import AddNewItem from '../../../form/addNewItem/AddNewItem'
+import AddNewItem from '../../../form/AddNewItem/AddNewItem'
 import { IFnAddTodoStep, ITodo } from '../../../../Interfaces/interfaces'
 
 interface Props {

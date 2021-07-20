@@ -10,7 +10,8 @@ import CreatedLists from './createdLists/CreatedLists';
 import { IUser } from '../../../Redux/User/userInterfaces';
 import { ArrayOfTodoLists, IFnCreateList, IFnDeleteList } from '../../../Interfaces/interfaces';
 interface Props {
-  user: IUser | undefined,
+  user: IUser | null,
+  userId: IUser['id'],
   lists: ArrayOfTodoLists,
   onCreateList: IFnCreateList,
   onDeleteList: IFnDeleteList,
@@ -35,7 +36,7 @@ const TodoDrawer: React.FC<Props> = (props) => {
       <Divider />
 
       <AddNewList
-        userId={props.user!.id}
+        userId={props.userId}
         onCreateList={props.onCreateList}
       />
 
