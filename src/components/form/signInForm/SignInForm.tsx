@@ -7,10 +7,10 @@ import {
 import {LockOutlined} from '@ant-design/icons';
 
 import styles from './signInForm.module.scss'
-import { LoginPageProps } from '../../../Containers/LoginPageContainer';
+import { IFnSignInWithEmail } from '../../../Interfaces/UserInterfaces';
 
 interface Props {
-  signInWithEmail: LoginPageProps['signInWithEmail'],
+  signInWithEmail: IFnSignInWithEmail,
 }
 
 const SignInForm: React.FC<Props> = (props) => {

@@ -1,11 +1,12 @@
 import React from 'react'
 
 import styles from './signIn.module.scss'
-import { LoginPageProps } from '../../../Containers/LoginPageContainer';
+import { IFnSignInWithEmail } from '../../../Interfaces/UserInterfaces';
+
 import SignInForm from '../../form/signInForm/SignInForm';
 
 interface Props {
-  signInWithEmail: LoginPageProps['signInWithEmail'],
+  signInWithEmail: IFnSignInWithEmail,
 }
 
 const SingIn: React.FC<Props> = (props) => {

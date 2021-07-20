@@ -8,9 +8,10 @@ import * as actions from '../Redux/Todo/todoActionCreators'
 import * as selectors from '../Redux/Todo/todoSelectors';
 import { signOutStart } from '../Redux/User/userActionCreators'
 import { selectCurrentUser } from '../Redux/User/userSelectors';
-import TodoPage from '../Routes/Todo/TodoPage.component';
 import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
 import { IUser } from '../Redux/User/userInterfaces';
+
+import TodoPage from '../Routes/Todo/TodoPage.component';
 
 export interface ITodoContainer {
     user: IUser | undefined,
@@ -42,7 +43,6 @@ export interface ITodoContainer {
     handleSort: (sort: string) => void,
     handleSubmit: (title: string) => void
 }
-
 
 function TodoPageContainer(props: any) {
   const state = useAppSelector((state) => state)
