@@ -1,10 +1,10 @@
 import { IUser } from '../Redux/User/userInterfaces'
 
 export interface ITodo {
+  id: string,
   title: string,
   listId: string,
   userId: string,
-  id: string,
   completed: boolean,
   important: boolean
   timestamp: any,
