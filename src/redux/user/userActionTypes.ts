@@ -2,7 +2,7 @@ import {
   IUser,
   ISignInCredentionals,
   ISignUpCredentionals,
-} from './userInterfaces'
+} from '../../Interfaces/UserInterfaces'
 
 export const GOOGLE_SIGN_IN_START = 'GOOGLE_SIGN_IN_START'
 export interface GoogleSignInStart {

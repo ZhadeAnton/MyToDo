@@ -2,7 +2,7 @@ import React from 'react'
 import { CloseOutlined } from '@ant-design/icons'
 
 import styles from './closeDetailsButton.module.scss'
-import { IFnCloseSelectedTodo } from '../../../../Interfaces/interfaces'
+import { IFnCloseSelectedTodo } from '../../../../Interfaces/TodoInterfaces'
 
 interface Props {
   onCloseSelectedTodo: IFnCloseSelectedTodo

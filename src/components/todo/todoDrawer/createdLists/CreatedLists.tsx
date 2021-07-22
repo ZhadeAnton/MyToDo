@@ -2,12 +2,12 @@ import React from 'react'
 import { List } from 'antd';
 
 import styles from './createdLists.module.scss'
-import { ArrayOfTodoLists, IFnDeleteList } from '../../../../Interfaces/interfaces'
+import { ArrayOfTodoLists } from '../../../../Interfaces/TodoInterfaces'
 import CreatedListsItem from '../createdListsItem/CreatedListsItem'
 
 interface Props {
   lists: ArrayOfTodoLists,
-  onDeleteList: IFnDeleteList
+  onDeleteList: (todoId: string) =>void
 }
 
 const CreatedLists = (props: Props) => {

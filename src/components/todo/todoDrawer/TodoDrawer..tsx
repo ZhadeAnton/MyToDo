@@ -7,14 +7,14 @@ import TodoDrawerFilterList from './filterList/FilterList';
 import AddNewList from './addNewList/AddNewList';
 import UserProfile from '../../custom/userProfile/UserProfile';
 import CreatedLists from './createdLists/CreatedLists';
-import { IUser } from '../../../Redux/User/userInterfaces';
-import { ArrayOfTodoLists, IFnCreateList, IFnDeleteList } from '../../../Interfaces/interfaces';
+import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../Interfaces/UserInterfaces';
 interface Props {
   user: IUser | null,
   userId: IUser['id'],
   lists: ArrayOfTodoLists,
   onCreateList: IFnCreateList,
-  onDeleteList: IFnDeleteList,
+  onDeleteList: (listId: string) => void,
   onSignOut: () => void
 }
 

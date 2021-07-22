@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom'
 import { UnorderedListOutlined } from '@ant-design/icons'
 
 import styles from './createdListsItem.module.scss'
-import { IFnDeleteList, ITodoList } from '../../../../Interfaces/interfaces'
+import { ITodoList } from '../../../../Interfaces/TodoInterfaces'
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon'
 
 interface Props {
   list: ITodoList
-  onDeleteList: IFnDeleteList
+  onDeleteList: (todoId: string) => void
 }
 
 const CreatedListsItem: React.FC<Props> = (props) => {

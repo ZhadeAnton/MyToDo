@@ -1,4 +1,4 @@
-import { ISelecteTodo, ITodo, ITodoList } from '../../Interfaces/interfaces'
+import { ISelecteTodo, ITodo, ITodoList } from '../../Interfaces/TodoInterfaces'
 import * as actions from './todoActionTypes'
 
 export interface TodoState {

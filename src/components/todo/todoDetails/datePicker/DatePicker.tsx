@@ -4,9 +4,11 @@ import { StopOutlined } from '@ant-design/icons';
 import moment from 'moment'
 
 import styles from './dataPicker.module.scss'
-import * as interfaces from '../../../../Interfaces/interfaces';
+import * as interfaces from '../../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../../Interfaces/UserInterfaces';
 
 interface Props {
+  userId: IUser['id'],
   selectedTodo: interfaces.ITodo,
   onSetDateTodo: interfaces.IFnSetDateSelectedTodo,
   onRemoveDateTodo: interfaces.IFnRemoveDateSelectedTodo,
@@ -19,13 +21,13 @@ const DatePickerForm: React.FC<Props> = (props) => {
         .format('MMMM Do YYYY, h:mm a')
         .toString()
 
-    props.onUpdate(props.selectedTodo!.id, {planned: newDate})
+    props.onUpdate(props.userId, props.selectedTodo!.id, {planned: newDate})
     props.onSetDateTodo(newDate)
     message.success(`Added new date ${newDate}`)
   }
 
   function handleRemoveDate() {
-    props.onUpdate(props.selectedTodo!.id, {planned: ''})
+    props.onUpdate(props.userId, props.selectedTodo!.id, {planned: ''})
     props.onRemoveDateTodo()
     message.warning('Planned date was removed')
   }

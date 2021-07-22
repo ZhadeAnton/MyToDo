@@ -3,11 +3,14 @@ import cn from 'classnames'
 import { StarOutlined, StarFilled, BellOutlined } from '@ant-design/icons';
 
 import styles from './todoListItem.module.scss'
-import * as interfaces from '../../../../Interfaces/interfaces';
+import * as interfaces from '../../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../../Interfaces/UserInterfaces';
+
 import ConvertDate from '../../../custom/ConvertDate/ConvertDate';
 
 interface Props {
   todo: interfaces.ITodo,
+  userId: IUser['id'],
   selectedTodo: interfaces.ITodo,
   onUpdateTodo: interfaces.IFnUpdateTodo,
   onSelectTodo: interfaces.IFnSelectTodo
@@ -15,11 +18,11 @@ interface Props {
 
 const TodoListItem: React.FC<Props> = (props) => {
   function handleChecked(completed: boolean) {
-    props.onUpdateTodo(props.todo.id, {completed})
+    props.onUpdateTodo(props.userId, props.todo.id, {completed})
   }
 
   function handleImportant(important: boolean) {
-    props.onUpdateTodo(props.todo.id, {important: !important})
+    props.onUpdateTodo(props.userId, props.todo.id, {important: !important})
   }
 
   function handleClick(e: any) {

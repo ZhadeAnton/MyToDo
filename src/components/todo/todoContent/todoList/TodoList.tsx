@@ -2,11 +2,14 @@ import React from 'react'
 import { List } from 'antd';
 
 import styles from './todoList.module.scss'
-import * as interfaces from '../../../../Interfaces/interfaces';
+import * as interfaces from '../../../../Interfaces/TodoInterfaces';
+
 import TodoListItem from '../todoListItem/TodoListItem'
 import EmptyList from '../emptyList/Emptylist';
+import { IUser } from '../../../../Interfaces/UserInterfaces';
 
 interface Props {
+  userId: IUser['id'],
   list: interfaces.ITodoList | undefined,
   path: string,
   todos: interfaces.ArrayOfTodos,
@@ -32,6 +35,7 @@ const TodoList: React.FC<Props> = (props) => {
           renderItem={(todo: any) => (
             <TodoListItem
               key={todo.id}
+              userId={props.userId}
               todo={todo}
               selectedTodo={props.selectedTodo}
               onUpdateTodo={props.onUpdateTodo}

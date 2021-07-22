@@ -1,5 +1,5 @@
-import * as interfaces from '../../Interfaces/interfaces'
-import { IUser } from '../User/userInterfaces'
+import * as interfaces from '../../Interfaces/TodoInterfaces'
+import { IUser } from '../../Interfaces/UserInterfaces'
 import * as actions from './todoActionTypes'
 
 export const getAllTodos = (userId: IUser['id']): actions.GetAllTodos => ({
@@ -87,10 +87,10 @@ export const closeSelectedTodo: interfaces.IFnCloseSelectedTodo = ()
   type: actions.CLOSE_SELECTED_TODO
 })
 
-export const updateTodo: interfaces.IFnUpdateTodo = (todoId, data)
+export const updateTodo: interfaces.IFnUpdateTodo = (userId, todoId, data)
   : actions.UpdateTodo => ({
   type: actions.UPDATE_TODO,
-  payload: { todoId, data }
+  payload: { userId, todoId, data }
 })
 
 export const updateTodoSuccess: interfaces.IFnUpdateTodoSuccess = (updatedTodo)
@@ -105,9 +105,13 @@ export const addTodoStep: interfaces.IFnAddTodoStep = (todoId, stepTitle)
   payload: { todoId, stepTitle: stepTitle }
 })
 
-export const deleteTodo: interfaces.IFnDeleteTodo = (todoId): actions.DeleteTodo => ({
+export const deleteTodo: interfaces.IFnDeleteTodo = (userId, todoId)
+  : actions.DeleteTodo => ({
   type: actions.DELETE_TODO,
-  payload: todoId
+  payload: {
+    userId,
+    todoId
+  }
 })
 
 export const deleteTodoSuccess = (
@@ -122,9 +126,13 @@ export const deleteTodoStep: interfaces.IFnDeleteTodoStep = (todoId, step)
   payload: { todoId, step }
 })
 
-export const deleteList: interfaces.IFnDeleteList = (listId): actions.DeleteList => ({
+export const deleteList: interfaces.IFnDeleteList = (userId, listId)
+  : actions.DeleteList => ({
   type: actions.DELETE_LIST,
-  payload: listId
+  payload: {
+    userId,
+    listId
+  }
 })
 
 export const deleteListSuccess: interfaces.IFnDeleteListSuccess = (listId)

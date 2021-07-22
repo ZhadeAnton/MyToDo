@@ -31,6 +31,7 @@ const TodoPage = (props: ITodoContainer) => {
                 todos={props.filteredTodos}
                 lists={props.lists}
                 path={props.path}
+                userId={props.userId}
                 listId={props.listId}
                 checkedSort={props.sortBy}
                 selectedTodo={props.selectedTodo}
@@ -51,6 +52,7 @@ const TodoPage = (props: ITodoContainer) => {
       <aside className={styles.todoDetails}>
         { props.selectedTodo &&
           <TodoDetails
+            userId={props.userId}
             selectedTodo={props.selectedTodo}
             onAddTodoStep={props.handleAddTodoStep}
             onDeleteTodoStep={props.handleDeleteTodoStep}

@@ -6,9 +6,11 @@ import styles from './todoForm.module.scss'
 import {
   IFnChangeTitleSelectedTodo,
   IFnUpdateTodo,
-  ITodo } from '../../../../Interfaces/interfaces'
+  ITodo } from '../../../../Interfaces/TodoInterfaces'
+import { IUser } from '../../../../Interfaces/UserInterfaces'
 
 interface Props {
+  userId: IUser['id'],
   selectedTodo: ITodo,
   changeTitleSelectedTodo: IFnChangeTitleSelectedTodo,
   onUpdate: IFnUpdateTodo
@@ -26,7 +28,7 @@ const TodoEditForm: React.FC<Props> = (props) => {
     e.preventDefault()
 
     if (todoText.trim() !== '') {
-      props.onUpdate(props.selectedTodo!.id, {title: todoText})
+      props.onUpdate(props.userId, props.selectedTodo!.id, {title: todoText})
       props.changeTitleSelectedTodo(todoText)
       setIsEdit(false)
     } else {

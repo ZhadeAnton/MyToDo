@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../Hooks/usePreTypedHooks';
 import { withRouter } from 'react-router'
 
-import * as interfaces from '../Interfaces/interfaces';
+import * as interfaces from '../Interfaces/TodoInterfaces';
 import * as actions from '../Redux/Todo/todoActionCreators'
 import * as selectors from '../Redux/Todo/todoSelectors';
 import { signOutStart } from '../Redux/User/userActionCreators'
+import { Redirect } from 'react-router-dom';
+import { IUser } from '../Interfaces/UserInterfaces';
+import { selectCurrentUser } from '../Redux/User/userSelectors';
 import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
-import { IUser } from '../Redux/User/userInterfaces';
 
 import TodoPage from '../Routes/Todo/TodoPage.component';
-import { selectCurrentUser } from '../Redux/User/userSelectors';
-import { Redirect } from 'react-router-dom';
 
 export interface ITodoContainer {
     user: IUser | null,
@@ -25,11 +25,9 @@ export interface ITodoContainer {
     filteredTodos: interfaces.ArrayOfTodos,
     handleGetTodos: interfaces.IFnGetTodos,
     handleGetLists: interfaces.IFnGetLists,
-    handleDeleteTodo: interfaces.IFnDeleteTodo,
     handleCreateTodo: interfaces.IFnCreateTodo,
     handleUpdateTodo: interfaces.IFnUpdateTodo,
     handleCreateList: interfaces.IFnCreateList,
-    handleDeleteList: interfaces.IFnDeleteList,
     handleSelectTodo: interfaces.IFnSelectTodo,
     handleAddTodoStep: interfaces.IFnAddTodoStep,
     handleGetListTodos: interfaces.IFnGetListTodos,
@@ -39,6 +37,8 @@ export interface ITodoContainer {
     handleRemoveDateTodo: interfaces.IFnRemoveDateSelectedTodo,
     handleChangeTodoTitle: interfaces.IFnChangeTitleSelectedTodo,
     handleSort: interfaces.IFnSortTodos,
+    handleDeleteTodo: (todoId: interfaces.ITodo['id']) => void,
+    handleDeleteList: (listId: interfaces.ITodoList['id']) => void,
     handleSignOut: () => void,
     handleSubmit: (title: string) => void
 }
@@ -118,8 +118,8 @@ function TodoPageContainer(props: any) {
     dispatch(actions.addTodoStep(todoId, stepTitle))
   }
 
-  const handleUpdateTodo: interfaces.IFnUpdateTodo = (todoId, data) => {
-    dispatch(actions.updateTodo(todoId, data))
+  const handleUpdateTodo: interfaces.IFnUpdateTodo = (userId, todoId, data) => {
+    dispatch(actions.updateTodo(userId, todoId, data))
   }
 
   const handleSelectTodo: interfaces.IFnSelectTodo = (todo) => {
@@ -142,16 +142,16 @@ function TodoPageContainer(props: any) {
     dispatch(actions.closeSelectedTodo())
   }
 
-  const handleDeleteTodo: interfaces.IFnDeleteTodo = (todo) => {
-    dispatch(actions.deleteTodo(todo))
+  const handleDeleteTodo = (todoId: string) => {
+    dispatch(actions.deleteTodo(userId, todoId))
   }
 
   const handleDeleteTodoStep: interfaces.IFnDeleteTodoStep = (todoId, step) => {
     dispatch(actions.deleteTodoStep(todoId, step))
   }
 
-  const handleDeleteList: interfaces.IFnDeleteList = (listId) => {
-    dispatch(actions.deleteList(listId))
+  const handleDeleteList = (listId: string) => {
+    dispatch(actions.deleteList(userId, listId))
   }
 
   return (

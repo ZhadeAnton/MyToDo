@@ -3,8 +3,11 @@ import { List } from 'antd';
 
 
 import styles from './stepList.module.scss'
-import { IFnDeleteTodoStep, ITodo, ITodoStep } from '../../../../Interfaces/interfaces'
 import StepItem from '../stepItem/StepItem'
+import {
+  IFnDeleteTodoStep,
+  ITodo,
+  ITodoStep } from '../../../../Interfaces/TodoInterfaces'
 
 interface Props {
   selectedTodo: ITodo,

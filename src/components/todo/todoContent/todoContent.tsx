@@ -1,19 +1,21 @@
 import React from 'react'
 
 import styles from './todoContent.module.scss'
-import * as interfaces from '../../../Interfaces/interfaces'
+import * as interfaces from '../../../Interfaces/TodoInterfaces'
 
 import TodoList from './todoList/TodoList'
 import TodoForm from './todoForm/TodoForm'
 import TopBanner from './topBanner/TopBanner'
+import { IUser } from '../../../Interfaces/UserInterfaces'
 
 interface Props {
   todos: interfaces.ArrayOfTodos,
   lists: interfaces.ArrayOfTodoLists,
+  listId: string,
+  userId: IUser['id'],
+  path: string,
   currentList: interfaces.ITodoList | undefined,
   selectedTodo: interfaces.ITodo,
-  listId: string,
-  path: string,
   checkedSort: string,
   onCreateTodo: interfaces.IFnCreateTodo,
   onUpdateTodo: interfaces.IFnUpdateTodo,
@@ -35,6 +37,7 @@ const TodoContent: React.FC<Props> = (props) => {
       />
 
       <TodoList
+        userId={props.userId}
         list={props.currentList}
         path={props.path}
         todos={props.todos}

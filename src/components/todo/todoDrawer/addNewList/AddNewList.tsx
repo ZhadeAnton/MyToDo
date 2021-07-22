@@ -1,6 +1,6 @@
 import React from 'react'
-import { IFnCreateList } from '../../../../Interfaces/interfaces';
-import { IUser } from '../../../../Redux/User/userInterfaces';
+import { IFnCreateList } from '../../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../../Interfaces/UserInterfaces';
 
 import AddNewItem from '../../../form/AddNewItem/AddNewItem';
 

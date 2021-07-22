@@ -1,8 +1,11 @@
 import React from 'react'
 
 import styles from './stepItem.module.scss'
-import { IFnDeleteTodoStep, ITodo, ITodoStep } from '../../../../Interfaces/interfaces';
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
+import {
+  IFnDeleteTodoStep,
+  ITodo,
+  ITodoStep } from '../../../../Interfaces/TodoInterfaces';
 
 interface Props {
   step: ITodoStep,

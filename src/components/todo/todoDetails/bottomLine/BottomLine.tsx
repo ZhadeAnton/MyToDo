@@ -4,13 +4,13 @@ import styles from './bottomLine.module.scss'
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
 import {
   IFnCloseSelectedTodo,
-  IFnDeleteTodo,
-  ITodo } from '../../../../Interfaces/interfaces';
+  ITodo } from '../../../../Interfaces/TodoInterfaces';
+
 import ConvertDate from '../../../custom/ConvertDate/ConvertDate';
 
 interface Props {
   selectedTodo: ITodo,
-  onDeleteTodo: IFnDeleteTodo,
+  onDeleteTodo: (todoId: string) => void,
   onCloseSelectedTodo: IFnCloseSelectedTodo
 }
 

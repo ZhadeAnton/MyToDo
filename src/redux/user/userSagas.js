@@ -12,8 +12,7 @@ import { creacteUserProfileDocument } from './userUtils.ts'
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
-    const userRef =
-    yield call(creacteUserProfileDocument, userAuth, additionalData)
+    const userRef = yield call(creacteUserProfileDocument, userAuth, additionalData)
     const userSnapshot = yield userRef.get()
     yield put(actionCreators.signInSuccess({
       id: userSnapshot.id,
@@ -54,6 +53,7 @@ export function* signInWithEmail({payload: {email, password}}) {
 export function* signUpStart({payload: {email, password, displayName}}) {
   try {
     const {user} = yield auth.createUserWithEmailAndPassword(email, password)
+    yield console.log('user', user)
     yield getSnapshotFromUserAuth(user, {displayName})
   } catch (error) {
     yield put(actionCreators.signUpFailure(error.message))

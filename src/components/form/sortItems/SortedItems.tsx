@@ -5,7 +5,7 @@ import cn from 'classnames'
 
 import styles from './sortItems.module.scss'
 import {ReactComponent as SortIcon} from '../../../assets/todo/icons/sort.svg'
-import { IFnSortTodos } from '../../../Interfaces/interfaces';
+import { IFnSortTodos } from '../../../Interfaces/TodoInterfaces';
 import { sortMenu } from '../../../Utils/SortedItems';
 
 interface Props {

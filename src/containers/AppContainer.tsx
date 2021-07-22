@@ -3,7 +3,7 @@ import React from 'react'
 import { useAppSelector } from '../Hooks/usePreTypedHooks';
 
 import App from '../App';
-import { IUser } from '../Redux/User/userInterfaces';
+import { IUser } from '../Interfaces/UserInterfaces';
 
 export interface IAppContainer {
   user: IUser | null

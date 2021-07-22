@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './stepsForm.module.scss'
 import AddNewItem from '../../../form/AddNewItem/AddNewItem'
-import { IFnAddTodoStep, ITodo } from '../../../../Interfaces/interfaces'
+import { IFnAddTodoStep, ITodo } from '../../../../Interfaces/TodoInterfaces'
 
 interface Props {
   selectedTodo: ITodo,

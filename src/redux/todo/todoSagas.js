@@ -58,10 +58,9 @@ function* createList({payload: {userId, title}}) {
   }
 }
 
-function* updateTodo({payload: {todoId, data}}) {
+function* updateTodo({payload: {userId, todoId, data}}) {
   try {
-    yield console.log(todoId)
-    const newTodo = yield call(API.updateTodo, todoId, data)
+    const newTodo = yield call(API.updateTodo, userId, todoId, data)
     yield put(actionCreators.updateTodoSuccess(newTodo))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
@@ -77,10 +76,19 @@ function* addTodoStep({payload: {todoId, stepTitle}}) {
   }
 }
 
-function* deleteTodo({payload}) {
+function* deleteTodo({payload: {userId, todoId}}) {
   try {
-    const todoId = yield call(API.deleteTodo, payload)
-    yield put(actionCreators.deleteTodoSuccess(todoId))
+    const deletedTodo = yield call(API.deleteTodo, userId, todoId)
+    yield put(actionCreators.deleteTodoSuccess(deletedTodo))
+  } catch (error) {
+    yield put(actionCreators.todosFailure(error.message))
+  }
+}
+
+function* deleteList({payload: {userId, listId}}) {
+  try {
+    const deletedList = yield call(API.deleteList, userId, listId)
+    yield put(actionCreators.deleteListSuccess(deletedList))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
@@ -90,15 +98,6 @@ function* deleteTodoStep({payload: {todoId, step}}) {
   try {
     yield call(API.updateTodo, todoId, {
       steps: firebase.firestore.FieldValue.arrayRemove(step)})
-  } catch (error) {
-    yield put(actionCreators.todosFailure(error.message))
-  }
-}
-
-function* deleteList({payload}) {
-  try {
-    const listId = yield call(API.deleteList, payload)
-    yield put(actionCreators.deleteListSuccess(listId))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }

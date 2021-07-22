@@ -8,7 +8,7 @@ import {
 } from '@ant-design/icons'
 
 import styles from './userProfile.module.scss'
-import { IUser } from '../../../Redux/User/userInterfaces';
+import { IUser } from '../../../Interfaces/UserInterfaces';
 
 interface Props {
   user: IUser | null,

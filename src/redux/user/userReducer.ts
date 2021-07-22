@@ -1,4 +1,4 @@
-import {IUser} from './userInterfaces'
+import {IUser} from '../../Interfaces/UserInterfaces'
 import * as actions from './userActionTypes'
 
 export interface UserState {

@@ -1,74 +1,88 @@
-import firebase from 'firebase'
 import { db } from '../Firebase/Firebase.config';
 import { v4 } from 'uuid'
-import { ITodoList } from '../Interfaces/interfaces';
-import { IUser } from '../Redux/User/userInterfaces';
-import { getUserFromId } from './APIUtils';
+import { ITodo, ITodoList } from '../Interfaces/TodoInterfaces';
+import { IUser } from '../Interfaces/UserInterfaces';
+import { getFromDoc, getFromSnapshot } from './APIUtils';
 
 export function getLists(userId: IUser['id']) {
-  return getUserFromId(userId)
-      .then((user) => user.lists)
+  return db.collection('users')
+      .doc(userId)
+      .collection('lists')
+      .get()
+      .then(getFromSnapshot)
       .catch((error) => console.log(error))
 }
 
 export function getTodos(userId: IUser['id']) {
-  return getUserFromId(userId)
-      .then((user) => user.todos)
+  return db.collection('users')
+      .doc(userId)
+      .collection('todos')
+      .get()
+      .then(getFromSnapshot)
       .catch((error) => console.log(error))
 }
 
 export function getListTodos(userId: IUser['id'], listId: ITodoList['id']) {
-  return getUserFromId(userId)
-      .then((user) => user.lists.filter((list: ITodoList) => list.id === listId))
+  return db.collection('users')
+      .doc(userId)
+      .collection('lists')
+      .where('id', '==', `${listId}`)
+      .get()
+      .then((res) => console.log('res', res))
       .catch((error) => console.log(error))
 }
 
 export function createTodo(userId: IUser['id'], data: {}) {
   return db.collection('users')
       .doc(userId)
-      .update({
-        todos: firebase.firestore.FieldValue.arrayUnion({
-          id: v4(),
-          ...data
-        })
+      .collection('todos')
+      .add({
+        ...data
       })
-      .then(() => ({...data}))
+      .then((docRef) => docRef.get())
+      .then(getFromDoc)
       .catch((error) => console.log(error))
 }
 
 export function createList(userId: IUser['id'], title: string) {
+  const uid = v4()
+
   return db.collection('users')
       .doc(userId)
-      .update({
-        lists: firebase.firestore.FieldValue.arrayUnion({
-          userId,
-          title,
-          id: v4()
-        })
+      .collection('lists')
+      .add({
+        userId,
+        title,
+        id: uid
       })
-      .then(() => ({userId, title, id: v4()}))
+      .then(() => ({userId, title, id: uid}))
       .catch((error) => console.log(error))
 }
 
-export function updateTodo(todoId: string, data: {}) {
+export function updateTodo(userId: IUser['id'], todoId: ITodo['id'], data: {}) {
   return db.collection('users')
+      .doc(userId)
+      .collection('todos')
       .doc(todoId)
       .update(data)
       .then(() => ({
+        id: todoId,
         ...data
       }))
 }
 
-export function deleteTodo(todoId: string) {
-  return db.collection('todos')
+export function deleteTodo(userId: IUser['id'], todoId: string) {
+  return db.collection('users')
+      .doc(userId)
+      .collection('todos')
       .doc(todoId)
       .delete()
       .then(() => todoId)
       .catch((error) => console.log(error))
 }
 
-export function deleteList(listId: string) {
-  return db.collection('lists')
+export function deleteList(userId: IUser['id'], listId: string) {
+  return db.collection('users')
       .doc(listId)
       .delete()
       .then(() => listId)

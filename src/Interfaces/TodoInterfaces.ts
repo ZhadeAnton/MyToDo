@@ -1,4 +1,4 @@
-import { IUser } from '../Redux/User/userInterfaces'
+import { IUser } from './UserInterfaces'
 
 export interface ITodo {
   id: string,
@@ -55,7 +55,7 @@ export interface IFnGetTodos {
 }
 
 export interface IFnUpdateTodo {
-  (todoId: ITodo['id'], data: {}): any
+  (userId: IUser['id'], todoId: ITodo['id'], data: {}): any
 }
 
 export interface IFnUpdateTodoSuccess {
@@ -67,7 +67,7 @@ export interface IFnAddTodoStep {
 }
 
 export interface IFnDeleteTodo {
-  (todoId: ITodo['id']): any
+  (userId: IUser['id'], todoId: ITodo['id']): any
 }
 
 export interface IFnDeleteTodoStep {
@@ -87,7 +87,7 @@ export interface IFnTodosFailure {
 }
 
 export interface IFnDeleteList {
-  (listId: ITodoList['id']): any
+  (userId: IUser['id'], listId: ITodoList['id']): any
 }
 
 export interface IFnGetListTodos {

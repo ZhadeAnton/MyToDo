@@ -1,5 +1,5 @@
 import { db } from '../Firebase/Firebase.config'
-import { IUser } from '../Redux/User/userInterfaces'
+import { IUser } from '../Interfaces/UserInterfaces'
 
 export function getFromSnapshot(snapShot: any) {
   return snapShot.docs.map((doc: any) => ({
@@ -22,7 +22,7 @@ export function mapDocs(doc: any) {
 
 export function getUserFromId(userId: IUser['id']) {
   return db.collection('users')
-      .where('uid', '==', `${userId}`)
+      .where('id', '==', `${userId}`)
       .get()
       .then(getFromSnapshot)
       .then((user) => user[0])
