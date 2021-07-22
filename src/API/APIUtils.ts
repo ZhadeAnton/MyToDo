@@ -3,18 +3,19 @@ import { IUser } from '../Interfaces/UserInterfaces'
 
 export function getFromSnapshot(snapShot: any) {
   return snapShot.docs.map((doc: any) => ({
+    id: doc.id,
     ...doc.data()
   }))
 }
 
-export function getFromDoc(doc: any) {
+export function getDocsWithId(doc: any) {
   return ({
     id: doc.id,
     ...doc.data()
   })
 }
 
-export function mapDocs(doc: any) {
+export function getDocs(doc: any) {
   return ({
     ...doc.data()
   })

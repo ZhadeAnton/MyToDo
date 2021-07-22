@@ -2,7 +2,7 @@ import { db } from '../Firebase/Firebase.config';
 import { v4 } from 'uuid'
 import { ITodo, ITodoList } from '../Interfaces/TodoInterfaces';
 import { IUser } from '../Interfaces/UserInterfaces';
-import { getFromDoc, getFromSnapshot } from './APIUtils';
+import { getDocsWithId, getFromSnapshot } from './APIUtils';
 
 export function getLists(userId: IUser['id']) {
   return db.collection('users')
@@ -40,7 +40,7 @@ export function createTodo(userId: IUser['id'], data: {}) {
         ...data
       })
       .then((docRef) => docRef.get())
-      .then(getFromDoc)
+      .then(getDocsWithId)
       .catch((error) => console.log(error))
 }
 

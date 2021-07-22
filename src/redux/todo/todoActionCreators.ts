@@ -114,8 +114,7 @@ export const deleteTodo: interfaces.IFnDeleteTodo = (userId, todoId)
   }
 })
 
-export const deleteTodoSuccess = (
-    todoId: string): actions.DeleteTodoSuccess => ({
+export const deleteTodoSuccess = (todoId: string): actions.DeleteTodoSuccess => ({
   type: actions.DELETE_TODO_SUCCESS,
   payload: todoId
 })

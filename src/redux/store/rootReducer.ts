@@ -7,7 +7,8 @@ import userReducer from '../User/userReducer'
 
 const rootPersistConfig = {
   key: 'root',
-  storage: storage
+  storage: storage,
+  blacklist: ['todo']
 }
 
 const rootReducer = combineReducers({
