@@ -1,6 +1,6 @@
 import { db } from '../Firebase/Firebase.config';
 import { v4 } from 'uuid'
-import { ITodo, ITodoList } from '../Interfaces/TodoInterfaces';
+import { ITodo } from '../Interfaces/TodoInterfaces';
 import { IUser } from '../Interfaces/UserInterfaces';
 import { getDocsWithId, getFromSnapshot } from './APIUtils';
 
@@ -19,16 +19,6 @@ export function getTodos(userId: IUser['id']) {
       .collection('todos')
       .get()
       .then(getFromSnapshot)
-      .catch((error) => console.log(error))
-}
-
-export function getListTodos(userId: IUser['id'], listId: ITodoList['id']) {
-  return db.collection('users')
-      .doc(userId)
-      .collection('lists')
-      .where('id', '==', `${listId}`)
-      .get()
-      .then((res) => console.log('res', res))
       .catch((error) => console.log(error))
 }
 

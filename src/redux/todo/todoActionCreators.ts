@@ -13,12 +13,6 @@ export const getAllTodosSuccess: interfaces.IFnGetAllTodosSuccess = (todos)
   payload: todos
 })
 
-export const getListTodos: interfaces.IFnGetListTodos = (listId)
-  : actions.GetListTodos => ({
-  type: actions.GET_LIST_TODOS,
-  payload: listId
-})
-
 export const getListTodosSuccess: interfaces.IFnGetListTodosSuccess = (todos)
   : actions.GetListTodosSuccess => ({
   type: actions.GET_LIST_TODOS_SUCCESS,

@@ -11,7 +11,7 @@ import { IUser } from '../Interfaces/UserInterfaces';
 import { selectCurrentUser } from '../Redux/User/userSelectors';
 import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
 
-import TodoPage from '../Routes/Todo/TodoPage.component';
+import TodoPage from '../Routes/Todo/TodoPage';
 
 export interface ITodoContainer {
     user: IUser | null,
@@ -30,7 +30,6 @@ export interface ITodoContainer {
     handleCreateList: interfaces.IFnCreateList,
     handleSelectTodo: interfaces.IFnSelectTodo,
     handleAddTodoStep: interfaces.IFnAddTodoStep,
-    handleGetListTodos: interfaces.IFnGetListTodos,
     handleDeleteTodoStep: interfaces.IFnDeleteTodoStep,
     handleSetDateTodo: interfaces.IFnSetDateSelectedTodo,
     handleCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
@@ -102,10 +101,6 @@ function TodoPageContainer(props: any) {
     dispatch(actions.getLists(userId))
   }
 
-  const handleGetListTodos: interfaces.IFnGetListTodos = (listId) => {
-    dispatch(actions.getListTodos(listId))
-  }
-
   const handleCreateTodo: interfaces.IFnCreateTodo = ({title, userId, listId}) => {
     dispatch(actions.createTodo({title, userId, listId}))
   }
@@ -170,7 +165,6 @@ function TodoPageContainer(props: any) {
       handleDeleteList={handleDeleteList}
       handleSignOut={handleSignOut}
       handleCreateTodo={handleCreateTodo}
-      handleGetListTodos={handleGetListTodos}
       handleAddTodoStep={handleAddTodoStep}
       handleSelectTodo={handleSelectTodo}
       handleCloseSelectedTodo={handleCloseSelectedTodo}

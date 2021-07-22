@@ -90,10 +90,6 @@ export interface IFnDeleteList {
   (userId: IUser['id'], listId: ITodoList['id']): any
 }
 
-export interface IFnGetListTodos {
-  (listId: ITodoList['id']): any
-}
-
 export interface IFnGetAllTodosSuccess {
   (todos: ArrayOfTodos): any
 }

@@ -13,15 +13,6 @@ function* getTodos({payload: userId}) {
   }
 }
 
-function* getListTodos({payload: listId}) {
-  try {
-    const todos = yield call(API.getListTodos, listId)
-    yield put(actionCreators.getListTodosSuccess(todos))
-  } catch (error) {
-    yield put(actionCreators.todosFailure(error.message))
-  }
-}
-
 function* getLists({payload: userId}) {
   try {
     const lists = yield API.getLists(userId)
@@ -107,10 +98,6 @@ function* onGetTodos() {
   yield takeLatest(actionTypes.GET_ALL_TODOS, getTodos)
 }
 
-function* onGetListTodos() {
-  yield takeLatest(actionTypes.GET_LIST_TODOS, getListTodos)
-}
-
 function* onGetLists() {
   yield takeLatest(actionTypes.GET_LISTS, getLists)
 }
@@ -146,7 +133,6 @@ function* onDeleteList() {
 export default function* todoSagas() {
   yield all([
     call(onGetTodos),
-    call(onGetListTodos),
     call(onGetLists),
     call(onCreateTodo),
     call(onCreatelist),

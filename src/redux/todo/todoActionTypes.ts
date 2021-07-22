@@ -20,12 +20,6 @@ export interface GetAllTodosSuccess {
   payload: Array<ITodo>
 }
 
-export const GET_LIST_TODOS = 'GET_LIST_TODOS'
-export interface GetListTodos {
-  type: typeof GET_LIST_TODOS,
-  payload: string
-}
-
 export const GET_LIST_TODOS_SUCCESS = 'GET_LIST_TODOS_SUCCESS'
 export interface GetListTodosSuccess {
   type: typeof GET_LIST_TODOS_SUCCESS,
@@ -163,7 +157,6 @@ export interface TodosFailure {
 export type TodoTypes =
 | GetAllTodos
 | GetAllTodosSuccess
-| GetListTodos
 | GetLists
 | CreateTodo
 | CreateList
