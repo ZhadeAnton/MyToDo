@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { UnorderedListOutlined } from '@ant-design/icons'
 
 import styles from './createdListsItem.module.scss'
@@ -12,6 +12,13 @@ interface Props {
 }
 
 const CreatedListsItem: React.FC<Props> = (props) => {
+  const history = useHistory()
+
+  const handleRemoveItemClick = () => {
+    props.onDeleteList(props.list.id)
+    history.push('/')
+  }
+
   return (
     <li
       key={props.list.id}
@@ -24,7 +31,7 @@ const CreatedListsItem: React.FC<Props> = (props) => {
       </NavLink>
 
       <RemoveIcon
-        onClick={() => props.onDeleteList(props.list.id)}
+        onClick={handleRemoveItemClick}
       />
     </li>
   )

@@ -1,8 +1,10 @@
+import { ITodoList } from './../Interfaces/TodoInterfaces';
 import { db } from '../Firebase/Firebase.config';
-import { v4 } from 'uuid'
 import { ITodo } from '../Interfaces/TodoInterfaces';
 import { IUser } from '../Interfaces/UserInterfaces';
 import { getDocsWithId, getFromSnapshot } from './APIUtils';
+import { chunk } from 'lodash'
+import firestore from 'firebase'
 
 export function getLists(userId: IUser['id']) {
   return db.collection('users')
@@ -26,26 +28,19 @@ export function createTodo(userId: IUser['id'], data: {}) {
   return db.collection('users')
       .doc(userId)
       .collection('todos')
-      .add({
-        ...data
-      })
+      .add({...data})
       .then((docRef) => docRef.get())
       .then(getDocsWithId)
       .catch((error) => console.log(error))
 }
 
 export function createList(userId: IUser['id'], title: string) {
-  const uid = v4()
-
   return db.collection('users')
       .doc(userId)
       .collection('lists')
-      .add({
-        userId,
-        title,
-        id: uid
-      })
-      .then(() => ({userId, title, id: uid}))
+      .add({userId, title})
+      .then((docRef) => docRef.get())
+      .then(getDocsWithId)
       .catch((error) => console.log(error))
 }
 
@@ -61,7 +56,7 @@ export function updateTodo(userId: IUser['id'], todoId: ITodo['id'], data: {}) {
       }))
 }
 
-export function deleteTodo(userId: IUser['id'], todoId: string) {
+export function deleteTodo(userId: IUser['id'], todoId: ITodo['id']) {
   return db.collection('users')
       .doc(userId)
       .collection('todos')
@@ -71,10 +66,33 @@ export function deleteTodo(userId: IUser['id'], todoId: string) {
       .catch((error) => console.log(error))
 }
 
-export function deleteList(userId: IUser['id'], listId: string) {
+export function deleteList(userId: IUser['id'], listId: ITodoList['id']) {
   return db.collection('users')
+      .doc(userId)
+      .collection('lists')
       .doc(listId)
       .delete()
       .then(() => listId)
       .catch((error) => console.log(error))
+}
+
+export async function deleteListTodos(userId: IUser['id'], listId: ITodoList['id']) {
+  const todosByListId = await db.collection('users')
+      .doc(userId)
+      .collection('todos')
+      .where('listId', '==', `${listId}`)
+      .get()
+
+  const MAX_WRITES_PER_BATCH = 500
+
+  const batches = chunk(todosByListId.docs, MAX_WRITES_PER_BATCH)
+  const commitBatchPromises: any = []
+
+  batches.forEach((batch) => {
+    const writeBatch = db.batch()
+    batch.forEach((doc) => writeBatch.delete(doc.ref))
+    commitBatchPromises.push(writeBatch.commit())
+  })
+
+  await Promise.all(commitBatchPromises);
 }
