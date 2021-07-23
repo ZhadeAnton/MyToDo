@@ -63,7 +63,7 @@ export interface IFnUpdateTodoSuccess {
 }
 
 export interface IFnAddTodoStep {
- (todoId: string, stepTitle: string): any
+ (userId: IUser['id'], todoId: string, step: IAddTodoStep): any
 }
 
 export interface IFnDeleteTodo {

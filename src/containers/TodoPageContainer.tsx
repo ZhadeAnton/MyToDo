@@ -12,6 +12,7 @@ import { selectCurrentUser } from '../Redux/User/userSelectors';
 import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
 
 import TodoPage from '../Routes/Todo/TodoPage';
+import { IAddTodoStep } from '../Interfaces/TodoInterfaces';
 
 export interface ITodoContainer {
     user: IUser | null,
@@ -29,13 +30,13 @@ export interface ITodoContainer {
     handleUpdateTodo: interfaces.IFnUpdateTodo,
     handleCreateList: interfaces.IFnCreateList,
     handleSelectTodo: interfaces.IFnSelectTodo,
-    handleAddTodoStep: interfaces.IFnAddTodoStep,
     handleDeleteTodoStep: interfaces.IFnDeleteTodoStep,
     handleSetDateTodo: interfaces.IFnSetDateSelectedTodo,
     handleCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
     handleRemoveDateTodo: interfaces.IFnRemoveDateSelectedTodo,
     handleChangeTodoTitle: interfaces.IFnChangeTitleSelectedTodo,
     handleSort: interfaces.IFnSortTodos,
+    handleAddTodoStep: (todoId: interfaces.ITodo['id'], step: IAddTodoStep)=> void,
     handleDeleteTodo: (todoId: interfaces.ITodo['id']) => void,
     handleDeleteList: (listId: interfaces.ITodoList['id']) => void,
     handleSignOut: () => void,
@@ -109,8 +110,8 @@ function TodoPageContainer(props: any) {
     dispatch(actions.createList(userId, title))
   }
 
-  const handleAddTodoStep: interfaces.IFnAddTodoStep = (todoId, stepTitle) => {
-    dispatch(actions.addTodoStep(todoId, stepTitle))
+  const handleAddTodoStep = (todoId: interfaces.ITodo['id'], step: IAddTodoStep) => {
+    dispatch(actions.addTodoStep(userId, todoId, step))
   }
 
   const handleUpdateTodo: interfaces.IFnUpdateTodo = (userId, todoId, data) => {

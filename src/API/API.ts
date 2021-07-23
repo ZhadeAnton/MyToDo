@@ -1,10 +1,11 @@
-import { ITodoList } from './../Interfaces/TodoInterfaces';
+import { ITodoList, IAddTodoStep } from './../Interfaces/TodoInterfaces';
 import { db } from '../Firebase/Firebase.config';
+import { chunk } from 'lodash';
+import firebase from 'firebase'
+
 import { ITodo } from '../Interfaces/TodoInterfaces';
 import { IUser } from '../Interfaces/UserInterfaces';
 import { getDocsWithId, getFromSnapshot } from './APIUtils';
-import { chunk } from 'lodash'
-import firestore from 'firebase'
 
 export function getLists(userId: IUser['id']) {
   return db.collection('users')
@@ -42,6 +43,17 @@ export function createList(userId: IUser['id'], title: string) {
       .then((docRef) => docRef.get())
       .then(getDocsWithId)
       .catch((error) => console.log(error))
+}
+
+export function addTodoStep(userId: IUser['id'],
+    todoId: ITodo['id'], step: IAddTodoStep) {
+  return db.collection('users')
+      .doc(userId)
+      .collection('todos')
+      .doc(todoId)
+      .update({
+        steps: firebase.firestore.FieldValue.arrayUnion({...step})
+      })
 }
 
 export function updateTodo(userId: IUser['id'], todoId: ITodo['id'], data: {}) {
@@ -83,10 +95,8 @@ export async function deleteListTodos(userId: IUser['id'], listId: ITodoList['id
       .where('listId', '==', `${listId}`)
       .get()
 
-  const MAX_WRITES_PER_BATCH = 500
-
-  const batches = chunk(todosByListId.docs, MAX_WRITES_PER_BATCH)
-  const commitBatchPromises: any = []
+  const batches = chunk(todosByListId.docs, 500)
+  const commitBatchPromises: Array<Promise<any>> = []
 
   batches.forEach((batch) => {
     const writeBatch = db.batch()

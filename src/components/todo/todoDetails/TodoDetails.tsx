@@ -10,11 +10,11 @@ import BottomLine from './bottomLine/BottomLine';
 import TodoEditForm from './todoForm/TodoForm';
 import StepsList from './stepList/StepList';
 import { IUser } from '../../../Interfaces/UserInterfaces';
+import { IAddTodoStep } from '../../../Interfaces/TodoInterfaces';
 
 interface Props {
   userId: IUser['id'],
   selectedTodo: interfaces.ITodo,
-  onAddTodoStep: interfaces.IFnAddTodoStep,
   onDeleteTodoStep: interfaces.IFnDeleteTodoStep,
   onUpdate: interfaces.IFnUpdateTodo,
   onSelectTodo: interfaces.IFnSelectTodo,
@@ -22,6 +22,7 @@ interface Props {
   onSetDateSelectedTodo: interfaces.IFnSetDateSelectedTodo,
   onRemoveDateSelectedTodo: interfaces.IFnRemoveDateSelectedTodo,
   onCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
+  onAddTodoStep: (todoId: interfaces.ITodo['id'], step: IAddTodoStep) => void,
   onDeleteTodo: (todoId: string) => void,
 }
 
@@ -38,7 +39,7 @@ const TodoDetails: React.FC<Props> = (props) => {
 
       <StepsForm
         selectedTodo={props.selectedTodo}
-        addTodoStep={props.onAddTodoStep}
+        onAddTodoStep={props.onAddTodoStep}
       />
 
       <StepsList

@@ -4,14 +4,16 @@ import { PlusOutlined } from '@ant-design/icons';
 
 import styles from './addNewItem.module.scss'
 import useAddNewItem from '../../../Hooks/useAddNewItem';
+import { ITodo } from '../../../Interfaces/TodoInterfaces';
 
 interface Props {
+  todoId?: ITodo['id'],
   children: React.ReactChild,
-  handleSubmit: (title: string) => void
+  handleSubmit: any
 }
 
 const AddNewItem: React.FC<Props> = (props) => {
-  const newItemHook = useAddNewItem()
+  const newItemHook = useAddNewItem(props.todoId!)
 
   function handleClickEnter() {
     newItemHook.handlePressEnter(newItemHook.title, props.handleSubmit)

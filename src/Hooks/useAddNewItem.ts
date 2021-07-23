@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { IAddTodoStep, ITodo } from '../Interfaces/TodoInterfaces'
 
-export default function useAddNewItem() {
+export default function useAddNewItem(todoId: ITodo['id']) {
   const [title, setTitle] = useState('')
   const [isEdit, setIsEdit] = useState(false)
 
@@ -9,9 +10,11 @@ export default function useAddNewItem() {
     setTitle('')
   }
 
-  const handlePressEnter = (title: string, handleSubmit: (title: string) => void) => {
+  const handlePressEnter = (
+      title: string, handleSubmit: (step: IAddTodoStep) => void) => {
     if (title.trim() !== '') {
-      handleSubmit(title)
+      const step = {stepTitle: title, todoId}
+      handleSubmit(step)
       handleCancelCreating()
     } else {
       console.log('Value can not be empty!')

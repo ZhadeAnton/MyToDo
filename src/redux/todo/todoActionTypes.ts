@@ -3,8 +3,8 @@ import {
   ICreateList,
   ITodo,
   ITodoList,
-  IAddTodoStep,
-  IDeleteTodoStep
+  IDeleteTodoStep,
+  ITodoStep
 } from '../../Interfaces/TodoInterfaces'
 import { IUser } from '../../Interfaces/UserInterfaces'
 
@@ -93,11 +93,7 @@ export interface CloseSelectedTodo {
 export const UPDATE_TODO = 'UPDATE_TODO'
 export interface UpdateTodo {
   type: typeof UPDATE_TODO,
-  payload: {
-    userId: IUser['id'],
-    todoId: string,
-    data: {}
-  }
+  payload: { userId: IUser['id'], todoId: string, data: {} }
 }
 
 export const UPDATE_TODO_SUCCESS = 'UPDATE_TODO_SUCCESS'
@@ -109,16 +105,13 @@ export interface UpdateTodoSuccess {
 export const ADD_TODO_STEP = 'ADD_TODO_STEP'
 export interface AddTodoStep {
   type: typeof ADD_TODO_STEP,
-  payload: IAddTodoStep
+  payload: { userId: IUser['id'], todoId: ITodo['id'], step: ITodoStep }
 }
 
 export const DELETE_TODO = 'DELETE_TODO'
 export interface DeleteTodo {
   type: typeof DELETE_TODO,
-  payload: {
-    userId: IUser['id'],
-    todoId: ITodo['id']
-  }
+  payload: { userId: IUser['id'], todoId: ITodo['id'] }
 }
 
 export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
@@ -136,10 +129,7 @@ export interface DeleteTodoStep {
 export const DELETE_LIST = 'DELETE_LIST'
 export interface DeleteList {
   type: typeof DELETE_LIST,
-  payload: {
-    userId: IUser['id'],
-    listId: ITodoList['id']
-  }
+  payload: { userId: IUser['id'], listId: ITodoList['id'] }
 }
 
 export const DELETE_LIST_SUCCESS = 'DELETE_LIST_SUCCESS'
