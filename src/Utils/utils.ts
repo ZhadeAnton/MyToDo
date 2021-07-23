@@ -1,4 +1,4 @@
-import { ITodo } from '../../Interfaces/TodoInterfaces'
+import { ITodo } from '../Interfaces/TodoInterfaces'
 
 interface FilterTodos {
   [key: string]: (todos: Array<ITodo>) => Array<ITodo>

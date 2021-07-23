@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, Dropdown } from 'antd';
 import { Avatar } from 'antd';
+import { v4 } from 'uuid'
 import {
   LogoutOutlined,
   UserOutlined,
@@ -24,6 +25,7 @@ const UserProfile: React.FC<Props> = (props) => {
         overlay={
           <Menu className={styles.dropdownList}>
             <Menu.Item
+              key={v4()}
               onClick={props.signOutStart}
               icon={<LogoutOutlined />}
             >

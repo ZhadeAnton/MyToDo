@@ -17,7 +17,7 @@ const drawerFilterItems = [
   { title: 'Planned', icon: <BellOutlined style={{fill: 'green'}} />, to: '/planned'}
 ]
 
-const TodoDrawerFilterList = () => {
+const FilterList = () => {
   return (
     <List className={styles.filterList}
       dataSource={drawerFilterItems}
@@ -30,4 +30,4 @@ const TodoDrawerFilterList = () => {
     />
   )
 }
-export default TodoDrawerFilterList
+export default FilterList

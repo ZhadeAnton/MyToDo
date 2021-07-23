@@ -17,7 +17,7 @@ const App = (props: IAppContainer) => {
       <Switch>
         <Route exact path='/login' component={LoginPageContainer} />
         <Route exact path='/' component={TodoPageContainerWithrouter} />
-        <Route path='/tasks' component={TodoPageContainerWithrouter} />
+        <Route path='/todos' component={TodoPageContainerWithrouter} />
         <Route path='/unlisted' component={TodoPageContainerWithrouter} />
         <Route path='/important' component={TodoPageContainerWithrouter} />
         <Route path='/planned' component={TodoPageContainerWithrouter} />

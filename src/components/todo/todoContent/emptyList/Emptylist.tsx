@@ -17,13 +17,13 @@ const EmptyList: React.FC<Props> = (props) => {
       <h2>There is no todos for&nbsp;
         <span>
           {
-          props.list?.title ? props.list.title : props.path.slice(6)
+            props.list?.title ? props.list.title : props.path.slice(1)
           }
         </span>
       </h2>
 
       <p>
-        Add a new at the bottom of the page!
+        Add a new todo at the bottom of the page!
       </p>
     </div>
   )

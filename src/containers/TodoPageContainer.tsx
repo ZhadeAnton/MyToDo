@@ -9,7 +9,7 @@ import { signOutStart } from '../Redux/User/userActionCreators'
 import { Redirect } from 'react-router-dom';
 import { IUser } from '../Interfaces/UserInterfaces';
 import { selectCurrentUser } from '../Redux/User/userSelectors';
-import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
+import { getTodosByFilter, sortFn } from '../Utils/utils';
 
 import TodoPage from '../Routes/Todo/TodoPage';
 import { ITodoStep } from '../Interfaces/TodoInterfaces';

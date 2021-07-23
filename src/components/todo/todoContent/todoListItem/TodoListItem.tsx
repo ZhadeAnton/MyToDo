@@ -53,7 +53,7 @@ const TodoListItem: React.FC<Props> = (props) => {
 
         <div className={styles.todoInfo}>
           {
-            props.todo.steps?.length &&
+            props.todo.steps?.length > 0 &&
               <span className={styles.todoSteps}>
                 Steps: {props.todo.steps?.length}
               </span>

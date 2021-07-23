@@ -10,7 +10,7 @@ interface Props {
   onDeleteList: (todoId: string) =>void
 }
 
-const CreatedLists = (props: Props) => {
+const UserLists = (props: Props) => {
   return (
     <List
       className={styles.createdLists}
@@ -31,4 +31,4 @@ const CreatedLists = (props: Props) => {
   )
 }
 
-export default CreatedLists
+export default UserLists

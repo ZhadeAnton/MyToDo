@@ -3,10 +3,10 @@ import React from 'react'
 import { Divider } from 'antd';
 
 import styles from './todoDrawer.module.scss'
-import TodoDrawerFilterList from './filterList/FilterList';
+import FilterList from './filterList/FilterList';
 import AddNewList from './addNewList/AddNewList';
 import UserProfile from '../../custom/userProfile/UserProfile';
-import CreatedLists from './createdLists/CreatedLists';
+import UserLists from './createdLists/CreatedLists';
 import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces';
 import { IUser } from '../../../Interfaces/UserInterfaces';
 interface Props {
@@ -31,7 +31,7 @@ const TodoDrawer: React.FC<Props> = (props) => {
 
       <Divider />
 
-      <TodoDrawerFilterList />
+      <FilterList />
 
       <Divider />
 
@@ -40,14 +40,10 @@ const TodoDrawer: React.FC<Props> = (props) => {
         onCreateList={props.onCreateList}
       />
 
-      <CreatedLists
+      <UserLists
         lists={props.lists}
         onDeleteList={props.onDeleteList}
       />
-
-      <div className={styles.autor}>
-        Created by Zhade Anton 2021 &copy;
-      </div>
     </aside>
   )
 }

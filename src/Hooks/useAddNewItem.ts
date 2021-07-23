@@ -15,6 +15,8 @@ export default function useAddNewItem(todoId: ITodo['id']) {
       if (todoId) {
         const step = {stepTitle: title, todoId}
         handleSubmit(step)
+        handleCancelCreating()
+        return
       }
 
       handleSubmit(title)

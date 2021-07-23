@@ -2,8 +2,7 @@ import { useState } from 'react'
 
 interface IFnHandleTodoSubmit {
   (event: React.SyntheticEvent,
-   onSubmit: (title: string,
-   listId: string) => void, listId: string): void
+  onSubmit: (title: string, listId: string) => void, listId: string): void
 }
 
 export default function useTodoForm() {
@@ -12,7 +11,12 @@ export default function useTodoForm() {
   const handleSubmit: IFnHandleTodoSubmit = (event, onSubmit, listId) => {
     event.preventDefault()
 
-    onSubmit(title, listId)
+    if (title != '') {
+      onSubmit(title, listId)
+    } else {
+      alert('Value must be more 1 symb')
+    }
+
     setTitle('')
   }
 

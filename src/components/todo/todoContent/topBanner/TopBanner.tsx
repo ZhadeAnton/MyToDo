@@ -3,6 +3,7 @@ import { IFnSortTodos, ITodoList } from '../../../../Interfaces/TodoInterfaces'
 
 import styles from './topBanner.module.scss'
 import SortedItems from '../../../form/sortItems/SortedItems'
+import BannerName from '../../../custom/BannerName/BannerName'
 
 interface Props {
   list: ITodoList | undefined,
@@ -14,9 +15,10 @@ interface Props {
 const TopBanner: React.FC<Props> = (props) => {
   return (
     <div className={styles.topBanner}>
-      <h2>
-        {props.list?.title || `${props.path.slice(1)}`}
-      </h2>
+      <BannerName
+        listTitle={props.list?.title}
+        path={props.path}
+      />
 
       <SortedItems
         checkedSort={props.checkedSort}
