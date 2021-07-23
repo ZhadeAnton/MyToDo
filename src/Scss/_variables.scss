@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+
+$grid-breakpoints: (
+  xs: 0,
+  tiny: 360px,
+  vsm: 460px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1820px
+);
+
+$main-transition: all .5s ease;
+
+// @include media-breakpoint-down(md) {
+//   flex: 0 0 31%;
+// }

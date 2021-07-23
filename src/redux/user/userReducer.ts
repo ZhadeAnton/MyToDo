@@ -37,9 +37,7 @@ const userReducer = (
         currentUser: null
       }
 
-    case actions.SIGN_IN_FAILURE:
-    case actions.SIGN_UP_FAILURE:
-    case actions.SIGN_OUT_FAILURE:
+    case actions.AUTH_ERROR:
       return {
         ...state,
         isLoading: false

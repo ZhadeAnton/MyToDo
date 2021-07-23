@@ -1,6 +1,6 @@
-import { db } from '../../Firebase/Firebase.config'
-import { ArrayOfTodoLists } from '../../Interfaces/TodoInterfaces';
-import { ArrayOfTodos } from '../../Interfaces/TodoInterfaces'
+import { db } from '../Firebase/Firebase.config'
+import { ArrayOfTodoLists } from '../Interfaces/TodoInterfaces';
+import { ArrayOfTodos } from '../Interfaces/TodoInterfaces'
 
 export const creacteUserProfileDocument = async (
     userAuth: {[key: string]: string}, additionalData: {}) => {

@@ -1,0 +1,128 @@
+@import '../../Scss/_mixins';
+@import '../../Scss/typography';
+@import '../../Scss/variables';
+
+.notifications-wrapper {
+  position: fixed;
+  bottom: 2%;
+  left: 2%;
+  width: auto;
+  max-width: 31.25rem;
+  z-index: 9999;
+
+  @include media-breakpoint-down(md) {
+    max-width: 26.25rem;
+  }
+
+  @include media-breakpoint-down(vsm) {
+    max-width: 20.25rem;
+  }
+
+  @include media-breakpoint-down(tiny) {
+    max-width: 18.25rem;
+  }
+}
+
+.notification-item {
+  box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.1rem;
+  animation: SlideLeft 0.4s;
+  animation-fill-mode: forwards;
+  width: 100%;
+  z-index: 9999;
+  background-color: var(--e-global-color-accent);
+
+  &__content {
+    display: flex;
+    align-items: center;
+    padding: .7rem 3rem .7rem 1rem;
+
+    &--icon {
+      font-size: 1.3rem;
+      margin-right: .8rem;
+    }
+
+    &--message {
+      margin: 0;
+      @include font-3;
+      font-weight: 600;
+      font-family: var(--e-global-typography-tertiary);
+      color: var(--e-global-color-secondary);
+    }
+  }
+
+  &__success {
+    i {
+      color: var(--e-global-color-primary);
+    }
+  }
+
+  &__error {
+    i {
+      color: var(--e-global-color-error);
+    }
+  }
+
+  &__error .bar {
+    background-color: var(--e-global-color-error);
+  }
+
+  &__success .bar {
+    background-color: var(--e-global-color-primary);
+  }
+
+  @include media-breakpoint-down(md) {
+    &__content {
+      padding: .6rem 2rem .6rem .5rem;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &__content {
+      padding: .6rem 1.3rem .6rem .5rem;
+
+      &--icon {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+.bar {
+  height: 0.65rem;
+
+  @include media-breakpoint-down(sm) {
+    height: 0.5rem;
+  }
+
+  @include media-breakpoint-down(tiny) {
+    height: 0.4rem;
+  }
+}
+
+.notification-item.exit {
+  animation: SlideRight 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes SlideLeft {
+  0% {
+      margin-left: -120%;
+  }
+
+  100% {
+      margin-left: 0;
+  }
+}
+
+@keyframes SlideRight {
+  0% {
+      margin-left: 0;
+  }
+
+  100% {
+      margin-left: -120%;
+  }
+}

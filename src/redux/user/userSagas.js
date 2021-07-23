@@ -1,6 +1,8 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects'
+import { v4 } from 'uuid'
 import * as actionCreators from './userActionCreators'
 import * as actionTypes from './userActionTypes'
+import * as generalActions from '../General/GeneralActionCreators'
 
 import {
   auth,
@@ -8,7 +10,7 @@ import {
   facebookProvider,
 } from '../../Firebase/Firebase.config'
 
-import { creacteUserProfileDocument } from './userUtils.ts'
+import { creacteUserProfileDocument } from '../../Utils/userUtils.ts'
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
@@ -19,7 +21,8 @@ function* getSnapshotFromUserAuth(userAuth, additionalData) {
       ...userSnapshot.data()
     }))
   } catch (error) {
-    yield put(actionCreators.signInFailure(error.message))
+    yield put(generalActions.addNotification('ERROR', error.message, v4()))
+    yield put(actionCreators.authError())
   }
 }
 
@@ -28,7 +31,8 @@ export function* signInWithGoogle() {
     const {user} = yield auth.signInWithPopup(googleProvider)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error.message))
+    yield put(generalActions.addNotification('ERROR', error.message, v4()))
+    yield put(actionCreators.authError())
   }
 }
 
@@ -37,7 +41,8 @@ export function* signInWithFacebook() {
     const {user} = yield auth.signInWithPopup(facebookProvider)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error.message))
+    yield put(generalActions.addNotification('ERROR', error.message, v4()))
+    yield put(actionCreators.authError())
   }
 }
 
@@ -46,7 +51,8 @@ export function* signInWithEmail({payload: {email, password}}) {
     const {user} = yield auth.signInWithEmailAndPassword(email, password)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
-    yield put(actionCreators.signInFailure(error.message))
+    yield put(generalActions.addNotification('ERROR', error.message, v4()))
+    yield put(actionCreators.authError())
   }
 }
 
@@ -56,7 +62,8 @@ export function* signUpStart({payload: {email, password, displayName}}) {
     yield console.log('user', user)
     yield getSnapshotFromUserAuth(user, {displayName})
   } catch (error) {
-    yield put(actionCreators.signUpFailure(error.message))
+    yield put(generalActions.addNotification('ERROR', error.message, v4()))
+    yield put(actionCreators.authError())
   }
 }
 
@@ -65,7 +72,8 @@ export function* signOut() {
     yield auth.signOut()
     yield put(actionCreators.signOutSuccess())
   } catch (error) {
-    yield put(actionCreators.signOutFailure())
+    yield put(generalActions.addNotification('ERROR', error.message, v4()))
+    yield put(actionCreators.authError())
   }
 }
 
