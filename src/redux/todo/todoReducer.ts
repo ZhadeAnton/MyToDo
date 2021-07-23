@@ -58,7 +58,7 @@ const todoReducer =
         ...state,
         todos: [...state.todos.map((todo) => {
           if (todo.id === action.payload.todoId) {
-            todo.steps?.push({stepTitle: action.payload.step.stepTitle})
+            todo.steps?.push(action.payload.step)
           }
 
           return todo

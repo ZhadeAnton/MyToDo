@@ -10,19 +10,18 @@ import BottomLine from './bottomLine/BottomLine';
 import TodoEditForm from './todoForm/TodoForm';
 import StepsList from './stepList/StepList';
 import { IUser } from '../../../Interfaces/UserInterfaces';
-import { IAddTodoStep } from '../../../Interfaces/TodoInterfaces';
 
 interface Props {
   userId: IUser['id'],
   selectedTodo: interfaces.ITodo,
-  onDeleteTodoStep: interfaces.IFnDeleteTodoStep,
   onUpdate: interfaces.IFnUpdateTodo,
   onSelectTodo: interfaces.IFnSelectTodo,
   onChangeTitleSelectedTodo: interfaces.IFnChangeTitleSelectedTodo,
   onSetDateSelectedTodo: interfaces.IFnSetDateSelectedTodo,
   onRemoveDateSelectedTodo: interfaces.IFnRemoveDateSelectedTodo,
   onCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
-  onAddTodoStep: (todoId: interfaces.ITodo['id'], step: IAddTodoStep) => void,
+  onAddTodoStep: (todoId: interfaces.ITodo['id'], step: interfaces.ITodoStep) => void,
+  onDeleteTodoStep: (todoId: interfaces.ITodo['id'], step: interfaces.ITodoStep) => void,
   onDeleteTodo: (todoId: string) => void,
 }
 

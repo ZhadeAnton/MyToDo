@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IAddTodoStep, ITodo } from '../Interfaces/TodoInterfaces'
+import { ITodo, ITodoStep } from '../Interfaces/TodoInterfaces'
 
 export default function useAddNewItem(todoId: ITodo['id']) {
   const [title, setTitle] = useState('')
@@ -11,7 +11,7 @@ export default function useAddNewItem(todoId: ITodo['id']) {
   }
 
   const handlePressEnter = (
-      title: string, handleSubmit: (step: IAddTodoStep) => void) => {
+      title: string, handleSubmit: (step: ITodoStep) => void) => {
     if (title.trim() !== '') {
       const step = {stepTitle: title, todoId}
       handleSubmit(step)

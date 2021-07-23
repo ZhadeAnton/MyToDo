@@ -2,7 +2,6 @@ import {takeLatest, put, all, call} from 'redux-saga/effects'
 import * as actionCreators from './todoActionCreators'
 import * as actionTypes from './todoActionTypes'
 import * as API from '../../API/API'
-import firebase from 'firebase'
 
 function* getTodos({payload: userId}) {
   try {
@@ -60,7 +59,6 @@ function* updateTodo({payload: {userId, todoId, data}}) {
 
 function* addTodoStep({payload: {userId, todoId, step}}) {
   try {
-    yield console.log(userId, todoId, step)
     yield call(API.addTodoStep, userId, todoId, step)
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
@@ -86,10 +84,9 @@ function* deleteList({payload: {userId, listId}}) {
   }
 }
 
-function* deleteTodoStep({payload: {todoId, step}}) {
+function* deleteTodoStep({payload: {userId, todoId, step}}) {
   try {
-    yield call(API.updateTodo, todoId, {
-      steps: firebase.firestore.FieldValue.arrayRemove(step)})
+    yield call(API.deleteTodoStep, userId, todoId, step)
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }

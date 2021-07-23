@@ -12,7 +12,7 @@ import { selectCurrentUser } from '../Redux/User/userSelectors';
 import { getTodosByFilter, sortFn } from '../Routes/Todo/utils';
 
 import TodoPage from '../Routes/Todo/TodoPage';
-import { IAddTodoStep } from '../Interfaces/TodoInterfaces';
+import { ITodoStep } from '../Interfaces/TodoInterfaces';
 
 export interface ITodoContainer {
     user: IUser | null,
@@ -30,13 +30,13 @@ export interface ITodoContainer {
     handleUpdateTodo: interfaces.IFnUpdateTodo,
     handleCreateList: interfaces.IFnCreateList,
     handleSelectTodo: interfaces.IFnSelectTodo,
-    handleDeleteTodoStep: interfaces.IFnDeleteTodoStep,
     handleSetDateTodo: interfaces.IFnSetDateSelectedTodo,
     handleCloseSelectedTodo: interfaces.IFnCloseSelectedTodo,
     handleRemoveDateTodo: interfaces.IFnRemoveDateSelectedTodo,
     handleChangeTodoTitle: interfaces.IFnChangeTitleSelectedTodo,
     handleSort: interfaces.IFnSortTodos,
-    handleAddTodoStep: (todoId: interfaces.ITodo['id'], step: IAddTodoStep)=> void,
+    handleDeleteTodoStep: (todoId: interfaces.ITodo['id'], step: ITodoStep)=> void,
+    handleAddTodoStep: (todoId: interfaces.ITodo['id'], step: ITodoStep)=> void,
     handleDeleteTodo: (todoId: interfaces.ITodo['id']) => void,
     handleDeleteList: (listId: interfaces.ITodoList['id']) => void,
     handleSignOut: () => void,
@@ -110,7 +110,7 @@ function TodoPageContainer(props: any) {
     dispatch(actions.createList(userId, title))
   }
 
-  const handleAddTodoStep = (todoId: interfaces.ITodo['id'], step: IAddTodoStep) => {
+  const handleAddTodoStep = (todoId: interfaces.ITodo['id'], step: ITodoStep) => {
     dispatch(actions.addTodoStep(userId, todoId, step))
   }
 
@@ -142,8 +142,8 @@ function TodoPageContainer(props: any) {
     dispatch(actions.deleteTodo(userId, todoId))
   }
 
-  const handleDeleteTodoStep: interfaces.IFnDeleteTodoStep = (todoId, step) => {
-    dispatch(actions.deleteTodoStep(todoId, step))
+  const handleDeleteTodoStep = (todoId: interfaces.ITodo['id'], step: ITodoStep) => {
+    dispatch(actions.deleteTodoStep(userId, todoId, step))
   }
 
   const handleDeleteList = (listId: string) => {

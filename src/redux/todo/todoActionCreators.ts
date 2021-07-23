@@ -111,10 +111,10 @@ export const deleteTodoSuccess = (todoId: interfaces.ITodo['id'])
   payload: todoId
 })
 
-export const deleteTodoStep: interfaces.IFnDeleteTodoStep = (todoId, step)
+export const deleteTodoStep: interfaces.IFnDeleteTodoStep = (userId, todoId, step)
   : actions.DeleteTodoStep => ({
   type: actions.DELETE_TODO_STEP,
-  payload: { todoId, step }
+  payload: { userId, todoId, step }
 })
 
 export const deleteList: interfaces.IFnDeleteList = (userId, listId)

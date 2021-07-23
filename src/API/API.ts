@@ -1,4 +1,4 @@
-import { ITodoList, IAddTodoStep } from './../Interfaces/TodoInterfaces';
+import { ITodoList, ITodoStep } from './../Interfaces/TodoInterfaces';
 import { db } from '../Firebase/Firebase.config';
 import { chunk } from 'lodash';
 import firebase from 'firebase'
@@ -46,13 +46,24 @@ export function createList(userId: IUser['id'], title: string) {
 }
 
 export function addTodoStep(userId: IUser['id'],
-    todoId: ITodo['id'], step: IAddTodoStep) {
+    todoId: ITodo['id'], step: ITodoStep) {
   return db.collection('users')
       .doc(userId)
       .collection('todos')
       .doc(todoId)
       .update({
         steps: firebase.firestore.FieldValue.arrayUnion({...step})
+      })
+}
+
+export function deleteTodoStep(userId: IUser['id'],
+    todoId: ITodo['id'], step: ITodoStep) {
+  return db.collection('users')
+      .doc(userId)
+      .collection('todos')
+      .doc(todoId)
+      .update({
+        steps: firebase.firestore.FieldValue.arrayRemove({...step})
       })
 }
 

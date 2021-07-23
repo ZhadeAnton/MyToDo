@@ -25,11 +25,9 @@ export type ISelecteTodo = ITodo | null
 
 export interface ITodoStep {
   stepTitle: string,
-}
-
-export interface IAddTodoStep extends ITodoStep {
   todoId: string
 }
+
 
 export interface IDeleteTodoStep {
   todoId: string,
@@ -63,7 +61,7 @@ export interface IFnUpdateTodoSuccess {
 }
 
 export interface IFnAddTodoStep {
- (userId: IUser['id'], todoId: string, step: IAddTodoStep): any
+ (userId: IUser['id'], todoId: string, step: ITodoStep): any
 }
 
 export interface IFnDeleteTodo {
@@ -71,7 +69,7 @@ export interface IFnDeleteTodo {
 }
 
 export interface IFnDeleteTodoStep {
-  (todoId: ITodo['id'], step: ITodoStep): any
+  (userId: IUser['id'], todoId: ITodo['id'], step: ITodoStep): any
 }
 
 export interface IFnCreateList {

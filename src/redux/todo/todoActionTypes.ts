@@ -3,7 +3,6 @@ import {
   ICreateList,
   ITodo,
   ITodoList,
-  IDeleteTodoStep,
   ITodoStep
 } from '../../Interfaces/TodoInterfaces'
 import { IUser } from '../../Interfaces/UserInterfaces'
@@ -123,7 +122,7 @@ export interface DeleteTodoSuccess {
 export const DELETE_TODO_STEP = 'DELETE_TODO_STEP'
 export interface DeleteTodoStep {
   type: typeof DELETE_TODO_STEP,
-  payload: IDeleteTodoStep
+  payload: { userId: IUser['id'], todoId: ITodo['id'], step: ITodoStep }
 }
 
 export const DELETE_LIST = 'DELETE_LIST'

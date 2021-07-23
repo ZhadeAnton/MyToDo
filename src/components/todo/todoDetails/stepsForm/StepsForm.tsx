@@ -2,15 +2,15 @@ import React from 'react'
 
 import styles from './stepsForm.module.scss'
 import AddNewItem from '../../../form/AddNewItem/AddNewItem'
-import { ITodo, IAddTodoStep } from '../../../../Interfaces/TodoInterfaces'
+import { ITodo, ITodoStep } from '../../../../Interfaces/TodoInterfaces'
 
 interface Props {
   selectedTodo: ITodo,
-  onAddTodoStep: (todoId: ITodo['id'], step: IAddTodoStep) => void
+  onAddTodoStep: (todoId: ITodo['id'], step: ITodoStep) => void
 }
 
 const StepsForm: React.FC<Props> = (props) => {
-  const handleAddStep = (step: IAddTodoStep) => {
+  const handleAddStep = (step: ITodoStep) => {
     props.onAddTodoStep(props.selectedTodo.id, step)
   }
 
