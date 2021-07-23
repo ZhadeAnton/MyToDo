@@ -4,7 +4,7 @@ import styles from './todoDetails.module.scss'
 import * as interfaces from '../../../Interfaces/TodoInterfaces'
 
 import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
-import StepsForm from './stepsForm/StepsForm';
+import AddNewStep from './stepsForm/StepsForm';
 import DatePickerForm from './datePicker/DatePicker';
 import BottomLine from './bottomLine/BottomLine';
 import TodoEditForm from './todoForm/TodoForm';
@@ -36,7 +36,7 @@ const TodoDetails: React.FC<Props> = (props) => {
 
       />
 
-      <StepsForm
+      <AddNewStep
         selectedTodo={props.selectedTodo}
         onAddTodoStep={props.onAddTodoStep}
       />

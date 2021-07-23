@@ -9,7 +9,7 @@ interface Props {
   onAddTodoStep: (todoId: ITodo['id'], step: ITodoStep) => void
 }
 
-const StepsForm: React.FC<Props> = (props) => {
+const AddNewStep: React.FC<Props> = (props) => {
   const handleAddStep = (step: ITodoStep) => {
     props.onAddTodoStep(props.selectedTodo.id, step)
   }
@@ -26,4 +26,4 @@ const StepsForm: React.FC<Props> = (props) => {
   )
 }
 
-export default StepsForm
+export default AddNewStep
