@@ -4,7 +4,7 @@ import {
   INotification } from '../../Interfaces/NotificationInterfaces'
 
 export const addNotification: IFnAddNotification = (type, message, id)
-: actions.AddNotification => ({
+  : actions.AddNotification => ({
   type: actions.ADD_NOTIFICATION,
   payload: { type, message, id }
 })

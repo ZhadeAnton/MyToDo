@@ -1,11 +1,14 @@
 import React from 'react'
-import { DatePicker, Divider, Tooltip, message } from 'antd';
+import { DatePicker, Divider, Tooltip } from 'antd';
 import { StopOutlined } from '@ant-design/icons';
 import moment from 'moment'
+import { v4 } from 'uuid'
 
 import styles from './dataPicker.module.scss'
 import * as interfaces from '../../../../Interfaces/TodoInterfaces';
 import { IUser } from '../../../../Interfaces/UserInterfaces';
+import { useAppDispatch } from '../../../../Hooks/usePreTypedHooks';
+import { addNotification } from '../../../../Redux/General/GeneralActionCreators';
 
 interface Props {
   userId: IUser['id'],
@@ -16,6 +19,8 @@ interface Props {
 }
 
 const DatePickerForm: React.FC<Props> = (props) => {
+  const dispatch = useAppDispatch()
+
   function handleUpdateDate(date: any) {
     const newDate = moment(date)
         .format('MMMM Do YYYY, h:mm a')
@@ -23,13 +28,13 @@ const DatePickerForm: React.FC<Props> = (props) => {
 
     props.onUpdate(props.userId, props.selectedTodo!.id, {planned: newDate})
     props.onSetDateTodo(newDate)
-    message.success(`Added new date ${newDate}`)
+    dispatch(addNotification('SUCCESS', `Added new date ${newDate}`, v4()))
   }
 
   function handleRemoveDate() {
     props.onUpdate(props.userId, props.selectedTodo!.id, {planned: ''})
     props.onRemoveDateTodo()
-    message.warning('Planned date was removed')
+    dispatch(addNotification('SUCCESS', 'Planned date was removed', v4()))
   }
 
   function disabledDate(current: any) {
