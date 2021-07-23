@@ -1,18 +1,24 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { UnorderedListOutlined } from '@ant-design/icons'
 
 import styles from './createdListsItem.module.scss'
-import { ITodoList } from '../../../../interfaces'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import { ITodoList } from '../../../../Interfaces/TodoInterfaces'
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon'
 
 interface Props {
   list: ITodoList
-  deleteList: TodoListProps['deleteList']
+  onDeleteList: (todoId: string) => void
 }
 
 const CreatedListsItem: React.FC<Props> = (props) => {
+  const history = useHistory()
+
+  const handleRemoveItemClick = () => {
+    props.onDeleteList(props.list.id)
+    history.push('/')
+  }
+
   return (
     <li
       key={props.list.id}
@@ -20,12 +26,12 @@ const CreatedListsItem: React.FC<Props> = (props) => {
     >
       <UnorderedListOutlined />
 
-      <NavLink to={`/todo/${props.list.id}`}>
+      <NavLink to={`/${props.list.id}`}>
         {props.list.title}
       </NavLink>
 
       <RemoveIcon
-        onClick={() => props.deleteList(props.list.id)}
+        onClick={handleRemoveItemClick}
       />
     </li>
   )

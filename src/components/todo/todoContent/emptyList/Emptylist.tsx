@@ -2,7 +2,7 @@ import React from 'react'
 import { FileSearchOutlined } from '@ant-design/icons'
 
 import styles from './emptyList.module.scss'
-import { ITodoList } from '../../../../interfaces'
+import { ITodoList } from '../../../../Interfaces/TodoInterfaces'
 
 interface Props {
   list: ITodoList | undefined,
@@ -17,13 +17,13 @@ const EmptyList: React.FC<Props> = (props) => {
       <h2>There is no todos for&nbsp;
         <span>
           {
-          props.list?.title ? props.list.title : props.path.slice(6)
+            props.list?.title ? props.list.title : props.path.slice(1)
           }
         </span>
       </h2>
 
       <p>
-        Add a new at the bottom of the page!
+        Add a new todo at the bottom of the page!
       </p>
     </div>
   )

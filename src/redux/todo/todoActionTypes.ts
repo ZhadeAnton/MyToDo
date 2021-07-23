@@ -3,9 +3,9 @@ import {
   ICreateList,
   ITodo,
   ITodoList,
-  IAddTodoStep,
-  IDeleteTodoStep
-} from '../../interfaces'
+  ITodoStep
+} from '../../Interfaces/TodoInterfaces'
+import { IUser } from '../../Interfaces/UserInterfaces'
 
 export const GET_ALL_TODOS = 'GET_ALL_TODOS'
 export interface GetAllTodos {
@@ -17,12 +17,6 @@ export const GET_ALL_TODOS_SUCCESS = 'GET_ALL_TODOS_SUCCESS'
 export interface GetAllTodosSuccess {
   type: typeof GET_ALL_TODOS_SUCCESS,
   payload: Array<ITodo>
-}
-
-export const GET_LIST_TODOS = 'GET_LIST_TODOS'
-export interface GetListTodos {
-  type: typeof GET_LIST_TODOS,
-  payload: string
 }
 
 export const GET_LIST_TODOS_SUCCESS = 'GET_LIST_TODOS_SUCCESS'
@@ -98,10 +92,7 @@ export interface CloseSelectedTodo {
 export const UPDATE_TODO = 'UPDATE_TODO'
 export interface UpdateTodo {
   type: typeof UPDATE_TODO,
-  payload: {
-    todoId: string,
-    data: {}
-  }
+  payload: { userId: IUser['id'], todoId: string, data: {} }
 }
 
 export const UPDATE_TODO_SUCCESS = 'UPDATE_TODO_SUCCESS'
@@ -113,13 +104,13 @@ export interface UpdateTodoSuccess {
 export const ADD_TODO_STEP = 'ADD_TODO_STEP'
 export interface AddTodoStep {
   type: typeof ADD_TODO_STEP,
-  payload: IAddTodoStep
+  payload: { userId: IUser['id'], todoId: ITodo['id'], step: ITodoStep }
 }
 
 export const DELETE_TODO = 'DELETE_TODO'
 export interface DeleteTodo {
   type: typeof DELETE_TODO,
-  payload: string
+  payload: { userId: IUser['id'], todoId: ITodo['id'] }
 }
 
 export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
@@ -131,13 +122,13 @@ export interface DeleteTodoSuccess {
 export const DELETE_TODO_STEP = 'DELETE_TODO_STEP'
 export interface DeleteTodoStep {
   type: typeof DELETE_TODO_STEP,
-  payload: IDeleteTodoStep
+  payload: { userId: IUser['id'], todoId: ITodo['id'], step: ITodoStep }
 }
 
 export const DELETE_LIST = 'DELETE_LIST'
 export interface DeleteList {
   type: typeof DELETE_LIST,
-  payload: string
+  payload: { userId: IUser['id'], listId: ITodoList['id'] }
 }
 
 export const DELETE_LIST_SUCCESS = 'DELETE_LIST_SUCCESS'
@@ -155,7 +146,6 @@ export interface TodosFailure {
 export type TodoTypes =
 | GetAllTodos
 | GetAllTodosSuccess
-| GetListTodos
 | GetLists
 | CreateTodo
 | CreateList

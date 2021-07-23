@@ -1,16 +1,14 @@
-import {IUser} from './userInterfaces'
+import {IUser} from '../../Interfaces/UserInterfaces'
 import * as actions from './userActionTypes'
 
 export interface UserState {
-  currentUser: IUser | undefined,
+  currentUser: IUser | null,
   isLoading: boolean,
-  userError: string | null
 }
 
 const INITIAL_STATE: UserState = {
-  currentUser: undefined,
-  isLoading: false,
-  userError: null
+  currentUser: null,
+  isLoading: false
 }
 
 const userReducer = (
@@ -23,22 +21,20 @@ const userReducer = (
     case actions.SIGN_UP_START:
       return {
         ...state,
-        isLoading: true,
-        userError: null,
+        isLoading: true
       }
 
     case actions.SIGN_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
-        isLoading: false,
+        isLoading: false
       }
 
     case actions.SIGN_OUT_SUCCESS:
       return {
         ...state,
-        currentUser: undefined,
-        userError: null,
+        currentUser: null
       }
 
     case actions.SIGN_IN_FAILURE:
@@ -46,8 +42,7 @@ const userReducer = (
     case actions.SIGN_OUT_FAILURE:
       return {
         ...state,
-        isLoading: false,
-        userError: action.payload
+        isLoading: false
       }
 
     default:

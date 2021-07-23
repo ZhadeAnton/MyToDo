@@ -1,31 +1,20 @@
-import React, { useEffect } from 'react';
-import { message } from 'antd';
+import React from 'react';
 
 import styles from './loginPage.module.scss'
-import { LoginPageProps } from '../../containers/LoginPageContainer';
+import { ILoginContainer } from '../../Containers/LoginPageContainer';
+
 import LoginTabs from '../../components/login/loginTabs/LoginTabs';
-import HomeLink from '../../components/custom/homeLink/HomeLink';
 
-const LoginPage: React.FC<LoginPageProps> = (props) => {
-  useEffect(() => {
-    if (props.userError) {
-      message.error(props.userError)
-    }
-  }, [props.userError])
-
+const LoginPage = (props: ILoginContainer) => {
   return (
     <section className={styles.loginPage}>
       <div className={styles.loginForm}>
-        <div className={styles.homeLink}>
-          <HomeLink />
-        </div>
-
         <LoginTabs
           isLoading={props.isLoading}
-          signUp={props.signUp}
-          signInWithEmail={props.signInWithEmail}
-          signInWithGoogle={props.signInWithGoogle}
-          signInWithFacebook={props.signInWithFacebook}
+          onSignUp={props.handleSignUp}
+          onSignInWithEmail={props.handleSignInWithEmail}
+          onSignInWithGoogle={props.handleSignInWithGoogle}
+          onSignInWithFacebook={props.handleSignInWithFacebook}
         />
       </div>
     </section>

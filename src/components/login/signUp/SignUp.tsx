@@ -1,11 +1,12 @@
 import React from 'react'
 
 import styles from './signUp.module.scss'
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { IFnSignUp } from '../../../Interfaces/UserInterfaces';
+
 import SignUpForm from '../../form/signUpForm/SignUpForm';
 
 interface Props {
-  signUp: LoginPageProps['signUp']
+  signUp: IFnSignUp
 }
 
 const SignUp: React.FC<Props> = (props) => {

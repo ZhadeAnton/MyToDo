@@ -3,13 +3,12 @@ import { List } from 'antd';
 
 
 import styles from './stepList.module.scss'
-import { ITodoStep } from '../../../../interfaces'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
 import StepItem from '../stepItem/StepItem'
+import { ITodo, ITodoStep } from '../../../../Interfaces/TodoInterfaces'
 
 interface Props {
-  selectedTodo: TodoListProps['selectedTodo'],
-  deleteTodoStep: TodoListProps['deleteTodoStep'],
+  selectedTodo: ITodo,
+  deleteTodoStep: (todoId: ITodo['id'], step: ITodoStep) => void
 }
 
 const StepsList: React.FC<Props> = (props) => {

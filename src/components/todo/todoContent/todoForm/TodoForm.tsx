@@ -1,38 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Input } from 'antd';
 
 import styles from './todoForm.module.scss'
+import useTodoForm from '../../../../Hooks/useTodoForm';
 
 interface Props {
   listId: string,
   onSubmit: (title: string, listId: string) => void
 }
 
-const TodoForm: React.FC<Props> = ({ onSubmit, listId }) => {
-  const [title, setTitle] = useState('')
-
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-
-    onSubmit(title, listId)
-    setTitle('')
-  }
-
-  const changeHandler = (event: React.SyntheticEvent) => {
-    const { value } = event.target as HTMLInputElement
-    setTitle(value)
-  }
+const TodoForm = (props: Props) => {
+  const todoForm = useTodoForm()
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={(e) => todoForm.handleSubmit(e, props.onSubmit, props.listId)}
       className={styles.todoForm}
     >
       <Input
         placeholder="Add todo"
-        onChange={changeHandler}
-        onPressEnter={handleSubmit}
-        value={title}
+        onChange={(e) => todoForm.handleChange(e)}
+        onSubmit={(e) => todoForm.handleSubmit(e, props.onSubmit, props.listId)}
+        value={todoForm.title}
         maxLength={40}
       />
     </form>

@@ -1,28 +1,28 @@
 import React from 'react'
-import { StarOutlined, StarFilled, BellOutlined } from '@ant-design/icons';
-import moment from 'moment'
 import cn from 'classnames'
+import { StarOutlined, StarFilled, BellOutlined } from '@ant-design/icons';
 
 import styles from './todoListItem.module.scss'
-import { ITodo } from '../../../../interfaces';
-import { TodoListProps } from '../../../../containers/TodoPageContainer';
+import * as interfaces from '../../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../../Interfaces/UserInterfaces';
+
+import ConvertDate from '../../../custom/ConvertDate/ConvertDate';
 
 interface Props {
-  todo: ITodo,
-  updateTodo: TodoListProps['updateTodo'],
-  selectedTodo: TodoListProps['selectedTodo'],
-  onSelectTodo: TodoListProps['selectTodo']
+  todo: interfaces.ITodo,
+  userId: IUser['id'],
+  selectedTodo: interfaces.ITodo,
+  onUpdateTodo: interfaces.IFnUpdateTodo,
+  onSelectTodo: interfaces.IFnSelectTodo
 }
 
 const TodoListItem: React.FC<Props> = (props) => {
-  const timeStamp = props.todo.timestamp.toDate()
-
   function handleChecked(completed: boolean) {
-    props.updateTodo(props.todo.id, {completed})
+    props.onUpdateTodo(props.userId, props.todo.id, {completed})
   }
 
   function handleImportant(important: boolean) {
-    props.updateTodo(props.todo.id, {important: !important})
+    props.onUpdateTodo(props.userId, props.todo.id, {important: !important})
   }
 
   function handleClick(e: any) {
@@ -53,44 +53,38 @@ const TodoListItem: React.FC<Props> = (props) => {
 
         <div className={styles.todoInfo}>
           {
-            props.todo.steps?.length
-            ?
+            props.todo.steps?.length > 0 &&
               <span className={styles.todoSteps}>
                 Steps: {props.todo.steps?.length}
               </span>
-            :
-              null
           }
 
           {
-            props.todo.planned
-            ?
+            props.todo.planned &&
               <span className={styles.todoPlanned}>
                 Planned <BellOutlined />
               </span>
-            :
-              null
           }
 
           <div className={styles.todoTimestamp}>
             <p>
               Created&nbsp;
             </p>
-            <time>
-              {moment(timeStamp)
-                  .format('MMMM Do, h:mm a').toString()}
-            </time>
+
+            <ConvertDate date={props.todo.timestamp}/>
           </div>
         </div>
       </div>
-      <span className={styles.iconImportant}
-        onClick={() => handleImportant(props.todo.important)}>
+      <span
+        className={styles.iconImportant}
+        onClick={() => handleImportant(props.todo.important)}
+      >
         {
           props.todo.important
           ?
-          <span className={styles.IconFilled}>
-            <StarFilled />
-          </span>
+            <span className={styles.IconFilled}>
+              <StarFilled />
+            </span>
           :
             <StarOutlined />
         }

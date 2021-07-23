@@ -3,54 +3,47 @@ import React from 'react'
 import { Divider } from 'antd';
 
 import styles from './todoDrawer.module.scss'
-import TodoDrawerFilterList from './filterList/FilterList';
-import { TodoListProps } from '../../../containers/TodoPageContainer';
+import FilterList from './filterList/FilterList';
 import AddNewList from './addNewList/AddNewList';
 import UserProfile from '../../custom/userProfile/UserProfile';
-import CreatedLists from './createdLists/CreatedLists';
-import HomeLink from '../../custom/homeLink/HomeLink';
+import UserLists from './createdLists/CreatedLists';
+import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../Interfaces/UserInterfaces';
 interface Props {
-  user: TodoListProps['user'],
-  lists: TodoListProps['lists'],
-  createList: TodoListProps['createList'],
-  deleteList: TodoListProps['deleteList'],
-  signOutStart: TodoListProps['signOutStart']
+  user: IUser | null,
+  userId: IUser['id'],
+  lists: ArrayOfTodoLists,
+  onCreateList: IFnCreateList,
+  onDeleteList: (listId: string) => void,
+  onSignOut: () => void
 }
 
 const TodoDrawer: React.FC<Props> = (props) => {
   return (
     <aside className={styles.todoDrawer}>
-      <div className={styles.backLink}>
-        <HomeLink/>
-      </div>
-
       <div className={styles.userProfileWrapper}>
         <UserProfile
           user={props.user}
-          signOutStart={props.signOutStart}
+          signOutStart={props.onSignOut}
           dropdownPlacement='bottomRight'
         />
       </div>
 
       <Divider />
 
-      <TodoDrawerFilterList />
+      <FilterList />
 
       <Divider />
 
       <AddNewList
-        userId={props.user!.id}
-        createList={props.createList}
+        userId={props.userId}
+        onCreateList={props.onCreateList}
       />
 
-      <CreatedLists
+      <UserLists
         lists={props.lists}
-        deleteList={props.deleteList}
+        onDeleteList={props.onDeleteList}
       />
-
-      <div className={styles.autor}>
-        Created by Zhade Anton 2021 &copy;
-      </div>
     </aside>
   )
 }

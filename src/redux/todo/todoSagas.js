@@ -1,22 +1,12 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects'
 import * as actionCreators from './todoActionCreators'
 import * as actionTypes from './todoActionTypes'
-import * as api from '../../api'
-import firebase from 'firebase'
+import * as API from '../../API/API'
 
 function* getTodos({payload: userId}) {
   try {
-    const todos = yield call(api.fetchTodos, userId)
+    const todos = yield call(API.getTodos, userId)
     yield put(actionCreators.getAllTodosSuccess(todos))
-  } catch (error) {
-    yield put(actionCreators.todosFailure(error.message))
-  }
-}
-
-function* getListTodos({payload: listId}) {
-  try {
-    const todos = yield call(api.fetchListTodos, listId)
-    yield put(actionCreators.getListTodosSuccess(todos))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
@@ -24,7 +14,7 @@ function* getListTodos({payload: listId}) {
 
 function* getLists({payload: userId}) {
   try {
-    const lists = yield api.fetchLists(userId)
+    const lists = yield API.getLists(userId)
     yield put(actionCreators.getListsSuccess(lists))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
@@ -33,7 +23,7 @@ function* getLists({payload: userId}) {
 
 function* createTodo({payload: {title, listId, userId}}) {
   try {
-    const newTodo = yield call(api.fetchCreateTodo, {
+    const newTodo = yield call(API.createTodo, userId, {
       title,
       listId,
       userId,
@@ -51,53 +41,52 @@ function* createTodo({payload: {title, listId, userId}}) {
 
 function* createList({payload: {userId, title}}) {
   try {
-    const newList = yield call(api.fetchCreateList, { userId, title })
+    const newList = yield call(API.createList, userId, title)
     yield put(actionCreators.createListSuccess(newList))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
 }
 
-function* updateTodo({payload: {todoId, data}}) {
+function* updateTodo({payload: {userId, todoId, data}}) {
   try {
-    const newTodo = yield call(api.fetchUpdateTodo, todoId, data)
+    const newTodo = yield call(API.updateTodo, userId, todoId, data)
     yield put(actionCreators.updateTodoSuccess(newTodo))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
 }
 
-function* addTodoStep({payload: {todoId, stepTitle}}) {
+function* addTodoStep({payload: {userId, todoId, step}}) {
   try {
-    yield call(api.fetchUpdateTodo, todoId, {
-      steps: firebase.firestore.FieldValue.arrayUnion({stepTitle})})
+    yield call(API.addTodoStep, userId, todoId, step)
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
 }
 
-function* deleteTodo({payload}) {
+function* deleteTodo({payload: {userId, todoId}}) {
   try {
-    const todoId = yield call(api.fetchDeleteTodo, payload)
-    yield put(actionCreators.deleteTodoSuccess(todoId))
+    const deletedTodo = yield call(API.deleteTodo, userId, todoId)
+    yield put(actionCreators.deleteTodoSuccess(deletedTodo))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
 }
 
-function* deleteTodoStep({payload: {todoId, step}}) {
+function* deleteList({payload: {userId, listId}}) {
   try {
-    yield call(api.fetchUpdateTodo, todoId, {
-      steps: firebase.firestore.FieldValue.arrayRemove(step)})
+    const deletedList = yield call(API.deleteList, userId, listId)
+    yield call(API.deleteListTodos, userId, listId)
+    yield put(actionCreators.deleteListSuccess(deletedList))
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
 }
 
-function* deleteList({payload}) {
+function* deleteTodoStep({payload: {userId, todoId, step}}) {
   try {
-    const listId = yield call(api.fetchDeleteList, payload)
-    yield put(actionCreators.deleteListSuccess(listId))
+    yield call(API.deleteTodoStep, userId, todoId, step)
   } catch (error) {
     yield put(actionCreators.todosFailure(error.message))
   }
@@ -105,10 +94,6 @@ function* deleteList({payload}) {
 
 function* onGetTodos() {
   yield takeLatest(actionTypes.GET_ALL_TODOS, getTodos)
-}
-
-function* onGetListTodos() {
-  yield takeLatest(actionTypes.GET_LIST_TODOS, getListTodos)
 }
 
 function* onGetLists() {
@@ -146,7 +131,6 @@ function* onDeleteList() {
 export default function* todoSagas() {
   yield all([
     call(onGetTodos),
-    call(onGetListTodos),
     call(onGetLists),
     call(onCreateTodo),
     call(onCreatelist),

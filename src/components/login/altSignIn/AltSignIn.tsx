@@ -3,12 +3,14 @@ import { Button, Divider } from 'antd';
 
 import styles from './altSignIn.module.scss'
 import {GooglePlusOutlined, FacebookOutlined} from '@ant-design/icons';
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import {
+  IFnSignInWithFacebook,
+  IFnSignInWithGoogle } from '../../../Interfaces/UserInterfaces';
 
 interface Props {
-  isLoading: LoginPageProps['isLoading'],
-  signInWithGoogle: LoginPageProps['signInWithGoogle'],
-  signInWithFacebook: LoginPageProps['signInWithFacebook']
+  isLoading: boolean,
+  signInWithGoogle: IFnSignInWithGoogle,
+  signInWithFacebook: IFnSignInWithFacebook
 }
 
 const AltSignIn: React.FC<Props> = (props) => {

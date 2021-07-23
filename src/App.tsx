@@ -1,28 +1,27 @@
-import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route} from 'react-router-dom';
 
-import { AppProps } from './containers/AppContainer';
-import MainPageContainer from './containers/MainPageContainer';
-import LoginPageContainer from './containers/LoginPageContainer';
-import TodoPageContainer from './containers/TodoPageContainer';
+import { TodoPageContainerWithrouter } from './Containers/TodoPageContainer';
+import { IAppContainer } from './Containers/AppContainer';
+
 import NotFound from './components/notFound/NotFound';
+import LoginPageContainer from './Containers/LoginPageContainer';
 
-const App: React.FC<AppProps> = (props) => {
-  useEffect(() => {
-    props.checkUserSession();
-  }, []);
+const App = (props: IAppContainer) => {
+  if (!props.user) {
+    return <LoginPageContainer />
+  }
 
   return (
     <>
       <Switch>
-        <Route exact path='/' component={MainPageContainer} />
         <Route exact path='/login' component={LoginPageContainer} />
-        <Route exact path='/todo' component={TodoPageContainer} />
-        <Route exact path='/todo/tasks' component={TodoPageContainer} />
-        <Route exact path='/todo/unlisted' component={TodoPageContainer} />
-        <Route exact path='/todo/important' component={TodoPageContainer} />
-        <Route exact path='/todo/planned' component={TodoPageContainer} />
-        <Route path='/todo/:listid' component={TodoPageContainer} />
+        <Route exact path='/' component={TodoPageContainerWithrouter} />
+        <Route path='/todos' component={TodoPageContainerWithrouter} />
+        <Route path='/unlisted' component={TodoPageContainerWithrouter} />
+        <Route path='/important' component={TodoPageContainerWithrouter} />
+        <Route path='/planned' component={TodoPageContainerWithrouter} />
+        <Route path='/:listid' component={TodoPageContainerWithrouter} />
         <Route component={NotFound} />
       </Switch>
     </>

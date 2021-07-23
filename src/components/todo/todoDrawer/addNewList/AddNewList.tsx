@@ -1,16 +1,17 @@
 import React from 'react'
+import { IFnCreateList } from '../../../../Interfaces/TodoInterfaces';
+import { IUser } from '../../../../Interfaces/UserInterfaces';
 
-import { TodoListProps } from '../../../../containers/TodoPageContainer';
-import AddNewItem from '../../../form/addNewItem/AddNewItem';
+import AddNewItem from '../../../form/AddNewItem/AddNewItem';
 
 interface Props {
-  userId: string,
-  createList: TodoListProps['createList'],
+  userId: IUser['id'],
+  onCreateList: IFnCreateList,
 }
 
 const AddNewList: React.FC<Props> = (props) => {
   const handleSubmit = (listTitle: string) => {
-    props.createList(props.userId, listTitle)
+    props.onCreateList(props.userId, listTitle)
   }
 
   return (

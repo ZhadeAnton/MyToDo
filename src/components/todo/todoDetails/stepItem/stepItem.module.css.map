@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,aAAa;EAC9B,OAAO,EAAE,qCAAqC;EAC9C,SAAS,EAAE,uCAAuC;EAClD,KAAK,EAAE,wCAAwC;EAC/C,aAAa,EAAE,IAAI,CAAC,KAAK,CAAC,wCAAwC;CAUnE;;AAjBD,AASE,SATO,CASP,CAAC,CAAC;EACA,WAAW,EAAE,4CAA4C;CAC1D;;AAXH,AAaE,SAbO,CAaP,GAAG,CAAC;EACF,KAAK,EAAE,wCAAwC;EAC/C,SAAS,EAAE,uCAAuC;CACnD",
-    "sources": [
-        "stepItem.module.scss"
-    ],
-    "names": [],
-    "file": "stepItem.module.css"
-}

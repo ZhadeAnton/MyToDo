@@ -6,19 +6,17 @@ import {
   auth,
   googleProvider,
   facebookProvider,
-} from '../../firebase.config'
+} from '../../Firebase/Firebase.config'
 
-import {
-  creacteUserProfileDocument,
-  getCurrentUser } from '../user/userUtils.ts'
+import { creacteUserProfileDocument } from './userUtils.ts'
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
-    const userRef =
-    yield call(creacteUserProfileDocument, userAuth, additionalData)
+    const userRef = yield call(creacteUserProfileDocument, userAuth, additionalData)
     const userSnapshot = yield userRef.get()
     yield put(actionCreators.signInSuccess({
-      id: userSnapshot.id, ...userSnapshot.data()
+      id: userSnapshot.id,
+      ...userSnapshot.data()
     }))
   } catch (error) {
     yield put(actionCreators.signInFailure(error.message))
@@ -55,19 +53,10 @@ export function* signInWithEmail({payload: {email, password}}) {
 export function* signUpStart({payload: {email, password, displayName}}) {
   try {
     const {user} = yield auth.createUserWithEmailAndPassword(email, password)
+    yield console.log('user', user)
     yield getSnapshotFromUserAuth(user, {displayName})
   } catch (error) {
     yield put(actionCreators.signUpFailure(error.message))
-  }
-}
-
-export function* checkUserSession() {
-  try {
-    const userAuth = yield getCurrentUser()
-    if (!userAuth) return
-    yield getSnapshotFromUserAuth(userAuth)
-  } catch (error) {
-    yield put(actionCreators.signInFailure(error))
   }
 }
 
@@ -100,17 +89,12 @@ function* onSignOut() {
   yield takeLatest(actionTypes.SIGN_OUT_START, signOut)
 }
 
-function* onCheckUserSession() {
-  yield takeLatest(actionTypes.CHECK_USER_SESSION, checkUserSession)
-}
-
 export default function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onFacebookSignInStart),
     call(onSignInWithEmail),
     call(onSignUpStart),
-    call(onSignOut),
-    call(onCheckUserSession)
+    call(onSignOut)
   ])
 }

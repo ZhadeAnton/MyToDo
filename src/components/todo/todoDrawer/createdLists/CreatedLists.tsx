@@ -2,16 +2,15 @@ import React from 'react'
 import { List } from 'antd';
 
 import styles from './createdLists.module.scss'
-import { ITodoList } from '../../../../interfaces'
-import { TodoListProps } from '../../../../containers/TodoPageContainer'
+import { ArrayOfTodoLists } from '../../../../Interfaces/TodoInterfaces'
 import CreatedListsItem from '../createdListsItem/CreatedListsItem'
 
 interface Props {
-  lists: Array<ITodoList>,
-  deleteList: TodoListProps['deleteList']
+  lists: ArrayOfTodoLists,
+  onDeleteList: (todoId: string) =>void
 }
 
-const CreatedLists = (props: Props) => {
+const UserLists = (props: Props) => {
   return (
     <List
       className={styles.createdLists}
@@ -25,11 +24,11 @@ const CreatedLists = (props: Props) => {
         <CreatedListsItem
           key={list.id}
           list={list}
-          deleteList={props.deleteList}
+          onDeleteList={props.onDeleteList}
         />
       )}
     />
   )
 }
 
-export default CreatedLists
+export default UserLists

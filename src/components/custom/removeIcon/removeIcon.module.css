@@ -1,8 +1,0 @@
-.removeIcon svg {
-  cursor: pointer;
-}
-
-.removeIcon svg:hover {
-  fill: var(--detele-icon-hover-color);
-}
-/*# sourceMappingURL=removeIcon.module.css.map */

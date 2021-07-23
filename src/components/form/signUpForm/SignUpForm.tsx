@@ -3,10 +3,10 @@ import {Form, Input, Button} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
 import styles from './signUpForm.module.scss'
-import { LoginPageProps } from '../../../containers/LoginPageContainer';
+import { IFnSignUp } from '../../../Interfaces/UserInterfaces';
 
 interface Props {
-  signUp: LoginPageProps['signUp']
+  signUp: IFnSignUp
 }
 
 const SignUpForm: React.FC<Props> = (props) => {

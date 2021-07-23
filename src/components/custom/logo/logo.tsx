@@ -1,8 +1,8 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import styles from './logo.module.scss'
 import BrandLogo from '../../../assets/logo.png'
-import {Link} from 'react-router-dom'
 
 const Logo: React.FC = () => {
   return (

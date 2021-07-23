@@ -1,27 +1,28 @@
 import React from 'react'
-import { ITodoList } from '../../../../interfaces'
+import { IFnSortTodos, ITodoList } from '../../../../Interfaces/TodoInterfaces'
 
 import styles from './topBanner.module.scss'
-import SortItems from '../../../form/sortItems/SortedItems'
+import SortedItems from '../../../form/sortItems/SortedItems'
+import BannerName from '../../../custom/BannerName/BannerName'
 
 interface Props {
   list: ITodoList | undefined,
   path: string,
   checkedSort: string,
-  handleSortChange: (sort: string) => void
+  onSort: IFnSortTodos
 }
 
 const TopBanner: React.FC<Props> = (props) => {
   return (
     <div className={styles.topBanner}>
-      <h2>
-        {props.list?.title || `${props.path.slice(6) === ''
-        ? 'Todos' : props.path.slice(6)}`}
-      </h2>
+      <BannerName
+        listTitle={props.list?.title}
+        path={props.path}
+      />
 
-      <SortItems
+      <SortedItems
         checkedSort={props.checkedSort}
-        handleSortChange={props.handleSortChange}
+        handleSortChange={props.onSort}
       />
     </div>
   )
