@@ -17,7 +17,11 @@ const EmptyList: React.FC<Props> = (props) => {
       <h2>There is no todos for&nbsp;
         <span>
           {
-            props.list?.title ? props.list.title : props.path.slice(1)
+            props.list?.title
+            ? props.list.title
+            : props.path === '/'
+            ? 'Todos'
+            : props.path.slice(1)
           }
         </span>
       </h2>

@@ -49,28 +49,28 @@
       @include font-3;
       font-weight: 600;
       font-family: var(--e-global-typography-tertiary);
-      color: var(--e-global-color-secondary);
+      color: var(--color-black);
     }
   }
 
   &__success {
-    i {
-      color: var(--e-global-color-primary);
+    svg {
+      color: var(--color-lime);
     }
   }
 
   &__error {
-    i {
-      color: var(--e-global-color-error);
+    svg {
+      color: var(--color-red);
     }
   }
 
   &__error .bar {
-    background-color: var(--e-global-color-error);
+    background-color: var(--color-red);
   }
 
   &__success .bar {
-    background-color: var(--e-global-color-primary);
+    background-color: var(--color-lime);
   }
 
   @include media-breakpoint-down(md) {
