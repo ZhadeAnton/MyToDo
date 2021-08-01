@@ -47,22 +47,9 @@ export interface CheckUserSession {
   type: typeof CHECK_USER_SESSION
 }
 
-export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE'
-export interface SignOutFailure {
-  type: typeof SIGN_OUT_FAILURE,
-  payload: string
-}
-
-export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'
-export interface SignUpFailure {
-  type: typeof SIGN_UP_FAILURE,
-  payload: string
-}
-
-export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
-export interface SignInFailure {
-  type: typeof SIGN_IN_FAILURE,
-  payload: string
+export const AUTH_ERROR = 'AUTH_ERROR'
+export interface AuthError {
+  type: typeof AUTH_ERROR
 }
 
 export type UserTypes =
@@ -74,6 +61,4 @@ export type UserTypes =
 | CheckUserSession
 | SignOutStart
 | SignOutSucess
-| SignInFailure
-| SignUpFailure
-| SignOutFailure
+| AuthError

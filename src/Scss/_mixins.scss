@@ -1,0 +1,77 @@
+@import './variables';
+
+%abs {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+}
+
+@mixin full-size {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin cover-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin abs-position ($top, $right, $bottom, $left) {
+  position: absolute; 
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin abs-full {
+  @extend %abs;
+  top: 0;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@mixin abs-bottom {
+  @extend %abs;
+  bottom: 0;
+}
+
+@mixin abs-top {
+  @extend %abs;
+  top: 0;
+}
+
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin object-fit {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

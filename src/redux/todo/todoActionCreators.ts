@@ -129,8 +129,7 @@ export const deleteListSuccess: interfaces.IFnDeleteListSuccess = (listId)
   payload: listId
 })
 
-export const todosFailure: interfaces.IFnTodosFailure = (error)
+export const todoFailure: interfaces.IFnTodosFailure = ()
   : actions.TodosFailure => ({
-  type: actions.TODOS_FAILURE,
-  payload: error
+  type: actions.TODO_FAILURE
 })

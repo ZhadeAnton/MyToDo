@@ -1,0 +1,131 @@
+@import './variables';
+
+@mixin font-1 {
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+}
+
+@mixin font-2 {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+
+  @include media-breakpoint-down(vsm) {
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+  }
+}
+
+@mixin font-3 {
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-3);
+
+  @include media-breakpoint-down(vsm) {
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+  }
+}
+
+@mixin font-4 {
+  font-size: var(--font-size-4);
+  line-height: var(--line-height-4);
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+  }
+}
+
+@mixin font-5 {
+  font-size: var(--font-size-5);
+  line-height: var(--line-height-5);
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+  }
+}
+
+@mixin font-6 {
+  font-size: var(--font-size-6);
+  line-height: var(--line-height-6);
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+  }
+}
+
+@mixin font-7 {
+  font-size: var(--font-size-7);
+  line-height: var(--line-height-7);
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-6);
+    line-height: var(--line-height-6);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+  }
+}
+
+@mixin font-8 {
+  font-size: var(--font-size-8);
+  line-height: var(--line-height-8);
+
+  @include media-breakpoint-down(lg) {
+    font-size: var(--font-size-7);
+    line-height: var(--line-height-7);
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-6);
+    line-height: var(--line-height-6);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+  }
+
+  @include media-breakpoint-down(vsm) {
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+  }
+}
+
+@mixin font-9 {
+  font-size: var(--font-size-9);
+  line-height: var(--line-height-9);
+
+  @include media-breakpoint-down(lg) {
+    font-size: var(--font-size-8);
+    line-height: var(--line-height-8);
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-7);
+    line-height: var(--line-height-7);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-6);
+    line-height: var(--line-height-6);
+  }
+}

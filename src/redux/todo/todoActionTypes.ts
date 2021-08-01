@@ -137,10 +137,9 @@ export interface DeleteListSuccess {
   payload: string
 }
 
-export const TODOS_FAILURE = 'TODOS_FAILURE'
+export const TODO_FAILURE = 'TODO_FAILURE'
 export interface TodosFailure {
-  type: typeof TODOS_FAILURE,
-  payload: string
+  type: typeof TODO_FAILURE
 }
 
 export type TodoTypes =

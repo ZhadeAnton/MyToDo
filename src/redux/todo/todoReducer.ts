@@ -4,13 +4,15 @@ import * as actions from './todoActionTypes'
 export interface TodoState {
   todos: Array<ITodo>,
   lists: Array<ITodoList>,
-  selectedTodo: ISelecteTodo | any
+  selectedTodo: ISelecteTodo | any,
+  isLoading: boolean
 }
 
 const INITIAL_STATE: TodoState = {
   todos: [],
   lists: [],
-  selectedTodo: null
+  selectedTodo: null,
+  isLoading: false
 }
 
 const todoReducer =
@@ -131,6 +133,12 @@ const todoReducer =
 
           return todo
         })]
+      }
+
+    case actions.TODO_FAILURE:
+      return {
+        ...state,
+        isLoading: false
       }
 
     default:
