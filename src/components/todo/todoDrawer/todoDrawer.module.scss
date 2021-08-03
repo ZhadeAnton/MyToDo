@@ -12,10 +12,3 @@
     background-color: var(--color-white-milk);
   }
 }
-
-@include media-breakpoint-down(md) {
-  .todoDrawer {
-    width: 12rem;
-    background-color: var(--color-white-milk);
-  }
-}

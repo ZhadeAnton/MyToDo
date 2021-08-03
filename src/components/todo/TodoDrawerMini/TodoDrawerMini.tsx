@@ -6,7 +6,7 @@ import styles from './todoDrawerMini.module.scss'
 import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces'
 import { IUser } from '../../../Interfaces/UserInterfaces'
 import AddNewList from '../todoDrawer/addNewList/AddNewList'
-import UserLists from '../todoDrawer/createdLists/CreatedLists'
+import UserLists from '../todoDrawer/UserLists/UserLists'
 import FilterListMini from '../FilterListMini/FilterListMini'
 
 interface Props {
@@ -44,7 +44,7 @@ export default function TodoDrawerMini(props: Props) {
       </div>
 
       <Drawer
-        title="Basic Drawer"
+        title="Lists"
         placement='left'
         closable={false}
         onClose={onClose}

@@ -1,6 +1,7 @@
 @import '../../Scss/mixins';
 
 .header {
+  height: var(--header-height);
   @include flex-align-center;
   justify-content: space-between;
   padding: 0 1.5rem;

@@ -5,7 +5,7 @@ import { Divider } from 'antd';
 import styles from './todoDrawer.module.scss'
 import FilterList from './filterList/FilterList';
 import AddNewList from './addNewList/AddNewList';
-import UserLists from './createdLists/CreatedLists';
+import UserLists from './UserLists/UserLists';
 import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces';
 import { IUser } from '../../../Interfaces/UserInterfaces';
 interface Props {
@@ -22,15 +22,17 @@ const TodoDrawer: React.FC<Props> = (props) => {
 
       <Divider />
 
-      <AddNewList
-        userId={props.userId}
-        onCreateList={props.onCreateList}
-      />
+      <div className={styles.listsBlock}>
+        <AddNewList
+          userId={props.userId}
+          onCreateList={props.onCreateList}
+        />
 
-      <UserLists
-        lists={props.lists}
-        onDeleteList={props.onDeleteList}
-      />
+        <UserLists
+          lists={props.lists}
+          onDeleteList={props.onDeleteList}
+        />
+      </div>
     </aside>
   )
 }

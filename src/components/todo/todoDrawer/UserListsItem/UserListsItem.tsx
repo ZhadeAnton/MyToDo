@@ -14,7 +14,7 @@ interface Props {
   onDeleteList: (todoId: string) => void
 }
 
-const CreatedListsItem: React.FC<Props> = (props) => {
+export default function UserListsItem(props: Props) {
   const history = useHistory()
   const dispatch = useAppDispatch()
 
@@ -41,5 +41,3 @@ const CreatedListsItem: React.FC<Props> = (props) => {
     </li>
   )
 }
-
-export default CreatedListsItem

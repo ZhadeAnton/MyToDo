@@ -1,9 +1,8 @@
 import React from 'react'
 import { List } from 'antd';
 
-import styles from './createdLists.module.scss'
 import { ArrayOfTodoLists } from '../../../../Interfaces/TodoInterfaces'
-import CreatedListsItem from '../createdListsItem/CreatedListsItem'
+import UserListsItem from '../UserListsItem/UserListsItem'
 
 interface Props {
   lists: ArrayOfTodoLists,
@@ -13,7 +12,6 @@ interface Props {
 const UserLists = (props: Props) => {
   return (
     <List
-      className={styles.createdLists}
       dataSource={props.lists}
       pagination={{
         pageSize: 5,
@@ -21,7 +19,7 @@ const UserLists = (props: Props) => {
         className: 'todoDrawerCreateList-pagination'
       }}
       renderItem={(list) => (
-        <CreatedListsItem
+        <UserListsItem
           key={list.id}
           list={list}
           onDeleteList={props.onDeleteList}

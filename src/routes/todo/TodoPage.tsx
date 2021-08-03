@@ -4,20 +4,34 @@ import { Switch, Route } from 'react-router-dom'
 import styles from './todoPage.module.scss'
 import { ITodoContainer } from '../../Containers/TodoPageContainer'
 
-// import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
 import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
 import TodoContent from '../../components/todo/todoContent/TodoContent'
 import TodoDrawerMini from '../../components/todo/TodoDrawerMini/TodoDrawerMini'
+import useWindowDimensions from '../../Hooks/useWindowDimensions'
+import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
 
 const TodoPage = (props: ITodoContainer) => {
+  const windowDimentions = useWindowDimensions()
+
   return (
     <main className={styles.todoPage}>
-      <TodoDrawerMini
-        userId={props.userId}
-        lists={props.lists}
-        onCreateList={props.handleCreateList}
-        onDeleteList={props.handleDeleteList}
-      />
+      {
+        windowDimentions.width > 768
+        ?
+          <TodoDrawer
+            userId={props.userId}
+            lists={props.lists}
+            onCreateList={props.handleCreateList}
+            onDeleteList={props.handleDeleteList}
+          />
+        :
+          <TodoDrawerMini
+            userId={props.userId}
+            lists={props.lists}
+            onCreateList={props.handleCreateList}
+            onDeleteList={props.handleDeleteList}
+          />
+      }
 
       <section className={styles.todoContent}>
         <Switch>
