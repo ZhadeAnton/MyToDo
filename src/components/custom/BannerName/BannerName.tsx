@@ -1,5 +1,6 @@
 import React from 'react'
 
+import styles from './bannerName.module.scss'
 import { ITodoList } from '../../../Interfaces/TodoInterfaces'
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 
 export default function BannerName(props: Props) {
   return (
-    <h2>
+    <h2 className={styles.bannerName}>
       {
         props.listTitle
         ? props.listTitle

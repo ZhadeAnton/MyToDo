@@ -1,0 +1,14 @@
+@import '../../../Scss/variables';
+
+.bannerName {
+  font-size: var(--font-size-6);
+
+  @include media-breakpoint-down(md) {
+    font-size: var(--font-size-5);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: var(--font-size-4);
+  }
+}
+

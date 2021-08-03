@@ -1,26 +1,35 @@
-.topBanner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--todo-content-banner-padding);
-  margin-bottom: var(--todo-content-banner-mar-bot);
-  background-color: var(--color-white);
+@import '../../../../Scss/variables';
+@import '../../../../Scss/mixins';
 
-  h2 {
-    text-transform: capitalize;
-    font-size: var(--todo-content-banner-title-size);
-    color: var(--color-black);
-  }
+.topBanner {
+  @include flex-align-center;
+  justify-content: space-between;
+  padding: var(--space-md);
 
   svg {
     cursor: pointer;
     transition: fill var(--transition);
-    width: var(--todo-content-banner-sort-icon-size);
-    height: var(--todo-content-banner-sort-icon-size);
-    fill: var(--todo-content-banner-sort-icon-color);
+    width: 2rem;
+    height: 2rem;
+    fill: var(--color-brand);
 
     &:hover {
-      fill: var(--todo-content-banner-sort-icon-hover-bg);
+      fill: var(--color-brand-light);
+      opacity: .8;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    svg {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
     }
   }
 }
