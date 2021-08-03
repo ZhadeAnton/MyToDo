@@ -1,26 +1,27 @@
+@import '../../../../Scss/variables';
+@import '../../../../Scss/mixins';
+
 .filterItem {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  @include flex-align-center;
+  @include full-size;
   cursor: pointer;
-  padding: var(--todo-drawer-filter-item-padding);
-  font-size: var(--todo-drawer-filter-item-fons-size);
-  transition: background-color var(--todo-drawer-links-transition);
-
-  a {
-    width: 100%;
-    color: var(--todo-drawer-filter-item-color);
-    margin-left: var(--todo-drawer-filter-item-title-mar-left);
-  }
-
-  svg {
-    width: var(--todo-drawer-icon-size);
-    height: var(--todo-drawer-icon-size);
-    fill: inherit;
-  }
+  margin-bottom: 1rem;
 
   &:hover {
-    background-color: var(--todo-drawer-filter-item-hover-bg);
+    background-color: var(--color-white);
   }
+}
+
+.icon {
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: var(---color-black-light-2);
+  }
+}
+
+.link {
+  width: 100%;
+  color: var(--color-black-light-2);
+  margin-left: var(--space-sm);
 }
