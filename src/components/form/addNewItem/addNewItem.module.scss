@@ -1,38 +1,38 @@
 .newItem {
-  height: var(--add-new-item-height);
+  height: 4rem;
 }
 
 .addItem {
   display: flex;
   align-items: center;
   width: 100%;
-  transition: var(--add-new-item-transition);
+  transition: all .2s ease;
   padding: var(--add-new-item-padding);
   cursor: pointer;
 
   svg {
-    font-size: var(--add-new-item-icon-size);
+    font-size: var(--font-size-3);
   }
 
   p {
-    font-size: var(--add-new-item-title-size);
-    margin-left: var(--add-new-item-title-margin-left);
+    font-size: var(--font-size-3);
+    margin-left: var(--space-sm);
   }
 
   &:hover {
-    background-color: var(--add-new-item-hover-bg);
-    color: var(--add-new-item-hover-title);
+    background-color: var(--color-secondary);
+    color: var(--color-secondary);
 
     svg {
-     fill: var( --add-new-item-hover-icon);
+     fill: var(--color-secondary);
     }
   }
 }
 
 .addItemInput {
-  padding: var(--add-new-input-padding);
+  padding: var(--space-md);
 
   Input {
-    font-size: var(--add-new-item-title-size);
+    font-size: var(--font-size-3);
   }
 }

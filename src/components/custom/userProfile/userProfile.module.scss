@@ -1,40 +1,62 @@
+@import '../../../Scss/variables';
+
 .userProfile {
+  display: inline-block;
+}
+
+.userProfileWrapper {
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: var(--user-profile-padding);
+  padding: var(--space-vsm);
+}
 
-  h3 {
-    color: var(--user-profile-title-color);
-    font-size: var(--user-profile-title-font-size);
-  }
+.userName {
+  font-size: var(--font-size-3);
+  color: var(--color-white);
+  font-weight: 600;
 }
 
 .userAvatar {
-  margin-left: var(--user-profile-avatar-mar-left);
+  margin-left: var(--space-sm);
 }
 
 .dropdownList {
-  padding: var(--user-profile-dropdown-padding);
+  padding: var(--space-tiny);
 
   li {
-    padding: var(--user-profile-dropdown-item-padding);
-    font-size: var(--user-profile-dropdown-item-font-size);
-    color: var(--user-profile-dropdown-item-color);
-    background-color: var(--user-profile-dropdown-item-bg-color);
+    padding: var(--space-vsm);
+    font-size: var(--font-size-2);
+    color: var(--color-black);
+    background-color: var(--color-white-milk);
     
   svg {
-    width: var(--user-profile-dropdown-icon-size);
-    height: var(--user-profile-dropdown-icon-size);
-    margin-right: var(--user-profile-dropdown-items-space);
+    width: 1rem;
+    height: 1rem;
   }
 
-    a {
-      color: var(--user-profile-dropdown-item-color) !important;
-    }
-
     &:hover {
-      background-color: var(--user-profile-dropdown-item-hover-bg-color);
+      background-color: var(--color-brand-light);
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .userName {
+    font-size: var(--font-size-2);
+  }
+
+  .dropdownList {
+      li {
+        padding: var(--space-tiny);
+        font-size: var(--font-size-1);
+        color: var(--color-black);
+        background-color: var(--color-white-milk);
+      
+      svg {
+        width: .8rem;
+        height: .8rem;
+      }
     }
   }
 }

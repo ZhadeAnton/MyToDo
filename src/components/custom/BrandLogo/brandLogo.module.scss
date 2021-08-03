@@ -1,0 +1,15 @@
+.brandLogo {
+  display: flex;
+  align-items: center;
+}
+
+.logoWrapper {
+  width: 2rem;
+  height: 2rem;
+}
+
+.title {
+  margin-left: .5rem;
+  color: var(--color-white);
+  font-weight: 600;
+}

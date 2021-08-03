@@ -66,8 +66,11 @@ a {
 
 :root {
   /* Colors */
-  --color-brand: #0DA5F3;
+  --color-brand: #0078D7;
+  --color-brand-light: #3e69e4;
   --color-brand-light: #cee9f7;
+  --color-secondary: #87e8de;
+  --color-white-milk: #f4f4f4;
   --color-brand-background: #F3F3F3;
   --color-grey-light: #c0c0c0fd;
   --color-grey-dark: #838383;
@@ -81,98 +84,49 @@ a {
   --color-red: rgb(237, 79, 7);
   --color-icon: #353535;
 
-  /* Sizes */
-  --header-height: 80px;
+  /* Spaces */
+  --baseline: 24px;
+  --space-tiny: calc(var(--baseline)/4);
+  --space-vsm: calc(var(--baseline)/3);
+  --space-sm: calc(var(--baseline)/2);
+  --space-md: var(--baseline);
+  --space-lg: calc(var(--baseline)*2);
+  --space-xl: calc(var(--baseline)*3);
+  --space-xxl: calc(var(--baseline)*4);
+  --space-xxxl: calc(var(--baseline)*5);
+  --space-huge: calc(var(--baseline)*6);
 
+  /* Sizes */
+  --font-size-1: 12px; 
+  --font-size-2: 14px; 
+  --font-size-3: 16px; 
+  --font-size-4: 20px; 
+  --font-size-5: 24px; 
+  --font-size-6: 30px; 
+  --font-size-7: 38px; 
+  --font-size-8: 46px; 
+  --font-size-9: 56px; 
+  --font-size-10: 68px;
+
+  /* Line height */
+  --line-height-1: 20px;
+  --line-height-2: 22px;
+  --line-height-3: 24px;
+  --line-height-4: 28px;
+  --line-height-5: 32px;
+  --line-height-6: 38px;
+  --line-height-7: 46px;
+  --line-height-8: 54px;
+  --line-height-9: 64px;
+  --line-height-10: 76px;
+  
   /* Measures */
+  --header-height: 80px;
   --transition: .2s linear;
   --box-shadow: 0 6px 15px 0 var(--color-grey-light);
 
   /* Custom Elements*/
   --detele-icon-hover-color: var(--color-red);
-
-  --empty-list-color: var(--color-grey-dark);
-  --empty-list-padding: 2rem;
-  --empty-list-margin: 0 2rem;
-  --empty-list-title-font-size: 2.5rem;
-  --empty-list-subtitle-font-size: 1.5rem;
-  --empty-list-icon-size: 3rem;
-
-  --home-link-color: var(--color-dark);
-  --home-link-gutter: .8rem;
-  --home-link-font-size: 1.3rem;
-  --home-link-icon-size: 1.2rem;
-
-  --sort-item-padding: 1.4rem;
-  --sort-item-bg: var(--color-white);
-  --sort-item-font-size: 1.2rem;
-  --sort-item-color: var(--color-brand);
-  --sort-item-icon-size: 1.2rem;
-  --sort-item-icon-color: var(--color-icon);
-  --sort-item-icon-mar-right: 1rem;
-  --sort-item-icon-active-bg: var(--color-brand-light);
-  --sort-item-icon-hover-bg: var(--color-brand-light);
-
-  /* User Profile */
-  --user-profile-padding: .2rem;
-  --user-profile-title-color: var(--color-brand);
-  --user-profile-title-font-size: 1.4rem;
-  --user-profile-avatar-mar-left: .5rem;
-  --user-profile-dropdown-padding: .5rem;
-  --user-profile-dropdown-item-padding: 1rem;
-  --user-profile-dropdown-item-font-size: 1.2rem;
-  --user-profile-dropdown-item-color: var(--color-brand);
-  --user-profile-dropdown-item-bg-color: var(--color-white-light);
-  --user-profile-dropdown-item-hover-bg-color: var(--color-grey-strong);
-  --user-profile-dropdown-icon-size: 1.1rem;
-  --user-profile-dropdown-items-space: .5rem;
-
-  /* Forms */
-  --add-new-item-height: 4rem;
-  --add-new-item-padding: 1rem .5rem;
-  --add-new-item-icon-size: 2rem;
-  --add-new-item-title-size: 1.3rem;
-  --add-new-item-title-margin-left: .5rem;
-  --add-new-item-transition: background-color .2s linear;
-  --add-new-item-hover-bg: var(--color-brand-light);
-  --add-new-item-hover-title: var(--color-brand);
-  --add-new-item-hover-icon: var(--color-brand);
-  --add-new-input-padding: .9rem .5rem;
-
-  /* Main Page */
-  --main-page-header-height: var(--header-height);
-  --main-page-header-shadow: 0 6px 15px 0 var(--color-grey-light);
-  --main-page-header-nav-links-padding: 1rem;
-  --main-page-header-nav-links-color: var(--color-black);
-  --main-page-header-nav-links-font-size: 1.5rem;
-  --main-page-header-nav-links-hover-bg: var(--color-white-light);
-  --main-page-header-nav-links-hover-color: var(--color-brand);
-  --main-page-hero-blocks-padding: 3rem;
-  --main-page-hero-info-blocks-mar-top: 3rem;
-  --main-page-hero-info-blocks-items-mar-bot: 2rem;
-  --main-page-block-img-shadow: 0 6px 15px 0 var(--color-grey-light);
-  --main-page-block-gutter: 4rem;
-
-  /* Login Page */
-  --login-page-bg: var(--color-white-dark);
-  --login-page-form-bg: var(--color-white);
-  --login-page-max-width: 32rem;
-  --login-page-max-height: 45rem;
-  --login-page-mar-top: 5rem;
-  --login-page-title-mar-top: .5rem;
-  --login-page-title-font-size: 1.5rem;
-  --login-page-title-color: var(--color-black);
-  --login-page-form-padding: 3rem;
-  --login-page-form-border-radius: 1rem;
-  --login-page-form-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
-  --login-page-tabs-font-size: 1.4rem;
-  --login-page-tabs-gutter: 5rem;
-  --login-page-inputs-padding: .2rem .4rem !important;
-  --login-page-sign-in-alt-buttons-mar-bot: 1.4rem;
-  --login-page-sign-in-alt-buttons-font-size: 1.2rem;
-  --login-page-sign-in-alt-buttons-color: var(--color-white);
-  --login-page-sign-in-alt-icon-size: 1.4rem;
-  --login-page-sign-in-alt-icon-mar-right: 1rem;
 
   /* To-do Page */ 
   --todo-drawer-padding-side: .5rem;
@@ -237,9 +191,6 @@ a {
   --todo-item-icon-important-filled-color: var(--color-red);
   --todo-item-icon-important-color-hover: var(--color-red);
 
-  --todo-details-background-color: var(--color-white);
-  --todo-details-close-btn-hover: #da0c0c;
-  --todo-details-close-btn-color: var(--color-grey-dark);
   --todo-details-width: 25rem;
   --todo-details-padding: 4rem .9rem 1rem .9rem;
   --todo-details-close-btn-size: 2rem;

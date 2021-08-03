@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: var(--login-page-bg);
+  background-color: var(--color-secondary);
   position: relative;
 }
 
@@ -15,12 +15,12 @@
 
 .loginForm {
   width: calc(100% - 16px);
-  max-width: var(--login-page-max-width);
-  height: var(--login-page-max-height);
-  box-shadow: var(--login-page-form-shadow);
-  margin-top: var(--login-page-mar-top);
-  padding: var(--login-page-form-padding);
-  background-color: var(--login-page-form-bg);
+  max-width: 32rem;
+  height: 45rem;
+  box-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--color-white);
   border: thin solid var(--color-grey);
-  border-radius: var(--login-page-form-border-radius);
+  border-radius: 1rem;
 }

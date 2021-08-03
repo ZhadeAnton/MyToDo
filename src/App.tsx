@@ -6,6 +6,7 @@ import { IAppContainer } from './Containers/AppContainer';
 
 import NotFound from './components/notFound/NotFound';
 import LoginPageContainer from './Containers/LoginPageContainer';
+import Header from './components/Header/Header';
 
 const App = (props: IAppContainer) => {
   if (!props.user) {
@@ -14,6 +15,11 @@ const App = (props: IAppContainer) => {
 
   return (
     <>
+      <Header
+        user={props.user}
+        onSignOut={props.handleSignOut}
+      />
+
       <Switch>
         <Route exact path='/login' component={LoginPageContainer} />
         <Route exact path='/' component={TodoPageContainerWithrouter} />

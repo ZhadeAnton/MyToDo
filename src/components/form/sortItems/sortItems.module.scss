@@ -5,24 +5,24 @@
 .sortItem {
   display: flex;
   align-items: center;
-  font-size: var(--sort-item-font-size);
+  font-size: var(--font-size-2);
   color: var(--sort-item-color);
-  padding: var(--sort-item-padding);
-  background-color: var(--sort-item-bg);
-  transition: background-color var(--transition);
+  padding: var(--space-md);
+  background-color: var(--color-white);
+  transition: background-color .2 linear;
 
   &:hover {
-    background-color: var(--sort-item-icon-hover-bg);
+    background-color: var(--color-brand-dark);
   }
 
   svg {
-    margin-right: var(--sort-item-icon-mar-right);
-    color: var(--sort-item-icon-color);
-    width: var(--sort-item-icon-size);
-    height: var(--sort-item-icon-size);
+    margin-right: var(--space-md);
+    color: var(--color-white);
+    width: 2rem;
+    height: 2rem;
   }
 }
 
 .sortItemActive {
-  background-color: var(--sort-item-icon-active-bg);
+  background-color: var(--color-brand);
 }

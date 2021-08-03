@@ -1,0 +1,8 @@
+@import '../../Scss/mixins';
+
+.header {
+  @include flex-align-center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background-color: var(--color-brand);
+}

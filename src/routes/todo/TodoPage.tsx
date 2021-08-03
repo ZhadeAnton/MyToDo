@@ -11,16 +11,14 @@ import TodoContent from '../../components/todo/todoContent/TodoContent'
 const TodoPage = (props: ITodoContainer) => {
   return (
     <main className={styles.todoPage}>
-      <aside className={styles.todoDrawer}>
-        <TodoDrawer
-          user={props.user}
-          userId={props.userId}
-          lists={props.lists}
-          onCreateList={props.handleCreateList}
-          onDeleteList={props.handleDeleteList}
-          onSignOut={props.handleSignOut}
-        />
-      </aside>
+      <TodoDrawer
+        user={props.user}
+        userId={props.userId}
+        lists={props.lists}
+        onCreateList={props.handleCreateList}
+        onDeleteList={props.handleDeleteList}
+        onSignOut={props.handleSignOut}
+      />
 
       <section className={styles.todoContent}>
         <Switch>
