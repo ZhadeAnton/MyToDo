@@ -1,16 +1,15 @@
 .todoTextForm {
-  cursor: pointer;
-  border-bottom: thin solid var(--todo-details-todo-border-color);
+  cursor: text;
   font-size: var(--todo-details-todo-title-size);
-  padding: var(--todo-details-todo-title-padding);
+  padding: var(--space-vsm);
   margin-bottom: var(--todo-details-title-margin-bottom);
+  background-color: var(--color-white);
 
   Input {
     font-size: var(--todo-details-todo-title-size);
     padding: 0;
     margin: 0;
     overflow-wrap: anywhere;
-
   }
 }
 
@@ -25,6 +24,8 @@
 }
 
 .toolTipIcon {
+  cursor: pointer;
+
   svg {
     fill: var(--todo-details-title-tooltip-color);
   }
