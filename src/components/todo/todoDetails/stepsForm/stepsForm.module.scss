@@ -1,3 +1,9 @@
+@import '../../../../Scss/variables';
+
 .stepsForm {
-  padding: var(--todo-details-steps-form-padding);
+  padding: var(--space-vsm) 0;
+
+  @include media-breakpoint-down(md) {
+    padding: var(--space-tiny) 0
+  }
 }

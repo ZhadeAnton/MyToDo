@@ -10,12 +10,18 @@
   position: relative;
   background-color: var(--color-white-milk);
   padding: var(--space-vsm);
+}
 
-  @include media-breakpoint-down(lg) {
-    width: 17rem;
-  }
+.stepsBlock {
+  margin-top: 1rem;
+}
 
-  @include media-breakpoint-down(md) {
-    width: 15rem;
+.bottomInfo {
+  margin-top: auto;
+}
+
+@include media-breakpoint-down(lg) {
+  .todoDetails {
+    width: 0;
   }
 }

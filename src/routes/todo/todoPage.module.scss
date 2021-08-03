@@ -13,7 +13,8 @@
 }
 
 .todoContent {
-  flex: auto;
+  flex: content;
+  width: 100%;
 }
 
 .todoDetails {
@@ -21,6 +22,12 @@
 }
 
 @include media-breakpoint-down(lg) {
+  .todoDetails {
+    width: 0;
+    // visibility: hidden;
+    user-select: none;
+  }
+
   .todoDrawer {
     min-width: 13rem;
     background-color: var(--color-white-milk);

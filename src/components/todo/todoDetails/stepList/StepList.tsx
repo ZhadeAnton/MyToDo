@@ -1,10 +1,9 @@
 import React from 'react'
 import { List } from 'antd';
 
-
-import styles from './stepList.module.scss'
 import StepItem from '../stepItem/StepItem'
 import { ITodo, ITodoStep } from '../../../../Interfaces/TodoInterfaces'
+import useWindowDimensions from '../../../../Hooks/useWindowDimensions';
 
 interface Props {
   selectedTodo: ITodo,
@@ -12,13 +11,19 @@ interface Props {
 }
 
 const StepsList: React.FC<Props> = (props) => {
+  const dimension = useWindowDimensions()
+  const height = dimension.width < 992 ? 270 : 310
+
   return (
     <List
-      className={styles.stepList}
       dataSource={props.selectedTodo?.steps}
+      style={{
+        height: height + 'px'
+      }}
       pagination={{
         pageSize: 5,
         hideOnSinglePage: true,
+        responsive: true,
         className: 'todoDetailsStepsList-pagination'
       }}
       renderItem={(step: ITodoStep, idx: number) => (

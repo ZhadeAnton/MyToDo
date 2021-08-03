@@ -15,8 +15,7 @@ const AddNewStep: React.FC<Props> = (props) => {
   }
 
   return (
-    <div
-      className={styles.stepsForm}>
+    <div className={styles.stepsForm}>
       <AddNewItem
         todoId={props.selectedTodo.id}
         handleSubmit={handleAddStep}>

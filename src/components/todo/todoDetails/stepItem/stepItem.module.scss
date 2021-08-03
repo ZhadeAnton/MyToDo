@@ -1,18 +1,34 @@
-.stepItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--todo-details-list-item-padding);
-  font-size: var(--todo-details-list-item-font-size);
-  color: var(--todo-details-list-item-text-color);
-  border-bottom: thin solid var(--todo-details-list-item-border-bot);
+@import '../../../../Scss/mixins';
+@import '../../../../Scss/variables';
 
-  p {
-    margin-left: var(--todo-details-list-item-title-mar-left);
-  }
+.stepItem {
+  @include flex-align-center;
+  justify-content: space-between;
+  padding: .8rem;
+  font-size: var(--font-size-3);
+  color: var(--color-black-light);
+  border-bottom: thin solid var(--color-black-light);
 
   svg {
-    color: var(--todo-details-list-item-icon-color);
-    font-size: var(--todo-details-list-item-icon-size);
+    color: var(--color-black);
+    font-size: var(--font-size-3);
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding: .7rem;
+    font-size: var(--font-size-2);
+
+    svg {
+      font-size: var(--font-size-3);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: .6rem;
+    font-size: var(--font-size-1);
+
+    svg {
+      font-size: var(--font-size-2);
+    }
   }
 }

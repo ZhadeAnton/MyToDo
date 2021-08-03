@@ -5,12 +5,11 @@ import styles from './todoDetailsMini.module.scss'
 import { IUser } from '../../../Interfaces/UserInterfaces'
 import useWindowDimensions from '../../../Hooks/useWindowDimensions'
 import * as interfaces from '../../../Interfaces/TodoInterfaces'
-import TodoEditForm from '../todoDetails/todoForm/TodoForm'
+import TodoEditForm from '../todoDetails/todoEditForm/TodoEditForm'
 import AddNewStep from '../todoDetails/stepsForm/StepsForm'
 import StepsList from '../todoDetails/stepList/StepList'
 import DatePickerForm from '../todoDetails/datePicker/DatePicker'
 import BottomLine from '../todoDetails/bottomLine/BottomLine'
-import CloseDetailsButton from '../todoDetails/closeDetailsButton/CloseDetailsButton'
 
 interface Props {
   userId: IUser['id'],
@@ -28,8 +27,7 @@ interface Props {
 
 export default function TodoDetailsMini(props: Props) {
   const windowDimentions = useWindowDimensions()
-  // Adaptive for drawer
-  const width = windowDimentions.width > 576 ? 350 : 290
+  const width = windowDimentions.width > 576 ? 320 : 290
 
   const [visible, setVisible] = useState(!!props.selectedTodo)
 
@@ -39,8 +37,8 @@ export default function TodoDetailsMini(props: Props) {
   }
 
   return (
-    <aside className={styles.todoDetailsMini}>
-        props.selectedTodo &&
+    <>
+      props.selectedTodo &&
       <Drawer
         placement='right'
         closable={false}
@@ -56,35 +54,34 @@ export default function TodoDetailsMini(props: Props) {
           changeTitleSelectedTodo={props.onChangeTitleSelectedTodo}
 
         />
+        <aside className={styles.todoDetailsMini}>
+          <AddNewStep
+            selectedTodo={props.selectedTodo}
+            onAddTodoStep={props.onAddTodoStep}
+          />
 
-        <AddNewStep
-          selectedTodo={props.selectedTodo}
-          onAddTodoStep={props.onAddTodoStep}
-        />
+          <StepsList
+            selectedTodo={props.selectedTodo}
+            deleteTodoStep={props.onDeleteTodoStep}
+          />
 
-        <StepsList
-          selectedTodo={props.selectedTodo}
-          deleteTodoStep={props.onDeleteTodoStep}
-        />
+          <div className={styles.bottomInfo}>
+            <DatePickerForm
+              userId={props.userId}
+              selectedTodo={props.selectedTodo}
+              onUpdate={props.onUpdate}
+              onSetDateTodo={props.onSetDateSelectedTodo}
+              onRemoveDateTodo={props.onRemoveDateSelectedTodo}
+            />
 
-        <DatePickerForm
-          userId={props.userId}
-          selectedTodo={props.selectedTodo}
-          onUpdate={props.onUpdate}
-          onSetDateTodo={props.onSetDateSelectedTodo}
-          onRemoveDateTodo={props.onRemoveDateSelectedTodo}
-        />
-
-        <BottomLine
-          selectedTodo={props.selectedTodo}
-          onDeleteTodo={props.onDeleteTodo}
-          onCloseSelectedTodo={props.onCloseSelectedTodo}
-        />
-
-        <CloseDetailsButton
-          onCloseSelectedTodo={props.onCloseSelectedTodo}
-        />
+            <BottomLine
+              selectedTodo={props.selectedTodo}
+              onDeleteTodo={props.onDeleteTodo}
+              onCloseSelectedTodo={props.onCloseSelectedTodo}
+            />
+          </div>
+        </aside>
       </Drawer>
-    </aside>
+    </>
   )
 }

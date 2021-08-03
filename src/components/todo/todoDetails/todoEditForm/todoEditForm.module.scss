@@ -1,0 +1,53 @@
+@import '../../../../Scss/variables';
+
+.todoTextForm {
+  cursor: text;
+  padding: var(--space-vsm);
+  font-size: var(--font-size-4);
+  background-color: var(--color-white);
+
+  Input {
+    font-size: var(--font-size-4);
+    padding: 0 var(--space-vsm);
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.todoTitle {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-left: var(--space-vsm);
+    overflow-wrap: anywhere;
+  }
+}
+
+.toolTipIcon {
+  cursor: pointer;
+
+  svg {
+    fill: var(--color-brand);
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .todoTextForm {
+    font-size: var(--font-size-3);
+  
+    Input {
+      font-size: var(--font-size-3);
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .todoTextForm {
+    font-size: var(--font-size-2);
+  
+    Input {
+      font-size: var(--font-size-2);
+    }
+  }
+}

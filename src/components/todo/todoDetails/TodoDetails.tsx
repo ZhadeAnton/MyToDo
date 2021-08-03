@@ -3,11 +3,10 @@ import React from 'react'
 import styles from './todoDetails.module.scss'
 import * as interfaces from '../../../Interfaces/TodoInterfaces'
 
-import CloseDetailsButton from './closeDetailsButton/CloseDetailsButton'
 import AddNewStep from './stepsForm/StepsForm';
 import DatePickerForm from './datePicker/DatePicker';
 import BottomLine from './bottomLine/BottomLine';
-import TodoEditForm from './todoForm/TodoForm';
+import TodoEditForm from './todoEditForm/TodoEditForm';
 import StepsList from './stepList/StepList';
 import { IUser } from '../../../Interfaces/UserInterfaces';
 
@@ -36,33 +35,33 @@ const TodoDetails: React.FC<Props> = (props) => {
 
       />
 
-      <AddNewStep
-        selectedTodo={props.selectedTodo}
-        onAddTodoStep={props.onAddTodoStep}
-      />
+      <div className={styles.stepsBlock}>
+        <AddNewStep
+          selectedTodo={props.selectedTodo}
+          onAddTodoStep={props.onAddTodoStep}
+        />
 
-      <StepsList
-        selectedTodo={props.selectedTodo}
-        deleteTodoStep={props.onDeleteTodoStep}
-      />
+        <StepsList
+          selectedTodo={props.selectedTodo}
+          deleteTodoStep={props.onDeleteTodoStep}
+        />
+      </div>
 
-      <DatePickerForm
-        userId={props.userId}
-        selectedTodo={props.selectedTodo}
-        onUpdate={props.onUpdate}
-        onSetDateTodo={props.onSetDateSelectedTodo}
-        onRemoveDateTodo={props.onRemoveDateSelectedTodo}
-      />
+      <div className={styles.bottomInfo}>
+        <DatePickerForm
+          userId={props.userId}
+          selectedTodo={props.selectedTodo}
+          onUpdate={props.onUpdate}
+          onSetDateTodo={props.onSetDateSelectedTodo}
+          onRemoveDateTodo={props.onRemoveDateSelectedTodo}
+        />
 
-      <BottomLine
-        selectedTodo={props.selectedTodo}
-        onDeleteTodo={props.onDeleteTodo}
-        onCloseSelectedTodo={props.onCloseSelectedTodo}
-      />
-
-      <CloseDetailsButton
-        onCloseSelectedTodo={props.onCloseSelectedTodo}
-      />
+        <BottomLine
+          selectedTodo={props.selectedTodo}
+          onDeleteTodo={props.onDeleteTodo}
+          onCloseSelectedTodo={props.onCloseSelectedTodo}
+        />
+      </div>
     </aside>
   )
 }

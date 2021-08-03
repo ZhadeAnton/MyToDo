@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Input, Tooltip, message } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
-import styles from './todoForm.module.scss'
+import styles from './todoEditForm.module.scss'
 import {
   IFnChangeTitleSelectedTodo,
   IFnUpdateTodo,

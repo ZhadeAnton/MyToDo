@@ -66,7 +66,7 @@ const TodoPage = (props: ITodoContainer) => {
 
       <aside className={styles.todoDetails}>
         { props.selectedTodo &&
-          windowDimentions.width > 1024 &&
+          windowDimentions.width > 992 &&
           <TodoDetails
             userId={props.userId}
             selectedTodo={props.selectedTodo}
@@ -83,7 +83,7 @@ const TodoPage = (props: ITodoContainer) => {
         }
         {
           props.selectedTodo &&
-           windowDimentions.width < 1024 &&
+           windowDimentions.width < 992 &&
            <TodoDetailsMini
              userId={props.userId}
              selectedTodo={props.selectedTodo}
