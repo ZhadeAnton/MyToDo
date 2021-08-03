@@ -52,12 +52,13 @@ const TodoListItem: React.FC<Props> = (props) => {
         </p>
 
         <div className={styles.todoInfo}>
-          {
-            props.todo.steps?.length > 0 &&
-              <span className={styles.todoSteps}>
-                Steps: {props.todo.steps?.length}
-              </span>
-          }
+          <div className={styles.todoTimestamp}>
+            <p>
+              Created&nbsp;
+            </p>
+
+            <ConvertDate date={props.todo.timestamp}/>
+          </div>
 
           {
             props.todo.planned &&
@@ -66,13 +67,12 @@ const TodoListItem: React.FC<Props> = (props) => {
               </span>
           }
 
-          <div className={styles.todoTimestamp}>
-            <p>
-              Created&nbsp;
-            </p>
-
-            <ConvertDate date={props.todo.timestamp}/>
-          </div>
+          {
+            props.todo.steps?.length > 0 &&
+              <span className={styles.todoSteps}>
+                Steps: {props.todo.steps?.length}
+              </span>
+          }
         </div>
       </div>
       <span

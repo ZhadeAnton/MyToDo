@@ -2,13 +2,10 @@
 
 .bannerName {
   font-size: var(--font-size-6);
-
-  @include media-breakpoint-down(md) {
-    font-size: var(--font-size-5);
-  }
+  color: var(--color-brand);
 
   @include media-breakpoint-down(sm) {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-5);
   }
 }
 

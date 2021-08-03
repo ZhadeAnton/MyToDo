@@ -1,89 +1,137 @@
+@import '../../../../Scss/variables';
+@import '../../../../Scss/mixins';
+
 .todoListItem {
   width: 100%;
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   cursor: pointer;
-  padding: var(--todo-item-padding);
-  margin-bottom: var(--todo-item-gutter-down);
-  border: var(--todo-item-border-style);
-  border-radius: var(--todo-item-border-radius);
-  background-color: var(--todo-item-background);
-  transition: background-color var(--todo-item-transition);
+  padding: var(--space-vsm);
+  position: relative;
+  margin-bottom: var(--space-sm);
+  border: 1px solid var(--color-grey-light);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  transition: background-color .2s ease;
 
   &:hover {
-    background-color: var(--todo-item-hover-bg);
+    background-color: var(--color-white-milk);
   }
 }
 
 .todoTitle {
-  font-size: var(--todo-item-text-size);
-  color: var(--todo-item-text-color);
+  font-size: var(--font-size-4);
+  color: var(--color-black-light);
 }
 
 .active {
-  background-color: var(--todo-item-selected-bg) !important;
+  background-color: var(--color-white-milk);
 }
 
 .checkbox {
   cursor: pointer;
-  width: var(--todo-item-checkbox-size);
-  height: var(--todo-item-checkbox-size);
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .todoContent {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: var(--todo-item-content-mar-right);
+  margin-left: var(--space-md);
 }
 
 .todoInfo {
   display: flex;
-  color: var(--todo-item-info-color);
-  font-size: var(--todo-item-info-font-size);
-
-  & > * {
-    margin-right: var(--todo-item-info-items-mar-left);
-  }
+  color: var(--color-grey-dark);
+  font-size: var(--font-size-2);
 }
 
 .todoSteps {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
+  margin: 0 1rem;
+  color: var(--color-brand);
+  font-size: var(--font-size-2);
 }
 
 .todoPlanned {
-  display: flex;
-  align-items: center;
-  color: var(--todo-item-info-planned-text-color);
+  @include flex-align-center;
+  margin: 0 1rem;
+  color: var(--color-brand);
+  font-size: var(--font-size-2);
 
   svg {
-    fill: var(--todo-item-info-planned-icon-color);
-    width: var(--todo-item-info-planned-icon-size);
-    height: var(--todo-item-info-planned-icon-size);
-    margin-left: var(--todo-item-info-planned-icon-mar-left);
+    fill: var(--color-brand);
+    width: 1rem;
+    height: 1rem;
+    margin-left: var(--space-tiny);
   }
 }
 
 .todoTimestamp {
   display: flex;
+  font-size: var(--font-size-2);
 }
 
 .iconImportant {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translate(0, -50%);
+
   svg {
-    width: var(--todo-item-icon-important-size);
-    height: var(--todo-item-icon-important-size);
-    fill: var(--todo-item-icon-important-color);
+    width: 1.6rem;
+    height: 1.6rem;
     transition: fill var(--todo-item-transition);
+    fill: var(--color-grey);
 
     &:hover {
-      fill: var(--todo-item-icon-important-color-hover);
+      fill: var(--color-red);
     }
   }
 }
 
 .IconFilled {
   svg {
-    fill: var(--todo-item-icon-important-filled-color);
+    fill: var(--color-red);
+  }
+}
+
+@include media-breakpoint-down(xl) {
+  .todoTitle {
+    font-size: var(--font-size-3);
+  }
+
+  .checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .todoContent {
+    margin-left: var(--space-sm);
+  }
+
+  .todoInfo {
+    display: flex;
+    color: var(--color-grey-dark);
+    font-size: var(--font-size-2);
+  }
+  
+  .todoSteps {
+    margin: 0 .7rem;
+    font-size: var(--font-size-1);
+  }
+  
+  .todoPlanned {
+    margin: 0 .7rem;
+    font-size: var(--font-size-1);
+  
+    svg {
+      width: .9rem;
+      height: .9rem;
+    }
+  }
+
+  .todoTimestamp {
+    font-size: var(--font-size-1);
   }
 }
