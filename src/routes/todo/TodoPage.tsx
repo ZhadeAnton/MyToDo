@@ -4,20 +4,19 @@ import { Switch, Route } from 'react-router-dom'
 import styles from './todoPage.module.scss'
 import { ITodoContainer } from '../../Containers/TodoPageContainer'
 
-import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
+// import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
 import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
 import TodoContent from '../../components/todo/todoContent/TodoContent'
+import TodoDrawerMini from '../../components/todo/TodoDrawerMini/TodoDrawerMini'
 
 const TodoPage = (props: ITodoContainer) => {
   return (
     <main className={styles.todoPage}>
-      <TodoDrawer
-        user={props.user}
+      <TodoDrawerMini
         userId={props.userId}
         lists={props.lists}
         onCreateList={props.handleCreateList}
         onDeleteList={props.handleDeleteList}
-        onSignOut={props.handleSignOut}
       />
 
       <section className={styles.todoContent}>

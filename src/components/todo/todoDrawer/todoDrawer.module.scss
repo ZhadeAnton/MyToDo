@@ -1,6 +1,21 @@
+@import '../../../Scss/variables';
+
 .todoDrawer {
-  height: 100vh;
+  height: 100%;
   width: 19rem;
-  padding: var(--todo-drawer-padding);
   background-color: var(--color-white-milk);
+}
+
+@include media-breakpoint-down(lg) {
+  .todoDrawer {
+    width: 15rem;
+    background-color: var(--color-white-milk);
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .todoDrawer {
+    width: 12rem;
+    background-color: var(--color-white-milk);
+  }
 }

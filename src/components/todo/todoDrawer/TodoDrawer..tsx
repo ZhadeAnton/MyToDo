@@ -9,12 +9,10 @@ import UserLists from './createdLists/CreatedLists';
 import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces';
 import { IUser } from '../../../Interfaces/UserInterfaces';
 interface Props {
-  user: IUser | null,
   userId: IUser['id'],
   lists: ArrayOfTodoLists,
   onCreateList: IFnCreateList,
   onDeleteList: (listId: string) => void,
-  onSignOut: () => void
 }
 
 const TodoDrawer: React.FC<Props> = (props) => {
