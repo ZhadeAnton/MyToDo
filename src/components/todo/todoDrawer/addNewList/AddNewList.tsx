@@ -9,17 +9,14 @@ interface Props {
   onCreateList: IFnCreateList,
 }
 
-const AddNewList: React.FC<Props> = (props) => {
+export default function AddNewList(props: Props) {
   const handleSubmit = (listTitle: string) => {
     props.onCreateList(props.userId, listTitle)
   }
 
   return (
-    <AddNewItem
-      handleSubmit={handleSubmit}>
+    <AddNewItem handleSubmit={handleSubmit}>
       New list
     </AddNewItem>
   )
 }
-
-export default AddNewList

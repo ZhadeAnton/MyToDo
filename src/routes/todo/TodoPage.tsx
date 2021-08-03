@@ -15,23 +15,25 @@ const TodoPage = (props: ITodoContainer) => {
 
   return (
     <main className={styles.todoPage}>
-      {
-        windowDimentions.width > 768
-        ?
-          <TodoDrawer
-            userId={props.userId}
-            lists={props.lists}
-            onCreateList={props.handleCreateList}
-            onDeleteList={props.handleDeleteList}
-          />
-        :
-          <TodoDrawerMini
-            userId={props.userId}
-            lists={props.lists}
-            onCreateList={props.handleCreateList}
-            onDeleteList={props.handleDeleteList}
-          />
-      }
+      <div className={styles.todoDrawer}>
+        {
+          windowDimentions.width > 768
+          ?
+            <TodoDrawer
+              userId={props.userId}
+              lists={props.lists}
+              onCreateList={props.handleCreateList}
+              onDeleteList={props.handleDeleteList}
+            />
+          :
+            <TodoDrawerMini
+              userId={props.userId}
+              lists={props.lists}
+              onCreateList={props.handleCreateList}
+              onDeleteList={props.handleDeleteList}
+            />
+        }
+      </div>
 
       <section className={styles.todoContent}>
         <Switch>

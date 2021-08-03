@@ -1,10 +1,20 @@
+@import '../../../Scss/mixins';
+@import '../../../Scss/variables';
+
 .todoDetails {
-  width: 25rem;
+  width: 20rem;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: var(--space-md);
   z-index: 10;
   position: relative;
-  background-color: var(--color-secondary);
+  background-color: var(--color-white-milk);
+
+  @include media-breakpoint-down(lg) {
+    width: 17rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 15rem;
+  }
 }

@@ -1,14 +1,5 @@
-@import '../../../Scss/variables';
-
 .todoDrawer {
   height: 100%;
-  width: 19rem;
+  width: 100%;
   background-color: var(--color-white-milk);
-}
-
-@include media-breakpoint-down(lg) {
-  .todoDrawer {
-    width: 15rem;
-    background-color: var(--color-white-milk);
-  }
 }

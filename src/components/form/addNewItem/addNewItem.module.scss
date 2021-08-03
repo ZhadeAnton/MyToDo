@@ -1,13 +1,13 @@
+@import '../../../Scss/mixins';
+
 .newItem {
   height: 4rem;
 }
 
 .addItem {
-  display: flex;
-  align-items: center;
   width: 100%;
-  transition: all .2s ease;
-  padding: var(--add-new-item-padding);
+  @include flex-align-center;
+  padding: var(--space-sm);
   cursor: pointer;
 
   svg {
@@ -20,17 +20,17 @@
   }
 
   &:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-secondary);
+    background-color: var(--color-white);
+    color: var(--color-lime);
 
     svg {
-     fill: var(--color-secondary);
+     fill: var(--color-lime);
     }
   }
 }
 
 .addItemInput {
-  padding: var(--space-md);
+  padding: var(--space-vsm);
 
   Input {
     font-size: var(--font-size-3);
