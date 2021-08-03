@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import styles from './filterItemMini.module.scss'
 
@@ -12,13 +13,18 @@ interface Props {
 
 export default function FilterItemMini(props: Props) {
   return (
-    <li
-      key={props.item.to}
-      className={styles.filterItem}
+    <NavLink
+      className={styles.filterLink}
+      to={props.item.to}
     >
-      <span className={styles.icon}>
-        {props.item.icon}
-      </span>
-    </li>
+      <li
+        key={props.item.to}
+        className={styles.filterItem}
+      >
+        <span className={styles.icon}>
+          {props.item.icon}
+        </span>
+      </li>
+    </NavLink>
   )
 }
