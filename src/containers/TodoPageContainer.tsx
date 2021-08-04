@@ -50,6 +50,7 @@ function TodoPageContainer(props: any) {
   const [sortBy, setSortBy] = useState<string>('date')
 
   const state = useAppSelector((state) => state)
+  const isLoading = state.todo.isLoading
   const user = selectCurrentUser(state)
 
   if (user === null) {
@@ -151,8 +152,7 @@ function TodoPageContainer(props: any) {
     dispatch(actions.deleteList(userId, listId))
   }
 
-
-  if (todos.length == 0) return <Preloader />
+  if (isLoading) return <Preloader />
 
   return (
     <TodoPage

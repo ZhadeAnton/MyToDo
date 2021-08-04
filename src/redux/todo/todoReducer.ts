@@ -22,7 +22,14 @@ const todoReducer =
     case actions.GET_ALL_TODOS_SUCCESS:
       return {
         ...state,
-        todos: [...action.payload]
+        todos: [...action.payload],
+        isLoading: false
+      }
+
+    case actions.GET_ALL_TODOS:
+      return {
+        ...state,
+        isLoading: true
       }
 
     case actions.GET_LISTS_SUCCESS:
