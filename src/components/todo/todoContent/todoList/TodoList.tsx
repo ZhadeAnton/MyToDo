@@ -3,10 +3,10 @@ import { List } from 'antd';
 
 import styles from './todoList.module.scss'
 import * as interfaces from '../../../../Interfaces/TodoInterfaces';
-
-import TodoListItem from '../todoListItem/TodoListItem'
-import EmptyList from '../emptyList/Emptylist';
 import { IUser } from '../../../../Interfaces/UserInterfaces';
+import useWindowDimensions from '../../../../Hooks/useWindowDimensions';
+import EmptyList from '../emptyList/Emptylist';
+import TodoListItem from '../todoListItem/TodoListItem'
 
 interface Props {
   userId: IUser['id'],
@@ -19,6 +19,9 @@ interface Props {
 }
 
 const TodoList: React.FC<Props> = (props) => {
+  const dimensions = useWindowDimensions()
+  const pageSize = dimensions.width < 992 ? 7 : 8
+
   return (
     <>
       {
@@ -28,12 +31,14 @@ const TodoList: React.FC<Props> = (props) => {
           className={styles.todoList}
           dataSource={props.todos}
           pagination={{
-            pageSize: 8,
+            pageSize,
             hideOnSinglePage: true,
+            responsive: true,
             className: 'todoContentList-pagination'
           }}
           renderItem={(todo: any) => (
             <TodoListItem
+              dimensions={dimensions}
               key={todo.id}
               userId={props.userId}
               todo={todo}

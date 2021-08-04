@@ -22,7 +22,7 @@ const TodoForm = (props: Props) => {
         onChange={(e) => todoForm.handleChange(e)}
         onSubmit={(e) => todoForm.handleSubmit(e, props.onSubmit, props.listId)}
         value={todoForm.title}
-        maxLength={40}
+        maxLength={32}
       />
     </form>
   )
