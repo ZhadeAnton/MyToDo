@@ -14,7 +14,7 @@ import NotificationProvider from './Providers/NotificationProvider';
 ReactDOM.render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <BrowserRouter>
+        <BrowserRouter basename='/MyToDo'>
           <NotificationProvider>
             <AppContainer />
           </NotificationProvider>
