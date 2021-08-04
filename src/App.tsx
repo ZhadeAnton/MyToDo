@@ -1,12 +1,11 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 
-import { TodoPageContainerWithrouter } from './Containers/TodoPageContainer';
-import { IAppContainer } from './Containers/AppContainer';
-
+import { TodoPageContainerWithrouter } from './containers/TodoPageContainer';
+import { IAppContainer } from './containers/AppContainer';
 import NotFound from './components/notFound/NotFound';
-import LoginPageContainer from './Containers/LoginPageContainer';
 import Header from './components/Header/Header';
+import LoginPageContainer from './containers/LoginPageContainer';
 
 const App = (props: IAppContainer) => {
   if (!props.user) {

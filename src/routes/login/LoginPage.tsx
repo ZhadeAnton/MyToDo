@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './loginPage.module.scss'
-import { ILoginContainer } from '../../Containers/LoginPageContainer';
+import { ILoginContainer } from '../../containers/LoginPageContainer';
 
 import LoginTabs from '../../components/login/loginTabs/LoginTabs';
 

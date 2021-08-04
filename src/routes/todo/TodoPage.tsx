@@ -2,9 +2,9 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import styles from './todoPage.module.scss'
-import { ITodoContainer } from '../../Containers/TodoPageContainer'
+import { ITodoContainer } from '../../containers/TodoPageContainer'
 
-import TodoContent from '../../components/todo/todoContent/TodoContent'
+import TodoContent from '../../components/todo/todoContent/todoContent'
 import TodoDrawerMini from '../../components/todo/TodoDrawerMini/TodoDrawerMini'
 import useWindowDimensions from '../../Hooks/useWindowDimensions'
 import TodoDrawer from '../../components/todo/todoDrawer/TodoDrawer.'
