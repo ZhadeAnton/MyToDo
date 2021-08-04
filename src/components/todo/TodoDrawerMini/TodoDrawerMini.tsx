@@ -5,7 +5,7 @@ import { PlusOutlined, RightOutlined, UnorderedListOutlined } from '@ant-design/
 import styles from './todoDrawerMini.module.scss'
 import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces'
 import { IUser } from '../../../Interfaces/UserInterfaces'
-import AddNewList from '../todoDrawer/addNewList/AddNewList'
+import AddNewList from '../todoDrawer/AddNewList/AddNewList'
 import UserLists from '../todoDrawer/UserLists/UserLists'
 import FilterListMini from '../FilterListMini/FilterListMini'
 

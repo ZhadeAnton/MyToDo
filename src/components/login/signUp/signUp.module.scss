@@ -1,17 +1,27 @@
+@import '../../../Scss/variables';
+
 .signUp {
   margin-top: var(--login-page-title-mar-top);
+}
 
-  h2 {
-    text-align: center;
-    color: var(--login-page-title-color);
-    font-size: var(--login-page-title-font-size);
-  }
-
-  input {
-    padding: var(--login-page-inputs-padding);
-  }
+.title {
+  text-align: center;
+  color: var(--color-black);
+  font-size: var(--font-size-4);
 }
 
 .submitBtn {
   width: 100%;
+}
+
+@include media-breakpoint-down(lg) {
+  .title {
+    font-size: var(--font-size-3);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .title {
+    font-size: var(--font-size-2);
+  }
 }

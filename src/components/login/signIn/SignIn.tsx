@@ -12,7 +12,9 @@ interface Props {
 const SingIn: React.FC<Props> = (props) => {
   return (
     <div className={styles.signIn}>
-      <h2>Sign in with email</h2>
+      <h2 className={styles.title}>
+        Sign in with email
+      </h2>
 
       <SignInForm
         signInWithEmail={props.signInWithEmail}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { List } from 'antd';
 
-import FilterItem from '../filterItem/FilterItem'
+import FilterItem from '../FilterItem/FilterItem'
 import { drawerFilterItems } from '../../../../Utils/FilterListUtils';
 
 const FilterList = () => {

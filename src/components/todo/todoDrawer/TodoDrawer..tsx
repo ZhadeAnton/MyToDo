@@ -3,8 +3,8 @@ import React from 'react'
 import { Divider } from 'antd';
 
 import styles from './todoDrawer.module.scss'
-import FilterList from './filterList/FilterList';
-import AddNewList from './addNewList/AddNewList';
+import FilterList from './FilterList/FilterList';
+import AddNewList from './AddNewList/AddNewList';
 import UserLists from './UserLists/UserLists';
 import { ArrayOfTodoLists, IFnCreateList } from '../../../Interfaces/TodoInterfaces';
 import { IUser } from '../../../Interfaces/UserInterfaces';
