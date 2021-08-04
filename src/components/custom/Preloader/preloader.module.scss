@@ -1,0 +1,44 @@
+@import '../../../Scss//mixins';
+@import '../../../Scss//variables';
+
+.preloaderWrapper {
+  @include flex-center;
+  @include full-size;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 9999;
+  background-color: var(--e-global-color-secondary);
+
+  img {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    img {
+      width: 13rem;
+      height: 13rem;
+    }
+  }
+  
+  @include media-breakpoint-down(md) {
+    img {
+      width: 11rem;
+      height: 11rem;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    img {
+      width: 9rem;
+      height: 9rem;
+    }
+  }
+
+  @include media-breakpoint-down(tiny) {
+    img {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
+}

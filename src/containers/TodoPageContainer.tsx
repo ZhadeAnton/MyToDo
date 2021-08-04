@@ -13,6 +13,7 @@ import { getTodosByFilter, sortFn } from '../Utils/utils';
 
 import TodoPage from '../Routes/Todo/TodoPage';
 import { ITodoStep } from '../Interfaces/TodoInterfaces';
+import Preloader from '../components/custom/Preloader/Preloader';
 
 export interface ITodoContainer {
     user: IUser | null,
@@ -149,6 +150,9 @@ function TodoPageContainer(props: any) {
   const handleDeleteList = (listId: string) => {
     dispatch(actions.deleteList(userId, listId))
   }
+
+
+  if (todos.length == 0) return <Preloader />
 
   return (
     <TodoPage

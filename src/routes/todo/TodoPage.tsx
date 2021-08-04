@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom'
 import styles from './todoPage.module.scss'
 import { ITodoContainer } from '../../Containers/TodoPageContainer'
 
-// import TodoDetails from '../../components/todo/todoDetails/TodoDetails'
 import TodoContent from '../../components/todo/todoContent/TodoContent'
 import TodoDrawerMini from '../../components/todo/TodoDrawerMini/TodoDrawerMini'
 import useWindowDimensions from '../../Hooks/useWindowDimensions'
