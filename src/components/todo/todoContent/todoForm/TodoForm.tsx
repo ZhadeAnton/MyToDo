@@ -18,11 +18,11 @@ const TodoForm = (props: Props) => {
       className={styles.todoForm}
     >
       <Input
-        placeholder="Add todo"
+        placeholder="New todo"
         onChange={(e) => todoForm.handleChange(e)}
         onSubmit={(e) => todoForm.handleSubmit(e, props.onSubmit, props.listId)}
         value={todoForm.title}
-        maxLength={40}
+        maxLength={32}
       />
     </form>
   )

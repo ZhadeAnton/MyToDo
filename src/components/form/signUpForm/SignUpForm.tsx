@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import {Form, Input, Button} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import styles from './signUpForm.module.scss'
+import useWindowDimensions from '../../../Hooks/useWindowDimensions';
 import { IFnSignUp } from '../../../Interfaces/UserInterfaces';
 
 interface Props {
@@ -10,6 +12,9 @@ interface Props {
 }
 
 const SignUpForm: React.FC<Props> = (props) => {
+  const dimension = useWindowDimensions()
+  const inputSize: SizeType = dimension.width < 992 ? 'middle' : 'large'
+
   const [userData, setUserData] = useState({
     displayName: '',
     email: '',
@@ -49,7 +54,7 @@ const SignUpForm: React.FC<Props> = (props) => {
     <div className={styles.signUp}>
       <Form
         name="sign-up"
-        size='large'
+        size={inputSize}
         onFinish={clear}
         preserve={false}
       >

@@ -5,15 +5,20 @@ import {
   Button,
 } from 'antd';
 import {LockOutlined} from '@ant-design/icons';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import styles from './signInForm.module.scss'
 import { IFnSignInWithEmail } from '../../../Interfaces/UserInterfaces';
+import useWindowDimensions from '../../../Hooks/useWindowDimensions';
 
 interface Props {
   signInWithEmail: IFnSignInWithEmail,
 }
 
 const SignInForm: React.FC<Props> = (props) => {
+  const dimension = useWindowDimensions()
+  const inputSize: SizeType = dimension.width < 992 ? 'middle' : 'large'
+
   const [userData, setUserData] = useState({
     email: '',
     password: ''
@@ -42,7 +47,7 @@ const SignInForm: React.FC<Props> = (props) => {
   return (
     <Form
       name='sign-in'
-      size='large'
+      size={inputSize}
       onFinish={clear}
       preserve={false}
       className={styles.signInForm}

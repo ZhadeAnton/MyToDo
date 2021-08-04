@@ -20,14 +20,14 @@ interface Props {
 
 const UserProfile: React.FC<Props> = (props) => {
   return (
-    <>
+    <div className={styles.userProfile}>
       <Dropdown
         overlay={
           <Menu className={styles.dropdownList}>
             <Menu.Item
               key={v4()}
-              onClick={props.signOutStart}
               icon={<LogoutOutlined />}
+              onClick={props.signOutStart}
             >
               Log out
             </Menu.Item>
@@ -36,15 +36,15 @@ const UserProfile: React.FC<Props> = (props) => {
         placement={props.dropdownPlacement}
         trigger={['click']}
       >
-        <div className={styles.userProfile}>
-          <h3>
+        <div className={styles.userProfileWrapper}>
+          <h3 className={styles.userName}>
             {props.user!.displayName}
           </h3>
 
           <div className={styles.userAvatar}>
             <Avatar
-              alt="user`s avatar"
-              size={40}
+              alt="Avatar"
+              size={32}
               src={props.user!.photoURL}
               icon={<UserOutlined />}
             />
@@ -52,14 +52,14 @@ const UserProfile: React.FC<Props> = (props) => {
             <DownOutlined
               style={{
                 color: 'blue',
-                marginLeft: .25 + 'rem',
-                fontSize: 13
+                marginLeft: .3 + 'rem',
+                fontSize: 10
               }}
             />
           </div>
         </div>
       </Dropdown>
-    </>
+    </div>
   );
 }
 

@@ -1,26 +1,42 @@
+@import '../../Scss/variables';
+@import '../../Scss/mixins';
+
 .loginPage {
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  background-color: var(--login-page-bg);
+  @include flex-center;
+  background-color: var(--color-white-milk);
   position: relative;
-}
-
-.homeLink {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
 }
 
 .loginForm {
   width: calc(100% - 16px);
-  max-width: var(--login-page-max-width);
-  height: var(--login-page-max-height);
-  box-shadow: var(--login-page-form-shadow);
-  margin-top: var(--login-page-mar-top);
-  padding: var(--login-page-form-padding);
-  background-color: var(--login-page-form-bg);
+  height: 38rem;
+  max-width: 32rem;
+  padding: var(--space-md);
+  margin: 0 1rem;
+  box-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
+  margin-top: var(--space-md);
+  background-color: var(--color-white);
   border: thin solid var(--color-grey);
-  border-radius: var(--login-page-form-border-radius);
+  border-radius: 1rem;
+}
+
+@include media-breakpoint-down(lg) {
+  .loginForm {
+    height: 35rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .loginForm {
+    padding: var(--space-sm);
+    height: 33rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .loginForm {
+    height: 31rem;
+  }
 }

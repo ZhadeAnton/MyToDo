@@ -1,38 +1,38 @@
+@import '../../../Scss/mixins';
+
 .newItem {
-  height: var(--add-new-item-height);
+  height: 4rem;
 }
 
 .addItem {
-  display: flex;
-  align-items: center;
   width: 100%;
-  transition: var(--add-new-item-transition);
-  padding: var(--add-new-item-padding);
+  @include flex-align-center;
+  padding: var(--space-sm);
   cursor: pointer;
 
   svg {
-    font-size: var(--add-new-item-icon-size);
+    font-size: var(--font-size-3);
   }
 
   p {
-    font-size: var(--add-new-item-title-size);
-    margin-left: var(--add-new-item-title-margin-left);
+    font-size: var(--font-size-3);
+    margin-left: var(--space-sm);
   }
 
   &:hover {
-    background-color: var(--add-new-item-hover-bg);
-    color: var(--add-new-item-hover-title);
+    background-color: var(--color-white);
+    color: var(--color-lime);
 
     svg {
-     fill: var( --add-new-item-hover-icon);
+     fill: var(--color-lime);
     }
   }
 }
 
 .addItemInput {
-  padding: var(--add-new-input-padding);
+  padding: var(--space-vsm);
 
   Input {
-    font-size: var(--add-new-item-title-size);
+    font-size: var(--font-size-3);
   }
 }

@@ -1,0 +1,29 @@
+@import '../../../../Scss/variables';
+@import '../../../../Scss/mixins';
+
+.createdListsItem {
+  width: 100%;
+  @include flex-align-center;
+  cursor: pointer;
+  padding: .6rem;
+
+  a {
+    width: 100%;
+    font-size: var(--font-size-3);
+    margin-left: var(--space-sm);
+    margin-right: auto;
+  }
+
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  &:hover {
+    background-color: var(--color-white);
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: .6rem 0;
+  }
+}

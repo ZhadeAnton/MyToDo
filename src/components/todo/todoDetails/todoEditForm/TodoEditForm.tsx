@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Input, Tooltip, message } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
-import styles from './todoForm.module.scss'
+import styles from './todoEditForm.module.scss'
 import {
   IFnChangeTitleSelectedTodo,
   IFnUpdateTodo,
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const TodoEditForm: React.FC<Props> = (props) => {
-  const [todoText, setTodoText] = useState<string>('')
+  const [todoText, setTodoText] = useState('')
   const [isEdit, setIsEdit] = useState(false)
 
   useEffect(() => {
@@ -43,7 +43,8 @@ const TodoEditForm: React.FC<Props> = (props) => {
       className={styles.todoTextForm}
       onClick={() => setIsEdit(true)}>
 
-      { isEdit
+      {
+      isEdit
       ?
         <Input
           value={todoText}

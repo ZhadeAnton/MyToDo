@@ -1,11 +1,27 @@
+@import '../../../Scss/mixins';
+@import '../../../Scss/variables';
+
 .todoDetails {
+  width: 20rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   z-index: 10;
   position: relative;
-  width: var(--todo-details-width);
-  padding: var(--todo-details-padding);
-  background-color: var(--todo-details-background-color);
+  background-color: var(--color-white-milk);
+  padding: var(--space-vsm);
+}
+
+.stepsBlock {
+  margin-top: 1rem;
+}
+
+.bottomInfo {
+  margin-top: auto;
+}
+
+@include media-breakpoint-down(lg) {
+  .todoDetails {
+    width: 0;
+  }
 }

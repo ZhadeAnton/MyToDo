@@ -17,11 +17,14 @@ const FilterItem: React.FC<Props> = (props) => {
       className={styles.filterItem}
       key={props.item.to}
     >
-      <span>
+      <span className={styles.icon}>
         {props.item.icon}
       </span>
 
-      <NavLink to={props.item.to}>
+      <NavLink
+        to={props.item.to}
+        className={styles.link}
+      >
         {props.item.title}
       </NavLink>
     </li>

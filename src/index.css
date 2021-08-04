@@ -66,215 +66,63 @@ a {
 
 :root {
   /* Colors */
-  --color-brand: #0DA5F3;
-  --color-brand-light: #cee9f7;
-  --color-brand-background: #F3F3F3;
+  --color-brand: #0078D7;
+  --color-brand-light: #3e69e4;
+  --color-secondary: #87e8de;
+  --color-white-milk: #f4f4f4;
+  --color-black: #000000;
+  --color-black-light: #262626;
+  --color-black-light-2: #595959;
+  --color-grey: #bfbfbf;
   --color-grey-light: #c0c0c0fd;
   --color-grey-dark: #838383;
   --color-grey-strong: #383838;
   --color-white: #ffffff;
   --color-white-light: #f1faee;
   --color-white-dark: rgb(252, 244, 237);
-  --color-black: #000000;
   --color-lime: #a0d911;
   --color-gold: rgb(233, 226, 7);
   --color-red: rgb(237, 79, 7);
-  --color-icon: #353535;
+
+  /* Spaces */
+  --baseline: 24px;
+  --space-tiny: calc(var(--baseline)/4);
+  --space-vsm: calc(var(--baseline)/3);
+  --space-sm: calc(var(--baseline)/2);
+  --space-md: var(--baseline);
+  --space-lg: calc(var(--baseline)*2);
+  --space-xl: calc(var(--baseline)*3);
+  --space-xxl: calc(var(--baseline)*4);
+  --space-xxxl: calc(var(--baseline)*5);
+  --space-huge: calc(var(--baseline)*6);
 
   /* Sizes */
-  --header-height: 80px;
+  --font-size-0: 10px; 
+  --font-size-1: 12px; 
+  --font-size-2: 14px; 
+  --font-size-3: 16px; 
+  --font-size-4: 20px; 
+  --font-size-5: 24px; 
+  --font-size-6: 30px; 
+  --font-size-7: 38px; 
+  --font-size-8: 46px; 
+  --font-size-9: 56px; 
+  --font-size-10: 68px;
 
+  /* Line height */
+  --line-height-1: 20px;
+  --line-height-2: 22px;
+  --line-height-3: 24px;
+  --line-height-4: 28px;
+  --line-height-5: 32px;
+  --line-height-6: 38px;
+  --line-height-7: 46px;
+  --line-height-8: 54px;
+  --line-height-9: 64px;
+  --line-height-10: 76px;
+  
   /* Measures */
-  --transition: .2s linear;
-  --box-shadow: 0 6px 15px 0 var(--color-grey-light);
-
-  /* Custom Elements*/
-  --detele-icon-hover-color: var(--color-red);
-
-  --empty-list-color: var(--color-grey-dark);
-  --empty-list-padding: 2rem;
-  --empty-list-margin: 0 2rem;
-  --empty-list-title-font-size: 2.5rem;
-  --empty-list-subtitle-font-size: 1.5rem;
-  --empty-list-icon-size: 3rem;
-
-  --home-link-color: var(--color-dark);
-  --home-link-gutter: .8rem;
-  --home-link-font-size: 1.3rem;
-  --home-link-icon-size: 1.2rem;
-
-  --sort-item-padding: 1.4rem;
-  --sort-item-bg: var(--color-white);
-  --sort-item-font-size: 1.2rem;
-  --sort-item-color: var(--color-brand);
-  --sort-item-icon-size: 1.2rem;
-  --sort-item-icon-color: var(--color-icon);
-  --sort-item-icon-mar-right: 1rem;
-  --sort-item-icon-active-bg: var(--color-brand-light);
-  --sort-item-icon-hover-bg: var(--color-brand-light);
-
-  /* User Profile */
-  --user-profile-padding: .2rem;
-  --user-profile-title-color: var(--color-brand);
-  --user-profile-title-font-size: 1.4rem;
-  --user-profile-avatar-mar-left: .5rem;
-  --user-profile-dropdown-padding: .5rem;
-  --user-profile-dropdown-item-padding: 1rem;
-  --user-profile-dropdown-item-font-size: 1.2rem;
-  --user-profile-dropdown-item-color: var(--color-brand);
-  --user-profile-dropdown-item-bg-color: var(--color-white-light);
-  --user-profile-dropdown-item-hover-bg-color: var(--color-grey-strong);
-  --user-profile-dropdown-icon-size: 1.1rem;
-  --user-profile-dropdown-items-space: .5rem;
-
-  /* Forms */
-  --add-new-item-height: 4rem;
-  --add-new-item-padding: 1rem .5rem;
-  --add-new-item-icon-size: 2rem;
-  --add-new-item-title-size: 1.3rem;
-  --add-new-item-title-margin-left: .5rem;
-  --add-new-item-transition: background-color .2s linear;
-  --add-new-item-hover-bg: var(--color-brand-light);
-  --add-new-item-hover-title: var(--color-brand);
-  --add-new-item-hover-icon: var(--color-brand);
-  --add-new-input-padding: .9rem .5rem;
-
-  /* Main Page */
-  --main-page-header-height: var(--header-height);
-  --main-page-header-shadow: 0 6px 15px 0 var(--color-grey-light);
-  --main-page-header-nav-links-padding: 1rem;
-  --main-page-header-nav-links-color: var(--color-black);
-  --main-page-header-nav-links-font-size: 1.5rem;
-  --main-page-header-nav-links-hover-bg: var(--color-white-light);
-  --main-page-header-nav-links-hover-color: var(--color-brand);
-  --main-page-hero-blocks-padding: 3rem;
-  --main-page-hero-info-blocks-mar-top: 3rem;
-  --main-page-hero-info-blocks-items-mar-bot: 2rem;
-  --main-page-block-img-shadow: 0 6px 15px 0 var(--color-grey-light);
-  --main-page-block-gutter: 4rem;
-
-  /* Login Page */
-  --login-page-bg: var(--color-white-dark);
-  --login-page-form-bg: var(--color-white);
-  --login-page-max-width: 32rem;
-  --login-page-max-height: 45rem;
-  --login-page-mar-top: 5rem;
-  --login-page-title-mar-top: .5rem;
-  --login-page-title-font-size: 1.5rem;
-  --login-page-title-color: var(--color-black);
-  --login-page-form-padding: 3rem;
-  --login-page-form-border-radius: 1rem;
-  --login-page-form-shadow: 5px 2px 4px 0px rgba(0,0,0,0.39);
-  --login-page-tabs-font-size: 1.4rem;
-  --login-page-tabs-gutter: 5rem;
-  --login-page-inputs-padding: .2rem .4rem !important;
-  --login-page-sign-in-alt-buttons-mar-bot: 1.4rem;
-  --login-page-sign-in-alt-buttons-font-size: 1.2rem;
-  --login-page-sign-in-alt-buttons-color: var(--color-white);
-  --login-page-sign-in-alt-icon-size: 1.4rem;
-  --login-page-sign-in-alt-icon-mar-right: 1rem;
-
-  /* To-do Page */ 
-  --todo-drawer-padding-side: .5rem;
-  --todo-drawer-width: 20rem;
-  --todo-drawer-padding: 0 var(--todo-drawer-padding-side);
-  --todo-drawer-icon-size: 1.4rem;
-  --todo-drawer-background-color: var(--color-white);
-  --todo-drawer-filter-list-padding: 0;
-  --todo-drawer-filter-item-padding: .5rem var(--todo-drawer-padding-side);
-  --todo-drawer-filter-item-title-mar-left: 1rem;
-  --todo-drawer-filter-item-fons-size: 1.3rem;
-  --todo-drawer-filter-item-color: var(--color-brand);
-  --todo-drawer-filter-item-icon-color: var(--color-icon);
-  --todo-drawer-filter-item-hover-bg: var(--color-brand-light);
-  --todo-drawer-created-lists-padding: .5rem 0;
-  --todo-drawer-created-lists-item-padding: .5rem var(--todo-drawer-padding-side);
-  --todo-drawer-created-lists-item-font-size: 1.3rem;
-  --todo-drawer-created-lists-item-title-mar-left: 1rem;
-  --todo-drawer-created-lists-item-hover-bg: var(--color-brand-light);
-  --todo-drawer-add-new-item-padding: 1rem;
-  --todo-drawer-author-color: var(--color-grey-light);
-
-  --todo-content-padding-side: 2rem;
-  --todo-content-banner-padding: 1.5rem var(--todo-content-padding-side);
-  --todo-content-banner-mar-bot: 2rem;
-  --todo-content-banner-bg: var(--color-brand);
-  --todo-content-banner-color: var(--color-black);
-  --todo-content-banner-title-size: 2rem;
-  --todo-content-banner-title-color: var(--color-white);
-  --todo-content-banner-sort-icon-size: 2.2rem;
-  --todo-content-banner-sort-icon-color: var(--color-white);
-  --todo-content-banner-sort-icon-hover-bg: var(--color-gold);
-  --todo-content-list-padding: 0 var(--todo-content-padding-side);
-  --todo-content-pagination-padding: .5rem var(--todo-content-padding-side);
-  --todo-content-form-padding: 1.5rem var(--todo-content-padding-side);
-  --todo-content-form-input-font-size: 1.5rem;
-  --todo-content-form-input-color: var(--color-black);
-  --todo-content-form-padding: 2rem var(--todo-content-padding-side);
-  --todo-content-form-input-padding: 1.5rem;
-
-  --todo-item-background: #ffffff;
-  --todo-item-text-size: 1.5rem;
-  --todo-item-text-color: #000000;
-  --todo-item-border-style: thin solid var(--color-grey-dark);
-  --todo-item-border-radius: 5px;
-  --todo-item-padding: .5rem .6rem .3rem .6rem;
-  --todo-item-transition: .1s linear;
-  --todo-item-gutter-down: .1rem;
-  --todo-item-checkbox-size: 1.8rem;
-  --todo-item-hover-bg: var(--color-white-dark);
-  --todo-item-selected-bg: var(--color-brand-light);
-  --todo-item-content-mar-right: 1.7rem;
-  --todo-item-info-color: var(--color-grey-light);
-  --todo-item-info-font-size: .9rem;
-  --todo-item-info-items-mar-left: 1.1rem;
-  --todo-item-info-planned-text-color: var(--color-grey-strong);
-  --todo-item-info-planned-icon-color: var(--color-grey-strong);
-  --todo-item-info-planned-icon-size: 1rem;
-  --todo-item-info-planned-icon-mar-left: .3rem;
-  --todo-item-icon-important-size: 1.7rem;
-  --todo-item-icon-important-color: var(--color-grey-dark);
-  --todo-item-icon-important-filled-color: var(--color-red);
-  --todo-item-icon-important-color-hover: var(--color-red);
-
-  --todo-details-background-color: var(--color-white);
-  --todo-details-close-btn-hover: #da0c0c;
-  --todo-details-close-btn-color: var(--color-grey-dark);
-  --todo-details-width: 25rem;
-  --todo-details-padding: 4rem .9rem 1rem .9rem;
-  --todo-details-close-btn-size: 2rem;
-  --todo-details-todo-title-size: 1.8rem;
-  --todo-details-todo-title-padding: .9rem;
-  --todo-details-todo-border-color: var(--color-black);
-  --todo-details-title-margin-bottom: .5rem;
-  --todo-details-title-margin-left: .5rem;
-  --todo-details-title-tooltip-color: var(--color-brand);
-  --todo-details-list-padding: .9rem 0;
-  --todo-details-list-height: 20rem;
-  --todo-details-list-item-font-size: 1.5rem;
-  --todo-details-list-item-text-color: var(--color-grey-dark);
-  --todo-details-list-item-padding: .4rem 1rem;
-  --todo-details-list-item-title-mar-left: .4rem;
-  --todo-details-list-item-icon-size: 1.5rem;
-  --todo-details-list-item-icon-color: var(--color-icon);
-  --todo-details-list-item-border-bot: var(--color-grey-light);
-  --todo-details-steps-form-padding: .5rem 0;
-  --todo-details-date-picker-bg: var(--color-brand-light);
-  --todo-details-date-picker-padding: 1rem;
-  --todo-details-date-picker-margin: auto 0 2rem 0;
-  --todo-details-date-picker-title-font-size: 1.3rem;
-  --todo-details-date-picker-title-color: var(--color-brand);
-  --todo-details-date-picker-time-font-size: 1.1rem;
-  --todo-details-date-picker-time-color: var(--color-brand);
-  --todo-details-date-picker-icon-size: 2rem;
-  --todo-details-date-picker-icon-color: var(--color-icon);
-  --todo-details-date-picker-icon-hover-bg: var(--color-red);
-  --todo-details-bottom-background-color: var(--color-brand-light);
-  --todo-details-bottom-padding: 1rem;
-  --todo-details-bottom-text-size: 1.2rem;
-  --todo-details-bottom-text-color: var(--color-brand);
-  --todo-details-bottom-icons-size: 2rem;
-  --todo-details-bottom-icon-color: var(--color-icon);
+  --header-height: 3.125rem;
 }
 
 .ml-sm {

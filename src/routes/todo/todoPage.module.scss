@@ -1,36 +1,41 @@
+@import '../../Scss/variables';
+
 .todoPage {
-  display: flex;
-  height: 100vh;
   width: 100%;
+  height: calc(100vh - var(--header-height));
+  display: flex;
   overflow: hidden;
-  background-color: #000000;
+  background-color: var(--color-white);
 }
 
 .todoDrawer {
-  flex: content;
+  min-width: 16rem;
 }
 
 .todoContent {
-  flex: auto;
+  flex: content;
+  width: 100%;
 }
 
 .todoDetails {
   flex: content;
 }
 
-.background {
-width: 100%;
-height: auto;
-position: absolute;
-
-  img {
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+@include media-breakpoint-down(lg) {
+  .todoDetails {
+    width: 0;
+    // visibility: hidden;
     user-select: none;
-    z-index: -1;
-    object-fit: cover;
+  }
+
+  .todoDrawer {
+    min-width: 13rem;
+    background-color: var(--color-white-milk);
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .todoDrawer {
+    min-width: 3rem;
   }
 }

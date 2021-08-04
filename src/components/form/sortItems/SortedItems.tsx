@@ -16,14 +16,19 @@ interface Props {
   handleSortChange: IFnSortTodos,
 }
 
-const SortedItems: React.FC<Props> = (props) => {
+export default function SortedItems(props: Props) {
   const dispatch = useAppDispatch()
 
   return (
     <>
       <Dropdown
         overlay={
-          <Menu className={styles.sortList}>
+          <Menu className={styles.sortList}
+            style={{
+              border: 1 + 'px solid #c0c0c0fd',
+              boxShadow: '4px 4px 8px 0px rgba(34, 60, 80, 0.2)'
+            }}
+          >
             {
               sortMenu.map((item, idx) => {
                 return (
@@ -36,7 +41,9 @@ const SortedItems: React.FC<Props> = (props) => {
                     }}
                     key={idx}
                   >
-                    {item.icon} {item.text}
+                    <div className={styles.sortItemWrapper}>
+                      {item.icon} {item.text}
+                    </div>
                   </Menu.Item>
                 )
               })
@@ -51,5 +58,3 @@ const SortedItems: React.FC<Props> = (props) => {
     </>
   )
 }
-
-export default SortedItems

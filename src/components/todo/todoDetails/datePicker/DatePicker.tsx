@@ -47,16 +47,15 @@ const DatePickerForm: React.FC<Props> = (props) => {
         props.selectedTodo!.planned
         ?
           <>
-            <Divider
-              orientation="left">
-              <h3>Planned on</h3>
+            <Divider orientation="center">
+              <h3>
+                Planned on
+              </h3>
             </Divider>
 
             <div className={styles.planned}>
               <time>
-                {
-                  props.selectedTodo!.planned
-                }
+                { props.selectedTodo!.planned }
               </time>
 
               <Tooltip
@@ -70,14 +69,17 @@ const DatePickerForm: React.FC<Props> = (props) => {
           <>
             <Divider
               orientation="left"
-              className={styles.title}>
-              <h3>Add due date</h3>
+              className={styles.title}
+            >
+              <h3>
+                Add due date
+              </h3>
             </Divider>
 
             <DatePicker
               showTime
               format="YYYY-MM-DD HH:mm"
-              size='large'
+              size='middle'
               onOk={handleUpdateDate}
               disabledDate={disabledDate}
             />

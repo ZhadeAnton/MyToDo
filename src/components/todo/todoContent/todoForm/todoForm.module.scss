@@ -1,10 +1,37 @@
+@import '../../../../Scss/variables';
+
 .todoForm {
   display: flex;
-  padding: var(--todo-content-form-padding);
+  padding: 1.3rem 1rem;
 
   input {
     width: 100%;
-    color: var(--todo-content-form-input-color);
-    font-size: var(--todo-content-form-input-padding);
+    color: var(--color-black-light);
+    font-size: var(--font-size-5);
+    background-color: var(--color-white);
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding: 1.3rem 1rem;
+
+    input {
+      font-size: var(--font-size-4);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 1.3rem 1rem;
+
+    input {
+      font-size: var(--font-size-3);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 1.3rem 1rem;
+
+    input {
+      font-size: var(--font-size-2);
+    }
   }
 }

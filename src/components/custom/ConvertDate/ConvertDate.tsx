@@ -10,7 +10,7 @@ export default function ConvertDate(props: Props) {
 
   return (
     <time>
-      {moment(timestamp).format('MMM D YYYY, h:mm a')}
+      { moment(timestamp).format('DD/MM/YY, h:mm') }
     </time>
   )
 }

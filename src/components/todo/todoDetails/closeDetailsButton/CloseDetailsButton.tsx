@@ -1,5 +1,5 @@
 import React from 'react'
-import { CloseOutlined } from '@ant-design/icons'
+import { ExportOutlined } from '@ant-design/icons'
 
 import styles from './closeDetailsButton.module.scss'
 import { IFnCloseSelectedTodo } from '../../../../Interfaces/TodoInterfaces'
@@ -10,7 +10,7 @@ interface Props {
 
 const CloseDetailsButton: React.FC<Props> = (props) => {
   return (
-    <CloseOutlined
+    <ExportOutlined
       className={styles.closeDetailsIcon}
       onClick={props.onCloseSelectedTodo}
     />

@@ -9,6 +9,7 @@ import { IUser } from '../../../../Interfaces/UserInterfaces';
 import ConvertDate from '../../../custom/ConvertDate/ConvertDate';
 
 interface Props {
+  dimensions?: any,
   todo: interfaces.ITodo,
   userId: IUser['id'],
   selectedTodo: interfaces.ITodo,
@@ -52,27 +53,23 @@ const TodoListItem: React.FC<Props> = (props) => {
         </p>
 
         <div className={styles.todoInfo}>
+          <div className={styles.todoTimestamp}>
+            <ConvertDate date={props.todo.timestamp}/>
+          </div>
+
+          {
+            props.todo.planned &&
+              <span className={styles.todoPlanned}>
+                {props.dimensions.width > 556 && <p>Planned</p>} <BellOutlined />
+              </span>
+          }
+
           {
             props.todo.steps?.length > 0 &&
               <span className={styles.todoSteps}>
                 Steps: {props.todo.steps?.length}
               </span>
           }
-
-          {
-            props.todo.planned &&
-              <span className={styles.todoPlanned}>
-                Planned <BellOutlined />
-              </span>
-          }
-
-          <div className={styles.todoTimestamp}>
-            <p>
-              Created&nbsp;
-            </p>
-
-            <ConvertDate date={props.todo.timestamp}/>
-          </div>
         </div>
       </div>
       <span

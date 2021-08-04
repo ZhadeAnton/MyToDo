@@ -12,7 +12,10 @@ interface Props {
 const SignUp: React.FC<Props> = (props) => {
   return (
     <div className={styles.signUp}>
-      <h2>Create my free account!</h2>
+      <h2 className={styles.title}>
+        Create my free account!
+      </h2>
+
       <SignUpForm
         signUp={props.signUp}
       />

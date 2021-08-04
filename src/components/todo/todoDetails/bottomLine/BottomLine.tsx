@@ -10,6 +10,7 @@ import {
 import ConvertDate from '../../../custom/ConvertDate/ConvertDate';
 import { useAppDispatch } from '../../../../Hooks/usePreTypedHooks';
 import { addNotification } from '../../../../Redux/General/GeneralActionCreators';
+import CloseDetailsButton from '../closeDetailsButton/CloseDetailsButton';
 
 interface Props {
   selectedTodo: ITodo,
@@ -28,6 +29,10 @@ const BottomLine: React.FC<Props> = (props) => {
 
   return (
     <div className={styles.bottomLine}>
+      <CloseDetailsButton
+        onCloseSelectedTodo={props.onCloseSelectedTodo}
+      />
+
       <ConvertDate date={props.selectedTodo.timestamp}/>
 
       <RemoveIcon

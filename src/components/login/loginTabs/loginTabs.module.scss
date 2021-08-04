@@ -1,12 +1,27 @@
+@import '../../../Scss/variables';
+@import '../../../Scss/mixins';
+
 .loginTabs {
   width: 100%;
 }
 
 .tab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  font-size: var(--login-page-tabs-font-size);
-  margin-right: var(--login-page-tabs-gutter);
+  @include flex-center;
+  font-size: var(--font-size-4);
+  margin-right: var(--space-lg);
+}
+
+@include media-breakpoint-down(lg) {
+  .tab {
+    font-size: var(--font-size-3);
+    margin-right: var(--space-md);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .tab {
+    font-size: var(--font-size-2);
+    margin-right: var(--space-md);
+  }
 }
