@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react'
 import { Menu, Dropdown } from 'antd';
 import { v4 } from 'uuid';
@@ -16,11 +15,14 @@ interface Props {
   handleSortChange: IFnSortTodos,
 }
 
-export default function SortedItems(props: Props) {
+export default function SortingDropdown(props: Props) {
   const dispatch = useAppDispatch()
 
   return (
-    <>
+    <div className={styles.sortingDropdown}>
+      <h6 className={styles.sortingName}>
+        Sorted by { props.checkedSort }
+      </h6>
       <Dropdown
         overlay={
           <Menu className={styles.sortList}
@@ -55,6 +57,6 @@ export default function SortedItems(props: Props) {
         arrow>
         <SortIcon />
       </Dropdown>
-    </>
+    </div>
   )
 }
