@@ -6,7 +6,7 @@ import styles from './removeIcon.module.scss'
 
 interface Props {
   className?: string,
-  onClick: any,
+  onClick?: any,
   toolTip?: string,
   placement?: 'top' | 'left' | 'right' | 'bottom' | 'topLeft' | 'topRight' |
   'bottomLeft' | 'bottomRight' | 'leftTop' | 'leftBottom' |
