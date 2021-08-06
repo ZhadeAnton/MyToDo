@@ -32,12 +32,11 @@
   animation-fill-mode: forwards;
   width: 100%;
   z-index: 9999;
-  background-color: var(--color-white-milk);
+  background-color: var(--color-black-light);
 
   &__content {
-    display: flex;
-    align-items: center;
-    padding: .6rem 3rem .6rem 1rem;
+    @include flex-align-center;
+    padding: .5rem 3rem .5rem 1rem;
 
     &--icon {
       font-size: var(--font-size-3);
@@ -47,7 +46,7 @@
     &--message {
       margin: 0;
       font-size: var(--font-size-3);
-      color: var(--color-black);
+      color: var(--color-white);
     }
   }
 
@@ -73,7 +72,7 @@
 
   @include media-breakpoint-down(md) {
     &__content {
-      padding: .5rem 2rem .5rem .5rem;
+      padding: .4rem 2rem .4rem .5rem;
 
       &--icon {
         font-size: var(--font-size-2);
@@ -83,7 +82,6 @@
       &--message {
         margin: 0;
         font-size: var(--font-size-2);
-        color: var(--color-black);
       }
     }
   }
@@ -100,7 +98,6 @@
       &--message {
         margin: 0;
         font-size: var(--font-size-1);
-        color: var(--color-black);
       }
     }
   }
