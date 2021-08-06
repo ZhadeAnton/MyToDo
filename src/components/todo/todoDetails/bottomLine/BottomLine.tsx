@@ -1,5 +1,6 @@
 import React from 'react'
 import { v4 } from 'uuid';
+import { Popconfirm } from 'antd';
 
 import styles from './bottomLine.module.scss'
 import RemoveIcon from '../../../custom/removeIcon/RemoveIcon';
@@ -35,11 +36,17 @@ const BottomLine: React.FC<Props> = (props) => {
 
       <ConvertDate date={props.selectedTodo.timestamp}/>
 
-      <RemoveIcon
-        toolTip='Remove todo'
-        placement='topLeft'
-        onClick={() => handleDeleteTodo()}
-      />
+      <Popconfirm
+        placement="topLeft"
+        title='Are you sure to delete this task?'
+        onConfirm={handleDeleteTodo}
+        okText="Yes"
+        cancelText="No"
+      >
+        <RemoveIcon
+          placement='topLeft'
+        />
+      </Popconfirm>
     </div>
   )
 }

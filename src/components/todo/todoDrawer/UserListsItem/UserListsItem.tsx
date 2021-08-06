@@ -1,13 +1,14 @@
 import React from 'react'
+import { Popconfirm } from 'antd'
 import { v4 } from 'uuid'
 import { useHistory, NavLink } from 'react-router-dom'
 import { UnorderedListOutlined } from '@ant-design/icons'
 
 import styles from './createdListsItem.module.scss'
 import { ITodoList } from '../../../../Interfaces/TodoInterfaces'
-import RemoveIcon from '../../../custom/removeIcon/RemoveIcon'
 import { addNotification } from '../../../../Redux/General/GeneralActionCreators'
 import { useAppDispatch } from '../../../../Hooks/usePreTypedHooks'
+import RemoveIcon from '../../../custom/removeIcon/RemoveIcon'
 
 interface Props {
   list: ITodoList
@@ -35,9 +36,15 @@ export default function UserListsItem(props: Props) {
         {props.list.title}
       </NavLink>
 
-      <RemoveIcon
-        onClick={handleRemoveItemClick}
-      />
+      <Popconfirm
+        placement="topLeft"
+        title='Are you sure to delete this list?'
+        onConfirm={handleRemoveItemClick}
+        okText="Yes"
+        cancelText="No"
+      >
+        <RemoveIcon />
+      </Popconfirm>
     </li>
   )
 }

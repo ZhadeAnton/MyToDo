@@ -2,7 +2,7 @@ import React from 'react'
 import { IFnSortTodos, ITodoList } from '../../../../Interfaces/TodoInterfaces'
 
 import styles from './topBanner.module.scss'
-import SortedItems from '../../../form/sortItems/SortedItems'
+import SortingDropdown from '../../../form/sortItems/SortedItems'
 import BannerName from '../../../custom/BannerName/BannerName'
 
 interface Props {
@@ -20,7 +20,7 @@ const TopBanner: React.FC<Props> = (props) => {
         path={props.path}
       />
 
-      <SortedItems
+      <SortingDropdown
         checkedSort={props.checkedSort}
         handleSortChange={props.onSort}
       />

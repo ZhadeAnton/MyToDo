@@ -61,7 +61,10 @@ const DatePickerForm: React.FC<Props> = (props) => {
               <Tooltip
                 placement="topLeft"
                 title="Remove date">
-                <StopOutlined style={{zIndex: 100}} onClick={handleRemoveDate}/>
+                <StopOutlined
+                  style={{zIndex: 100}}
+                  onClick={handleRemoveDate}
+                />
               </Tooltip>
             </div>
           </>

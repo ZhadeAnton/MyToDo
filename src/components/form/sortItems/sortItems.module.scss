@@ -1,6 +1,15 @@
 @import '../../../Scss/mixins';
 @import '../../../Scss/variables';
 
+.sortingDropdown {
+  @include flex-align-center;
+}
+
+.sortingName {
+  font-size: var(--font-size-1);
+  margin-right: var(--space-sm);
+}
+
 .sortList {
   padding: 0;
 }
@@ -46,6 +55,11 @@
 }
 
 @include media-breakpoint-down(sm) {
+  .sortingName {
+    font-size: var(--font-size-0);
+    margin-right: var(--space-vsm);
+  }
+
   .sortItem {
     svg {
       width: 1rem;

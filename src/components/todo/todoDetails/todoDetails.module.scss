@@ -2,7 +2,7 @@
 @import '../../../Scss/variables';
 
 .todoDetails {
-  width: 20rem;
+  width: 19rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -18,6 +18,12 @@
 
 .bottomInfo {
   margin-top: auto;
+}
+
+@include media-breakpoint-down(xl) {
+  .todoDetails {
+    width: 18rem;
+  }
 }
 
 @include media-breakpoint-down(lg) {
